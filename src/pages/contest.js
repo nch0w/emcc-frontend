@@ -1,19 +1,20 @@
 import React from 'react';
 
-import { Container, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
 import { contestYear, ContestSchedule, RoundFormats } from '../config';
+import { SHeading, SContent } from '../styled_components';
 
 const Contest = () => {
     return (
-        <Container>
-            <Typography variant='h2'>Contest Information</Typography>
+        <Box>
+            <SHeading variant='h2'>Contest Information</SHeading>
             <Typography variant='body1'>
                 Detailed information is also available in the {contestYear} Coaches' Packet,
                 which will be handed out during registration.
             </Typography>
             <br />
-            <Container maxWidth='sm' align='left'>
+            <SContent>
                 <ContestSchedule />
                 <RoundFormats />
                 <br />
@@ -50,8 +51,8 @@ const Contest = () => {
                 <Typography variant='body1'>
                     <b>All decisions made by the EMCC judges are final.</b>
                 </Typography>
-            </Container>
-        </Container>
+            </SContent>
+        </Box>
     );
 }
 

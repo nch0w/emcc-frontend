@@ -1,17 +1,20 @@
 import React from 'react';
 
-import { Container, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 import { ContactInfo } from '../config';
+import { SHeading, SContent } from '../styled_components';
 
 const Contact = () => {
     return (
-        <Container>
-            <Typography variant='h2'>
+        <Box>
+            <SHeading variant='h2'>
                 Contact
-            </Typography>
-            <ContactInfo />
-        </Container>
+            </SHeading>
+            <SContent>
+                <ContactInfo />
+            </SContent>
+        </Box>
     );
 }
 

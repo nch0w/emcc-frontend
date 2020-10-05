@@ -2,11 +2,13 @@ import React from 'react';
 
 import { Box, Typography } from '@material-ui/core'
 import { Grid, Card, CardMedia, CardContent } from '@material-ui/core';
-import { TableContainer, Paper, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Container, TableContainer, Paper, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import { withStyles } from '@material-ui/core'
 import MuiTableCell from '@material-ui/core/TableCell';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from '@reach/router'
+import { Link } from '@reach/router';
+
+import { SHeading, SContentHeading } from './styled_components';
 
 // a set of app-wide constants in 1 place
 
@@ -141,8 +143,8 @@ const NoBorderTableCell = withStyles({
 
 export const ContestSchedule = () => {
     return (
-        <Box align='center'>
-            <Typography variant='h3'>Schedule</Typography>
+        <Container align='center' maxWidth='sm'>
+            <SHeading variant='h3'>Schedule</SHeading>
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
@@ -234,7 +236,7 @@ export const ContestSchedule = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Box>
+        </Container>
     );
 }
 
@@ -275,9 +277,9 @@ export const RoundFormats = () => {
 
     return (
         <Box>
-            <Typography variant='h3' align='center'>Round Formats</Typography>
-            <br /><br />
-            <Typography variant='h4' align='center'>Individual Rounds</Typography>
+            <br />
+            <SHeading variant='h3'>Round Formats</SHeading>
+            <SContentHeading variant='h4'>Individual Rounds</SContentHeading>
             <br />
             <Typography variant='body1'>
                 The individual rounds consist of two parts, taken one after another.
@@ -286,14 +288,14 @@ export const RoundFormats = () => {
                 Each student's individual score is added to their team's score.
             </Typography>
             <br />
-            <Typography variant='h4' align='center'>Team Round</Typography>
+            <SContentHeading variant='h4'>Team Round</SContentHeading>
             <br />
             <Typography variant='body1'>
                 The Team Round is a {teamTimeLimit} minute round where everybody on the team can work together to solve {teamProblemCount} questions, each worth {teamProblemWeight} points.
                 The questions will mostly be unrelated to each other, but some of them may be strung together by a common theme.
             </Typography>
             <br />
-            <Typography variant='h4' align='center'>Guts Round</Typography>
+            <SContentHeading variant='h4'>Guts Round</SContentHeading>
             <br />
             <Typography variant='body1'>
                 The Guts Round is a live round consisting of {gutsProblemCount} questions in {gutsTimeLimit} minutes.
@@ -308,7 +310,7 @@ export const RoundFormats = () => {
                 The point value for each problem increases between each set of three.
             </Typography>
             <br />
-            <Typography variant='h4' align='center'>Scoring and Tie-Breaking</Typography>
+            <SContentHeading variant='h4'>Scoring and Tie-Breaking</SContentHeading>
             <br />
             <Typography variant='body1'>
                 Rounds are scored as follows.

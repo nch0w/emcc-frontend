@@ -1,21 +1,22 @@
 import React from 'react';
 
-import { Container, Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
 import { contestDate, contestStatus } from '../config';
+import { SHero, SHeroHeading, SHeroSubheading, SContent } from '../styled_components';
 
 
 const Home = () => {
     return (
-        <Container>
-            <Typography variant='h1'>EMCC</Typography>
-            <Typography variant='h3'>The Exeter Math Club Competition</Typography>
-            <br />
-            <Typography variant='h5'>{contestDate}, Phillips Exeter Academy</Typography>
-            <br /><br />
-            <Typography variant='h6'>{contestStatus}</Typography>
+        <Box>
+            <SHero>
+                <SHeroHeading variant='h1'>EMCC</SHeroHeading>
+                <SHeroSubheading variant='h3'>The Exeter Math Club Competition</SHeroSubheading>
+                <SHeroSubheading variant='h5'>{contestDate}, Phillips Exeter Academy (remote)</SHeroSubheading>
+                <SHeroSubheading variant='h6'>{contestStatus}</SHeroSubheading>
+            </SHero>
             <br /><br /><br />
-            <Box align='left'>
+            <SContent>
                 <Typography variant='h3' align='center'>What is EMCC?</Typography>
                 <br />
                 <Typography variant='body1'>
@@ -41,8 +42,8 @@ const Home = () => {
                     into teams of four. Competitors aren't limited to just the United States &mdash;
                     in the past, we've hosted students from far away places like China and Illinois.
                 </Typography>
-            </Box>
-        </Container>
+            </SContent>
+        </Box>
     );
 }
 

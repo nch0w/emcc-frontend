@@ -6,6 +6,7 @@ import { Link } from '@reach/router';
 import axios from 'axios';
 
 import { emccServerUrl } from '../config';
+import { SHeading } from '../styled_components';
 
 const signUpStatus = {
     NotSignedUp: 'not-signed-up',
@@ -78,8 +79,9 @@ const SignUp = () => {
 
     return (
         <Container>
-            <Typography variant='h2'>Sign Up</Typography>
-            <br />
+            <SHeading variant='h2'>
+                Sign Up
+            </SHeading>
             <Box align='left'>
                 <Typography variant='body1'>
                     Each coach should sign up for exactly one account.

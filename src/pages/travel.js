@@ -1,16 +1,17 @@
 import React from 'react';
 
-import { Container, Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { Link } from '@reach/router';
+
+import { SHeading, SContent } from '../styled_components';
 
 const Travel = () => {
     return (
-        <Container>
-            <Typography variant='h2'>
+        <Box>
+            <SHeading variant='h2'>
                 Travel
-            </Typography>
-            <br /><br />
-            <Box align='left'>
+            </SHeading>
+            <SContent>
                 <Typography variant='h4' align='center'>Campus Map</Typography>
                 <br />
                 <Typography variant='body1'>
@@ -41,8 +42,8 @@ const Travel = () => {
                     <br /><br />
                     Please see the <Link to='/payment'>Payment page</Link> for more details.
                 </Typography>
-            </Box>
-        </Container>
+            </SContent>
+        </Box>
     );
 }
 

@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import { UserContext } from '../App';
 import { emccServerUrl } from '../config';
+import { SHeading } from '../styled_components';
 
 const loginStatus = {
     NotLoggedIn: 'not-logged-in',
@@ -77,8 +78,9 @@ const Login = () => {
 
     return (
         <Container>
-            <Typography variant='h2'>Log In</Typography>
-            <br />
+            <SHeading variant='h2'>
+                Log In
+            </SHeading>
             <Box align='left'>
                 <Typography variant='body1'>
                     Don't already have an account?

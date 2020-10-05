@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { Container, Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { Link } from '@reach/router'
 
 import { indivEarlyCost, indivLateCost, teamEarlyCost, teamLateCost, minTeamMembersPerTeam, maxTeamMembersPerTeam, CheckInstructions } from '../config';
+import { SHeading, SContent } from '../styled_components';
 
 const Payment = () => {
     return (
-        <Container>
-            <Typography variant='h2'>
+        <Box>
+            <SHeading variant='h2'>
                 Payment Information
-            </Typography>
-            <br /><br />
-            <Box align='left'>
+            </SHeading>
+            <SContent>
                 <Typography variant='h4' align='center'>How much does EMCC cost?</Typography>
                 <br />
                 <Typography variant='body1'>
@@ -46,8 +46,8 @@ const Payment = () => {
                     There are transportation services (such as Flightline and Green Rides USA)
                     between airports and Exeter.
                 </Typography>
-            </Box>
-        </Container>
+            </SContent>
+        </Box>
     );
 }
 

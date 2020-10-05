@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 
 import { Router, navigate } from '@reach/router';
-import { CssBaseline, Box, Typography, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { CssBaseline, Box, Typography } from '@material-ui/core';
 import { Home as HomeIcon, Assignment as ContestIcon, FlightTakeoff as TravelIcon, ContactMail as ContactIcon, PersonAdd as SignUpIcon, LockOpen as LoginIcon, Dashboard as DashboardIcon, AttachMoney as PaymentIcon } from '@material-ui/icons'
+
+import { SNav, SNavButton } from './styled_components';
 
 import Home from './pages/home';
 import Contest from './pages/contest';
@@ -13,6 +15,8 @@ import SignUp from './pages/signup';
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';
 import Payment from './pages/payment';
+
+import { contestYear } from './config';
 
 /*
 TODO: is EMCC 2021 even happening? Is it remote?
@@ -75,16 +79,16 @@ const EMCCNav = () => {
     }
 
     return (
-        <BottomNavigation value={currentUrl} showLabels onChange={handleButtonClicked}>
-            <BottomNavigationAction label='Home' value='/' icon={<HomeIcon />} />
-            <BottomNavigationAction label='Contest' value='/contest' icon={<ContestIcon />} />
-            <BottomNavigationAction label='Travel' value='/travel' icon={<TravelIcon />} />
-            <BottomNavigationAction label='Contact' value='/contact' icon={<ContactIcon />} />
-            <BottomNavigationAction label='Sign Up' value='/signup' icon={<SignUpIcon />} />
-            <BottomNavigationAction label='Login' value='/login' icon={<LoginIcon />} />
-            <BottomNavigationAction label='Dashboard' value='/dashboard' icon={<DashboardIcon />} />
-            <BottomNavigationAction label='Payment' value='/payment' icon={<PaymentIcon />} />
-        </BottomNavigation>
+        <SNav value={currentUrl} showLabels onChange={handleButtonClicked}>
+            <SNavButton label='Home' value='/' icon={<HomeIcon />} />
+            <SNavButton label='Contest' value='/contest' icon={<ContestIcon />} />
+            <SNavButton label='Travel' value='/travel' icon={<TravelIcon />} />
+            <SNavButton label='Contact' value='/contact' icon={<ContactIcon />} />
+            <SNavButton label='Sign Up' value='/signup' icon={<SignUpIcon />} />
+            <SNavButton label='Login' value='/login' icon={<LoginIcon />} />
+            <SNavButton label='Dashboard' value='/dashboard' icon={<DashboardIcon />} />
+            <SNavButton label='Payment' value='/payment' icon={<PaymentIcon />} />
+        </SNav>
     );
 }
 
@@ -104,6 +108,30 @@ const App = () => {
                     <PrivateRoute as={Dashboard} path='/dashboard' />
                     <Payment path='/payment' />
                 </Router>
+                <footer style={{
+                    position: 'fixed',
+                    bottom: '0',
+                    width: '100%',
+                    backgroundColor: 'rgb(140,0,0)',
+                    padding: '20px',
+                    color: '#EEEEEE',
+                    boxShadow: 'rgba(0,0,0,0.8) 0px 1px 6px'
+                }}>
+                    <Typography variant='body'>
+                        &copy; Copyright {contestYear} Exeter Math Club. All rights reserved.
+                    </Typography>
+                    <Box style={{float: 'right'}}>
+                        <Typography variant='body' style={{marginRight: '15px'}}>
+                            Sponsored by Jane Street.
+                        </Typography>
+                        <a target='_blank' rel='noopener noreferrer' href='https://www.janestreet.com/'>
+                            <img id="jane_street_logo" alt='Jane Street logo' style={{
+                                filter: 'invert(100%)',
+                                verticalAlign: 'middle'
+                            }} src={require('./assets/janestreetlogo.png')} />
+                        </a>
+                    </Box>
+                </footer>
             </UserContext.Provider>
         </div >
     );

@@ -24,6 +24,7 @@ import axios from 'axios';
 
 import { UserContext } from '../App';
 import { emccServerUrl } from '../config';
+import { SHeading } from '../styled_components';
 
 const tableIcons = {
     Add: AddBox,
@@ -396,10 +397,9 @@ const Dashboard = () => {
 
     return (
         <Container>
-            <Typography variant='h2'>
+            <SHeading variant='h2'>
                 Dashboard
-            </Typography>
-            <br />
+            </SHeading>
             <Paper elevation={3}>
                 <Tabs
                     value={activeTab}

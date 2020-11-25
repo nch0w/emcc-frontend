@@ -53,7 +53,17 @@ router.post("/login", async (req, res) => {
   ]);
   return res.status(200).json({
     name: user.fields["Name"],
-    email: user.fields["Email"]
+    email: user.fields["Email"],
+    coachInfo: {
+      name: user.fields["Name"],
+      phoneNumber: user.fields["Phone"],
+      email: user.fields["Email"],
+      mailingAddress: user.fields["Address"],
+      teamLimit: 5,
+      indivLimit: 5
+    },
+    teams: [],
+    individuals: []
   });
 });
 

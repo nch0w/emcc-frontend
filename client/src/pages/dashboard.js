@@ -208,7 +208,6 @@ const Dashboard = () => {
         }
       }
     }
-    console.log("got here 5");
     return true;
   };
 

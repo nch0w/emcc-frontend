@@ -51,9 +51,12 @@ router.post("/login", async (req, res) => {
       }
     }
   ]);
+
   return res.status(200).json({
     name: user.fields["Name"],
     email: user.fields["Email"],
+    sessionToken,
+    id: user.id,
     coachInfo: {
       name: user.fields["Name"],
       phoneNumber: user.fields["Phone"],
@@ -108,7 +111,9 @@ router.post("/signup", async (req, res) => {
   const newUser = records[0];
   res.status(200).json({
     name: newUser.fields["Name"],
-    email: newUser.fields["Email"]
+    email: newUser.fields["Email"],
+    id: newUser.id,
+    sessionToken
   });
 });
 

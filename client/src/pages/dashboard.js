@@ -267,9 +267,17 @@ const Dashboard = () => {
                       // (such as "another team with the same name already exists")
                       console.log("got to onRowAdd");
                       axios
-                        .post(emccServerUrl + "/add-team", newData, {
-                          timeout: 5000
-                        })
+                        .post(
+                          emccServerUrl + "/registration/add-team",
+                          newData,
+                          {
+                            timeout: 5000,
+                            headers: {
+                              userID: user.id,
+                              session: user.sessionToken
+                            }
+                          }
+                        )
                         .then((response) => {
                           setNumTeams(numTeams + 1);
                           user.teams.push(newData);

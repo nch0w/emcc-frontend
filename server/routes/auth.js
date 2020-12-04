@@ -52,6 +52,25 @@ router.post("/login", async (req, res) => {
     }
   ]);
 
+  const teams = [];
+  const individuals = [];
+  for (let competitorId of user.fields.Competitors) {
+    const competitor = await base("Competitors").find(competitorId);
+    if (competitor.fields.Individual) {
+      individuals.push({
+        student: competitor.fields["Student 1"]
+      });
+    } else {
+      teams.push({
+        name: competitor.fields.Name,
+        student1: competitor.fields["Student 1"],
+        student2: competitor.fields["Student 2"],
+        student3: competitor.fields["Student 3"],
+        student4: competitor.fields["Student 4"]
+      });
+    }
+  }
+
   return res.status(200).json({
     name: user.fields["Name"],
     email: user.fields["Email"],
@@ -65,8 +84,8 @@ router.post("/login", async (req, res) => {
       teamLimit: 5,
       indivLimit: 5
     },
-    teams: [],
-    individuals: []
+    teams,
+    individuals
   });
 });
 

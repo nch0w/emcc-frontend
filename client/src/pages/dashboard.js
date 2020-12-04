@@ -305,7 +305,10 @@ const Dashboard = () => {
                       )
                     ) {
                       axios
-                        .post(emccServerUrl + "/update-team", newData)
+                        .post(
+                          emccServerUrl + "/registration/update-team",
+                          newData
+                        )
                         .then((_response) => {
                           const index = oldData.tableData.id;
                           user.teams[index] = newData;

@@ -360,9 +360,17 @@ const Dashboard = () => {
                       // (such as "another individual with the same name already exists")
                       console.log("got to onRowAdd");
                       axios
-                        .post(emccServerUrl + "/add-indiv", newData, {
-                          timeout: 5000
-                        })
+                        .post(
+                          emccServerUrl + "/registration/add-indiv",
+                          newData,
+                          {
+                            timeout: 5000,
+                            headers: {
+                              userID: user.id,
+                              session: user.sessionToken
+                            }
+                          }
+                        )
                         .then((response) => {
                           setNumIndivs(numIndivs + 1);
                           user.indivs.push(newData);

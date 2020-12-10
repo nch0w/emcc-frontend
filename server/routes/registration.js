@@ -1,8 +1,11 @@
+import {
+  minTeamMembersPerTeam,
+  maxTeamsPerCoach,
+  maxIndivsPerCoach
+} from "../config";
+
 const router = require("express").Router();
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
-
-const TEAM_LIMIT = 5;
-const INDIV_LIMIT = 5;
 
 router.post("/add-team", async (req, res) => {
   const { name, student1, student2, student3, student4 } = req.body;
@@ -13,9 +16,32 @@ router.post("/add-team", async (req, res) => {
     });
   }
 
-  if (!name || !student1) {
-    return res.status(400).send({ error: "Missing team name or student 1." });
+  if (!name) {
+    return res.status(400).send({ error: "Missing team name." });
   }
+  let i = 0;
+  for (const student of [student1, student2, student3, student4]) {
+    if (i >= minTeamMembersPerTeam) break;
+    if (!student)
+      return res
+        .status(400)
+        .send({
+          error:
+            "Team member count below minimum allowed (" +
+            minTeamMembersPerTeam +
+            ")."
+        });
+    i++;
+  }
+
+  const coach = (
+    await base("Coaches")
+      .select({
+        filterByFormula: `{ID} = '${req.user.id}'`
+      })
+      .firstPage()
+  )[0];
+
   const sameName = await base("Competitors")
     .select({
       filterByFormula: `{Name} = '${name}'`
@@ -32,7 +58,11 @@ router.post("/add-team", async (req, res) => {
     })
     .firstPage();
 
-  if (coachTeams.length == TEAM_LIMIT) {
+  let teamLimit =
+    coach.fields["Team Limit"] < 0
+      ? maxTeamsPerCoach
+      : coach.fields["Team Limit"];
+  if (coachTeams.length == teamLimit) {
     return res.status(400).send({ error: "Team limit reached." });
   }
 
@@ -72,6 +102,14 @@ router.post("/add-indiv", async (req, res) => {
     return res.status(400).send({ error: "Missing student name." });
   }
 
+  const coach = (
+    await base("Coaches")
+      .select({
+        filterByFormula: `{ID} = '${req.user.id}'`
+      })
+      .firstPage()
+  )[0];
+
   const coachIndivs = await base("Competitors")
     .select({
       filterByFormula: `AND({Coach} = '${req.user.id}', {Individual})`
@@ -81,7 +119,12 @@ router.post("/add-indiv", async (req, res) => {
   if (coachIndivs.filter((s) => s.fields["Student 1"] === student).length > 0) {
     return res.status(400).send({ error: "Duplicate student." });
   }
-  if (coachIndivs.length == INDIV_LIMIT) {
+
+  let indivLimit =
+    coach.fields["Individual Limit"] < 0
+      ? maxTeamsPerCoach
+      : coach.fields["Individual Limit"];
+  if (coachIndivs.length == indivLimit) {
     return res.status(400).send({ error: "Team limit reached." });
   }
 

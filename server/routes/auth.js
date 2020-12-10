@@ -81,8 +81,8 @@ router.post("/login", async (req, res) => {
       phoneNumber: user.fields["Phone"],
       email: user.fields["Email"],
       mailingAddress: user.fields["Address"],
-      teamLimit: 5,
-      indivLimit: 5
+      teamLimit: user.fields["Team Limit"],
+      indivLimit: user.fields["Individual Limit"]
     },
     teams,
     individuals

@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import "./App.css";
 
 import { Router, navigate } from "@reach/router";
-import { CssBaseline, Box, Typography } from "@material-ui/core";
+import {
+  CssBaseline,
+  Box,
+  Typography,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core";
 import {
   Home as HomeIcon,
   Assignment as ContestIcon,
@@ -43,6 +49,15 @@ export const userStatus = {
 };
 
 export const UserContext = React.createContext();
+
+// TODO this is a band-aid fix for the blue selected nav buttons
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#aaaaaa"
+    }
+  }
+});
 
 class PrivateRoute extends React.Component {
   static contextType = UserContext;
@@ -116,70 +131,72 @@ const App = () => {
   const [authStatus, setAuthStatus] = useState(userStatus.NoUser);
 
   return (
-    <div className="App">
-      <CssBaseline />
-      <UserContext.Provider
-        value={{
-          authStatus,
-          setAuthStatus,
-          coachInfo,
-          teams,
-          individuals,
-          setCoachInfo,
-          setTeams,
-          setIndividuals
-        }}
-      >
-        <EMCCNav />
-        <Router>
-          <Home path="/" />
-          <Contest path="/contest" />
-          <Travel path="/travel" />
-          <Contact path="/contact" />
-          <Login path="/login" />
-          <SignUp path="/signup" />
-          <PrivateRoute as={Dashboard} path="/dashboard" />
-          <Payment path="/payment" />
-        </Router>
-        <footer
-          style={{
-            position: "fixed",
-            bottom: "0",
-            width: "100%",
-            backgroundColor: "rgb(140,0,0)",
-            padding: "20px",
-            color: "#EEEEEE",
-            boxShadow: "rgba(0,0,0,0.8) 0px 1px 6px",
-            zIndex: 999999
+    <MuiThemeProvider theme={theme}>
+      <div className="App">
+        <CssBaseline />
+        <UserContext.Provider
+          value={{
+            authStatus,
+            setAuthStatus,
+            coachInfo,
+            teams,
+            individuals,
+            setCoachInfo,
+            setTeams,
+            setIndividuals
           }}
         >
-          <Typography variant="body">
-            &copy; Copyright {contestYear} Exeter Math Club. All rights
-            reserved.
-          </Typography>
-          <Box style={{ float: "right" }}>
-            <Typography variant="body" style={{ marginRight: "15px" }}>
-              Sponsored by Jane Street.
+          <EMCCNav />
+          <Router>
+            <Home path="/" />
+            <Contest path="/contest" />
+            <Travel path="/travel" />
+            <Contact path="/contact" />
+            <Login path="/login" />
+            <SignUp path="/signup" />
+            <PrivateRoute as={Dashboard} path="/dashboard" />
+            <Payment path="/payment" />
+          </Router>
+          <footer
+            style={{
+              position: "fixed",
+              bottom: "0",
+              width: "100%",
+              backgroundColor: "rgb(140,0,0)",
+              padding: "20px",
+              color: "#EEEEEE",
+              boxShadow: "rgba(0,0,0,0.8) 0px 1px 6px",
+              zIndex: 999999
+            }}
+          >
+            <Typography variant="body">
+              &copy; Copyright {contestYear} Exeter Math Club. All rights
+              reserved.
             </Typography>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.janestreet.com/"
-            >
-              <img
-                id="jane_street_logo"
-                alt="Jane Street logo"
-                style={{
-                  filter: "invert(100%)",
-                  verticalAlign: "middle"
-                }}
-                src={require("./assets/janestreetlogo.png")}
-              />
-            </a>
-          </Box>
-        </footer>
-      </UserContext.Provider>
-    </div>
+            <Box style={{ float: "right" }}>
+              <Typography variant="body" style={{ marginRight: "15px" }}>
+                Sponsored by Jane Street.
+              </Typography>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.janestreet.com/"
+              >
+                <img
+                  id="jane_street_logo"
+                  alt="Jane Street logo"
+                  style={{
+                    filter: "invert(100%)",
+                    verticalAlign: "middle"
+                  }}
+                  src={require("./assets/janestreetlogo.png")}
+                />
+              </a>
+            </Box>
+          </footer>
+        </UserContext.Provider>
+      </div>
+    </MuiThemeProvider>
   );
 };
 

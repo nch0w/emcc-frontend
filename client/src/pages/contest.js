@@ -9,12 +9,14 @@ const Contest = () => {
   return (
     <Box>
       <SHeading variant="h2">Contest Information</SHeading>
-      <Typography variant="body1">
-        Detailed information is also available in the {contestYear} Coaches'
-        Packet, which will be handed out during registration.
-      </Typography>
-      <br />
+
       <SContent>
+        <Typography variant="body1">
+          Detailed information is also available in the {contestYear} Coaches'
+          Packet, which will be handed out during registration.
+        </Typography>
+        <br />
+
         <ContestSchedule />
         <RoundFormats />
         <br />

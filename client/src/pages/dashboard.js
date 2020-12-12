@@ -386,7 +386,7 @@ const Dashboard = () => {
                       console.log("got to onRowAdd");
                       axios
                         .post(
-                          emccServerUrl + "/registration/add-indiv",
+                          emccServerUrl + "/registration/update-indiv",
                           newData,
                           {
                             timeout: 5000
@@ -410,7 +410,10 @@ const Dashboard = () => {
                       validateIndividual(individuals.length, newData.student)
                     ) {
                       axios
-                        .post(emccServerUrl + "/update-indiv", newData)
+                        .post(
+                          emccServerUrl + "/registration/update-indiv",
+                          newData
+                        )
                         .then((_response) => {
                           const index = oldData.tableData.id;
                           setIndividuals([

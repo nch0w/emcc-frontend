@@ -170,63 +170,61 @@ router.post(
   updateUser
 );
 
-router.post("/add-indiv", async (req, res) => {
-  const { student } = req.body;
+router.post(
+  "/update-indiv",
+  async (req, res, next) => {
+    const { student } = req.body;
 
-  if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
-    return res.status(400).send({
-      error: "Coach email and phone number must be set before creating teams."
-    });
-  }
+    if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
+      return res
+        .status(400)
+        .send(
+          "Coach email and phone number must be set before creating teams."
+        );
+    }
 
-  if (!student) {
-    return res.status(400).send({ error: "Missing student name." });
-  }
+    if (!student) {
+      return res.status(400).send("Missing student name.");
+    }
 
-  const coach = (
-    await base("Coaches")
+    const coachIndivs = await base("Competitors")
       .select({
-        filterByFormula: `{ID} = '${req.user.id}'`
+        filterByFormula: `AND({Coach} = '${req.user.id}', {Individual})`
       })
-      .firstPage()
-  )[0];
+      .firstPage();
 
-  const coachIndivs = await base("Competitors")
-    .select({
-      filterByFormula: `AND({Coach} = '${req.user.id}', {Individual})`
-    })
-    .firstPage();
+    if (
+      coachIndivs.filter((s) => s.fields["Student 1"] === student).length > 0
+    ) {
+      return res.status(400).send("Duplicate student.");
+    }
 
-  if (coachIndivs.filter((s) => s.fields["Student 1"] === student).length > 0) {
-    return res.status(400).send({ error: "Duplicate student." });
-  }
+    let indivLimit =
+      req.user.fields["Individual Limit"] < 0
+        ? maxTeamsPerCoach
+        : req.user.fields["Individual Limit"];
+    if (coachIndivs.length == indivLimit) {
+      return res.status(400).send("Individual limit reached.");
+    }
 
-  let indivLimit =
-    coach.fields["Individual Limit"] < 0
-      ? maxTeamsPerCoach
-      : coach.fields["Individual Limit"];
-  if (coachIndivs.length == indivLimit) {
-    return res.status(400).send({ error: "Team limit reached." });
-  }
-
-  try {
-    const newIndividual = await base("Competitors").create([
-      {
-        fields: {
-          "Student 1": student,
-          Coach: [req.user.id],
-          Individual: true
+    try {
+      await base("Competitors").create([
+        {
+          fields: {
+            "Student 1": student,
+            Coach: [req.user.id],
+            Individual: true
+          }
         }
-      }
-    ]);
-    return res.send({
-      amountPaid: 0,
-      amountOwed: 0
-    });
-  } catch (err) {
-    console.error(err);
-    return res.status(400).send({ error: "Error creating team." });
-  }
-});
+      ]);
+
+      next();
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send("Error creating team.");
+    }
+  },
+  updateUser
+);
 
 module.exports = router;

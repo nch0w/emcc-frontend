@@ -33,90 +33,142 @@ router.post(
   updateUser
 );
 
-router.post("/add-team", async (req, res) => {
-  const { name, student1, student2, student3, student4 } = req.body;
+router.post(
+  "/update-team",
+  async (req, res, next) => {
+    // same endpoint fot both adding and updating a team
+    // if id is not provided, assume we are adding a team
+    const { name, student1, student2, student3, student4, id } = req.body;
 
-  if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
-    return res.status(400).send({
-      error: "Coach email and phone number must be set before creating teams."
-    });
-  }
-
-  if (!name) {
-    return res.status(400).send({ error: "Missing team name." });
-  }
-  let i = 0;
-  for (const student of [student1, student2, student3, student4]) {
-    if (i >= minTeamMembersPerTeam) break;
-    if (!student)
+    if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
       return res.status(400).send({
-        error:
-          "Team member count below minimum allowed (" +
-          minTeamMembersPerTeam +
-          ")."
+        error: "Coach email and phone number must be set before creating teams."
       });
-    i++;
-  }
+    }
 
-  const coach = (
-    await base("Coaches")
-      .select({
-        filterByFormula: `{ID} = '${req.user.id}'`
-      })
-      .firstPage()
-  )[0];
+    if (!name) {
+      return res.status(400).send({ error: "Missing team name." });
+    }
+    let i = 0;
+    for (const student of [student1, student2, student3, student4]) {
+      if (i >= minTeamMembersPerTeam) break;
+      if (!student)
+        return res.status(400).send({
+          error:
+            "Team member count below minimum allowed (" +
+            minTeamMembersPerTeam +
+            ")."
+        });
+      i++;
+    }
 
-  const sameName = await base("Competitors")
-    .select({
-      filterByFormula: `{Name} = '${name}'`
-    })
-    .firstPage();
+    try {
+      const sameName = await base("Competitors")
+        .select({
+          filterByFormula: `{Name} = '${name}'`
+        })
+        .firstPage();
 
-  if (sameName.length > 0) {
-    return res.status(400).send({ error: "Team name already in use." });
-  }
-
-  const coachTeams = await base("Competitors")
-    .select({
-      filterByFormula: `AND({Coach} = '${req.user.id}', NOT({Individual}))'`
-    })
-    .firstPage();
-
-  let teamLimit =
-    coach.fields["Team Limit"] < 0
-      ? maxTeamsPerCoach
-      : coach.fields["Team Limit"];
-  if (coachTeams.length == teamLimit) {
-    return res.status(400).send({ error: "Team limit reached." });
-  }
-
-  try {
-    const team = await base("Competitors").find(id);
-    if (team.fields.Coach[0] !== req.user.id)
-      return res.status(400).send("Coach does not have access to this team.");
-
-    await base("Competitors").update([
-      {
-        id,
-        fields: {
-          Name: name,
-          "Student 1": student1,
-          "Student 2": student2,
-          "Student 3": student3,
-          "Student 4": student4,
-          Coach: [req.user.id]
-        }
+      if (sameName.length > 0 && sameName.id !== id) {
+        return res.status(400).send("Team name already in use.");
       }
-    ]);
-    return res.send({
-      amountPaid: 0,
-      amountOwed: 0
-    });
-  } catch (err) {
-    console.error(err);
-    return res.status(400).send({ error: "Error updating team." });
-  }
-});
+
+      const coachTeams = await base("Competitors")
+        .select({
+          filterByFormula: `{Coach Email} = '${req.user.fields["Email"]}'`
+        })
+        .firstPage();
+
+      const teamLimit =
+        req.user.fields["Team Limit"] < 0
+          ? maxTeamsPerCoach
+          : req.user.fields["Team Limit"];
+
+      if (
+        coachTeams.filter((team) => !team.fields.Individual).length ==
+          teamLimit &&
+        !id
+      ) {
+        return res.status(400).send("Team limit reached.");
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send("Internal server error.");
+    }
+
+    if (id) {
+      try {
+        const team = await base("Competitors").find(id);
+        if (team.fields.Coach[0] !== req.user.id)
+          return res
+            .status(400)
+            .send("Coach does not have access to this team.");
+
+        await base("Competitors").update([
+          {
+            id,
+            fields: {
+              Name: name,
+              "Student 1": student1,
+              "Student 2": student2,
+              "Student 3": student3,
+              "Student 4": student4,
+              Coach: [req.user.id]
+            }
+          }
+        ]);
+        next();
+      } catch (err) {
+        console.error(err);
+        return res.status(400).send({ error: "Error updating team." });
+      }
+    } else {
+      try {
+        await base("Competitors").create([
+          {
+            fields: {
+              Name: name,
+              "Student 1": student1,
+              "Student 2": student2,
+              "Student 3": student3,
+              "Student 4": student4,
+              Coach: [req.user.id]
+            }
+          }
+        ]);
+        next();
+      } catch (err) {
+        console.error(err);
+        return res.status(400).send({ error: "Error creating team." });
+      }
+    }
+  },
+  updateUser
+);
+
+router.post(
+  "/delete-competitor",
+  async (req, res, next) => {
+    const { id } = req.body;
+    if (!req.user) {
+      return res.status(400).send("Not authenticated. Please log in again.");
+    }
+    if (!id) {
+      return res.status(400).send("Missing team ID.");
+    }
+    try {
+      const removedTeam = await base("Competitors").find(id);
+      if (!removedTeam.fields.Coach.includes(req.user.id))
+        return res.status(400).send("Invalid authentication.");
+
+      await base("Competitors").destroy(id);
+      next();
+    } catch (err) {
+      return res.status(400).send("Internal server error.");
+    }
+  },
+  updateUser
+);
 
 router.post("/add-indiv", async (req, res) => {
   const { student } = req.body;

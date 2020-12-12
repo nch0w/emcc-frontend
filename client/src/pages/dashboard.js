@@ -281,7 +281,7 @@ const Dashboard = () => {
                       console.log("got to onRowAdd");
                       axios
                         .post(
-                          emccServerUrl + "/registration/add-team",
+                          emccServerUrl + "/registration/update-team",
                           newData,
                           {
                             timeout: 5000
@@ -342,10 +342,12 @@ const Dashboard = () => {
                 onRowDelete: (oldData) =>
                   new Promise((resolve, _reject) => {
                     axios
-                      .post(emccServerUrl + "/delete-team", oldData)
-                      .then((_response) => {
-                        const index = oldData.tableData.id;
-                        // user.teams.splice(index, 1);
+                      .post(
+                        emccServerUrl + "/registration/delete-competitor",
+                        oldData
+                      )
+                      .then((response) => {
+                        setTeams(response.data.teams);
                         setStatus(dashboardStatus.UpdateCompetitorSuccess);
                       })
                       .catch((error) => {
@@ -429,13 +431,12 @@ const Dashboard = () => {
                 onRowDelete: (oldData) =>
                   new Promise((resolve, _reject) => {
                     axios
-                      .post(emccServerUrl + "/delete-indiv", oldData)
-                      .then((_response) => {
-                        const index = oldData.tableData.id;
-                        setIndividuals([
-                          ...individuals.slice(0, index),
-                          ...individuals.slice(index + 1)
-                        ]);
+                      .post(
+                        emccServerUrl + "/registration/delete-competitor",
+                        oldData
+                      )
+                      .then((response) => {
+                        setIndividuals(response.data.individuals);
                         setStatus(dashboardStatus.UpdateCompetitorSuccess);
                       })
                       .catch((error) => {

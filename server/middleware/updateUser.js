@@ -3,13 +3,19 @@ const { maxIndivsPerCoach, maxTeamsPerCoach } = require("../config");
 
 async function fetchUser(req, res, next) {
   // get user info with an already valid session token.
+  console.log("fetchUser");
   if (req.user) {
     const user = await base("Coaches").find(req.user.id);
 
     const teams = [];
     const individuals = [];
-    for (let competitorId of user.fields.Competitors) {
-      const competitor = await base("Competitors").find(competitorId);
+    const competitors = await base("Competitors")
+      .select({
+        filterByFormula: `{Coach Email} = '${req.user.fields["Email"]}'`
+      })
+      .firstPage();
+
+    for (let competitor of competitors) {
       if (competitor.fields.Individual) {
         individuals.push({
           id: competitor.id,
@@ -27,6 +33,7 @@ async function fetchUser(req, res, next) {
       }
     }
 
+    console.log("res");
     return res.status(200).json({
       coachInfo: {
         name: user.fields["Name"],

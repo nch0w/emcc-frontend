@@ -1,7 +1,7 @@
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
+const { maxIndivsPerCoach, maxTeamsPerCoach } = require("../config");
 
 async function fetchUser(req, res, next) {
-  console.log(req.user);
   // get user info with an already valid session token.
   if (req.user) {
     const user = await base("Coaches").find(req.user.id);
@@ -33,8 +33,8 @@ async function fetchUser(req, res, next) {
         phone: user.fields["Phone"],
         email: user.fields["Email"],
         mail: user.fields["Address"],
-        teamLimit: user.teamLimit === -1 ? TEAM_LIMIT : user.teamLimit,
-        indivLimit: user.indivLimit === -1 ? INDIV_LIMIT : user.indivLimit
+        teamLimit: user.teamLimit === -1 ? maxTeamsPerCoach : user.teamLimit,
+        indivLimit: user.indivLimit === -1 ? maxIndivsPerCoach : user.indivLimit
       },
       teams,
       individuals

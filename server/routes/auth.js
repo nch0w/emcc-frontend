@@ -2,7 +2,6 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
 const crypto = require("crypto");
-const { TEAM_LIMIT, INDIV_LIMIT } = require("../constants");
 const updateUser = require("../middleware/updateUser");
 
 function genToken() {
@@ -11,89 +10,61 @@ function genToken() {
 
 router.post("/user", updateUser);
 
-router.post("/login", async (req, res) => {
-  const sessionToken = genToken();
-  const { email, password } = req.body;
+router.post(
+  "/login",
+  async (req, res) => {
+    const sessionToken = genToken();
+    const { email, password } = req.body;
 
-  if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    return res
-      .status(400)
-      .json({ error: "Please enter a valid email address." });
-  }
-  if (!password || password.length < 6) {
-    return res
-      .status(400)
-      .json({ error: "Password must contain at least six characters." });
-  }
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      return res
+        .status(400)
+        .json({ error: "Please enter a valid email address." });
+    }
+    if (!password || password.length < 6) {
+      return res
+        .status(400)
+        .json({ error: "Password must contain at least six characters." });
+    }
 
-  const sameEmail = await base("Coaches")
-    .select({
-      filterByFormula: `{Email} = '${email}'`
-    })
-    .firstPage();
+    const sameEmail = await base("Coaches")
+      .select({
+        filterByFormula: `{Email} = '${email}'`
+      })
+      .firstPage();
 
-  if (sameEmail.length == 0) {
-    return res.status(400).json({
-      error:
-        "We couldn't find an account with this email address. Please try again."
-    });
-  }
+    if (sameEmail.length == 0) {
+      return res.status(400).json({
+        error:
+          "We couldn't find an account with this email address. Please try again."
+      });
+    }
 
-  const user = sameEmail[0];
-  const match = await bcrypt.compare(password, user.fields.Password);
-  if (!match) {
-    return res.status(400).json({ error: "Incorrect password." });
-  }
-  await base("Coaches").update([
-    {
-      id: user.id,
-      fields: {
-        Session: JSON.stringify([
-          ...JSON.parse(user.fields.Session),
-          sessionToken
-        ])
+    const user = sameEmail[0];
+    const match = await bcrypt.compare(password, user.fields.Password);
+    if (!match) {
+      return res.status(400).json({ error: "Incorrect password." });
+    }
+    await base("Coaches").update([
+      {
+        id: user.id,
+        fields: {
+          Session: JSON.stringify([
+            ...JSON.parse(user.fields.Session),
+            sessionToken
+          ])
+        }
       }
-    }
-  ]);
+    ]);
 
-  const teams = [];
-  const individuals = [];
-  for (let competitorId of user.fields.Competitors) {
-    const competitor = await base("Competitors").find(competitorId);
-    if (competitor.fields.Individual) {
-      individuals.push({
-        id: competitor.id,
-        student: competitor.fields["Student 1"]
-      });
-    } else {
-      teams.push({
-        id: competitor.id,
-        name: competitor.fields.Name,
-        student1: competitor.fields["Student 1"],
-        student2: competitor.fields["Student 2"],
-        student3: competitor.fields["Student 3"],
-        student4: competitor.fields["Student 4"]
-      });
-    }
-  }
+    res
+      .cookie("id", user.id, { httpOnly: true })
+      .cookie("sessionToken", sessionToken, { httpOnly: true });
 
-  return res
-    .status(200)
-    .cookie("id", user.id, { httpOnly: true })
-    .cookie("sessionToken", sessionToken, { httpOnly: true })
-    .json({
-      coachInfo: {
-        name: user.fields["Name"],
-        phone: user.fields["Phone"],
-        email: user.fields["Email"],
-        mail: user.fields["Address"],
-        teamLimit: TEAM_LIMIT,
-        indivLimit: INDIV_LIMIT
-      },
-      teams,
-      individuals
-    });
-});
+    req.user = user;
+  },
+  updateUser
+);
 
 router.post("/signup", async (req, res) => {
   const sessionToken = genToken();

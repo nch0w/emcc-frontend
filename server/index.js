@@ -8,7 +8,7 @@ const app = express();
 // import routes
 const authRoute = require("./routes/auth");
 const registrationRoute = require("./routes/registration");
-const userMiddleware = require("./middleware/user");
+const userMiddleware = require("./middleware/fetchUser");
 
 // allow all cors requests
 app.use(cors());

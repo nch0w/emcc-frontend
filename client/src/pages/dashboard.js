@@ -85,10 +85,6 @@ const Dashboard = () => {
 
   const [status, setStatus] = useState(dashboardStatus.ViewCompetitors);
   const [activeTab, setActiveTab] = useState("view-competitors");
-  // const [name, setName] = useState(coachInfo.name.slice());
-  // const [phone, setPhone] = useState(coachInfo.phoneNumber.slice());
-  // const [email, setEmail] = useState(coachInfo.email.slice());
-  // const [mail, setMail] = useState(coachInfo.mailingAddress.slice());
   const [err, setError] = useState("");
 
   const handleTabClicked = (newValue) => {
@@ -120,8 +116,9 @@ const Dashboard = () => {
     }
     // submit form
     axios
-      .post(emccServerUrl + "/update-coach-info", coachInfo)
+      .post(emccServerUrl + "/registration/update-coach-info", coachInfo)
       .then((response) => {
+        setCoachInfo(response.data.coachInfo);
         setStatus(dashboardStatus.UpdateCoachInfoSuccess);
       })
       .catch((error) => {

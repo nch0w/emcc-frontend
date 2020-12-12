@@ -1,8 +1,37 @@
 const router = require("express").Router();
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
+const { TEAM_LIMIT, INDIV_LIMIT } = require("../constants");
+const updateUser = require("../middleware/updateUser");
 
-const TEAM_LIMIT = 5;
-const INDIV_LIMIT = 5;
+router.post(
+  "/update-coach-info",
+  async (req, res, next) => {
+    if (!req.user)
+      return res.status(400).send("Not authenticated. Please login again.");
+    const { name, phone, email, mail } = req.body;
+    if (!name || !phone || !email || !mail) {
+      return res.status(400).send("Missing coach information");
+    }
+
+    try {
+      await base("Coaches").update([
+        {
+          id: req.user.id,
+          fields: {
+            Email: email,
+            Name: name,
+            Address: mail,
+            Phone: phone
+          }
+        }
+      ]);
+    } catch (err) {
+      return res.status(400).send("Unkown error updating coach info.");
+    }
+    next();
+  },
+  updateUser
+);
 
 router.post("/add-team", async (req, res) => {
   const { name, student1, student2, student3, student4 } = req.body;

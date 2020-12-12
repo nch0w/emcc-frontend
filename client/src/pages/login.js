@@ -5,7 +5,7 @@ import { TextField, Button } from "@material-ui/core";
 import { Link } from "@reach/router";
 import axios from "axios";
 
-import { UserContext } from "../App";
+import { UserContext, userStatus } from "../App";
 import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
 
@@ -17,7 +17,16 @@ const loginStatus = {
 };
 
 const Login = () => {
-  const userContext = useContext(UserContext);
+  const {
+    coachInfo,
+    teams,
+    individuals,
+    setCoachInfo,
+    setTeams,
+    setIndividuals,
+    authStatus,
+    setAuthStatus
+  } = useContext(UserContext);
   const [status, setStatus] = useState(loginStatus.NotLoggedIn);
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
@@ -41,8 +50,10 @@ const Login = () => {
         { timeout: 5000 }
       )
       .then((response) => {
-        userContext.status = loginStatus.UserLoaded;
-        userContext.user = response.data;
+        setAuthStatus(userStatus.UserLoaded);
+        setCoachInfo(response.data.coachInfo);
+        setTeams(response.data.teams);
+        setIndividuals(response.data.individuals);
         setStatus(loginStatus.LoginSuccess);
       })
       .catch((error) => {
@@ -64,7 +75,7 @@ const Login = () => {
       case loginStatus.LoginSuccess:
         return (
           <Typography variant="body1">
-            Successfully logged in as {userContext.user.name}
+            Successfully logged in as {coachInfo.name}
           </Typography>
         );
       case loginStatus.LoginFailure:

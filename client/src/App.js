@@ -37,7 +37,7 @@ TODO: invoices
 */
 
 // begin authentication plumbing code
-const userStatus = {
+export const userStatus = {
   NoUser: "no-user",
   UserLoaded: "user-loaded"
 };
@@ -110,11 +110,25 @@ const EMCCNav = () => {
 };
 
 const App = () => {
+  const [coachInfo, setCoachInfo] = useState({});
+  const [teams, setTeams] = useState([]);
+  const [individuals, setIndividuals] = useState([]);
+  const [authStatus, setAuthStatus] = useState(userStatus.NoUser);
+
   return (
     <div className="App">
       <CssBaseline />
       <UserContext.Provider
-        value={{ status: userStatus.NoUser, user: null, password: null }}
+        value={{
+          authStatus,
+          setAuthStatus,
+          coachInfo,
+          teams,
+          individuals,
+          setCoachInfo,
+          setTeams,
+          setIndividuals
+        }}
       >
         <EMCCNav />
         <Router>
@@ -135,7 +149,8 @@ const App = () => {
             backgroundColor: "rgb(140,0,0)",
             padding: "20px",
             color: "#EEEEEE",
-            boxShadow: "rgba(0,0,0,0.8) 0px 1px 6px"
+            boxShadow: "rgba(0,0,0,0.8) 0px 1px 6px",
+            zIndex: 999999
           }}
         >
           <Typography variant="body">

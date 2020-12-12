@@ -7,6 +7,49 @@ function genToken() {
   return crypto.randomBytes(256).toString("hex");
 }
 
+router.post("/user", async (req, res) => {
+  // get user info with an already valid session token.
+  if (req.user) {
+    const user = await base("Coaches").find(req.user.id);
+
+    const teams = [];
+    const individuals = [];
+    for (let competitorId of user.fields.Competitors) {
+      const competitor = await base("Competitors").find(competitorId);
+      if (competitor.fields.Individual) {
+        individuals.push({
+          id: competitor.id,
+          student: competitor.fields["Student 1"]
+        });
+      } else {
+        teams.push({
+          id: competitor.id,
+          name: competitor.fields.Name,
+          student1: competitor.fields["Student 1"],
+          student2: competitor.fields["Student 2"],
+          student3: competitor.fields["Student 3"],
+          student4: competitor.fields["Student 4"]
+        });
+      }
+    }
+
+    return res.status(200).json({
+      coachInfo: {
+        name: user.fields["Name"],
+        phoneNumber: user.fields["Phone"],
+        email: user.fields["Email"],
+        mailingAddress: user.fields["Address"],
+        teamLimit: user.teamLimit === -1 ? 3 : user.teamLimit,
+        indivLimit: user.indivLimit === -1 ? 3 : user.indivLimit
+      },
+      teams,
+      individuals
+    });
+  } else {
+    return res.status(400).send("Not logged in.");
+  }
+});
+
 router.post("/login", async (req, res) => {
   const sessionToken = genToken();
   const { email, password } = req.body;
@@ -58,10 +101,12 @@ router.post("/login", async (req, res) => {
     const competitor = await base("Competitors").find(competitorId);
     if (competitor.fields.Individual) {
       individuals.push({
+        id: competitor.id,
         student: competitor.fields["Student 1"]
       });
     } else {
       teams.push({
+        id: competitor.id,
         name: competitor.fields.Name,
         student1: competitor.fields["Student 1"],
         student2: competitor.fields["Student 2"],
@@ -71,22 +116,22 @@ router.post("/login", async (req, res) => {
     }
   }
 
-  return res.status(200).json({
-    name: user.fields["Name"],
-    email: user.fields["Email"],
-    sessionToken,
-    id: user.id,
-    coachInfo: {
-      name: user.fields["Name"],
-      phoneNumber: user.fields["Phone"],
-      email: user.fields["Email"],
-      mailingAddress: user.fields["Address"],
-      teamLimit: 5,
-      indivLimit: 5
-    },
-    teams,
-    individuals
-  });
+  return res
+    .status(200)
+    .cookie("id", user.id, { httpOnly: true })
+    .cookie("sessionToken", sessionToken, { httpOnly: true })
+    .json({
+      coachInfo: {
+        name: user.fields["Name"],
+        phoneNumber: user.fields["Phone"],
+        email: user.fields["Email"],
+        mailingAddress: user.fields["Address"],
+        teamLimit: 5,
+        indivLimit: 5
+      },
+      teams,
+      individuals
+    });
 });
 
 router.post("/signup", async (req, res) => {

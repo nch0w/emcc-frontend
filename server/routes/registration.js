@@ -16,24 +16,36 @@ router.post("/add-team", async (req, res) => {
   if (!name || !student1) {
     return res.status(400).send({ error: "Missing team name or student 1." });
   }
-  const sameName = await base("Competitors")
-    .select({
-      filterByFormula: `{Name} = '${name}'`
-    })
-    .firstPage();
+  try {
+    const sameName = await base("Competitors")
+      .select({
+        filterByFormula: `{Name} = '${name}'`
+      })
+      .firstPage();
 
-  if (sameName.length > 0) {
-    return res.status(400).send({ error: "Team name already in use." });
+    if (sameName.length > 0) {
+      return res.status(400).send({ error: "Team name already in use." });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(400).send({ error: "Unkown server error." });
   }
 
-  const coachTeams = await base("Competitors")
-    .select({
-      filterByFormula: `AND({Coach} = '${req.user.id}', NOT({Individual}))'`
-    })
-    .firstPage();
+  try {
+    const coachTeams = await base("Competitors")
+      .select({
+        filterByFormula: `{Coach} = '${req.user.id}'`
+      })
+      .firstPage();
 
-  if (coachTeams.length == TEAM_LIMIT) {
-    return res.status(400).send({ error: "Team limit reached." });
+    if (
+      coachTeams.filter((team) => !team.fields.Individual).length == TEAM_LIMIT
+    ) {
+      return res.status(400).send({ error: "Team limit reached." });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(400).send({ error: "Unkown server error." });
   }
 
   try {
@@ -56,6 +68,57 @@ router.post("/add-team", async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(400).send({ error: "Error creating team." });
+  }
+});
+
+router.post("/update-team", async (req, res) => {
+  const { id, name, student1, student2, student3, student4 } = req.body;
+
+  if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
+    return res.status(400).send({
+      error: "Coach email and phone number must be set before creating teams."
+    });
+  }
+
+  if (!name || !student1) {
+    return res.status(400).send({ error: "Missing team name or student 1." });
+  }
+
+  const sameName = await base("Competitors")
+    .select({
+      filterByFormula: `{Name} = '${name}'`
+    })
+    .firstPage();
+
+  if (sameName.length > 0) {
+    return res.status(400).send({ error: "Team name already in use." });
+  }
+
+  try {
+    const team = await base("Competitors").find(id);
+    if (team.fields.Coach[0] !== req.user.id)
+      return res.status(400).send("Coach does not have access to this team.");
+
+    await base("Competitors").update([
+      {
+        id,
+        fields: {
+          Name: name,
+          "Student 1": student1,
+          "Student 2": student2,
+          "Student 3": student3,
+          "Student 4": student4,
+          Coach: [req.user.id]
+        }
+      }
+    ]);
+    return res.send({
+      amountPaid: 0,
+      amountOwed: 0
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(400).send({ error: "Error updating team." });
   }
 });
 

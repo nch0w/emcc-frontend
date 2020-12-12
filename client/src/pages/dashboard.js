@@ -22,7 +22,7 @@ import ViewColumn from "@material-ui/icons/ViewColumn";
 import { Link } from "@reach/router";
 import axios from "axios";
 
-import { UserContext } from "../App";
+import { UserContext, userStatus } from "../App";
 import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
 
@@ -58,16 +58,37 @@ const dashboardStatus = {
 };
 
 const Dashboard = () => {
-  const userContext = useContext(UserContext);
-  const user = userContext.user;
+  const {
+    coachInfo,
+    teams,
+    individuals,
+    setCoachInfo,
+    setTeams,
+    setIndividuals,
+    authStatus,
+    setAuthStatus
+  } = useContext(UserContext);
+
+  if (authStatus === userStatus.NoUser) {
+    axios
+      .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
+      .then((response) => {
+        setAuthStatus(userStatus.UserLoaded);
+        setCoachInfo(response.data.coachInfo);
+        setTeams(response.data.teams);
+        setIndividuals(response.data.individuals);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const [status, setStatus] = useState(dashboardStatus.ViewCompetitors);
   const [activeTab, setActiveTab] = useState("view-competitors");
-  const [name, setName] = useState(user.coachInfo.name.slice());
-  const [phone, setPhone] = useState(user.coachInfo.phoneNumber.slice());
-  const [email, setEmail] = useState(user.coachInfo.email.slice());
-  const [mail, setMail] = useState(user.coachInfo.mailingAddress.slice());
-  const [numTeams, setNumTeams] = useState(user.teams.length);
-  const [numIndivs, setNumIndivs] = useState(user.individuals.length);
+  // const [name, setName] = useState(coachInfo.name.slice());
+  // const [phone, setPhone] = useState(coachInfo.phoneNumber.slice());
+  // const [email, setEmail] = useState(coachInfo.email.slice());
+  // const [mail, setMail] = useState(coachInfo.mailingAddress.slice());
   const [err, setError] = useState("");
 
   const handleTabClicked = (newValue) => {
@@ -88,10 +109,10 @@ const Dashboard = () => {
   const handleUpdateCoachInfo = () => {
     // validate form
     if (
-      name.length === 0 ||
-      phone.length === 0 ||
-      email.length === 0 ||
-      mail.length === 0
+      coachInfo.name.length === 0 ||
+      coachInfo.phone.length === 0 ||
+      coachInfo.email.length === 0 ||
+      coachInfo.mail.length === 0
     ) {
       setStatus(dashboardStatus.InvalidCoachInfo);
       setError("All fields are required.");
@@ -99,12 +120,7 @@ const Dashboard = () => {
     }
     // submit form
     axios
-      .post(emccServerUrl + "/update-coach-info", {
-        name: name,
-        phone: phone,
-        email: email,
-        mail: mail
-      })
+      .post(emccServerUrl + "/update-coach-info", coachInfo)
       .then((response) => {
         setStatus(dashboardStatus.UpdateCoachInfoSuccess);
       })
@@ -172,7 +188,7 @@ const Dashboard = () => {
   const isEmpty = (str) => str === undefined || str.length === 0;
 
   const validateTeam = (numTeams, student1, student2, student3, student4) => {
-    if (numTeams >= user.coachInfo.teamLimit) {
+    if (numTeams > coachInfo.teamLimit) {
       setError(
         "Team limit reached. Please contact the Exeter Math Club email to request more teams. Requests will be evaluated on a case-by-case basis."
       );
@@ -212,7 +228,7 @@ const Dashboard = () => {
   };
 
   const validateIndividual = (numIndivs, studentName) => {
-    if (numIndivs >= user.coachInfo.indivLimit) {
+    if (numIndivs > coachInfo.indivLimit) {
       setError(
         "Individual limit reached. Please contact the Exeter Math Club email to request more individuals. Requests will be evaluated on a case-by-case basis."
       );
@@ -249,13 +265,13 @@ const Dashboard = () => {
                 { title: "Student 3", field: "student3" },
                 { title: "Student 4", field: "student4" }
               ]}
-              data={user.teams}
+              data={teams}
               editable={{
                 onRowAdd: (newData) =>
                   new Promise((resolve, reject) => {
                     if (
                       validateTeam(
-                        numTeams,
+                        teams.length + 1,
                         newData.student1,
                         newData.student2,
                         newData.student3,
@@ -271,18 +287,15 @@ const Dashboard = () => {
                           emccServerUrl + "/registration/add-team",
                           newData,
                           {
-                            timeout: 5000,
-                            headers: {
-                              userID: user.id,
-                              session: user.sessionToken
-                            }
+                            timeout: 5000
                           }
                         )
                         .then((response) => {
-                          setNumTeams(numTeams + 1);
-                          user.teams.push(newData);
-                          user.amountPaid = response.data.amountPaid;
-                          user.amountStillOwed = response.data.amountStillOwed;
+                          setTeams([...teams, newData]);
+                          // newUser.teams.push(newData);
+                          // newUser.amountPaid = response.data.amountPaid;
+                          // newUser.amountStillOwed =
+                          //   response.data.amountStillOwed;
                           setStatus(dashboardStatus.UpdateCompetitorSuccess);
                         })
                         .catch((error) => {
@@ -297,7 +310,7 @@ const Dashboard = () => {
                   new Promise((resolve, reject) => {
                     if (
                       validateTeam(
-                        numTeams,
+                        teams.length,
                         newData.student1,
                         newData.student2,
                         newData.student3,
@@ -307,11 +320,18 @@ const Dashboard = () => {
                       axios
                         .post(
                           emccServerUrl + "/registration/update-team",
-                          newData
+                          newData,
+                          {
+                            timeout: 5000
+                          }
                         )
                         .then((_response) => {
                           const index = oldData.tableData.id;
-                          user.teams[index] = newData;
+                          setTeams([
+                            ...teams.slice(0, index),
+                            newData,
+                            ...teams.slice(index + 1)
+                          ]);
                           setStatus(dashboardStatus.UpdateCompetitorSuccess);
                         })
                         .catch((error) => {
@@ -328,7 +348,7 @@ const Dashboard = () => {
                       .post(emccServerUrl + "/delete-team", oldData)
                       .then((_response) => {
                         const index = oldData.tableData.id;
-                        user.teams.splice(index, 1);
+                        // user.teams.splice(index, 1);
                         setStatus(dashboardStatus.UpdateCompetitorSuccess);
                       })
                       .catch((error) => {
@@ -348,13 +368,19 @@ const Dashboard = () => {
                 search: false,
                 sorting: false
               }}
+              style={{ marginBottom: 100 }}
               icons={tableIcons}
               columns={[{ title: "Student Name", field: "student" }]}
-              data={user.individuals}
+              data={individuals}
               editable={{
                 onRowAdd: (newData) =>
                   new Promise((resolve, reject) => {
-                    if (validateIndividual(numIndivs, newData.student)) {
+                    if (
+                      validateIndividual(
+                        individuals.length - 1,
+                        newData.student
+                      )
+                    ) {
                       // fields: student
                       // an error response should tell us why it is not possible
                       // (such as "another individual with the same name already exists")
@@ -364,18 +390,11 @@ const Dashboard = () => {
                           emccServerUrl + "/registration/add-indiv",
                           newData,
                           {
-                            timeout: 5000,
-                            headers: {
-                              userID: user.id,
-                              session: user.sessionToken
-                            }
+                            timeout: 5000
                           }
                         )
                         .then((response) => {
-                          setNumIndivs(numIndivs + 1);
-                          user.indivs.push(newData);
-                          user.amountPaid = response.data.amountPaid;
-                          user.amountStillOwed = response.data.amountStillOwed;
+                          setIndividuals([...individuals, newData]);
                           setStatus(dashboardStatus.UpdateCompetitorSuccess);
                         })
                         .catch((error) => {
@@ -388,12 +407,18 @@ const Dashboard = () => {
                   }),
                 onRowUpdate: (newData, oldData) =>
                   new Promise((resolve, reject) => {
-                    if (validateIndividual(numIndivs, newData.student)) {
+                    if (
+                      validateIndividual(individuals.length, newData.student)
+                    ) {
                       axios
                         .post(emccServerUrl + "/update-indiv", newData)
                         .then((_response) => {
                           const index = oldData.tableData.id;
-                          user.indivs[index] = newData;
+                          setIndividuals([
+                            ...individuals.slice(0, index),
+                            newData,
+                            ...individuals.slice(index + 1)
+                          ]);
                           setStatus(dashboardStatus.UpdateCompetitorSuccess);
                         })
                         .catch((error) => {
@@ -410,7 +435,10 @@ const Dashboard = () => {
                       .post(emccServerUrl + "/delete-indiv", oldData)
                       .then((_response) => {
                         const index = oldData.tableData.id;
-                        user.indivs.splice(index, 1);
+                        setIndividuals([
+                          ...individuals.slice(0, index),
+                          ...individuals.slice(index + 1)
+                        ]);
                         setStatus(dashboardStatus.UpdateCompetitorSuccess);
                       })
                       .catch((error) => {
@@ -433,8 +461,10 @@ const Dashboard = () => {
               required
               id="coach-name"
               label="Name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              value={coachInfo.name}
+              onChange={(event) =>
+                setCoachInfo({ ...coachInfo, name: event.target.value })
+              }
               variant="outlined"
             />
             <br />
@@ -443,8 +473,10 @@ const Dashboard = () => {
               required
               id="coach-phone"
               label="Phone Number"
-              value={phone}
-              onChange={(event) => setPhone(event.target.value)}
+              value={coachInfo.phone}
+              onChange={(event) =>
+                setCoachInfo({ ...coachInfo, phone: event.target.value })
+              }
               type="tel"
               variant="outlined"
             />
@@ -454,8 +486,10 @@ const Dashboard = () => {
               required
               id="coach-email"
               label="Email Address"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={coachInfo.email}
+              onChange={(event) =>
+                setCoachInfo({ ...coachInfo, email: event.target.value })
+              }
               variant="outlined"
             />
             <br />
@@ -464,8 +498,10 @@ const Dashboard = () => {
               required
               id="coach-mail"
               label="Mailing Address"
-              value={mail}
-              onChange={(event) => setMail(event.target.value)}
+              value={coachInfo.mail}
+              onChange={(event) =>
+                setCoachInfo({ ...coachInfo, mail: event.target.value })
+              }
               variant="outlined"
             />
             <br />

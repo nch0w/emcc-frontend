@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { Container, Box, Paper, Typography } from "@material-ui/core";
 import { Tabs, Tab } from "@material-ui/core";
@@ -69,19 +69,21 @@ const Dashboard = () => {
     setAuthStatus
   } = useContext(UserContext);
 
-  if (authStatus === userStatus.NoUser) {
-    axios
-      .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
-      .then((response) => {
-        setAuthStatus(userStatus.UserLoaded);
-        setCoachInfo(response.data.coachInfo);
-        setTeams(response.data.teams);
-        setIndividuals(response.data.individuals);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  useEffect(() => {
+    if (authStatus === userStatus.NoUser) {
+      axios
+        .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
+        .then((response) => {
+          setAuthStatus(userStatus.UserLoaded);
+          setCoachInfo(response.data.coachInfo);
+          setTeams(response.data.teams);
+          setIndividuals(response.data.individuals);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
 
   const [status, setStatus] = useState(dashboardStatus.ViewCompetitors);
   const [activeTab, setActiveTab] = useState("view-competitors");

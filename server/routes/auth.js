@@ -12,7 +12,7 @@ router.post("/user", updateUser);
 
 router.post(
   "/login",
-  async (req, res) => {
+  async (req, res, next) => {
     const sessionToken = genToken();
     const { email, password } = req.body;
 
@@ -62,6 +62,7 @@ router.post(
       .cookie("sessionToken", sessionToken, { httpOnly: true });
 
     req.user = user;
+    next();
   },
   updateUser
 );

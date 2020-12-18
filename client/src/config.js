@@ -60,7 +60,8 @@ export const minTeamMembersPerTeam = 2;
 export const maxTeamMembersPerTeam = 4;
 
 // the EMCC server URL
-export const emccServerUrl = "http://localhost:3000/api";
+export const emccServerUrl =
+  process.env.SERVER_URL || "http://localhost:3000/api";
 
 const contactInfoStyles = makeStyles({
   media: {

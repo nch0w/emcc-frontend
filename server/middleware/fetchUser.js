@@ -1,7 +1,6 @@
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
 
 async function user(req, res, next) {
-  console.log(req.cookies);
   if (req.cookies) {
     const userID = req.cookies.id;
     const sessionToken = req.cookies.sessionToken;

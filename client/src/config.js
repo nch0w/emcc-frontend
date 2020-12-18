@@ -31,7 +31,7 @@ import { SHeading, SContentHeading } from "./styled_components";
 
 // contest year and date
 export const contestYear = 2021;
-export const contestDate = "January 23, 2021";
+export const contestDate = "February 20, 2021";
 
 // the status of the contest in question
 export const contestStatus = "EMCC 2021 is not yet accepting registrations.";
@@ -91,17 +91,17 @@ export const ContactInfo = () => {
         <Card>
           <CardMedia
             className={classes.media}
-            image={require("./assets/placeholder1.png")}
+            // image={require("./assets/placeholder1.png")}
             title="Sanath Govindarajan"
           />
           <CardContent>
             <Typography variant="body1">
-              <b>Sanath Govindarajan</b>, Tournament Director
+              <b>TBA</b>, Tournament Director
               <br />
-              Email:{" "}
+              {/* Email:{" "}
               <Link to="sgovindarajan@exeter.edu">
                 sgovindarajan@exeter.edu
-              </Link>
+              </Link> */}
             </Typography>
           </CardContent>
         </Card>
@@ -110,14 +110,14 @@ export const ContactInfo = () => {
         <Card>
           <CardMedia
             className={classes.media}
-            image={require("./assets/placeholder2.png")}
+            // image={require("./assets/placeholder2.png")}
             title="Benjamin Wright"
           />
           <CardContent>
             <Typography variant="body1">
-              <b>Benjamin Wright</b>, Tournament Director
+              <b>TBA</b>, Tournament Director
               <br />
-              Email: <Link to="bwright@exeter.edu">bwright@exeter.edu</Link>
+              {/* Email: <Link to="bwright@exeter.edu">bwright@exeter.edu</Link> */}
             </Typography>
           </CardContent>
         </Card>
@@ -173,101 +173,107 @@ export const ContestSchedule = () => {
   return (
     <Container align="center" maxWidth="sm">
       <SHeading variant="h3">Schedule</SHeading>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Start</TableCell>
-              <TableCell>End</TableCell>
-              <TableCell>Event</TableCell>
-              <TableCell>Location</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <NoBorderTableCell>9:00</NoBorderTableCell>
-              <NoBorderTableCell>10:00</NoBorderTableCell>
-              <NoBorderTableCell>Registration</NoBorderTableCell>
-              <NoBorderTableCell>Powell Hall (Music Center)</NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={2} />
-              <TableCell colSpan={2}>
-                <Typography variant="body2">
-                  Teams will be introduced to their proctors at registration. If
-                  teams arrive late for registration, they should go directly to
-                  the opening ceremony, in Assembly Hall.
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={2} />
-              <TableCell>Light Breakfast</TableCell>
-              <TableCell>Powell Hall (Music Center)</TableCell>
-            </TableRow>
-            <TableRow>
-              <NoBorderTableCell>10:00</NoBorderTableCell>
-              <NoBorderTableCell>10:30</NoBorderTableCell>
-              <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
-              <NoBorderTableCell>
-                Assembly Hall (Academy Building)
-              </NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={2} />
-              <TableCell colSpan={2}>
-                <Typography variant="body2">
-                  Proctors will lead teams after the opening ceremony directly
-                  to their classrooms for the individual rounds.
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>10:30</TableCell>
-              <TableCell>1:00</TableCell>
-              <TableCell>Team and Individual Rounds</TableCell>
-              <TableCell>Classrooms (Academy Building)</TableCell>
-            </TableRow>
-            <TableRow>
-              <NoBorderTableCell>1:00</NoBorderTableCell>
-              <NoBorderTableCell>1:30</NoBorderTableCell>
-              <NoBorderTableCell>Lunch</NoBorderTableCell>
-              <NoBorderTableCell>Academy Building</NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={2} />
-              <TableCell colSpan={2}>
-                <Typography variant="body2">
-                  Pizza will be available for free for students and coaches in
-                  the classrooms in which the students took the contest. Parents
-                  and other adults must bring their own lunch or buy lunch in
-                  town.
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1:45</TableCell>
-              <TableCell>3:15</TableCell>
-              <TableCell>Guts Round</TableCell>
-              <TableCell>Assembly Hall (Academy Building)</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>3:15</TableCell>
-              <TableCell>3:30</TableCell>
-              <TableCell>Break</TableCell>
-              <TableCell>Assembly Hall (Academy Building)</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>3:30</TableCell>
-              <TableCell>4:00</TableCell>
-              <TableCell>Awards</TableCell>
-              <TableCell>Assembly Hall (Academy Building)</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Typography variant="body1"> To be announced.</Typography>
     </Container>
   );
+  // return (
+  //   <Container align="center" maxWidth="sm">
+  //     <SHeading variant="h3">Schedule</SHeading>
+  //     <TableContainer component={Paper}>
+  //       <Table>
+  //         <TableHead>
+  //           <TableRow>
+  //             <TableCell>Start</TableCell>
+  //             <TableCell>End</TableCell>
+  //             <TableCell>Event</TableCell>
+  //             <TableCell>Location</TableCell>
+  //           </TableRow>
+  //         </TableHead>
+  //         <TableBody>
+  //           <TableRow>
+  //             <NoBorderTableCell>9:00</NoBorderTableCell>
+  //             <NoBorderTableCell>10:00</NoBorderTableCell>
+  //             <NoBorderTableCell>Registration</NoBorderTableCell>
+  //             <NoBorderTableCell>Powell Hall (Music Center)</NoBorderTableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell colSpan={2} />
+  //             <TableCell colSpan={2}>
+  //               <Typography variant="body2">
+  //                 Teams will be introduced to their proctors at registration. If
+  //                 teams arrive late for registration, they should go directly to
+  //                 the opening ceremony, in Assembly Hall.
+  //               </Typography>
+  //             </TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell colSpan={2} />
+  //             <TableCell>Light Breakfast</TableCell>
+  //             <TableCell>Powell Hall (Music Center)</TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <NoBorderTableCell>10:00</NoBorderTableCell>
+  //             <NoBorderTableCell>10:30</NoBorderTableCell>
+  //             <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
+  //             <NoBorderTableCell>
+  //               Assembly Hall (Academy Building)
+  //             </NoBorderTableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell colSpan={2} />
+  //             <TableCell colSpan={2}>
+  //               <Typography variant="body2">
+  //                 Proctors will lead teams after the opening ceremony directly
+  //                 to their classrooms for the individual rounds.
+  //               </Typography>
+  //             </TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell>10:30</TableCell>
+  //             <TableCell>1:00</TableCell>
+  //             <TableCell>Team and Individual Rounds</TableCell>
+  //             <TableCell>Classrooms (Academy Building)</TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <NoBorderTableCell>1:00</NoBorderTableCell>
+  //             <NoBorderTableCell>1:30</NoBorderTableCell>
+  //             <NoBorderTableCell>Lunch</NoBorderTableCell>
+  //             <NoBorderTableCell>Academy Building</NoBorderTableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell colSpan={2} />
+  //             <TableCell colSpan={2}>
+  //               <Typography variant="body2">
+  //                 Pizza will be available for free for students and coaches in
+  //                 the classrooms in which the students took the contest. Parents
+  //                 and other adults must bring their own lunch or buy lunch in
+  //                 town.
+  //               </Typography>
+  //             </TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell>1:45</TableCell>
+  //             <TableCell>3:15</TableCell>
+  //             <TableCell>Guts Round</TableCell>
+  //             <TableCell>Assembly Hall (Academy Building)</TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell>3:15</TableCell>
+  //             <TableCell>3:30</TableCell>
+  //             <TableCell>Break</TableCell>
+  //             <TableCell>Assembly Hall (Academy Building)</TableCell>
+  //           </TableRow>
+  //           <TableRow>
+  //             <TableCell>3:30</TableCell>
+  //             <TableCell>4:00</TableCell>
+  //             <TableCell>Awards</TableCell>
+  //             <TableCell>Assembly Hall (Academy Building)</TableCell>
+  //           </TableRow>
+  //         </TableBody>
+  //       </Table>
+  //     </TableContainer>
+  //   </Container>
+  // );
 };
 
 // the round formats, scoring, and tie-breaking information

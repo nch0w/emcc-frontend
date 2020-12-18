@@ -36,6 +36,13 @@ const Contest = () => {
           Similarly, laptops, PDAs, cell phones, or any other electronic
           communication devices are also not allowed. Any individual or team
           which breaks these rules will be disqualified.
+          <br />
+          <span style={{ color: "green" }}>
+            New for the remote format: Electronic devices are ONLY permitted for
+            viewing the test, submitting answers, and communicating with
+            teammates during the Team and Guts rounds. Using electronic devices
+            to do anything else will result in disqualification.
+          </span>
         </Typography>
         <br />
         <Typography variant="h4" align="center">
@@ -58,6 +65,9 @@ const Contest = () => {
             than one. Denominators should be rationalized.
           </li>
           <li>Correct mathematical notation should be used.</li>
+          <li style={{ color: "green" }}>
+            New for the remote format: All answers will be positive integers.
+          </li>
         </ul>
         <br />
         <Typography variant="body1">

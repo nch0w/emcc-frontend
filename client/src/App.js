@@ -110,7 +110,7 @@ const EMCCNav = () => {
     <SNav value={currentUrl} showLabels onChange={handleButtonClicked}>
       <SNavButton label="Home" value="/" icon={<HomeIcon />} />
       <SNavButton label="Contest" value="/contest" icon={<ContestIcon />} />
-      <SNavButton label="Travel" value="/travel" icon={<TravelIcon />} />
+      {/* <SNavButton label="Travel" value="/travel" icon={<TravelIcon />} /> */}
       <SNavButton label="Contact" value="/contact" icon={<ContactIcon />} />
       <SNavButton label="Sign Up" value="/signup" icon={<SignUpIcon />} />
       <SNavButton label="Login" value="/login" icon={<LoginIcon />} />
@@ -119,7 +119,7 @@ const EMCCNav = () => {
         value="/dashboard"
         icon={<DashboardIcon />}
       />
-      <SNavButton label="Payment" value="/payment" icon={<PaymentIcon />} />
+      {/* <SNavButton label="Payment" value="/payment" icon={<PaymentIcon />} /> */}
     </SNav>
   );
 };

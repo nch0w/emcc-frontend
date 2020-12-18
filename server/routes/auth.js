@@ -17,14 +17,12 @@ router.post(
     const { email, password } = req.body;
 
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      return res
-        .status(400)
-        .json({ error: "Please enter a valid email address." });
+      return res.status(400).send("Please enter a valid email address.");
     }
     if (!password || password.length < 6) {
       return res
         .status(400)
-        .json({ error: "Password must contain at least six characters." });
+        .send("Password must contain at least six characters.");
     }
 
     const sameEmail = await base("Coaches")
@@ -34,16 +32,17 @@ router.post(
       .firstPage();
 
     if (sameEmail.length == 0) {
-      return res.status(400).json({
-        error:
+      return res
+        .status(400)
+        .send(
           "We couldn't find an account with this email address. Please try again."
-      });
+        );
     }
 
     const user = sameEmail[0];
     const match = await bcrypt.compare(password, user.fields.Password);
     if (!match) {
-      return res.status(400).json({ error: "Incorrect password." });
+      return res.status(400).send("Incorrect password.");
     }
     await base("Coaches").update([
       {
@@ -72,17 +71,15 @@ router.post("/signup", async (req, res) => {
 
   const { name, email, password } = req.body;
   if (!name) {
-    return res.status(400).json({ error: "Name cannot be blank." });
+    return res.status(400).send("Name cannot be blank.");
   }
   if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    return res
-      .status(400)
-      .json({ error: "Please enter a valid email address." });
+    return res.status(400).send("Please enter a valid email address.");
   }
   if (!password || password.length < 6) {
     return res
       .status(400)
-      .json({ error: "Password must contain at least six characters." });
+      .send("Password must contain at least six characters.");
   }
   const sameEmail = await base("Coaches")
     .select({
@@ -90,9 +87,7 @@ router.post("/signup", async (req, res) => {
     })
     .firstPage();
   if (sameEmail.length > 0) {
-    return res
-      .status(400)
-      .json({ error: "This email address is already in use." });
+    return res.status(400).send("This email address is already in use.");
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
   const records = await base("Coaches").create([
@@ -112,6 +107,12 @@ router.post("/signup", async (req, res) => {
     id: newUser.id,
     sessionToken
   });
+});
+
+router.post("/logout", async (req, res) => {
+  res.clearCookie("id");
+  res.clearCookie("sessionToken");
+  res.status(200).json();
 });
 
 module.exports = router;

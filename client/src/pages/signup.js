@@ -101,6 +101,10 @@ const SignUp = () => {
           participating, your parent or guardian can sign up as your coach.
         </Typography>
         <br />
+        <Typography variant="body1" style={{ color: "green" }}>
+          Already have an account? You can <Link to="/login">log in here</Link>.
+        </Typography>
+        <br />
         <br />
         <TextField
           required

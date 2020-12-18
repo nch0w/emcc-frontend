@@ -19,8 +19,9 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 import { UserContext, userStatus } from "../App";
 import { emccServerUrl } from "../config";
@@ -69,25 +70,26 @@ const Dashboard = () => {
     setAuthStatus
   } = useContext(UserContext);
 
-  useEffect(() => {
-    if (authStatus === userStatus.NoUser) {
-      axios
-        .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
-        .then((response) => {
-          setAuthStatus(userStatus.UserLoaded);
-          setCoachInfo(response.data.coachInfo);
-          setTeams(response.data.teams);
-          setIndividuals(response.data.individuals);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (authStatus === userStatus.NoUser) {
+  //   axios
+  //     .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
+  //     .then((response) => {
+  //       setAuthStatus(userStatus.UserLoaded);
+  //       setCoachInfo(response.data.coachInfo);
+  //       setTeams(response.data.teams);
+  //       setIndividuals(response.data.individuals);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+  // }, []);
 
   const [status, setStatus] = useState(dashboardStatus.ViewCompetitors);
   const [activeTab, setActiveTab] = useState("view-competitors");
   const [err, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleTabClicked = (newValue) => {
     switch (newValue) {
@@ -242,6 +244,22 @@ const Dashboard = () => {
     return true;
   };
 
+  const logout = () => {
+    axios
+      .post(emccServerUrl + "/auth/logout", {}, { timeout: 5000 })
+      .then((response) => {
+        setAuthStatus(userStatus.NoUser);
+        setCoachInfo({});
+        setTeams([]);
+        setIndividuals([]);
+        Swal.fire("Successfully logged out.", "", "success");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const renderTab = () => {
     switch (activeTab) {
       case "view-competitors":
@@ -299,8 +317,7 @@ const Dashboard = () => {
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error.data);
-                          setStatus(dashboardStatus.UpdateCompetitorFailure);
+                          Swal.fire("Error", error?.response?.data, "error");
                         });
                       resolve();
                     } else reject();
@@ -335,7 +352,7 @@ const Dashboard = () => {
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error.data);
+                          setError(error?.response?.data);
                           setStatus(dashboardStatus.UpdateCompetitorFailure);
                         });
                       resolve();
@@ -354,7 +371,7 @@ const Dashboard = () => {
                       })
                       .catch((error) => {
                         console.log(error);
-                        setError(error.data);
+                        setError(error?.response?.data);
                         setStatus(dashboardStatus.UpdateCompetitorFailure);
                       });
                     resolve();
@@ -400,7 +417,7 @@ const Dashboard = () => {
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error.data);
+                          setError(error?.response?.data);
                           setStatus(dashboardStatus.UpdateCompetitorFailure);
                         });
                       resolve();
@@ -427,7 +444,7 @@ const Dashboard = () => {
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error.data);
+                          setError(error?.response?.data);
                           setStatus(dashboardStatus.UpdateCompetitorFailure);
                         });
                       resolve();
@@ -446,7 +463,7 @@ const Dashboard = () => {
                       })
                       .catch((error) => {
                         console.log(error);
-                        setError(error.data);
+                        setError(error?.response?.data);
                         setStatus(dashboardStatus.UpdateCompetitorFailure);
                       });
                     resolve();
@@ -511,6 +528,11 @@ const Dashboard = () => {
             <br />
             <Button variant="outlined" onClick={() => handleUpdateCoachInfo()}>
               Update Info
+            </Button>
+            <br />
+            <br />
+            <Button variant="outlined" onClick={logout}>
+              Log out
             </Button>
             <br />
             <br />

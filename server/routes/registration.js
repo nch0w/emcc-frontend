@@ -41,24 +41,27 @@ router.post(
     const { name, student1, student2, student3, student4, id } = req.body;
 
     if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
-      return res.status(400).send({
-        error: "Coach email and phone number must be set before creating teams."
-      });
+      return res
+        .status(400)
+        .send(
+          "Coach email and phone number must be set before creating teams."
+        );
     }
 
     if (!name) {
-      return res.status(400).send({ error: "Missing team name." });
+      return res.status(400).send("Missing team name.");
     }
     let i = 0;
     for (const student of [student1, student2, student3, student4]) {
       if (i >= minTeamMembersPerTeam) break;
       if (!student)
-        return res.status(400).send({
-          error:
+        return res
+          .status(400)
+          .send(
             "Team member count below minimum allowed (" +
-            minTeamMembersPerTeam +
-            ")."
-        });
+              minTeamMembersPerTeam +
+              ")."
+          );
       i++;
     }
 
@@ -120,7 +123,7 @@ router.post(
         next();
       } catch (err) {
         console.error(err);
-        return res.status(400).send({ error: "Error updating team." });
+        return res.status(400).send("Error updating team.");
       }
     } else {
       try {
@@ -139,7 +142,7 @@ router.post(
         next();
       } catch (err) {
         console.error(err);
-        return res.status(400).send({ error: "Error creating team." });
+        return res.status(400).send("Error creating team.");
       }
     }
   },

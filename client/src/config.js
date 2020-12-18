@@ -79,9 +79,9 @@ export const ContactInfo = () => {
           <CardContent>
             <Typography variant="body1">
               Contact us by email at{" "}
-              <Link to="mailto:exetermathclub@gmail.com">
+              <a href="mailto:exetermathclub@gmail.com">
                 exetermathclub@gmail.com
-              </Link>
+              </a>
               !
             </Typography>
           </CardContent>
@@ -129,7 +129,7 @@ export const ContactInfo = () => {
               <b>Neil Chowdhury</b>, Registrations
               <br />
               Email:{" "}
-              <Link to="nchowdhury@exeter.edu">nchowdhury@exeter.edu</Link>
+              <a href="mailto:nchowdhury@exeter.edu">nchowdhury@exeter.edu</a>
             </Typography>
           </CardContent>
         </Card>

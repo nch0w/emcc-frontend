@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { Container, Box, Typography } from "@material-ui/core";
 import { TextField, Button } from "@material-ui/core";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import axios from "axios";
 
 import { UserContext, userStatus } from "../App";
@@ -31,6 +31,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [err, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     // validate form
@@ -55,6 +56,7 @@ const Login = () => {
         setTeams(response.data.teams);
         setIndividuals(response.data.individuals);
         setStatus(loginStatus.LoginSuccess);
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.log(error);

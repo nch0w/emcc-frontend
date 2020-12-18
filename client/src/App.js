@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import { Router, navigate } from "@reach/router";
@@ -30,8 +30,9 @@ import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Payment from "./pages/payment";
+import axios from "axios";
 
-import { contestYear } from "./config";
+import { contestYear, emccServerUrl } from "./config";
 
 /*
 TODO: is EMCC 2021 even happening? Is it remote?
@@ -95,7 +96,7 @@ const parseCurrentPageFromUrl = () => {
   return currentPage;
 };
 
-const EMCCNav = () => {
+const EMCCNav = ({ authStatus }) => {
   // EMCCNav state must be equal to the "value" prop of
   // the BottomNavigationAction that we want to highlight
   // aka the current page
@@ -112,13 +113,17 @@ const EMCCNav = () => {
       <SNavButton label="Contest" value="/contest" icon={<ContestIcon />} />
       {/* <SNavButton label="Travel" value="/travel" icon={<TravelIcon />} /> */}
       <SNavButton label="Contact" value="/contact" icon={<ContactIcon />} />
-      <SNavButton label="Sign Up" value="/signup" icon={<SignUpIcon />} />
-      <SNavButton label="Login" value="/login" icon={<LoginIcon />} />
-      <SNavButton
-        label="Dashboard"
-        value="/dashboard"
-        icon={<DashboardIcon />}
-      />
+
+      {authStatus === userStatus.NoUser ? (
+        <SNavButton label="Sign Up" value="/signup" icon={<SignUpIcon />} />
+      ) : (
+        <SNavButton
+          label="Dashboard"
+          value="/dashboard"
+          icon={<DashboardIcon />}
+        />
+      )}
+
       {/* <SNavButton label="Payment" value="/payment" icon={<PaymentIcon />} /> */}
     </SNav>
   );
@@ -129,6 +134,20 @@ const App = () => {
   const [teams, setTeams] = useState([]);
   const [individuals, setIndividuals] = useState([]);
   const [authStatus, setAuthStatus] = useState(userStatus.NoUser);
+
+  useEffect(() => {
+    axios
+      .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
+      .then((response) => {
+        setAuthStatus(userStatus.UserLoaded);
+        setCoachInfo(response.data.coachInfo);
+        setTeams(response.data.teams);
+        setIndividuals(response.data.individuals);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -146,7 +165,7 @@ const App = () => {
             setIndividuals
           }}
         >
-          <EMCCNav />
+          <EMCCNav authStatus={authStatus} />
           <Router>
             <Home path="/" />
             <Contest path="/contest" />

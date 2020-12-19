@@ -27,6 +27,28 @@ const Home = () => {
       <br />
       <br />
       <SContent>
+        <Typography variant="h4" align="center">
+          Sponsored by
+          <br />
+          <br />
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.janestreet.com/join-jane-street/info-booth/"
+          >
+            <img
+              id="jane_street_logo"
+              alt="Jane Street logo"
+              style={{
+                verticalAlign: "middle",
+                maxHeight: 90,
+                marginBottom: 20
+              }}
+              src={require("../assets/janestreet_homepage.jpg")}
+            />
+          </a>
+        </Typography>
+
         <Typography variant="h3" align="center">
           What is EMCC?
         </Typography>

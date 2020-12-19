@@ -199,16 +199,16 @@ const App = () => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.janestreet.com/"
+                href="https://www.janestreet.com/join-jane-street/info-booth/"
               >
                 <img
                   id="jane_street_logo"
                   alt="Jane Street logo"
                   style={{
-                    filter: "invert(100%)",
-                    verticalAlign: "middle"
+                    verticalAlign: "middle",
+                    height: 20
                   }}
-                  src={require("./assets/janestreetlogo.png")}
+                  src={require("./assets/janestreet_new.jpg")}
                 />
               </a>
             </Box>

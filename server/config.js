@@ -11,8 +11,8 @@ module.exports = {
   lateRegistrationDeadline: "January 16, 2021",
 
   // limits on teams and individuals per coach
-  maxIndivsPerCoach: 3,
-  maxTeamsPerCoach: 3,
+  maxIndivsPerCoach: -1,
+  maxTeamsPerCoach: -1,
   minTeamMembersPerTeam: 2,
   maxTeamMembersPerTeam: 4
 };

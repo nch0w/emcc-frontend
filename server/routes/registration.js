@@ -8,8 +8,8 @@ router.post(
   async (req, res, next) => {
     if (!req.user)
       return res.status(400).send("Not authenticated. Please login again.");
-    const { name, phone, email, mail } = req.body;
-    if (!name || !phone || !email || !mail) {
+    const { name, phone, mail } = req.body;
+    if (!name || !phone || !mail) {
       return res.status(400).send("Missing coach information");
     }
 
@@ -18,7 +18,6 @@ router.post(
         {
           id: req.user.id,
           fields: {
-            Email: email,
             Name: name,
             Address: mail,
             Phone: phone

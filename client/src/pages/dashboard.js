@@ -111,8 +111,7 @@ const Dashboard = () => {
     if (
       coachInfo.name.length === 0 ||
       coachInfo.phone.length === 0 ||
-      coachInfo.email.length === 0 ||
-      coachInfo.mail.length === 0
+      coachInfo.email.length === 0
     ) {
       setStatus(dashboardStatus.InvalidCoachInfo);
       setError("All fields are required.");
@@ -478,6 +477,15 @@ const Dashboard = () => {
         return (
           <Box>
             <TextField
+              id="coach-email"
+              label="Email Address"
+              value={coachInfo.email}
+              variant="outlined"
+              disabled
+            />
+            <br />
+            <br />
+            <TextField
               required
               id="coach-name"
               label="Name"
@@ -502,18 +510,7 @@ const Dashboard = () => {
             />
             <br />
             <br />
-            <TextField
-              required
-              id="coach-email"
-              label="Email Address"
-              value={coachInfo.email}
-              onChange={(event) =>
-                setCoachInfo({ ...coachInfo, email: event.target.value })
-              }
-              variant="outlined"
-            />
-            <br />
-            <br />
+
             <TextField
               required
               id="coach-mail"

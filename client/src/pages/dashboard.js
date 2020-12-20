@@ -70,21 +70,19 @@ const Dashboard = () => {
     setAuthStatus
   } = useContext(UserContext);
 
-  // useEffect(() => {
-  //   if (authStatus === userStatus.NoUser) {
-  //   axios
-  //     .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
-  //     .then((response) => {
-  //       setAuthStatus(userStatus.UserLoaded);
-  //       setCoachInfo(response.data.coachInfo);
-  //       setTeams(response.data.teams);
-  //       setIndividuals(response.data.individuals);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-  // }, []);
+  useEffect(() => {
+    axios
+      .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
+      .then((response) => {
+        setAuthStatus(userStatus.UserLoaded);
+        setCoachInfo(response.data.coachInfo);
+        setTeams(response.data.teams);
+        setIndividuals(response.data.individuals);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [status, setStatus] = useState(dashboardStatus.ViewCompetitors);
   const [activeTab, setActiveTab] = useState("view-competitors");

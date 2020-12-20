@@ -33,6 +33,7 @@ import Payment from "./pages/payment";
 import axios from "axios";
 
 import { contestYear, emccServerUrl } from "./config";
+import Verify from "./pages/verify";
 
 /*
 TODO: is EMCC 2021 even happening? Is it remote?
@@ -175,6 +176,7 @@ const App = () => {
             <SignUp path="/signup" />
             <PrivateRoute as={Dashboard} path="/dashboard" />
             <Payment path="/payment" />
+            <Verify path="/verify/:tokenId" />
           </Router>
           <footer
             style={{

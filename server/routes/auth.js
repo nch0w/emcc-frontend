@@ -3,9 +3,14 @@ const bcrypt = require("bcryptjs");
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
 const crypto = require("crypto");
 const updateUser = require("../middleware/updateUser");
+const signUpMail = require("../mail/signup");
 
 function genToken() {
   return crypto.randomBytes(256).toString("hex");
+}
+
+function genVerifyToken() {
+  return crypto.randomBytes(36).toString("hex");
 }
 
 router.post("/user", updateUser);
@@ -67,8 +72,6 @@ router.post(
 );
 
 router.post("/signup", async (req, res) => {
-  const sessionToken = genToken();
-
   const { name, email, password } = req.body;
   if (!name) {
     return res.status(400).send("Name cannot be blank.");
@@ -90,24 +93,83 @@ router.post("/signup", async (req, res) => {
     return res.status(400).send("This email address is already in use.");
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
+
+  const token = genVerifyToken();
   const records = await base("Coaches").create([
     {
       fields: {
         Name: name,
         Email: email,
         Password: hashedPassword,
-        Session: JSON.stringify([sessionToken])
+        "Email Verification Token": token,
+        Session: JSON.stringify([])
       }
     }
   ]);
+
   const newUser = records[0];
+  await signUpMail(email, token, newUser.id);
   res.status(200).json({
     name: newUser.fields["Name"],
-    email: newUser.fields["Email"],
-    id: newUser.id,
-    sessionToken
+    email: newUser.fields["Email"]
   });
 });
+
+router.post(
+  "/verify",
+  async (req, res, next) => {
+    const { tokenId } = req.body;
+    if (!tokenId) {
+      res.status(400).send("Missing token.");
+    }
+
+    const recIndex = tokenId.indexOf("rec");
+    if (recIndex < 0) {
+      res.status(400).send("Missing token.");
+    }
+
+    const token = tokenId.slice(0, recIndex);
+    const userId = tokenId.slice(recIndex);
+
+    try {
+      const user = await base("Coaches").find(userId);
+
+      if (user.fields["Email Verified"]) {
+        return res.status(400).send("Email already verified.");
+      }
+
+      if (user.fields["Email Verification Token"] !== token) {
+        return res.status(400).send("Invalid verification token.");
+      }
+
+      const sessionToken = genToken();
+
+      await base("Coaches").update([
+        {
+          id: user.id,
+          fields: {
+            Session: JSON.stringify([
+              ...JSON.parse(user.fields.Session),
+              sessionToken
+            ]),
+            "Email Verified": true
+          }
+        }
+      ]);
+
+      res
+        .cookie("id", user.id, { httpOnly: true })
+        .cookie("sessionToken", sessionToken, { httpOnly: true });
+
+      req.user = user;
+      next();
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send("Error finding user.");
+    }
+  },
+  updateUser
+);
 
 router.post("/logout", async (req, res) => {
   res.clearCookie("id");

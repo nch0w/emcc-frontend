@@ -39,6 +39,13 @@ router.post(
     // if id is not provided, assume we are adding a team
     const { name, student1, student2, student3, student4, id } = req.body;
 
+    if (!req.user || !req.user.fields["Email Verified"]) {
+      return res
+        .status(400)
+        .send(
+          "Email address must be verified before creating teams. Please check your email for a link from exetermathclub@gmail.com, or contact us if you have issues."
+        );
+    }
     if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
       return res
         .status(400)
@@ -177,7 +184,14 @@ router.post(
   async (req, res, next) => {
     const { student } = req.body;
 
-    if (!req.user || !req.user.fields.Email || !req.user.fields.Phone) {
+    if (!req.user || !req.user.fields["Email Verified"]) {
+      return res
+        .status(400)
+        .send(
+          "Email address must be verified before creating teams. Please check your email for a link from exetermathclub@gmail.com, or contact us if you have issues."
+        );
+    }
+    if (!req.user.fields.Email || !req.user.fields.Phone) {
       return res
         .status(400)
         .send(

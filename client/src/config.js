@@ -356,6 +356,15 @@ export const RoundFormats = () => {
         problem increases between each set of three.
       </Typography>
       <br />
+      <Typography variant="body1">
+        <b>
+          Past rounds can be found{" "}
+          <a href="https://drive.google.com/open?id=1Yf7LzHUvCPIqZ4IKm-DtWVxO5S7nugDW">
+            here
+          </a>
+          .
+        </b>
+      </Typography>
       <SContentHeading variant="h4">Scoring and Tie-Breaking</SContentHeading>
       <br />
       <Typography variant="body1">

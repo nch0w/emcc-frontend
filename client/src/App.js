@@ -54,6 +54,9 @@ export const UserContext = React.createContext();
 
 // TODO this is a band-aid fix for the blue selected nav buttons
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: "Lato"
+  },
   palette: {
     primary: {
       main: "#aaaaaa"
@@ -191,8 +194,7 @@ const App = () => {
             }}
           >
             <Typography variant="body">
-              &copy; Copyright {contestYear} Exeter Math Club. All rights
-              reserved.
+              &copy; Copyright {contestYear} Exeter Math Club.
             </Typography>
             <Box style={{ float: "right" }}>
               <Typography variant="body" style={{ marginRight: "15px" }}>

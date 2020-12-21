@@ -88,18 +88,18 @@ router.post(
         })
         .firstPage();
 
-      const teamLimit =
-        req.user.fields["Team Limit"] < 0
-          ? maxTeamsPerCoach
-          : req.user.fields["Team Limit"];
+      // const teamLimit =
+      //   req.user.fields["Team Limit"] < 0
+      //     ? maxTeamsPerCoach
+      //     : req.user.fields["Team Limit"];
 
-      if (
-        coachTeams.filter((team) => !team.fields.Individual).length ==
-          teamLimit &&
-        !id
-      ) {
-        return res.status(400).send("Team limit reached.");
-      }
+      // if (
+      //   coachTeams.filter((team) => !team.fields.Individual).length ==
+      //     teamLimit &&
+      //   !id
+      // ) {
+      //   return res.status(400).send("Team limit reached.");
+      // }
     } catch (err) {
       console.error(err);
       return res.status(400).send("Internal server error.");
@@ -215,13 +215,13 @@ router.post(
       return res.status(400).send("Duplicate student.");
     }
 
-    let indivLimit =
-      req.user.fields["Individual Limit"] < 0
-        ? maxTeamsPerCoach
-        : req.user.fields["Individual Limit"];
-    if (coachIndivs.length == indivLimit) {
-      return res.status(400).send("Individual limit reached.");
-    }
+    // let indivLimit =
+    //   req.user.fields["Individual Limit"] < 0
+    //     ? maxTeamsPerCoach
+    //     : req.user.fields["Individual Limit"];
+    // if (coachIndivs.length == indivLimit) {
+    //   return res.status(400).send("Individual limit reached.");
+    // }
 
     try {
       await base("Competitors").create([

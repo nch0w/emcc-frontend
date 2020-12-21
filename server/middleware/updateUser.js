@@ -1,7 +1,7 @@
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
 const { maxIndivsPerCoach, maxTeamsPerCoach } = require("../config");
 
-async function fetchUser(req, res, next) {
+async function updateUser(req, res, next) {
   // get user info with an already valid session token.
   if (req.user) {
     const user = await base("Coaches").find(req.user.id);
@@ -49,4 +49,4 @@ async function fetchUser(req, res, next) {
   }
 }
 
-module.exports = fetchUser;
+module.exports = updateUser;

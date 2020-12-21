@@ -7,7 +7,7 @@ import { SHeading, SContent } from "../styled_components";
 
 const Contest = () => {
   return (
-    <Box>
+    <Box style={{ maxWidth: 800, margin: "auto" }}>
       <SHeading variant="h2">Contest Information</SHeading>
 
       <SContent>
@@ -37,6 +37,7 @@ const Contest = () => {
           communication devices are also not allowed. Any individual or team
           which breaks these rules will be disqualified.
           <br />
+          <br />
           <span style={{ color: "green" }}>
             New for the remote format: Electronic devices are ONLY permitted for
             viewing the test, submitting answers, and communicating with
@@ -50,7 +51,7 @@ const Contest = () => {
         </Typography>
         <br />
         <ul>
-          <li>
+          {/* <li>
             Answers need to be simplified and exact unless otherwise specified.
             (So 3.14 will not work for pi, nor will 4/12 instead of 1/3.)
           </li>
@@ -64,7 +65,7 @@ const Contest = () => {
             any fractions nor be divisible by the square of any integer greater
             than one. Denominators should be rationalized.
           </li>
-          <li>Correct mathematical notation should be used.</li>
+          <li>Correct mathematical notation should be used.</li> */}
           <li style={{ color: "green" }}>
             New for the remote format: All answers will be positive integers.
           </li>

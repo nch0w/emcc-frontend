@@ -89,23 +89,48 @@ router.post("/signup", async (req, res) => {
       filterByFormula: `{Email} = '${email}'`
     })
     .firstPage();
-  if (sameEmail.length > 0) {
-    return res.status(400).send("This email address is already in use.");
+
+  if (sameEmail.length && sameEmail[0].fields["Email Verified"]) {
+    return res
+      .status(400)
+      .send(
+        "This email address is already in use. If you have forgotten your password, please contact exetermathclub@gmail.com"
+      );
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
 
   const token = genVerifyToken();
-  const records = await base("Coaches").create([
-    {
-      fields: {
-        Name: name,
-        Email: email,
-        Password: hashedPassword,
-        "Email Verification Token": token,
-        Session: JSON.stringify([])
-      }
+  let records;
+  try {
+    if (sameEmail.length) {
+      records = await base("Coaches").update([
+        {
+          id: sameEmail[0].id,
+          fields: {
+            Name: name,
+            Email: email,
+            Password: hashedPassword,
+            "Email Verification Token": token,
+            Session: JSON.stringify([])
+          }
+        }
+      ]);
+    } else {
+      records = await base("Coaches").create([
+        {
+          fields: {
+            Name: name,
+            Email: email,
+            Password: hashedPassword,
+            "Email Verification Token": token,
+            Session: JSON.stringify([])
+          }
+        }
+      ]);
     }
-  ]);
+  } catch (err) {
+    console.log(err);
+  }
 
   const newUser = records[0];
   await signUpMail(email, token, newUser.id);

@@ -7,6 +7,7 @@ import axios from "axios";
 
 import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
+import Swal from "sweetalert2";
 
 const signUpStatus = {
   NotSignedUp: "not-signed-up",
@@ -16,12 +17,10 @@ const signUpStatus = {
 };
 
 const SignUp = () => {
-  const [status, setStatus] = useState(signUpStatus.NotSignedUp);
   const [un, setUn] = useState("");
   const [pw, setPw] = useState("");
   const [cpw, setCpw] = useState("");
   const [email, setEmail] = useState("");
-  const [err, setError] = useState("");
   const handleSignup = () => {
     // validate form
     if (
@@ -30,13 +29,15 @@ const SignUp = () => {
       cpw.length === 0 ||
       email.length === 0
     ) {
-      setError("All fields are required.");
-      setStatus(signUpStatus.InvalidForm);
+      Swal.fire("Error", "All fields are required.", "error");
       return;
     }
     if (pw !== cpw) {
-      setStatus(signUpStatus.InvalidForm);
-      setError("Password and Confirm Password do not match.");
+      Swal.fire(
+        "Error",
+        "Password and Confirm Password do not match.",
+        "error"
+      );
       return;
     }
     // submit form
@@ -50,43 +51,17 @@ const SignUp = () => {
         },
         { timeout: 5000 }
       )
-      .then((_response) => setStatus(signUpStatus.SignUpSuccess))
+      .then((_response) => {
+        Swal.fire(
+          "Success",
+          "You were signed up. Please check for a confirmation email to log in.",
+          "success"
+        );
+      })
       .catch((error) => {
         console.log(error);
-        setStatus(signUpStatus.SignUpFailure);
+        Swal.fire("Error", error?.response?.data, "error");
       });
-  };
-
-  const renderMessage = () => {
-    switch (status) {
-      case signUpStatus.InvalidForm:
-        return (
-          <Typography variant="body1" align="left">
-            Error: invalid sign-up information
-            <br />
-            Reason: {err}
-          </Typography>
-        );
-      case signUpStatus.SignUpSuccess:
-        return (
-          <Typography variant="body1">
-            Successfully signed up user {un}
-          </Typography>
-        );
-      case signUpStatus.SignUpFailure:
-        return (
-          <Typography variant="body1" align="left">
-            Something went wrong; we could not update your info currently.
-            Please try again in a few hours, and let us know at{" "}
-            <Link to="mailto:exetermathclub@gmail.com">
-              exetermathclub@gmail.com
-            </Link>{" "}
-            if the issue persists.
-          </Typography>
-        );
-      default:
-        return;
-    }
   };
 
   return (
@@ -160,7 +135,6 @@ const SignUp = () => {
         </Typography>
         <br />
         <br />
-        {renderMessage()}
       </Box>
     </Container>
   );

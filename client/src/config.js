@@ -69,6 +69,29 @@ const contactInfoStyles = makeStyles({
   }
 });
 
+const members = [
+  {
+    name: "Yunseo Choi",
+    email: "ychoi@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Thomas Guo",
+    email: "tguo@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Honglin Zhu",
+    email: "hzhu2@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Neil Chowdhury",
+    email: "nchowdhury@exeter.edu",
+    role: "Registrations"
+  }
+];
+
 // names, emails, and picture locations of the current EMCC directors and web/registration guy
 export const ContactInfo = () => {
   const classes = contactInfoStyles();
@@ -78,62 +101,35 @@ export const ContactInfo = () => {
         <Card>
           <CardContent>
             <Typography variant="body1">
-              Contact us by email at{" "}
+              <b>Please send all questions to</b>{" "}
               <a href="mailto:exetermathclub@gmail.com">
                 exetermathclub@gmail.com
               </a>
-              !
+              .
             </Typography>
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={6}>
-        <Card>
-          <CardMedia
-            className={classes.media}
-            // image={require("./assets/placeholder1.png")}
-            title="Sanath Govindarajan"
-          />
-          <CardContent>
-            <Typography variant="body1">
-              <b>TBA</b>, Tournament Director
-              <br />
-              {/* Email:{" "}
-              <Link to="sgovindarajan@exeter.edu">
-                sgovindarajan@exeter.edu
-              </Link> */}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card>
-          <CardMedia
-            className={classes.media}
-            // image={require("./assets/placeholder2.png")}
-            title="Benjamin Wright"
-          />
-          <CardContent>
-            <Typography variant="body1">
-              <b>TBA</b>, Tournament Director
-              <br />
-              {/* Email: <Link to="bwright@exeter.edu">bwright@exeter.edu</Link> */}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12}>
-        <Card>
-          <CardContent>
-            <Typography variant="body1">
-              <b>Neil Chowdhury</b>, Registrations
-              <br />
-              Email:{" "}
-              <a href="mailto:nchowdhury@exeter.edu">nchowdhury@exeter.edu</a>
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
+      {members.map((member) => (
+        <Grid item xs={4}>
+          <Card>
+            {member.image && (
+              <CardMedia
+                className={classes.media}
+                image={require(`./assets/${member.image}`)}
+                title="Sanath Govindarajan"
+              />
+            )}
+            <CardContent>
+              <Typography variant="body1">
+                <b>{member.name}</b>, {member.role}
+                <br />
+                Email: <a href={`mailto:${member.email}`}>{member.email}</a>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
     </Grid>
   );
 };

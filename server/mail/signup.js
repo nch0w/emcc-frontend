@@ -5,11 +5,11 @@ async function signupMail(emailAddress, token, userId) {
     from: '"Exeter Math Club" <exetermathclub@gmail.com>',
     to: emailAddress,
     subject: "✅ [EMCC] Please verify your email address",
-    text: `Please verify your email address at https://exetermathclub.com/verify/${token}${userId}.`,
+    text: `Please verify your email address at ${process.env.SITE_URL}/verify/${token}${userId}.`,
     html: `
     Thanks for creating an account for the Exeter Math Club Competition! 
     <br />
-    Please verify your email address at <a href="https://exetermathclub.com/verify/${token}${userId}">https://exetermathclub.com/verify/${token}${userId}</a>.`
+    Please verify your email address at <a href="${process.env.SITE_URL}/verify/${token}${userId}">${process.env.SITE_URL}/verify/${token}${userId}</a>.`
   });
 }
 

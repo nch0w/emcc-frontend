@@ -78,15 +78,15 @@ router.post(
         })
         .firstPage();
 
-      if (sameName.length > 0 && sameName.id !== id) {
+      if (sameName.length && sameName[0].id !== id) {
         return res.status(400).send("Team name already in use.");
       }
 
-      const coachTeams = await base("Competitors")
-        .select({
-          filterByFormula: `{Coach Email} = '${req.user.fields["Email"]}'`
-        })
-        .firstPage();
+      // const coachTeams = await base("Competitors")
+      //   .select({
+      //     filterByFormula: `{Coach Email} = '${req.user.fields["Email"]}'`
+      //   })
+      //   .firstPage();
 
       // const teamLimit =
       //   req.user.fields["Team Limit"] < 0
@@ -173,6 +173,7 @@ router.post(
       await base("Competitors").destroy(id);
       next();
     } catch (err) {
+      console.error(err);
       return res.status(400).send("Internal server error.");
     }
   },
@@ -182,7 +183,7 @@ router.post(
 router.post(
   "/update-indiv",
   async (req, res, next) => {
-    const { student } = req.body;
+    const { student, id } = req.body;
 
     if (!req.user || !req.user.fields["Email Verified"]) {
       return res
@@ -205,7 +206,7 @@ router.post(
 
     const coachIndivs = await base("Competitors")
       .select({
-        filterByFormula: `AND({Coach} = '${req.user.id}', {Individual})`
+        filterByFormula: `AND({Coach Email} = '${req.user.fields["Email"]}', {Individual})`
       })
       .firstPage();
 
@@ -224,20 +225,33 @@ router.post(
     // }
 
     try {
-      await base("Competitors").create([
-        {
-          fields: {
-            "Student 1": student,
-            Coach: [req.user.id],
-            Individual: true
+      if (id) {
+        await base("Competitors").update([
+          {
+            id,
+            fields: {
+              "Student 1": student,
+              Coach: [req.user.id],
+              Individual: true
+            }
           }
-        }
-      ]);
+        ]);
+      } else {
+        await base("Competitors").create([
+          {
+            fields: {
+              "Student 1": student,
+              Coach: [req.user.id],
+              Individual: true
+            }
+          }
+        ]);
+      }
 
       next();
     } catch (err) {
       console.error(err);
-      return res.status(400).send("Error creating team.");
+      return res.status(400).send("Error updating individual.");
     }
   },
   updateUser

@@ -47,17 +47,6 @@ const tableIcons = {
   ViewColumn: ViewColumn
 };
 
-const dashboardStatus = {
-  ViewCompetitors: "view-competitors",
-  InvalidCompetitor: "invalid-competitor",
-  UpdateCompetitorSuccess: "update-competitor-success",
-  UpdateCompetitorFailure: "update-competitor-failure",
-  ViewCoachInfo: "view-coach-info",
-  InvalidCoachInfo: "invalid-coach-info",
-  UpdateCoachInfoSuccess: "update-coach-info-success",
-  UpdateCoachInfoFailure: "update-coach-info-failure"
-};
-
 const Dashboard = () => {
   const {
     coachInfo,
@@ -84,20 +73,16 @@ const Dashboard = () => {
       });
   }, []);
 
-  const [status, setStatus] = useState(dashboardStatus.ViewCompetitors);
   const [activeTab, setActiveTab] = useState("view-competitors");
-  const [err, setError] = useState("");
   const navigate = useNavigate();
 
   const handleTabClicked = (newValue) => {
     switch (newValue) {
       case "view-competitors":
         setActiveTab("view-competitors");
-        setStatus(dashboardStatus.ViewCompetitors);
         break;
       case "view-coach-info":
         setActiveTab("view-coach-info");
-        setStatus(dashboardStatus.ViewCoachInfo);
         break;
       default:
         break;
@@ -109,10 +94,9 @@ const Dashboard = () => {
     if (
       coachInfo.name.length === 0 ||
       coachInfo.phone.length === 0 ||
-      coachInfo.email.length === 0
+      coachInfo.mail.length === 0
     ) {
-      setStatus(dashboardStatus.InvalidCoachInfo);
-      setError("All fields are required.");
+      Swal.fire("Error", "All fields are required.", "error");
       return;
     }
     // submit form
@@ -120,91 +104,35 @@ const Dashboard = () => {
       .post(emccServerUrl + "/registration/update-coach-info", coachInfo)
       .then((response) => {
         setCoachInfo(response.data.coachInfo);
-        setStatus(dashboardStatus.UpdateCoachInfoSuccess);
+        Swal.fire("Success", "Coach info was updated.", "success");
       })
       .catch((error) => {
         console.log(error);
-        setStatus(dashboardStatus.UpdateCoachInfoFailure);
+        Swal.fire("Error", error?.response?.data, "error");
       });
     return;
-  };
-
-  const renderMessage = () => {
-    switch (status) {
-      case dashboardStatus.InvalidCompetitor:
-        return (
-          <Typography variant="body1" align="left">
-            Error: cannot add competitor
-            <br />
-            Reason: {err}
-          </Typography>
-        );
-      case dashboardStatus.UpdateCompetitorSuccess:
-        return (
-          <Typography variant="body1">
-            Successfully updated competitors
-          </Typography>
-        );
-      case dashboardStatus.UpdateCompetitorFailure:
-        return (
-          <Typography variant="body1" align="left">
-            Error: could not add, update, or delete competitor (server error)
-            <br />
-            Reason: {err}
-          </Typography>
-        );
-      case dashboardStatus.InvalidCoachInfo:
-        return (
-          <Typography variant="body1">
-            Error: invalid coach information
-            <br />
-            Reason: {err}
-          </Typography>
-        );
-      case dashboardStatus.UpdateCoachInfoSuccess:
-        return (
-          <Typography variant="body1">
-            Successfully updated coach information
-          </Typography>
-        );
-      case dashboardStatus.UpdateCoachInfoFailure:
-        return (
-          <Typography variant="body1" align="left">
-            Something went wrong; we could not update your info currently.
-            Please try again in a few hours, and let us know at{" "}
-            <Link to="mailto:exetermathclub@gmail.com">
-              exetermathclub@gmail.com
-            </Link>{" "}
-            if the issue persists.
-          </Typography>
-        );
-      default:
-        return;
-    }
   };
 
   const isEmpty = (str) => str === undefined || str.length === 0;
 
   const validateTeam = (numTeams, student1, student2, student3, student4) => {
-    if (numTeams > coachInfo.teamLimit) {
-      setError(
-        "Team limit reached. Please contact the Exeter Math Club email to request more teams. Requests will be evaluated on a case-by-case basis."
-      );
-      setStatus(dashboardStatus.InvalidCompetitor);
-      return false;
-    }
+    // if (numTeams > coachInfo.teamLimit) {
+    //   setError(
+    //     "Team limit reached. Please contact the Exeter Math Club email to request more teams. Requests will be evaluated on a case-by-case basis."
+    //   );
+    //   setStatus(dashboardStatus.InvalidCompetitor);
+    //   return false;
+    // }
     if (
       (isEmpty(student1) && !isEmpty(student2)) ||
       (isEmpty(student2) && !isEmpty(student3)) ||
       (isEmpty(student3) && !isEmpty(student4))
     ) {
-      setError("Students must be added from left to right.");
-      setStatus(dashboardStatus.InvalidCompetitor);
+      Swal.fire("Error", "Students must be added from left to right.", "error");
       return false;
     }
     if (isEmpty(student2)) {
-      setError("Each team must have at least 2 students");
-      setStatus(dashboardStatus.InvalidCompetitor);
+      Swal.fire("Error", "Each team must have at least 2 students", "error");
       return false;
     }
     const validStudents = [];
@@ -214,10 +142,11 @@ const Dashboard = () => {
     for (let i = 0; i < validStudents.length; i++) {
       for (let j = 0; j < validStudents.length; j++) {
         if (i !== j && validStudents[i] === validStudents[j]) {
-          setError(
-            "Students on the same team must have different names, to avoid problems during grading."
+          Swal.fire(
+            "Error",
+            "Students on the same team must have different names, to avoid problems during grading.",
+            "error"
           );
-          setStatus(dashboardStatus.InvalidCompetitor);
           return false;
         }
       }
@@ -226,16 +155,15 @@ const Dashboard = () => {
   };
 
   const validateIndividual = (numIndivs, studentName) => {
-    if (numIndivs > coachInfo.indivLimit) {
-      setError(
-        "Individual limit reached. Please contact the Exeter Math Club email to request more individuals. Requests will be evaluated on a case-by-case basis."
-      );
-      setStatus(dashboardStatus.InvalidCompetitor);
-      return false;
-    }
+    // if (numIndivs > coachInfo.indivLimit) {
+    //   setError(
+    //     "Individual limit reached. Please contact the Exeter Math Club email to request more individuals. Requests will be evaluated on a case-by-case basis."
+    //   );
+    //   setStatus(dashboardStatus.InvalidCompetitor);
+    //   return false;
+    // }
     if (isEmpty(studentName)) {
-      setError("Please enter the name of the student.");
-      setStatus(dashboardStatus.InvalidCompetitor);
+      Swal.fire("Error", "The name of the individual is missing.", "error");
       return false;
     }
     return true;
@@ -262,14 +190,12 @@ const Dashboard = () => {
       case "view-competitors":
         return (
           <Box>
-            {renderMessage()}
-            <br />
-            <br />
             <MaterialTable
               title="Teams"
               options={{
                 search: false,
-                sorting: false
+                sorting: false,
+                draggable: false
               }}
               icons={tableIcons}
               columns={[
@@ -295,7 +221,6 @@ const Dashboard = () => {
                       // fields: name, student1, student2, student3, student4
                       // an error response should tell us why it is not possible
                       // (such as "another team with the same name already exists")
-                      console.log("got to onRowAdd");
                       axios
                         .post(
                           emccServerUrl + "/registration/update-team",
@@ -305,16 +230,17 @@ const Dashboard = () => {
                           }
                         )
                         .then((response) => {
-                          setTeams([...teams, newData]);
-                          // newUser.teams.push(newData);
-                          // newUser.amountPaid = response.data.amountPaid;
-                          // newUser.amountStillOwed =
-                          //   response.data.amountStillOwed;
-                          setStatus(dashboardStatus.UpdateCompetitorSuccess);
+                          setTeams(response.data.teams);
+                          Swal.fire(
+                            "Success",
+                            `Team "${newData.name}" was added.`,
+                            "success"
+                          );
                         })
                         .catch((error) => {
                           console.log(error);
                           Swal.fire("Error", error?.response?.data, "error");
+                          reject();
                         });
                       resolve();
                     } else reject();
@@ -338,25 +264,24 @@ const Dashboard = () => {
                             timeout: 5000
                           }
                         )
-                        .then((_response) => {
-                          const index = oldData.tableData.id;
-                          setTeams([
-                            ...teams.slice(0, index),
-                            newData,
-                            ...teams.slice(index + 1)
-                          ]);
-                          setStatus(dashboardStatus.UpdateCompetitorSuccess);
+                        .then((response) => {
+                          setTeams(response.data.teams);
+                          Swal.fire(
+                            "Success",
+                            `Team "${newData.name}" was updated.`,
+                            "success"
+                          );
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error?.response?.data);
-                          setStatus(dashboardStatus.UpdateCompetitorFailure);
+                          Swal.fire("Error", error?.response?.data, "error");
+                          reject();
                         });
                       resolve();
                     } else reject();
                   }),
                 onRowDelete: (oldData) =>
-                  new Promise((resolve, _reject) => {
+                  new Promise((resolve, reject) => {
                     axios
                       .post(
                         emccServerUrl + "/registration/delete-competitor",
@@ -364,12 +289,16 @@ const Dashboard = () => {
                       )
                       .then((response) => {
                         setTeams(response.data.teams);
-                        setStatus(dashboardStatus.UpdateCompetitorSuccess);
+                        Swal.fire(
+                          "Success",
+                          `Team "${oldData.name}" was removed.`,
+                          "success"
+                        );
                       })
                       .catch((error) => {
                         console.log(error);
-                        setError(error?.response?.data);
-                        setStatus(dashboardStatus.UpdateCompetitorFailure);
+                        Swal.fire("Error", error?.response?.data, "error");
+                        reject();
                       });
                     resolve();
                   })
@@ -381,7 +310,8 @@ const Dashboard = () => {
               title="Individuals"
               options={{
                 search: false,
-                sorting: false
+                sorting: false,
+                draggable: false
               }}
               style={{ marginBottom: 100 }}
               icons={tableIcons}
@@ -409,13 +339,17 @@ const Dashboard = () => {
                           }
                         )
                         .then((response) => {
-                          setIndividuals([...individuals, newData]);
-                          setStatus(dashboardStatus.UpdateCompetitorSuccess);
+                          setIndividuals(response.data.individuals);
+                          Swal.fire(
+                            "Success",
+                            `Individual "${newData.student}" was added.`,
+                            "success"
+                          );
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error?.response?.data);
-                          setStatus(dashboardStatus.UpdateCompetitorFailure);
+                          Swal.fire("Error", error?.response?.data, "error");
+                          reject();
                         });
                       resolve();
                     } else reject();
@@ -430,25 +364,24 @@ const Dashboard = () => {
                           emccServerUrl + "/registration/update-indiv",
                           newData
                         )
-                        .then((_response) => {
-                          const index = oldData.tableData.id;
-                          setIndividuals([
-                            ...individuals.slice(0, index),
-                            newData,
-                            ...individuals.slice(index + 1)
-                          ]);
-                          setStatus(dashboardStatus.UpdateCompetitorSuccess);
+                        .then((response) => {
+                          setIndividuals(response.data.individuals);
+                          Swal.fire(
+                            "Success",
+                            `Individual "${newData.student}" was updated.`,
+                            "success"
+                          );
                         })
                         .catch((error) => {
                           console.log(error);
-                          setError(error?.response?.data);
-                          setStatus(dashboardStatus.UpdateCompetitorFailure);
+                          Swal.fire("Error", error?.response?.data, "error");
+                          reject();
                         });
                       resolve();
                     } else reject();
                   }),
                 onRowDelete: (oldData) =>
-                  new Promise((resolve, _reject) => {
+                  new Promise((resolve, reject) => {
                     axios
                       .post(
                         emccServerUrl + "/registration/delete-competitor",
@@ -456,12 +389,16 @@ const Dashboard = () => {
                       )
                       .then((response) => {
                         setIndividuals(response.data.individuals);
-                        setStatus(dashboardStatus.UpdateCompetitorSuccess);
+                        Swal.fire(
+                          "Success",
+                          `Individual "${oldData.student}" was removed.`,
+                          "success"
+                        );
                       })
                       .catch((error) => {
                         console.log(error);
-                        setError(error?.response?.data);
-                        setStatus(dashboardStatus.UpdateCompetitorFailure);
+                        Swal.fire("Error", error?.response?.data, "error");
+                        reject();
                       });
                     resolve();
                   })
@@ -529,9 +466,6 @@ const Dashboard = () => {
             <Button variant="outlined" onClick={logout}>
               Log out
             </Button>
-            <br />
-            <br />
-            {renderMessage()}
           </Box>
         );
       default:

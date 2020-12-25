@@ -169,107 +169,66 @@ export const ContestSchedule = () => {
   return (
     <Container align="center" maxWidth="sm">
       <SHeading variant="h3">Schedule</SHeading>
-      <Typography variant="body1"> To be announced.</Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Time (EST)</TableCell>
+              <TableCell>Event</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <NoBorderTableCell>10:00-11:00am</NoBorderTableCell>
+              <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>11:00am-12:30pm</NoBorderTableCell>
+              <NoBorderTableCell>Individual Rounds</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>12:30 pm - 1:15pm</NoBorderTableCell>
+              <NoBorderTableCell>
+                Break / Lunch for EST students
+              </NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>1:15 pm - 2:30 pm</NoBorderTableCell>
+              <NoBorderTableCell>Team Round</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>2:30 pm - 3:15 pm</NoBorderTableCell>
+              <NoBorderTableCell>
+                Break / Lunch for PST students
+              </NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>3:15 pm - 4:45 pm</NoBorderTableCell>
+              <NoBorderTableCell>Guts Round</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>4:45 pm - 5:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>Break</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>5:00 pm - 6:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>
+                Student Panel: Life at Exeter
+              </NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>6:00 pm - 8:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>Break/Dinner</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>8:00 pm - 9:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Container>
   );
-  // return (
-  //   <Container align="center" maxWidth="sm">
-  //     <SHeading variant="h3">Schedule</SHeading>
-  //     <TableContainer component={Paper}>
-  //       <Table>
-  //         <TableHead>
-  //           <TableRow>
-  //             <TableCell>Start</TableCell>
-  //             <TableCell>End</TableCell>
-  //             <TableCell>Event</TableCell>
-  //             <TableCell>Location</TableCell>
-  //           </TableRow>
-  //         </TableHead>
-  //         <TableBody>
-  //           <TableRow>
-  //             <NoBorderTableCell>9:00</NoBorderTableCell>
-  //             <NoBorderTableCell>10:00</NoBorderTableCell>
-  //             <NoBorderTableCell>Registration</NoBorderTableCell>
-  //             <NoBorderTableCell>Powell Hall (Music Center)</NoBorderTableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell colSpan={2} />
-  //             <TableCell colSpan={2}>
-  //               <Typography variant="body2">
-  //                 Teams will be introduced to their proctors at registration. If
-  //                 teams arrive late for registration, they should go directly to
-  //                 the opening ceremony, in Assembly Hall.
-  //               </Typography>
-  //             </TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell colSpan={2} />
-  //             <TableCell>Light Breakfast</TableCell>
-  //             <TableCell>Powell Hall (Music Center)</TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <NoBorderTableCell>10:00</NoBorderTableCell>
-  //             <NoBorderTableCell>10:30</NoBorderTableCell>
-  //             <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
-  //             <NoBorderTableCell>
-  //               Assembly Hall (Academy Building)
-  //             </NoBorderTableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell colSpan={2} />
-  //             <TableCell colSpan={2}>
-  //               <Typography variant="body2">
-  //                 Proctors will lead teams after the opening ceremony directly
-  //                 to their classrooms for the individual rounds.
-  //               </Typography>
-  //             </TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell>10:30</TableCell>
-  //             <TableCell>1:00</TableCell>
-  //             <TableCell>Team and Individual Rounds</TableCell>
-  //             <TableCell>Classrooms (Academy Building)</TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <NoBorderTableCell>1:00</NoBorderTableCell>
-  //             <NoBorderTableCell>1:30</NoBorderTableCell>
-  //             <NoBorderTableCell>Lunch</NoBorderTableCell>
-  //             <NoBorderTableCell>Academy Building</NoBorderTableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell colSpan={2} />
-  //             <TableCell colSpan={2}>
-  //               <Typography variant="body2">
-  //                 Pizza will be available for free for students and coaches in
-  //                 the classrooms in which the students took the contest. Parents
-  //                 and other adults must bring their own lunch or buy lunch in
-  //                 town.
-  //               </Typography>
-  //             </TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell>1:45</TableCell>
-  //             <TableCell>3:15</TableCell>
-  //             <TableCell>Guts Round</TableCell>
-  //             <TableCell>Assembly Hall (Academy Building)</TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell>3:15</TableCell>
-  //             <TableCell>3:30</TableCell>
-  //             <TableCell>Break</TableCell>
-  //             <TableCell>Assembly Hall (Academy Building)</TableCell>
-  //           </TableRow>
-  //           <TableRow>
-  //             <TableCell>3:30</TableCell>
-  //             <TableCell>4:00</TableCell>
-  //             <TableCell>Awards</TableCell>
-  //             <TableCell>Assembly Hall (Academy Building)</TableCell>
-  //           </TableRow>
-  //         </TableBody>
-  //       </Table>
-  //     </TableContainer>
-  //   </Container>
-  // );
 };
 
 // the round formats, scoring, and tie-breaking information
@@ -350,6 +309,12 @@ export const RoundFormats = () => {
         tally of each team's points and progress will be displayed on a
         projector screen at the front of the hall. The point value for each
         problem increases between each set of three.
+        <br /> <br />
+        <span style={{ color: "green" }}>
+          New for the remote format: Each round will be revealed once the team
+          submits answers to the previous round. Answers cannot be changed after
+          submission.
+        </span>
       </Typography>
       <br />
       <Typography variant="body1">
@@ -391,11 +356,10 @@ export const RoundFormats = () => {
         of problems.
         <br />
         <br />
-        Individual total: The student who has a higher total score of speed and
-        accuray round will be ranked higher. If a tie persists, the student who
-        ranked higher in the accuracy round will be ranked higher overall. If a
-        tie persists, the student who ranked higher in the speed round will be
-        ranked higher.
+        Individual total: The student who has a higher individual score will be
+        ranked higher. If a tie persists, the student who ranked higher in the
+        accuracy round will be ranked higher. If a tie persists, the student who
+        ranked higher in the speed round will be ranked higher.
         <br />
         <br />
         Team sweepstakes: The team who has a higher total score of team and guts

@@ -66,11 +66,15 @@ const Contest = () => {
             than one. Denominators should be rationalized.
           </li>
           <li>Correct mathematical notation should be used.</li> */}
-          <li style={{ color: "green" }}>
-            New for the remote format: All answers will be positive integers.
-          </li>
         </ul>
+        <Typography variant="body1">
+          <span style={{ color: "green" }}>
+            New for the remote format: All answers will be positive integers.
+          </span>
+        </Typography>
         <br />
+        <br />
+
         <Typography variant="body1">
           <b>All decisions made by the EMCC judges are final.</b>
         </Typography>

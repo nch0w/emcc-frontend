@@ -345,7 +345,6 @@ const Dashboard = () => {
                 sorting: false,
                 draggable: false
               }}
-              style={{ marginBottom: 100 }}
               icons={tableIcons}
               columns={[{ title: "Student Name", field: "student" }]}
               data={individuals}
@@ -532,11 +531,7 @@ const Dashboard = () => {
             </Button>
             <br />
             <br />
-            <Button
-              variant="outlined"
-              onClick={logout}
-              style={{ marginBottom: 100 }}
-            >
+            <Button variant="outlined" onClick={logout}>
               Log out
             </Button>
           </Box>

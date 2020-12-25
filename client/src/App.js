@@ -181,6 +181,7 @@ const App = () => {
             <Payment path="/payment" />
             <Verify path="/verify/:tokenId" />
           </Router>
+          <div style={{ marginBottom: 100 }} />
           <footer
             style={{
               position: "fixed",

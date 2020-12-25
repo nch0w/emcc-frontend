@@ -9,6 +9,7 @@ import {
   SHeroSubheading,
   SContent
 } from "../styled_components";
+import { Link } from "@reach/router";
 
 const Home = () => {
   return (
@@ -21,7 +22,11 @@ const Home = () => {
         <SHeroSubheading variant="h5">
           {contestDate}, Phillips Exeter Academy (remote)
         </SHeroSubheading>
-        <SHeroSubheading variant="h6">{contestStatus}</SHeroSubheading>
+        <SHeroSubheading variant="h6">
+          <Link to="/signup" style={{ color: "white" }}>
+            {contestStatus}
+          </Link>
+        </SHeroSubheading>
       </SHero>
       <br />
       <br />
@@ -75,9 +80,9 @@ const Home = () => {
           Anyone in 8th grade or below. We accept registration as teams of
           students from the same school or individuals. Teams consist of up to
           four people, so we will combine individuals into teams of four.
-          Competitors aren't limited to just the United States &mdash; in the
-          past, we've hosted students from far away places like China and
-          Illinois.
+          Competitors aren't limited to just the Northeast or the United States
+          &mdash; in the past, we've hosted students from far away places like
+          China and Illinois.
         </Typography>
       </SContent>
     </Box>

@@ -13,6 +13,8 @@ const SignUp = () => {
   const [un, setUn] = useState("");
   const [pw, setPw] = useState("");
   const [cpw, setCpw] = useState("");
+  const [mail, setMail] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const handleSignup = () => {
     // validate form
@@ -40,7 +42,9 @@ const SignUp = () => {
         {
           name: un,
           password: pw,
-          email: email
+          email,
+          phone,
+          mail
         },
         { timeout: 5000 }
       )
@@ -90,6 +94,27 @@ const SignUp = () => {
           label="Name"
           value={un}
           onChange={(event) => setUn(event.target.value)}
+          variant="outlined"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="coach-phone"
+          label="Phone Number"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+          type="tel"
+          variant="outlined"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="coach-mail"
+          label="Mailing Address"
+          value={mail}
+          onChange={(event) => setMail(event.target.value)}
           variant="outlined"
         />
         <br />

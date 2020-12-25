@@ -501,6 +501,7 @@ const Dashboard = () => {
               value={oldPassword}
               onChange={(event) => setOldPassword(event.target.value)}
               variant="outlined"
+              type="password"
             />
             <br />
             <br />
@@ -511,6 +512,7 @@ const Dashboard = () => {
               value={newPassword}
               onChange={(event) => setNewPassword(event.target.value)}
               variant="outlined"
+              type="password"
             />
             <br />
             <br />
@@ -520,6 +522,7 @@ const Dashboard = () => {
               value={newPasswordConfirm}
               onChange={(event) => setNewPasswordConfirm(event.target.value)}
               variant="outlined"
+              type="password"
             />
             <br />
             <br />

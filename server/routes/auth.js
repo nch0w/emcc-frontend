@@ -47,7 +47,11 @@ router.post(
     const user = sameEmail[0];
     const match = await bcrypt.compare(password, user.fields.Password);
     if (!match) {
-      return res.status(400).send("Incorrect password.");
+      return res
+        .status(400)
+        .send(
+          "Incorrect password. If you have forgotten your password, please contact exetermathclub@gmail.com"
+        );
     }
     await base("Coaches").update([
       {
@@ -72,9 +76,9 @@ router.post(
 );
 
 router.post("/signup", async (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name) {
-    return res.status(400).send("Name cannot be blank.");
+  const { name, email, password, mail, phone } = req.body;
+  if (!name || !email || !password || !mail || !phone) {
+    return res.status(400).send("All fields are required.");
   }
   if (!email || !/\S+@\S+\.\S+/.test(email)) {
     return res.status(400).send("Please enter a valid email address.");
@@ -110,6 +114,8 @@ router.post("/signup", async (req, res) => {
             Name: name,
             Email: email,
             Password: hashedPassword,
+            Address: mail,
+            Phone: phone,
             "Email Verification Token": token,
             Session: JSON.stringify([])
           }
@@ -121,6 +127,8 @@ router.post("/signup", async (req, res) => {
           fields: {
             Name: name,
             Email: email,
+            Address: mail,
+            Phone: phone,
             Password: hashedPassword,
             "Email Verification Token": token,
             Session: JSON.stringify([])
@@ -148,7 +156,11 @@ router.post("/change-password", async (req, res) => {
 
   const match = await bcrypt.compare(oldPassword, req.user.fields.Password);
   if (!match) {
-    return res.status(400).send("Incorrect password.");
+    return res
+      .status(400)
+      .send(
+        "Incorrect password. If you have forgotten your password, please contact exetermathclub@gmail.com"
+      );
   }
 
   if (!newPassword || newPassword.length < 6) {

@@ -34,7 +34,8 @@ export const contestYear = 2021;
 export const contestDate = "February 20, 2021";
 
 // the status of the contest in question
-export const contestStatus = "EMCC 2021 is not yet accepting registrations.";
+// export const contestStatus = "EMCC 2021 is not yet accepting registrations.";
+export const contestStatus = "Registration for EMCC 2021 is now open!";
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Early registration ends ' + earlyRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Late registration ends ' + lateRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is closed! We look forward to seeing you at the contest.'

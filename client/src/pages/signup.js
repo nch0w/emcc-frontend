@@ -9,13 +9,6 @@ import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
 import Swal from "sweetalert2";
 
-const signUpStatus = {
-  NotSignedUp: "not-signed-up",
-  InvalidForm: "invalid-form",
-  SignUpSuccess: "sign-up-success",
-  SignUpFailure: "sign-up-failure"
-};
-
 const SignUp = () => {
   const [un, setUn] = useState("");
   const [pw, setPw] = useState("");

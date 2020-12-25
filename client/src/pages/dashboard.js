@@ -73,6 +73,10 @@ const Dashboard = () => {
       });
   }, []);
 
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
+
   const [activeTab, setActiveTab] = useState("view-competitors");
   const navigate = useNavigate();
 
@@ -181,6 +185,34 @@ const Dashboard = () => {
         navigate("/");
       })
       .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleChangePassword = () => {
+    if (!oldPassword) {
+      Swal.fire("Error", "Old password is missing", "error");
+      return;
+    }
+    if (!newPassword) {
+      Swal.fire("Error", "New password is missing", "error");
+      return;
+    }
+    if (newPassword !== newPasswordConfirm) {
+      Swal.fire("Error", "New passwords do not match", "error");
+      return;
+    }
+    axios
+      .post(
+        emccServerUrl + "/auth/change-password",
+        { oldPassword, newPassword },
+        { timeout: 5000 }
+      )
+      .then((_response) => {
+        Swal.fire("Success", "Password successfully changed.", "success");
+      })
+      .catch((error) => {
+        Swal.fire("Error", error?.response?.data, "error");
         console.log(error);
       });
   };
@@ -445,7 +477,6 @@ const Dashboard = () => {
             />
             <br />
             <br />
-
             <TextField
               required
               id="coach-mail"
@@ -458,12 +489,51 @@ const Dashboard = () => {
             />
             <br />
             <br />
+
             <Button variant="outlined" onClick={() => handleUpdateCoachInfo()}>
               Update Info
             </Button>
             <br />
             <br />
-            <Button variant="outlined" onClick={logout}>
+            <TextField
+              required
+              label="Old Password"
+              value={oldPassword}
+              onChange={(event) => setOldPassword(event.target.value)}
+              variant="outlined"
+            />
+            <br />
+            <br />
+
+            <TextField
+              required
+              label="New Password"
+              value={newPassword}
+              onChange={(event) => setNewPassword(event.target.value)}
+              variant="outlined"
+            />
+            <br />
+            <br />
+            <TextField
+              required
+              label="New Password (confirm)"
+              value={newPasswordConfirm}
+              onChange={(event) => setNewPasswordConfirm(event.target.value)}
+              variant="outlined"
+            />
+            <br />
+            <br />
+
+            <Button variant="outlined" onClick={handleChangePassword}>
+              Change Password
+            </Button>
+            <br />
+            <br />
+            <Button
+              variant="outlined"
+              onClick={logout}
+              style={{ marginBottom: 100 }}
+            >
               Log out
             </Button>
           </Box>

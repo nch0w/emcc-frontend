@@ -140,6 +140,35 @@ router.post("/signup", async (req, res) => {
   });
 });
 
+router.post("/change-password", async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+
+  if (!req.user)
+    return res.status(400).send("Not authenticated. Please log in again.");
+
+  const match = await bcrypt.compare(oldPassword, req.user.fields.Password);
+  if (!match) {
+    return res.status(400).send("Incorrect password.");
+  }
+
+  if (!newPassword || newPassword.length < 6) {
+    return res
+      .status(400)
+      .send("New password must contain at least six characters.");
+  }
+
+  await base("Coaches").update([
+    {
+      id: req.user.id,
+      fields: {
+        Password: bcrypt.hashSync(newPassword, 10)
+      }
+    }
+  ]);
+
+  return res.status(200).send({});
+});
+
 router.post(
   "/verify",
   async (req, res, next) => {

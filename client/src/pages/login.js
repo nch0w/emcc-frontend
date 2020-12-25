@@ -8,13 +8,7 @@ import axios from "axios";
 import { UserContext, userStatus } from "../App";
 import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
-
-const loginStatus = {
-  NotLoggedIn: "not-logged-in",
-  InvalidForm: "invalid-form",
-  LoginSuccess: "login-success",
-  LoginFailure: "login-failure"
-};
+import Swal from "sweetalert2";
 
 const Login = () => {
   const {
@@ -27,17 +21,14 @@ const Login = () => {
     authStatus,
     setAuthStatus
   } = useContext(UserContext);
-  const [status, setStatus] = useState(loginStatus.NotLoggedIn);
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-  const [err, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
     // validate form
-    if (email.length === 0 || pw.length === 0) {
-      setError("All fields are required.");
-      setStatus(loginStatus.InvalidForm);
+    if (!email.length || !pw.length) {
+      Swal.fire("Error", "All fields are required", "error");
       return;
     }
     // submit form
@@ -48,52 +39,19 @@ const Login = () => {
           email,
           password: pw
         },
-        { timeout: 5000 }
+        { timeout: 10000 }
       )
       .then((response) => {
         setAuthStatus(userStatus.UserLoaded);
         setCoachInfo(response.data.coachInfo);
         setTeams(response.data.teams);
         setIndividuals(response.data.individuals);
-        setStatus(loginStatus.LoginSuccess);
         navigate("/dashboard");
       })
       .catch((error) => {
+        Swal.fire("Error", error?.response?.data, "error");
         console.log(error);
-        setStatus(loginStatus.LoginFailure);
       });
-  };
-
-  const renderMessage = () => {
-    switch (status) {
-      case loginStatus.InvalidForm:
-        return (
-          <Typography variant="body1" align="left">
-            Error: invalid login information
-            <br />
-            Reason: {err}
-          </Typography>
-        );
-      case loginStatus.LoginSuccess:
-        return (
-          <Typography variant="body1">
-            Successfully logged in as {coachInfo.name}
-          </Typography>
-        );
-      case loginStatus.LoginFailure:
-        return (
-          <Typography variant="body1" align="left">
-            Something went wrong; we could not update your info currently.
-            Please try again in a few hours, and let us know at{" "}
-            <Link to="mailto:exetermathclub@gmail.com">
-              exetermathclub@gmail.com
-            </Link>{" "}
-            if the issue persists.
-          </Typography>
-        );
-      default:
-        return;
-    }
   };
 
   return (
@@ -132,7 +90,6 @@ const Login = () => {
         </Button>
         <br />
         <br />
-        {renderMessage()}
       </Box>
     </Container>
   );

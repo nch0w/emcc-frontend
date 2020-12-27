@@ -69,9 +69,10 @@ const Dashboard = () => {
     setAuthStatus
   } = useContext(UserContext);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (authStatus === userStatus.UserLoaded) return;
     setLoading(true);
     axios
       .post(emccServerUrl + "/auth/user", {}, { timeout: 10000 })
@@ -594,9 +595,9 @@ const Dashboard = () => {
         >
           <Tab
             value="view-competitors"
-            label="View and Edit Competitors (Teams and Individuals)"
+            label="Edit Competitors (Teams and Individuals)"
           />
-          <Tab value="view-coach-info" label="View and Edit Coach Info" />
+          <Tab value="view-coach-info" label="Edit Coach Info" />
         </Tabs>
       </Paper>
       <br />

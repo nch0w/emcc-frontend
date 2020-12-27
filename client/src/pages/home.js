@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
@@ -10,8 +10,19 @@ import {
   SContent
 } from "../styled_components";
 import { Link } from "@reach/router";
+import { userStatus, UserContext } from "../App";
 
 const Home = () => {
+  const {
+    coachInfo,
+    teams,
+    individuals,
+    setCoachInfo,
+    setTeams,
+    setIndividuals,
+    authStatus,
+    setAuthStatus
+  } = useContext(UserContext);
   return (
     <Box>
       <SHero>
@@ -23,7 +34,10 @@ const Home = () => {
           {contestDate}, Phillips Exeter Academy (remote)
         </SHeroSubheading>
         <SHeroSubheading variant="h6">
-          <Link to="/signup" style={{ color: "white" }}>
+          <Link
+            to={authStatus === userStatus.UserLoaded ? "/dashboard" : "/signup"}
+            style={{ color: "white" }}
+          >
             {contestStatus}
           </Link>
         </SHeroSubheading>

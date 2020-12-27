@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Container, Box, Paper, Typography } from "@material-ui/core";
 import { Tabs, Tab } from "@material-ui/core";
 import { TextField, Button } from "@material-ui/core";
-import MaterialTable from "material-table";
+import MaterialTable, { MTableActions } from "material-table";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import Check from "@material-ui/icons/Check";
@@ -28,8 +28,18 @@ import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
 
 const tableIcons = {
-  Add: AddBox,
-  Check: Check,
+  Add: (props) => (
+    <div>
+      <Button variant="contained" color="primary" style={{ marginRight: 8 }}>
+        + Add
+      </Button>
+    </div>
+  ),
+  Check: (props) => (
+    <Button variant="contained" color="primary">
+      <Check /> Save
+    </Button>
+  ),
   Clear: Clear,
   Delete: DeleteOutline,
   DetailPanel: ChevronRight,
@@ -59,16 +69,26 @@ const Dashboard = () => {
     setAuthStatus
   } = useContext(UserContext);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     axios
-      .post(emccServerUrl + "/auth/user", {}, { timeout: 5000 })
+      .post(emccServerUrl + "/auth/user", {}, { timeout: 10000 })
       .then((response) => {
         setAuthStatus(userStatus.UserLoaded);
         setCoachInfo(response.data.coachInfo);
         setTeams(response.data.teams);
         setIndividuals(response.data.individuals);
+        setLoading(false);
       })
       .catch((error) => {
+        Swal.fire(
+          "Error",
+          "There was an error fetching your data. Please try again later.",
+          "error"
+        );
+        setLoading(false);
         console.log(error);
       });
   }, []);
@@ -237,7 +257,17 @@ const Dashboard = () => {
                 { title: "Student 3", field: "student3" },
                 { title: "Student 4", field: "student4" }
               ]}
+              isLoading={loading}
               data={teams}
+              localization={{
+                body: {
+                  emptyDataSourceMessage:
+                    'No teams added. Click "+ Add" in the upper right.',
+                  editRow: {
+                    deleteText: "Are you sure you want to remove this team?"
+                  }
+                }
+              }}
               editable={{
                 onRowAdd: (newData) =>
                   new Promise((resolve, reject) => {
@@ -348,6 +378,17 @@ const Dashboard = () => {
               icons={tableIcons}
               columns={[{ title: "Student Name", field: "student" }]}
               data={individuals}
+              isLoading={loading}
+              localization={{
+                body: {
+                  emptyDataSourceMessage:
+                    'No individuals added. Click "+ Add" in the upper right.',
+                  editRow: {
+                    deleteText:
+                      "Are you sure you want to remove this individual?"
+                  }
+                }
+              }}
               editable={{
                 onRowAdd: (newData) =>
                   new Promise((resolve, reject) => {

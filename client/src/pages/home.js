@@ -80,9 +80,8 @@ const Home = () => {
           Anyone in 8th grade or below. We accept registration as teams of
           students from the same school or individuals. Teams consist of up to
           four people, so we will combine individuals into teams of four.
-          Competitors aren't limited to just the Northeast or the United States
-          &mdash; in the past, we've hosted students from far away places like
-          China and Illinois.
+          Competitors come from all around the world, and we hope to reach even
+          more students this year due to the online format.
         </Typography>
       </SContent>
     </Box>

@@ -119,7 +119,7 @@ const EMCCNav = ({ authStatus }) => {
       <SNavButton label="Contact" value="/contact" icon={<ContactIcon />} />
 
       {authStatus === userStatus.NoUser ? (
-        <SNavButton label="Sign Up" value="/signup" icon={<SignUpIcon />} />
+        <SNavButton label="Register" value="/signup" icon={<SignUpIcon />} />
       ) : (
         <SNavButton
           label="Dashboard"
@@ -184,14 +184,15 @@ const App = () => {
           <div style={{ marginBottom: 100 }} />
           <footer
             style={{
-              position: "fixed",
+              position: window.screen.availWidth > 600 ? "fixed" : "relative",
               bottom: "0",
               width: "100%",
               backgroundColor: "rgb(140,0,0)",
               padding: "20px",
               color: "#EEEEEE",
               boxShadow: "rgba(0,0,0,0.8) 0px 1px 6px",
-              zIndex: 999999
+              zIndex: 999999,
+              height: window.screen.availWidth > 600 ? "auto" : 80
             }}
           >
             <Typography variant="body">

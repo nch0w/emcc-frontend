@@ -77,6 +77,7 @@ router.post(
 
 router.post("/signup", async (req, res) => {
   const { name, email, password, mail, phone } = req.body;
+  const ip = req.header("x-forwarded-for") || req.connection.remoteAddress;
   if (!name || !email || !password || !mail || !phone) {
     return res.status(400).send("All fields are required.");
   }
@@ -104,7 +105,7 @@ router.post("/signup", async (req, res) => {
 
   const sameIP = await base("Coaches")
     .select({
-      filterByFormula: `{IP} = '${req.ip}'`
+      filterByFormula: `{IP} = '${ip}'`
     })
     .firstPage();
 
@@ -132,7 +133,7 @@ router.post("/signup", async (req, res) => {
             Phone: phone,
             "Email Verification Token": token,
             Session: JSON.stringify([]),
-            IP: req.ip
+            IP: ip
           }
         }
       ]);
@@ -147,7 +148,7 @@ router.post("/signup", async (req, res) => {
             Password: hashedPassword,
             "Email Verification Token": token,
             Session: JSON.stringify([]),
-            IP: req.ip
+            IP: ip
           }
         }
       ]);

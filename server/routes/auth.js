@@ -101,6 +101,20 @@ router.post("/signup", async (req, res) => {
         "This email address is already in use. If you have forgotten your password, please contact exetermathclub@gmail.com"
       );
   }
+
+  const sameIP = await base("Coaches")
+    .select({
+      filterByFormula: `{IP} = '${req.ip}'`
+    })
+    .firstPage();
+
+  if (sameIP.length >= 5) {
+    return res
+      .status(400)
+      .send(
+        "Too many signups have been made on this IP address. If you need help, please contact exetermathclub@gmail.com"
+      );
+  }
   const hashedPassword = bcrypt.hashSync(password, 10);
 
   const token = genVerifyToken();
@@ -117,7 +131,8 @@ router.post("/signup", async (req, res) => {
             Address: mail,
             Phone: phone,
             "Email Verification Token": token,
-            Session: JSON.stringify([])
+            Session: JSON.stringify([]),
+            IP: req.ip
           }
         }
       ]);
@@ -131,7 +146,8 @@ router.post("/signup", async (req, res) => {
             Phone: phone,
             Password: hashedPassword,
             "Email Verification Token": token,
-            Session: JSON.stringify([])
+            Session: JSON.stringify([]),
+            IP: req.ip
           }
         }
       ]);

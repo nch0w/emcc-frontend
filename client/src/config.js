@@ -107,7 +107,7 @@ export const ContactInfo = () => {
               <a href="mailto:exetermathclub@gmail.com">
                 exetermathclub@gmail.com
               </a>
-              .
+              . Do not contact the people below unless there is an emergency.
             </Typography>
           </CardContent>
         </Card>

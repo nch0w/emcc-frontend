@@ -383,7 +383,7 @@ const Dashboard = () => {
               localization={{
                 body: {
                   emptyDataSourceMessage:
-                    'No individuals added. Click "+ Add" in the upper right.',
+                    'No individuals added. Click "+ Add" in the upper right. Do not add students who are already on a team.',
                   editRow: {
                     deleteText:
                       "Are you sure you want to remove this individual?"

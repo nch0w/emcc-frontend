@@ -90,10 +90,11 @@ const Home = () => {
         <br />
         <Typography variant="body1">
           Anyone in 8th grade or below. We accept registration as teams of
-          students from the same school or individuals. Teams consist of up to
-          four people, so we will combine individuals into teams of four.
-          Competitors come from all around the world, and we hope to reach even
-          more students this year due to the online format.
+          students from the same school or different schools, or individuals.
+          Teams consist of up to four people, so we will combine individuals
+          into teams of four unless we are requested not to. Competitors come
+          from all around the world, and we hope to reach even more students
+          this year due to the online format.
         </Typography>
       </SContent>
     </Box>

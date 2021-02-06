@@ -35,8 +35,12 @@ export const contestDate = "February 20, 2021";
 
 // the status of the contest in question
 // export const contestStatus = "EMCC 2021 is not yet accepting registrations.";
-export const contestStatus =
-  "Registration for EMCC 2021 is free and open! Due Feb. 13";
+export const contestStatus = () => (
+  <div>
+    {"Registration for EMCC 2021 is closing soon! Due"} <b>Feb. 9</b>{" "}
+    {"(earlier than previously mentioned)."}
+  </div>
+);
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Early registration ends ' + earlyRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Late registration ends ' + lateRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is closed! We look forward to seeing you at the contest.'

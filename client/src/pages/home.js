@@ -36,7 +36,7 @@ const Home = () => {
             to={authStatus === userStatus.UserLoaded ? "/dashboard" : "/signup"}
             style={{ color: "white" }}
           >
-            {contestStatus}
+            {contestStatus()}
           </Link>
         </SHeroSubheading>
       </SHero>

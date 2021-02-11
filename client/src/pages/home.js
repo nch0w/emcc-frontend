@@ -32,12 +32,12 @@ const Home = () => {
         </SHeroSubheading>
         <SHeroSubheading variant="h5">{contestDate}, Online</SHeroSubheading>
         <SHeroSubheading variant="h6">
-          <Link
+          {/* <Link
             to={authStatus === userStatus.UserLoaded ? "/dashboard" : "/signup"}
             style={{ color: "white" }}
-          >
-            {contestStatus()}
-          </Link>
+          > */}
+          {contestStatus()}
+          {/* </Link> */}
         </SHeroSubheading>
       </SHero>
       <br />

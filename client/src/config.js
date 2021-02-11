@@ -37,8 +37,16 @@ export const contestDate = "February 20, 2021";
 // export const contestStatus = "EMCC 2021 is not yet accepting registrations.";
 export const contestStatus = () => (
   <div>
-    {"Registration for EMCC 2021 is closing soon! Due"} <b>Feb. 9</b>{" "}
-    {"(earlier than previously mentioned)."}
+    {
+      "Registration for EMCC 2021 is closed. If you need to update your registration, contact "
+    }{" "}
+    <a href="mailto:exetermathclub@gmail.com" style={{ color: "white" }}>
+      exetermathclub@gmail.com
+    </a>
+    .
+    {
+      " We will be sending the Coaches' Packet and more information about the contest soon."
+    }
   </div>
 );
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Early registration ends ' + earlyRegistrationDeadline + '.'

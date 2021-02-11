@@ -14,5 +14,7 @@ module.exports = {
   maxIndivsPerCoach: -1,
   maxTeamsPerCoach: -1,
   minTeamMembersPerTeam: 2,
-  maxTeamMembersPerTeam: 4
+  maxTeamMembersPerTeam: 4,
+
+  registrationClosed: true
 };

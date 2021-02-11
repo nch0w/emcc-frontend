@@ -585,7 +585,12 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <SHeading variant="h2">Dashboard</SHeading>
+      <SHeading variant="h2">
+        Dashboard <br />
+        <SHeading variant="h6">
+          (View only - online registration is closed)
+        </SHeading>
+      </SHeading>
       <Paper elevation={3}>
         <Tabs
           value={activeTab}

@@ -1,7 +1,11 @@
 const router = require("express").Router();
 const base = require("airtable").base("appOCNJ0BSbzHwTF3");
 const updateUser = require("../middleware/updateUser");
-const { minTeamMembersPerTeam, maxTeamsPerCoach } = require("../config");
+const {
+  minTeamMembersPerTeam,
+  maxTeamsPerCoach,
+  registrationClosed
+} = require("../config");
 
 router.post(
   "/update-coach-info",
@@ -35,7 +39,14 @@ router.post(
 router.post(
   "/update-team",
   async (req, res, next) => {
-    // same endpoint fot both adding and updating a team
+    if (registrationClosed)
+      return res
+        .status(400)
+        .send(
+          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
+        );
+
+    // same endpoint for both adding and updating a team
     // if id is not provided, assume we are adding a team
     const { name, student1, student2, student3, student4, id } = req.body;
 
@@ -158,6 +169,13 @@ router.post(
 router.post(
   "/delete-competitor",
   async (req, res, next) => {
+    if (registrationClosed)
+      return res
+        .status(400)
+        .send(
+          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
+        );
+
     const { id } = req.body;
     if (!req.user) {
       return res.status(400).send("Not authenticated. Please log in again.");
@@ -183,6 +201,13 @@ router.post(
 router.post(
   "/update-indiv",
   async (req, res, next) => {
+    if (registrationClosed)
+      return res
+        .status(400)
+        .send(
+          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
+        );
+
     const { student, id } = req.body;
 
     if (!req.user || !req.user.fields["Email Verified"]) {

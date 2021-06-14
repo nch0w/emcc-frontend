@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { COMPETITOR_SHEET_ID, GOOGLE_API_CREDENTIALS } = require("../env");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
-const scoresMail = require("../mail/scores");
+const participationMail = require("../mail/participationCertificate");
 
 const doc = new GoogleSpreadsheet(COMPETITOR_SHEET_ID);
 doc.useServiceAccountAuth(GOOGLE_API_CREDENTIALS);
@@ -116,27 +116,11 @@ async function run() {
   //   console.log(coaches["monaksehgal@gmail.com"].teams);
   Object.keys(coaches).forEach(async (coachID, i) => {
     if (!coachID || !coachID.length || coachID === "BACKUP") return;
-    // console.log(coachID);
-
-    // if (
-    //   coaches[coachID].indiv_teams.length &&
-    //   coaches[coachID].individuals.length &&
-    //   coaches[coachID].teams.length
-    // ) {
-    //   console.log(coachID);
-    // }
-
-    // if (coachID === "deborah.jasper@edison.k12.nj.us") {
-    //   console.log(coaches[coachID]);
-    //   console.log(coaches[coachID].individuals);
-    // }
-
     try {
-      // console.log(coachID);
-      if (coachID === "zhen.chen.04@gmail.com") {
+      if (coachID === "jkvann0828@yahoo.com") {
         console.log(coachID);
-        await scoresMail(coachID, coaches[coachID]);
-        // await scoresMail("nchowdhury@exeter.edu", coaches[coachID]);
+        // await participationMail(coachID, coaches[coachID]);
+        await participationMail("nchowdhury@exeter.edu", coaches[coachID]);
       }
     } catch (err) {
       console.log(err);
@@ -145,5 +129,5 @@ async function run() {
 }
 
 // DONT RUN AGAIN
-run();
+// run();
 //

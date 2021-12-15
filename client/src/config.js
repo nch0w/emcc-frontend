@@ -30,25 +30,25 @@ import { SHeading, SContentHeading } from "./styled_components";
 // it's the one that changes from year to year
 
 // contest year and date
-export const contestYear = 2021;
-export const contestDate = "February 20, 2021";
+export const contestYear = 2022;
+export const contestDate = "January 29, 2022";
 
 // the status of the contest in question
-// export const contestStatus = "EMCC 2021 is not yet accepting registrations.";
-export const contestStatus = () => (
-  <div>
-    {
-      "Registration for EMCC 2021 is closed. If you need to update your registration, contact "
-    }{" "}
-    <a href="mailto:exetermathclub@gmail.com" style={{ color: "white" }}>
-      exetermathclub@gmail.com
-    </a>
-    .
-    {
-      " We will be sending the Coaches' Packet and more information about the contest soon."
-    }
-  </div>
-);
+export const contestStatus = `EMCC ${contestYear} is not yet accepting registrations. Please stay tuned for details.`;
+// export const contestStatus = () => (
+//   <div>
+//     {
+//       "Registration for EMCC 2021 is closed. If you need to update your registration, contact "
+//     }{" "}
+//     <a href="mailto:exetermathclub@gmail.com" style={{ color: "white" }}>
+//       exetermathclub@gmail.com
+//     </a>
+//     .
+//     {
+//       " We will be sending the Coaches' Packet and more information about the contest soon."
+//     }
+//   </div>
+// );
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Early registration ends ' + earlyRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Late registration ends ' + lateRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is closed! We look forward to seeing you at the contest.'
@@ -85,25 +85,25 @@ const contactInfoStyles = makeStyles({
 
 const members = [
   {
-    name: "Yunseo Choi",
-    email: "ychoi@exeter.edu",
+    name: "TBA",
+    email: "TBA",
     role: "Tournament Director"
-  },
-  {
-    name: "Thomas Guo",
-    email: "tguo@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Honglin Zhu",
-    email: "hzhu2@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Neil Chowdhury",
-    email: "nchowdhury@exeter.edu",
-    role: "Registrations"
   }
+  // {
+  //   name: "Thomas Guo",
+  //   email: "tguo@exeter.edu",
+  //   role: "Tournament Director"
+  // },
+  // {
+  //   name: "Honglin Zhu",
+  //   email: "hzhu2@exeter.edu",
+  //   role: "Tournament Director"
+  // },
+  // {
+  //   name: "Neil Chowdhury",
+  //   email: "nchowdhury@exeter.edu",
+  //   role: "Registrations"
+  // }
 ];
 
 // names, emails, and picture locations of the current EMCC directors and web/registration guy

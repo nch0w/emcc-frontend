@@ -587,9 +587,9 @@ const Dashboard = () => {
     <Container>
       <SHeading variant="h2">
         Dashboard <br />
-        <SHeading variant="h6">
+        {/* <SHeading variant="h6">
           (View only - online registration is closed)
-        </SHeading>
+        </SHeading> */}
       </SHeading>
       <Paper elevation={3}>
         <Tabs

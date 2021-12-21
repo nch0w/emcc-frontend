@@ -34,7 +34,7 @@ export const contestYear = 2022;
 export const contestDate = "January 29, 2022";
 
 // the status of the contest in question
-export const contestStatus = `EMCC ${contestYear} is not yet accepting registrations. Please stay tuned for details.`;
+export const contestStatus = `Registration for EMCC ${contestYear} is now open! Registration ends on January 22, ${contestYear}.`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -49,6 +49,7 @@ export const contestStatus = `EMCC ${contestYear} is not yet accepting registrat
 //     }
 //   </div>
 // );
+// export const contestStatus = `EMCC ${contestYear} is not yet accepting registrations. Please stay tuned for details.`;
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Early registration ends ' + earlyRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is now open! Late registration ends ' + lateRegistrationDeadline + '.'
 // export const contestStatus = 'Registration for EMCC 2021 is closed! We look forward to seeing you at the contest.'

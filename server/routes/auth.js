@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const base = require("airtable").base("appOCNJ0BSbzHwTF3");
+const base = require("airtable").base("appbYCJZl5hVES98p");
 const crypto = require("crypto");
 const updateUser = require("../middleware/updateUser");
 const signUpMail = require("../mail/signup");

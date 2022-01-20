@@ -194,15 +194,15 @@ export const ContestSchedule = () => {
           </TableHead>
           <TableBody>
             <TableRow>
-              <NoBorderTableCell>10:00-11:00am</NoBorderTableCell>
+              <NoBorderTableCell>10:00 am - 11:00 am</NoBorderTableCell>
               <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>11:00am-12:30pm</NoBorderTableCell>
+              <NoBorderTableCell>11:00 am - 12:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Individual Rounds</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>12:30 pm - 1:15pm</NoBorderTableCell>
+              <NoBorderTableCell>12:30 pm - 1:15 pm</NoBorderTableCell>
               <NoBorderTableCell>
                 Break / Lunch for EST students
               </NoBorderTableCell>
@@ -232,7 +232,13 @@ export const ContestSchedule = () => {
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>6:00 pm - 8:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>6:00 pm - 6:30 pm</NoBorderTableCell>
+              <NoBorderTableCell>
+                Girls/Non-Binary People in Math Panel
+              </NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>6:30 pm - 8:00 pm</NoBorderTableCell>
               <NoBorderTableCell>Break/Dinner</NoBorderTableCell>
             </TableRow>
             <TableRow>

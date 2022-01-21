@@ -69,7 +69,7 @@ const Contest = () => {
         </ul>
         <Typography variant="body1">
           <span style={{ color: "green" }}>
-            New for the remote format: All answers will be positive integers.
+            New for the remote format: All answers will be integers.
           </span>
         </Typography>
         <br />

@@ -86,25 +86,35 @@ const contactInfoStyles = makeStyles({
 
 const members = [
   {
-    name: "TBA",
-    email: "TBA",
+    name: "Kevin Cong",
+    email: "kcong@exeter.edu",
     role: "Tournament Director"
+  },
+  {
+    name: "Lucy Xiao",
+    email: "axiao@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Neil Chowdhury",
+    email: "nchowdhury@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Jacob David",
+    email: "jdavid@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Eric Yang",
+    email: "eyang@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Anish Mudide",
+    email: "amudide@exeter.edu",
+    role: "Registrations"
   }
-  // {
-  //   name: "Thomas Guo",
-  //   email: "tguo@exeter.edu",
-  //   role: "Tournament Director"
-  // },
-  // {
-  //   name: "Honglin Zhu",
-  //   email: "hzhu2@exeter.edu",
-  //   role: "Tournament Director"
-  // },
-  // {
-  //   name: "Neil Chowdhury",
-  //   email: "nchowdhury@exeter.edu",
-  //   role: "Registrations"
-  // }
 ];
 
 // names, emails, and picture locations of the current EMCC directors and web/registration guy

@@ -81,5 +81,5 @@ yarn --cwd server add {package}
 In `client/` (run from root directory)
 
 ```
-yarn --cwd server add {package}
+yarn --cwd client add {package}
 ```

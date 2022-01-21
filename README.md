@@ -69,3 +69,17 @@ Nginx files are located at `/etc/nginx`.
 These are used for mailing and automated tasks.
 
 - `node scripts/coachEmails.js`: lists all coach emails. Useful for mass emailing coaches, but make sure to BCC.
+
+## Installing new npm packages
+
+In `server/` (run from root directory)
+
+```
+yarn --cwd server add {package}
+```
+
+In `client/` (run from root directory)
+
+```
+yarn --cwd server add {package}
+```

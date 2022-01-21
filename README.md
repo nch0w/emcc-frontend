@@ -18,6 +18,11 @@ yarn dev
 
 ## Deploy (run these commands on the server)
 
+Enter the project directory
+```
+cd emcc-frontend
+```
+
 Pull from github
 
 ```

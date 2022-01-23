@@ -2,10 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 // import routes
+const gutsgrading = require("./scripts/gutsGrading");
 const authRoute = require("./routes/auth");
 const registrationRoute = require("./routes/registration");
 const userMiddleware = require("./middleware/fetchUser");
@@ -22,4 +26,36 @@ app.use(userMiddleware);
 app.use("/api/auth", authRoute);
 app.use("/api/registration", registrationRoute);
 
-app.listen(3001, () => console.log(`Up and running on port 3001`));
+io.on("connection", (socket) => {
+  console.log("a user connected");
+  socket.on("disconnect", (reason) => {
+    console.log("user disconnected");
+  });
+  socket.on("room", (data) => {
+    console.log("room join");
+    console.log(data);
+    socket.join(data.room);
+  });
+  socket.on("room", (data) => {
+    console.log("room join");
+    console.log(data);
+    socket.join(data.room);
+  });
+  socket.on("leave room", (data) => {
+    console.log("leaving room");
+    console.log(data);
+    socket.leave(data.room);
+  });
+  const a = async () => {
+    console.log("a");
+  };
+  setTimeout(a, 10);
+  setTimeout(async function () {
+    let data = await gutsgrading();
+    socket.broadcast.emit("data transfer", data);
+  }, 10);
+});
+
+server.listen(3001, () => {
+  console.log("listening on *:3001");
+});

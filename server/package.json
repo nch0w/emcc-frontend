@@ -20,6 +20,7 @@
     "google-spreadsheet": "^3.1.15",
     "lodash": "^4.17.20",
     "nodemailer": "^6.4.17",
-    "pdf-lib": "^1.16.0"
+    "pdf-lib": "^1.16.0",
+    "socket.io": "^4.4.1"
   }
 }

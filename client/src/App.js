@@ -28,6 +28,7 @@ import Travel from "./pages/travel";
 import Contact from "./pages/contact";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
+import Guts from "./pages/guts";
 import Dashboard from "./pages/dashboard";
 import Payment from "./pages/payment";
 import axios from "axios";
@@ -176,6 +177,7 @@ const App = () => {
             <Travel path="/travel" />
             <Contact path="/contact" />
             <Login path="/login" />
+            <Guts path="/guts" />
             <SignUp path="/signup" />
             <PrivateRoute as={Dashboard} path="/dashboard" />
             <Payment path="/payment" />

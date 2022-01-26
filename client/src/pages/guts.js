@@ -12,12 +12,8 @@ const Guts = () => {
   const [importData, setImportData] = useState([]);
   useEffect(() => {
     console.log("connecting to network");
-    socket.emit("room", { room: "global-room" });
     return () => {
       console.log("disconnecting from network");
-      socket.emit("leave room", {
-        room: "global-room"
-      });
     };
   });
   useEffect(() => {
@@ -35,7 +31,7 @@ const Guts = () => {
           What is EMCC?
         </Typography>
         <br />
-        <Typography variant="body1">
+        {
           <div
             style={{
               display: "flex",
@@ -91,7 +87,7 @@ const Guts = () => {
                 <div style={{ width: "400px", flexGrow: "1" }}></div>
               ))}
           </div>
-        </Typography>
+        }
       </SContent>
     </Box>
   );

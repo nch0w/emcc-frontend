@@ -12,7 +12,7 @@ const Contest = () => {
 
       <SContent>
         <Typography variant="body1">
-          Please join our Discord to receive contest announcements. Link:{" "}
+          Please join our Discord to receive contest announcements:{" "}
           <a href="https://tinyurl.com/emcc22">https://tinyurl.com/emcc22</a>.
         </Typography>
         <br />

@@ -41,7 +41,7 @@ function run() {
             record.fields["Competitors"].length
           ) {
             // console.log("Retrieved", record.get("Email"));
-            if (record.fields["Email"] === "danplo@bergen.org") {
+            if (record.fields["Email"] === "Qingchang118@yahoo.com") {
               const teams = [];
               const individuals = [];
               const competitors = await base("Competitors")

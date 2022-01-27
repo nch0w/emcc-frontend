@@ -34,34 +34,35 @@ function run() {
             record.fields["Competitors"].length
           ) {
             // console.log("Retrieved", record.get("Email"));
-              const teams = [];
-              const individuals = [];
-              const competitors = await base("Competitors")
-                .select({
-                  filterByFormula: `{Coach Email} = '${record.fields["Email"]}'`
-                })
-                .firstPage();
+            //if (record.fields["Email"] === "Qingchang118@yahoo.com") {
+            const teams = [];
+            const individuals = [];
+            const competitors = await base("Competitors")
+              .select({
+                filterByFormula: `{Coach Email} = '${record.fields["Email"]}'`
+              })
+              .firstPage();
 
-              for (let competitor of competitors) {
-                if (competitor.fields.Individual) {
-                  individuals.push({
-                    id: competitor.id,
-                    student: competitor.fields["Student 1"]
-                  });
-                } else {
-                  teams.push({
-                    id: competitor.id,
-                    name: competitor.fields.Name,
-                    student1: competitor.fields["Student 1"],
-                    student2: competitor.fields["Student 2"],
-                    student3: competitor.fields["Student 3"],
-                    student4: competitor.fields["Student 4"]
-                  });
-                }
+            for (let competitor of competitors) {
+              if (competitor.fields.Individual) {
+                individuals.push({
+                  id: competitor.id,
+                  student: competitor.fields["Student 1"]
+                });
+              } else {
+                teams.push({
+                  id: competitor.id,
+                  name: competitor.fields.Name,
+                  student1: competitor.fields["Student 1"],
+                  student2: competitor.fields["Student 2"],
+                  student3: competitor.fields["Student 3"],
+                  student4: competitor.fields["Student 4"]
+                });
               }
-              console.log(record.get("Email"));
-              // await competitorsMail(record.fields.Email, teams, individuals);
-              // await competitorsMail("nchowdhury@exeter.edu", teams, individuals);
+            }
+            console.log(record.get("Email"));
+            // await competitorsMail(record.fields.Email, teams, individuals);
+            // await competitorsMail("nchowdhury@exeter.edu", teams, individuals);
           }
         });
 

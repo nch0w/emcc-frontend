@@ -26,35 +26,30 @@ app.use(userMiddleware);
 app.use("/api/auth", authRoute);
 app.use("/api/registration", registrationRoute);
 
+let visitors = [];
+let cachedData = [];
+
 io.on("connection", (socket) => {
   console.log("a user connected");
+  socket.emit("data transfer", cachedData);
   socket.on("disconnect", (reason) => {
     console.log("user disconnected");
   });
-  socket.on("room", (data) => {
-    console.log("room join");
-    console.log(data);
-    socket.join(data.room);
-  });
-  socket.on("room", (data) => {
-    console.log("room join");
-    console.log(data);
-    socket.join(data.room);
-  });
-  socket.on("leave room", (data) => {
-    console.log("leaving room");
-    console.log(data);
-    socket.leave(data.room);
-  });
-  const a = async () => {
-    console.log("a");
-  };
-  setTimeout(a, 10);
-  setTimeout(async function () {
-    let data = await gutsgrading();
-    socket.broadcast.emit("data transfer", data);
-  }, 10);
+  visitors.push(socket);
 });
+setTimeout(async function () {
+  let data = await gutsgrading();
+  cachedData = data;
+  for (let i = 0; i < visitors.length; i++) {
+    visitors[i].emit("data transfer", data);
+  }
+}, 10);
+setInterval(async function () {
+  let data = await gutsgrading();
+  for (let i = 0; i < visitors.length; i++) {
+    visitors[i].emit("data transfer", data);
+  }
+}, 30000);
 
 server.listen(3001, () => {
   console.log("listening on *:3001");

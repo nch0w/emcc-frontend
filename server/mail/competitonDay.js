@@ -9,35 +9,53 @@ async function indivMail(emailAddress, competitors) {
     html: `
     Hello Coaches, 
     <br /> <br />
-    Competition day is tomorrow, Feb 20!
+    Competition day is in three days, on Jan 29!
 
     <br /> <br />
 
-    Please share the following information with your teams and individuals before the contest. They will need it to submit answers:
+    Please share the following information with your teams and individuals before the contest and do not share them with anyone else. They will need it to submit answers:
     <br /> <br />
     ${competitors.teams
       .map(
         (team) =>
-          `Team ${team.name} consisting of ${team.students.join(
+          `Team <b>${team.name}</b> consisting of <b>${team.students.join(
             ", "
-          )} has Team ID ${team.id}.`
+          )}</b> has Team ID <b>${team.id}</b>.`
       )
       .join("<br />")}
-   <br /><br />
+   ${competitors.teams.length ? "<br />" : ""}${
+      competitors.teams.length ? "<br />" : ""
+    }
    ${competitors.individuals
      .map(
-       (indiv) => `Your student ${indiv.name} has Individual ID ${indiv.id}.`
+       (indiv) =>
+         `Your student <b>${indiv.name}</b> has Individual ID <b>${indiv.id}</b>.`
      )
      .join("<br />")}
-    <br /><br />
+    ${competitors.individuals.length ? "<br />" : ""}${
+      competitors.individuals.length ? "<br />" : ""
+    }
+    ${competitors.indiv_teams
+      .map(
+        (team) =>
+          `You have students on Team <b>${
+            team.name
+          }</b> consisting of <b>${team.students.join(
+            ", "
+          )}</b> with Team ID <b>${
+            team.id
+          }</b>. Here are the emails of all coaches with students on this team: <b>${team.coaches.join(
+            ", "
+          )}</b>. Please reach out to the other coaches. On our discord server there will be a voice channel to facilitate communication between members of an individual team.`
+      )
+      .join("<br />")}
+     ${competitors.indiv_teams.length ? "<br />" : ""}${
+      competitors.indiv_teams.length ? "<br />" : ""
+    }
 
-    The opening ceremony will be held on <b> February 20th</b> at <b> 10:00 AM, EST. </b> The zoom link for the opening ceremony is: https://exeter.zoom.us/j/93208198357 <br />
-    <br />
+    On competition day after the opening ceremony, students should join a zoom meeting with their assigned student leader and proctors. To find a student's assigned zoom room, take the first digit of their student id (e.g. S12345678 -> 1), and find the corresponding zoom link in this google sheet: <a href='https://tinyurl.com/emccproctor'>https://tinyurl.com/emccproctor</a>.</br>
 
-    The schedule for the entire day can be found at exetermathclub.com/contest. <br /><br />The zoom link for the Student Panel is: https://exeter.zoom.us/j/97754808349<br /><br />
-    The zoom link for the Closing Ceremony is: https://exeter.zoom.us/j/99735131880<br /><br />The zoom link where your team will be proctored can be found on <a href="https://docs.google.com/spreadsheets/d/1D7Xwo4-RN39PC7A0o92mHQ-CQg-9Dm2XdhBiDrD2gAE/edit#gid=914552807">this sheet</a>. All students must join this zoom meeting <b> by 11:00 AM EST. </b>
-    <br /><br />
-    As a reminder, please join the discord at https://discord.gg/RCafkSRw <br />
+    As a reminder, please join the discord at <a href="https://tinyurl.com/emcc22">https://tinyurl.com/emcc22</a> <br />
     <br />
     Please email exetermathclub@gmail.com with any questions or clarifications. <br />
     <br />

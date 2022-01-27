@@ -13,28 +13,56 @@ function ds() {
   //nonzero digit
   return Math.floor(Math.random() * 9) + 1;
 }
+function dr(allowed_digits) {
+  //restricted digit
+  return allowed_digits[Math.floor(Math.random() * allowed_digits.length)];
+}
 
 const usedIDs = new Set([""]);
+const duplicateCheck = new Set([""]);
+let pseudoBag = [1, 2, 3, 4, 5, 6, 7, 8];
+let pseudoBagTeam = [1, 2, 3, 4, 5, 6, 7, 8];
+let defaultBag = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+let pseudoIndex = 0;
+let pseudoIndexTeam = 0;
 
 function genIndivID() {
   let id = "";
+  if (pseudoIndex % 8 == 0) {
+    pseudoBag.sort(() => (Math.random() > 0.5 ? 1 : -1));
+  }
   while (usedIDs.has(id)) {
-    id = `${ds()}1${d()}3${d()}${d()}${d()}4${d()}`;
+    id = `S${pseudoBag[pseudoIndex % 8]}${d()}${dr([1, 3, 4, 8])}${dr([
+      2,
+      5,
+      6,
+      7
+    ])}${dr([0, 2, 8, 9])}${dr([0, 1, 5, 6])}${d()}${d()}`;
   }
   usedIDs.add(id);
+  pseudoIndex += 1;
   return id;
 }
 
 function genTeamID() {
   let id = "";
+  if (pseudoIndexTeam % 8 == 0) {
+    pseudoBagTeam.sort(() => (Math.random() > 0.5 ? 1 : -1));
+  }
   while (usedIDs.has(id)) {
-    id = `${ds()}4${d()}${d()}9${d()}1${d()}${d()}`;
+    id = `T${pseudoBagTeam[pseudoIndexTeam % 8]}${d()}${dr([2, 4, 8, 9])}${dr([
+      0,
+      1,
+      4,
+      5
+    ])}${dr([0, 6, 8, 9])}${dr([2, 3, 7, 8])}${d()}${d()}`;
   }
   usedIDs.add(id);
+  pseudoIndexTeam += 1;
   return id;
 }
 
-async function run() {
+async function run(genTeam, genIndiv) {
   let all_teams = [];
   let all_stud = [];
 
@@ -80,6 +108,7 @@ async function run() {
           coachEmail: team["Coach Email"],
           id
         });
+        duplicateCheck.add(team[n]);
         newTeam.members.push({
           name: team[n],
           id
@@ -94,25 +123,29 @@ async function run() {
   const individuals = await individualSheet.getRows();
   individuals.forEach((indiv) => {
     if (indiv["Student"] && indiv["Student"].length) {
-      const id = genIndivID();
-      all_stud.push({
-        name: indiv["Student"],
-        coachEmail: indiv["Coach Email"],
-        id
-      });
-      if (indiv["Team"] && indiv["Team"].length) {
-        const t = indiv["Team"];
-        if (!(t in all_indiv_teams)) {
-          all_indiv_teams[t] = {
-            name: `Individual ${t}`,
-            id: genTeamID(),
-            members: [],
-            email: ""
-          };
-        }
+      if (!duplicateCheck.has(indiv["Student"])) {
+        const id = genIndivID();
+        all_stud.push({
+          name: indiv["Student"],
+          coachEmail: indiv["Coach Email"],
+          id
+        });
+        if (indiv["Team"] && indiv["Team"].length) {
+          const t = indiv["Team"];
+          if (!(t in all_indiv_teams)) {
+            all_indiv_teams[t] = {
+              name: `Individual ${t}`,
+              id: genTeamID(),
+              members: [],
+              email: ""
+            };
+          }
 
-        all_indiv_teams[t].members.push({ name: indiv["Student"], id });
-        all_indiv_teams[t].email += `${indiv["Coach Email"]}; `;
+          all_indiv_teams[t].members.push({ name: indiv["Student"], id });
+          all_indiv_teams[t].email += `${indiv["Coach Email"]}; `;
+        }
+      } else {
+        console.log("Duplicate student: " + indiv["Student"]);
       }
     }
   });
@@ -152,9 +185,13 @@ async function run() {
     return retTeam;
   });
 
-  await indivIDSheet.addRows(indiv_id);
-  await indivTeamIDSheet.addRows(indiv_team_id);
-  await teamIDSheet.addRows(team_id);
+  if (genTeam) {
+    await indivIDSheet.addRows(indiv_id);
+    await teamIDSheet.addRows(team_id);
+  }
+  if (genIndiv) {
+    await indivTeamIDSheet.addRows(indiv_team_id);
+  }
 
   //   console.log(indiv_team_id[0]);
   //   await indivIDSheet;
@@ -173,4 +210,4 @@ async function run() {
 }
 
 // DONT RUN AGAIN!
-//run();
+//run(false, false);

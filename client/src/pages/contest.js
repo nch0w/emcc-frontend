@@ -11,10 +11,7 @@ const Contest = () => {
       <SHeading variant="h2">Contest Information</SHeading>
 
       <SContent>
-        <Typography variant="body1">
-          Detailed information is also available in the {contestYear} Coaches'
-          Packet, which will be handed out during registration.
-        </Typography>
+        <Typography variant="body1"></Typography>
         <br />
 
         <ContestSchedule />

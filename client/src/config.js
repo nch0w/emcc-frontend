@@ -34,7 +34,7 @@ export const contestYear = 2022;
 export const contestDate = "January 29, 2022";
 
 // the status of the contest in question
-export const contestStatus = `Registration has been temporarily extended to January 24, ${contestYear}.`;
+export const contestStatus = `Registration has now closed.`;
 // export const contestStatus = () => (
 //   <div>
 //     {

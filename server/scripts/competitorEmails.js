@@ -10,14 +10,8 @@ const readline = require("readline").createInterface({
 readline.question(
   "This will send an email to all the coaches. Type 'YES` to confirm: ",
   (password) => {
-    if (
-      password === "YES" ||
-      password === "yes" ||
-      password === "Yes" ||
-      password === "Y" ||
-      password === "y"
-    ) {
-      run();
+    if (password === "YES") {
+      // run();
       readline.close();
     } else {
       process.exit(1);
@@ -26,7 +20,6 @@ readline.question(
 );
 
 function run() {
-  let work = true;
   base("Coaches")
     .select({
       maxRecords: 1000
@@ -68,9 +61,8 @@ function run() {
                 }
               }
               console.log(record.get("Email"));
-              //await competitorsMail(record.fields.Email, teams, individuals);
-              await competitorsMail("abu@exeter.edu", teams, individuals);
-            }
+              // await competitorsMail(record.fields.Email, teams, individuals);
+              // await competitorsMail("nchowdhury@exeter.edu", teams, individuals);
           }
         });
 

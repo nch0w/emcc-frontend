@@ -200,16 +200,23 @@ export const ContestSchedule = () => {
             <TableRow>
               <TableCell>Time (EST)</TableCell>
               <TableCell>Event</TableCell>
+              <TableCell>Zoom Link</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
               <NoBorderTableCell>10:00 am - 11:00 am</NoBorderTableCell>
               <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
+              <NoBorderTableCell>
+                https://exeter.zoom.us/j/96428245038
+              </NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>11:00 am - 12:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Individual Rounds</NoBorderTableCell>
+              <NoBorderTableCell>
+                See https://tinyurl.com/emccproctor
+              </NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>12:30 pm - 1:15 pm</NoBorderTableCell>
@@ -220,6 +227,9 @@ export const ContestSchedule = () => {
             <TableRow>
               <NoBorderTableCell>1:15 pm - 2:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Team Round</NoBorderTableCell>
+              <NoBorderTableCell>
+                See https://tinyurl.com/emccproctor
+              </NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>2:30 pm - 3:15 pm</NoBorderTableCell>
@@ -230,6 +240,9 @@ export const ContestSchedule = () => {
             <TableRow>
               <NoBorderTableCell>3:15 pm - 4:45 pm</NoBorderTableCell>
               <NoBorderTableCell>Guts Round</NoBorderTableCell>
+              <NoBorderTableCell>
+                See https://tinyurl.com/emccproctor
+              </NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>4:45 pm - 5:00 pm</NoBorderTableCell>
@@ -240,11 +253,17 @@ export const ContestSchedule = () => {
               <NoBorderTableCell>
                 Student Panel: Life at Exeter
               </NoBorderTableCell>
+              <NoBorderTableCell>
+                https://exeter.zoom.us/j/99669323986
+              </NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>6:00 pm - 6:30 pm</NoBorderTableCell>
               <NoBorderTableCell>
                 Girls/Non-Binary People in Math Panel
+              </NoBorderTableCell>
+              <NoBorderTableCell>
+                https://exeter.zoom.us/j/92956108748
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
@@ -254,6 +273,9 @@ export const ContestSchedule = () => {
             <TableRow>
               <NoBorderTableCell>8:00 pm - 9:00 pm</NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
+              <NoBorderTableCell>
+                https://exeter.zoom.us/j/92050381007
+              </NoBorderTableCell>
             </TableRow>
           </TableBody>
         </Table>

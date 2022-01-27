@@ -11,7 +11,10 @@ const Contest = () => {
       <SHeading variant="h2">Contest Information</SHeading>
 
       <SContent>
-        <Typography variant="body1"></Typography>
+        <Typography variant="body1">
+          Please join our Discord to receive contest announcements. Link:{" "}
+          <a href="https://tinyurl.com/emcc22">https://tinyurl.com/emcc22</a>.
+        </Typography>
         <br />
 
         <ContestSchedule />

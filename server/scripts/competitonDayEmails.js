@@ -98,10 +98,10 @@ async function run() {
   //   console.log(coaches["monaksehgal@gmail.com"].teams);
   Object.keys(coaches).forEach(async (coachID, i) => {
     if (!coachID || !coachID.length) return;
-    // if
+    if (coachID !== "xiaoyuan@gmail.com") return;
     console.log(coachID);
     try {
-      await compDayMail(coachID, coaches[coachID]);
+      //await compDayMail(coachID, coaches[coachID]);
       //await compDayMail('abu@exeter.edu', coaches[coachID]);
     } catch (err) {
       console.log(err);

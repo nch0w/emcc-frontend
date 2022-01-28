@@ -10,6 +10,7 @@ const io = new Server(server);
 
 // import routes
 const gutsgrading = require("./scripts/gutsGrading");
+const gutscollect = require("./scripts/formsCollection");
 const authRoute = require("./routes/auth");
 const registrationRoute = require("./routes/registration");
 const userMiddleware = require("./middleware/fetchUser");
@@ -28,6 +29,7 @@ app.use("/api/registration", registrationRoute);
 
 let visitors = [];
 let cachedData = [];
+let schedule = 0;
 
 io.on("connection", (socket) => {
   console.log("a user connected");
@@ -45,11 +47,24 @@ setTimeout(async function () {
   }
 }, 10);
 setInterval(async function () {
-  let data = await gutsgrading();
-  for (let i = 0; i < visitors.length; i++) {
-    visitors[i].emit("data transfer", data);
+  if (schedule == 0) {
+    await gutscollect(0);
+    await gutscollect(1);
+    await gutscollect(2);
+    await gutscollect(3);
+    await gutscollect(4);
+    schedule = 1;
+  } else if (schedule == 1) {
+    await gutscollect(5);
+    await gutscollect(6);
+    await gutscollect(7);
+    let data = await gutsgrading();
+    for (let i = 0; i < visitors.length; i++) {
+      visitors[i].emit("data transfer", data);
+    }
+    schedule = 0;
   }
-}, 30000);
+}, 60000);
 
 server.listen(3001, () => {
   console.log("listening on *:3001");

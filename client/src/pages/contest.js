@@ -12,8 +12,8 @@ const Contest = () => {
 
       <SContent>
         <Typography variant="body1">
-          Detailed information is also available in the {contestYear} Coaches'
-          Packet, which will be handed out during registration.
+          Please join our Discord to receive contest announcements:{" "}
+          <a href="https://tinyurl.com/emcc22">https://tinyurl.com/emcc22</a>.
         </Typography>
         <br />
 

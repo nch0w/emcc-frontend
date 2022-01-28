@@ -220,7 +220,13 @@ export const ContestSchedule = () => {
                 See{" "}
                 <a href="https://tinyurl.com/emccproctor">
                   https://tinyurl.com/emccproctor
+                </a>{" "}
+                <br></br>
+                Teams in China: go to{" "}
+                <a href="https://meeting.tencent.com/dm/Px68nZZv2WNe">
+                  https://meeting.tencent.com/dm/Px68nZZv2WNe
                 </a>
+                .
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
@@ -236,7 +242,13 @@ export const ContestSchedule = () => {
                 See{" "}
                 <a href="https://tinyurl.com/emccproctor">
                   https://tinyurl.com/emccproctor
+                </a>{" "}
+                <br></br>
+                Teams in China: go to{" "}
+                <a href="https://meeting.tencent.com/dm/Px68nZZv2WNe">
+                  https://meeting.tencent.com/dm/Px68nZZv2WNe
                 </a>
+                .
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
@@ -252,7 +264,13 @@ export const ContestSchedule = () => {
                 See{" "}
                 <a href="https://tinyurl.com/emccproctor">
                   https://tinyurl.com/emccproctor
+                </a>{" "}
+                <br></br>
+                Teams in China: go to{" "}
+                <a href="https://meeting.tencent.com/dm/Px68nZZv2WNe">
+                  https://meeting.tencent.com/dm/Px68nZZv2WNe
                 </a>
+                .
               </NoBorderTableCell>
             </TableRow>
             <TableRow>

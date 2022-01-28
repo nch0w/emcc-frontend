@@ -155,6 +155,7 @@ async function grade() {
     team.scores = [0, 0];
     team.tiebreaks = [0, 0, 0];
     team.total = 0;
+    team.gutsProgress = 0;
   });
   let locateStudentID = function (id) {
     for (let student of all_stud) {
@@ -178,7 +179,7 @@ async function grade() {
   speedSubmissions.forEach((submission) => {
     if (submission["Individual ID"] && submission["Individual ID"].length) {
       let student = locateStudentID(submission["Individual ID"]);
-      if (student !== null) {
+      if (student !== null && student.tiebreaks[0] == 0) {
         for (let i = 1; i < 21; i++) {
           if (submission[i + "."] && submission[i + "."].length) {
             if (submission[i + "."] == "" + speedAns[i - 1]) {
@@ -194,7 +195,7 @@ async function grade() {
   accSubmissions.forEach((submission) => {
     if (submission["Individual ID"] && submission["Individual ID"].length) {
       let student = locateStudentID(submission["Individual ID"]);
-      if (student !== null) {
+      if (student !== null && student.tiebreaks[1] == 0) {
         for (let i = 1; i < 11; i++) {
           if (submission[i + "."] && submission[i + "."].length) {
             if (submission[i + "."] == "" + accuracyAns[i - 1]) {
@@ -219,7 +220,7 @@ async function grade() {
   teamSubmissions.forEach((submission) => {
     if (submission["Team ID"] && submission["Team ID"].length) {
       let team = locateTeamID(submission["Team ID"]);
-      if (team !== null) {
+      if (team !== null && team.tiebreaks[0] == 0) {
         for (let i = 1; i < 16; i++) {
           if (submission[i + "."] && submission[i + "."].length) {
             if (submission[i + "."] == "" + teamAns[i - 1]) {
@@ -244,7 +245,8 @@ async function grade() {
     gutsSubmissions[round].forEach((submission) => {
       if (submission["Team ID"] && submission["Team ID"].length) {
         let team = locateTeamID(submission["Team ID"]);
-        if (team != null) {
+        if (team != null && team.gutsProgress == round) {
+          team.gutsProgress += 1;
           for (let i = 3 * round + 1; i < 3 * round + 4; i++) {
             if (submission[i + "."] && submission[i + "."].length) {
               if (submission[i + "."].trim() == "" + gutsAns[i - 1]) {

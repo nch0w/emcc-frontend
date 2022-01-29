@@ -8,59 +8,21 @@ doc.useServiceAccountAuth(GOOGLE_API_CREDENTIALS);
 async function grade() {
   let all_teams = [];
   let all_stud = [];
-  let speedAns = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20
-  ];
-  let accuracyAns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  let teamAns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  let gutsAns = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24
-  ];
-  let gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
 
   await doc.loadInfo();
+  // load answer key
+  const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
+  const answerKeyRows = await answerKeySheet.getRows();
+  const speedAns = _.range(1, 21).map((n) =>
+    parseInt(answerKeyRows[0][`${n}`])
+  );
+  const accuracyAns = _.range(1, 11).map((n) =>
+    parseInt(answerKeyRows[1][`${n}`])
+  );
+  const teamAns = _.range(1, 16).map((n) => parseInt(answerKeyRows[2][`${n}`]));
+  const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
+  const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
+
   const teamSheet = doc.sheetsByTitle["Teams"];
   const individualSheet = doc.sheetsByTitle["Individuals"];
   const indivIDSheet = doc.sheetsByTitle["Individual_IDs"];
@@ -348,33 +310,10 @@ async function grade() {
 async function grade_guts() {
   let all_teams = [];
   let all_stud = [];
-  let gutsAns = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24
-  ];
-  let gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
+  const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
+  const answerKeyRows = await answerKeySheet.getRows();
+  const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
+  const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
 
   await doc.loadInfo();
   const teamSheet = doc.sheetsByTitle["Teams"];

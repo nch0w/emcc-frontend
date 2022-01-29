@@ -228,6 +228,16 @@ async function collect_guts(ind) {
   //await accRawSheet.addRows(accCombined);
   //await teamRoundRawSheet.addRows(teamRoundCombined);
   //for(let i = 0; i<gutsRawSource.length; i++){
+  await gutsRawSheets[i].clear();
+  await gutsRawSheets[i].setHeaderRow([
+    "Timestamp",
+    "Score",
+    "Team Name",
+    "Team ID",
+    "'" + (3 * i + 1) + ".",
+    "'" + (3 * i + 2) + ".",
+    "'" + (3 * i + 3) + "."
+  ]);
   await gutsRawSheets[i].addRows(gutsCombined[i]);
   //}
   console.log(`Guts form ${i} merging complete.`);

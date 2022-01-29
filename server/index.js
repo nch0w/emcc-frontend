@@ -51,11 +51,13 @@ setInterval(async function () {
     await gutscollect(0);
     await gutscollect(1);
     await gutscollect(2);
-    await gutscollect(3);
-    await gutscollect(4);
     schedule = 1;
   } else if (schedule == 1) {
+    await gutscollect(3);
+    await gutscollect(4);
     await gutscollect(5);
+    schedule = 2;
+  } else if (schedule == 2) {
     await gutscollect(6);
     await gutscollect(7);
     let data = await gutsgrading();

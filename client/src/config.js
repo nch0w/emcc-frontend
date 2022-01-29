@@ -76,7 +76,7 @@ export const maxTeamMembersPerTeam = 4;
 
 // the EMCC server URL
 export const emccServerUrl =
-  process.env.REACT_APP_SERVER_URL || "http://localhost:3000/api";
+  process.env.REACT_APP_SERVER_URL || "https://exetermathclub.com/api";
 
 const contactInfoStyles = makeStyles({
   media: {

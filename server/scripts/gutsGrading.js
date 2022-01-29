@@ -5,24 +5,20 @@ const { GoogleSpreadsheet } = require("google-spreadsheet");
 const doc = new GoogleSpreadsheet(COMPETITOR_SHEET_ID);
 doc.useServiceAccountAuth(GOOGLE_API_CREDENTIALS);
 
+let answerKeyRows;
+let speedAns;
+let accuracyAns;
+let teamAns;
+let gutsAns;
+const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
+
 async function grade() {
   let all_teams = [];
   let all_stud = [];
 
   await doc.loadInfo();
-  // load answer key
-  const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
-  const answerKeyRows = await answerKeySheet.getRows();
-  const speedAns = _.range(1, 21).map((n) =>
-    parseInt(answerKeyRows[0][`${n}`])
-  );
-  const accuracyAns = _.range(1, 11).map((n) =>
-    parseInt(answerKeyRows[1][`${n}`])
-  );
-  const teamAns = _.range(1, 16).map((n) => parseInt(answerKeyRows[2][`${n}`]));
-  const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
-  const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
 
+  const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
   const teamSheet = doc.sheetsByTitle["Teams"];
   const individualSheet = doc.sheetsByTitle["Individuals"];
   const indivIDSheet = doc.sheetsByTitle["Individual_IDs"];
@@ -47,6 +43,15 @@ async function grade() {
   const teamRoundSheet = doc.sheetsByTitle["Team_rank"];
   const gutsSheet = doc.sheetsByTitle["Guts_rank"];
   const compoSheet = doc.sheetsByTitle["Composite_rank"];
+
+  // load answer key
+  if (!answerKeyRows) {
+    const answerKeyRows = await answerKeySheet.getRows();
+    speedAns = _.range(1, 21).map((n) => parseInt(answerKeyRows[0][`${n}`]));
+    accuracyAns = _.range(1, 11).map((n) => parseInt(answerKeyRows[1][`${n}`]));
+    teamAns = _.range(1, 16).map((n) => parseInt(answerKeyRows[2][`${n}`]));
+    gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
+  }
 
   const teams = await teamIDSheet.getRows();
   teams.forEach((team) => {
@@ -319,13 +324,14 @@ async function grade_guts() {
   const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
   const answerKeyRows = await answerKeySheet.getRows();
   const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
-  console.log(gutsAns);
   const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
 
   await doc.loadInfo();
+
   const teamSheet = doc.sheetsByTitle["Teams"];
   const individualSheet = doc.sheetsByTitle["Individuals"];
   const indivIDSheet = doc.sheetsByTitle["Individual_IDs"];
+  const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
   const teamIDSheet = doc.sheetsByTitle["Team_IDs"];
   const indivTeamIDSheet = doc.sheetsByTitle["Indiv_Team_IDs"];
   const gutsRawSheets = [
@@ -338,6 +344,15 @@ async function grade_guts() {
     doc.sheetsByTitle["Guts_7"],
     doc.sheetsByTitle["Guts_8"]
   ];
+
+  // load answer key
+  if (!answerKeyRows) {
+    const answerKeyRows = await answerKeySheet.getRows();
+    speedAns = _.range(1, 21).map((n) => parseInt(answerKeyRows[0][`${n}`]));
+    accuracyAns = _.range(1, 11).map((n) => parseInt(answerKeyRows[1][`${n}`]));
+    teamAns = _.range(1, 16).map((n) => parseInt(answerKeyRows[2][`${n}`]));
+    gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
+  }
 
   const teams = await teamIDSheet.getRows();
   teams.forEach((team) => {

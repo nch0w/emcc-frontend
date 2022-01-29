@@ -223,8 +223,8 @@ export const ContestSchedule = () => {
                 </a>{" "}
                 <br></br>
                 Teams in China: go to{" "}
-                <a href="https://meeting.tencent.com/dm/Px68nZZv2WNe">
-                  https://meeting.tencent.com/dm/Px68nZZv2WNe
+                <a href="https://meeting.tencent.com/dm/EaQSMemo8oHs">
+                  https://meeting.tencent.com/dm/EaQSMemo8oHs
                 </a>
                 .
               </NoBorderTableCell>
@@ -245,8 +245,8 @@ export const ContestSchedule = () => {
                 </a>{" "}
                 <br></br>
                 Teams in China: go to{" "}
-                <a href="https://meeting.tencent.com/dm/Px68nZZv2WNe">
-                  https://meeting.tencent.com/dm/Px68nZZv2WNe
+                <a href="https://meeting.tencent.com/dm/EaQSMemo8oHs">
+                  https://meeting.tencent.com/dm/EaQSMemo8oHs
                 </a>
                 .
               </NoBorderTableCell>
@@ -267,8 +267,8 @@ export const ContestSchedule = () => {
                 </a>{" "}
                 <br></br>
                 Teams in China: go to{" "}
-                <a href="https://meeting.tencent.com/dm/Px68nZZv2WNe">
-                  https://meeting.tencent.com/dm/Px68nZZv2WNe
+                <a href="https://meeting.tencent.com/dm/EaQSMemo8oHs">
+                  https://meeting.tencent.com/dm/EaQSMemo8oHs
                 </a>
                 .
               </NoBorderTableCell>

@@ -313,9 +313,13 @@ async function grade() {
 async function grade_guts() {
   let all_teams = [];
   let all_stud = [];
+
+  await doc.loadInfo();
+
   const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
   const answerKeyRows = await answerKeySheet.getRows();
   const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
+  console.log(gutsAns);
   const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
 
   await doc.loadInfo();

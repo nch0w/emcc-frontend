@@ -321,13 +321,6 @@ async function grade_guts() {
 
   await doc.loadInfo();
 
-  const answerKeySheet = doc.sheetsByTitle["Answer_Key"];
-  const answerKeyRows = await answerKeySheet.getRows();
-  const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
-  const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
-
-  await doc.loadInfo();
-
   const teamSheet = doc.sheetsByTitle["Teams"];
   const individualSheet = doc.sheetsByTitle["Individuals"];
   const indivIDSheet = doc.sheetsByTitle["Individual_IDs"];
@@ -344,6 +337,10 @@ async function grade_guts() {
     doc.sheetsByTitle["Guts_7"],
     doc.sheetsByTitle["Guts_8"]
   ];
+
+  const answerKeyRows = await answerKeySheet.getRows();
+  const gutsAns = _.range(1, 25).map((n) => parseInt(answerKeyRows[3][`${n}`]));
+  const gutsWeights = [6, 7, 9, 11, 13, 15, 18, 21];
 
   // load answer key
   if (!answerKeyRows) {

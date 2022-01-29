@@ -5,7 +5,7 @@ import { Box, Typography } from "@material-ui/core";
 import { SContent } from "../styled_components";
 
 import { io } from "socket.io-client";
-const socket = io("https://exetermathclub.com/api");
+const socket = io("https://exetermathclub.com", { path: "/api/socket.io" });
 
 const Guts = () => {
   const [lastTimestamp, setLastTimestamp] = useState(new Date());

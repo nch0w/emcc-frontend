@@ -230,13 +230,13 @@ export const ContestSchedule = () => {
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>12:30 pm - 1:15 pm</NoBorderTableCell>
+              <NoBorderTableCell>12:30 pm - 1:30 pm</NoBorderTableCell>
               <NoBorderTableCell>
                 Break / Lunch for EST students
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>1:15 pm - 2:30 pm</NoBorderTableCell>
+              <NoBorderTableCell>1:30 pm - 2:45 pm</NoBorderTableCell>
               <NoBorderTableCell>Team Round</NoBorderTableCell>
               <NoBorderTableCell>
                 See{" "}
@@ -252,13 +252,13 @@ export const ContestSchedule = () => {
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>2:30 pm - 3:15 pm</NoBorderTableCell>
+              <NoBorderTableCell>2:45 pm - 3:30 pm</NoBorderTableCell>
               <NoBorderTableCell>
                 Break / Lunch for PST students
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>3:15 pm - 4:45 pm</NoBorderTableCell>
+              <NoBorderTableCell>3:30 pm - 5:00 pm</NoBorderTableCell>
               <NoBorderTableCell>Guts Round</NoBorderTableCell>
               <NoBorderTableCell>
                 See{" "}
@@ -278,7 +278,7 @@ export const ContestSchedule = () => {
               <NoBorderTableCell>Break</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>5:00 pm - 6:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>5:30 pm - 6:30 pm</NoBorderTableCell>
               <NoBorderTableCell>
                 Student Panel: Life at Exeter
               </NoBorderTableCell>
@@ -289,7 +289,7 @@ export const ContestSchedule = () => {
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>6:00 pm - 6:30 pm</NoBorderTableCell>
+              <NoBorderTableCell>6:30 pm - 7:00 pm</NoBorderTableCell>
               <NoBorderTableCell>
                 Girls/Non-Binary People in Math Panel
               </NoBorderTableCell>
@@ -300,11 +300,11 @@ export const ContestSchedule = () => {
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>6:30 pm - 8:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>7:00 pm - 8:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Break/Dinner</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>8:00 pm - 9:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>8:30 pm - 9:90 pm</NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
               <NoBorderTableCell>
                 <a href="https://exeter.zoom.us/j/92050381007">

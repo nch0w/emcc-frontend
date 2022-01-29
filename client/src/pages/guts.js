@@ -28,7 +28,7 @@ const Guts = () => {
       <SContent>
         <br />
         <Typography variant="h3" align="center">
-          What is EMCC?
+          Guts Live Scoreboard
         </Typography>
         <br />
         {

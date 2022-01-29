@@ -150,6 +150,7 @@ async function grade() {
             }
           }
         }
+        student.tiebreaks[0] = Math.max(1, student.tiebreaks[0]);
       }
     }
   });
@@ -166,6 +167,7 @@ async function grade() {
             }
           }
         }
+        student.tiebreaks[1] = Math.max(1, student.tiebreaks[1]);
       }
     }
   });
@@ -191,6 +193,7 @@ async function grade() {
             }
           }
         }
+        team.tiebreaks[0] = Math.max(1, team.tiebreaks[0]);
       }
     }
   });
@@ -396,6 +399,7 @@ async function grade_guts() {
     team.score = 0;
     team.tiebreak = 0;
     team.total = 0;
+    team.gutsProgress = 0;
   });
   let locateTeamID = function (id) {
     for (let team of all_teams) {
@@ -419,7 +423,8 @@ async function grade_guts() {
     gutsSubmissions[round].forEach((submission) => {
       if (submission["Team ID"] && submission["Team ID"].length) {
         let team = locateTeamID(submission["Team ID"]);
-        if (team != null) {
+        if (team != null && team.gutsProgress == round) {
+          team.gutsProgress += 1;
           for (let i = 3 * round + 1; i < 3 * round + 4; i++) {
             if (submission[i + "."] && submission[i + "."].length) {
               if (submission[i + "."].trim() == "" + gutsAns[i - 1]) {

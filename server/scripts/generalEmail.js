@@ -30,19 +30,22 @@ async function run() {
     }
   });
 
+  console.log(coaches.length);
+  console.log(coaches.join("; "));
+
   //   console.log(coaches["monaksehgal@gmail.com"].teams);
-  coaches.map(async (coachID) => {
-    if (!coachID || !coachID.length) return;
-    //if (coachID !== "xiaoyuan@gmail.com") return;
-    console.log(coachID);
-    try {
-      await generalMail(coachID, coaches[coachID]);
-      //await generalMail('abu@exeter.edu', coaches[coachID]);
-    } catch (err) {
-      console.log(err);
-    }
-    // await compDayMail(coachID, coaches[coachID]);
-  });
+  // coaches.map(async (coachID) => {
+  //   if (!coachID || !coachID.length) return;
+  //   //if (coachID !== "xiaoyuan@gmail.com") return;
+  //   console.log(coachID);
+  //   try {
+  //     await generalMail(coachID, coaches[coachID]);
+  //     //await generalMail('abu@exeter.edu', coaches[coachID]);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   // await compDayMail(coachID, coaches[coachID]);
+  // });
 }
 //Careful: This sends Emails
-//run();
+run();

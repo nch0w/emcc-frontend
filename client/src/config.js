@@ -274,7 +274,7 @@ export const ContestSchedule = () => {
               </NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>4:45 pm - 5:00 pm</NoBorderTableCell>
+              <NoBorderTableCell>5:00 pm - 5:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Break</NoBorderTableCell>
             </TableRow>
             <TableRow>
@@ -304,7 +304,7 @@ export const ContestSchedule = () => {
               <NoBorderTableCell>Break/Dinner</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>8:30 pm - 9:90 pm</NoBorderTableCell>
+              <NoBorderTableCell>8:30 pm - 9:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
               <NoBorderTableCell>
                 <a href="https://exeter.zoom.us/j/92050381007">

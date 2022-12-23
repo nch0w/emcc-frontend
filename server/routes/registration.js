@@ -29,7 +29,7 @@ router.post(
         }
       ]);
     } catch (err) {
-      return res.status(400).send("Unkown error updating coach info.");
+      return res.status(400).send("Unknown error updating coach info.");
     }
     next();
   },
@@ -39,11 +39,12 @@ router.post(
 router.post(
   "/update-team",
   async (req, res, next) => {
+    console.log("lol");
     if (registrationClosed)
       return res
         .status(400)
         .send(
-          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
+          "Registration is now closd. To make updates, contact exetermathclub@gmail.com."
         );
 
     // same endpoint for both adding and updating a team
@@ -169,11 +170,12 @@ router.post(
 router.post(
   "/delete-competitor",
   async (req, res, next) => {
+    console.log("mer");
     if (registrationClosed)
       return res
         .status(400)
         .send(
-          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
+          "Registration is now closd. To make updates, contact exetermathclub@gmail.com."
         );
 
     const { id } = req.body;
@@ -201,11 +203,12 @@ router.post(
 router.post(
   "/update-indiv",
   async (req, res, next) => {
+    console.log("gug");
     if (registrationClosed)
       return res
         .status(400)
         .send(
-          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
+          "Registration is now closd. To make updates, contact exetermathclub@gmail.com."
         );
 
     const { student, id } = req.body;

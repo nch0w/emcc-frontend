@@ -30,7 +30,6 @@ app.use("/api/registration", registrationRoute);
 let visitors = [];
 let cachedData = [];
 let schedule = 0;
-
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.emit("data transfer", cachedData);
@@ -39,7 +38,7 @@ io.on("connection", (socket) => {
   });
   visitors.push(socket);
 });
-setTimeout(async function () {
+/*setTimeout(async function () {
   let data = await gutsgrading();
   cachedData = data;
   for (let i = 0; i < visitors.length; i++) {
@@ -66,7 +65,7 @@ setInterval(async function () {
     }
     schedule = 0;
   }
-}, 60000);
+}, 60000);*/
 
 server.listen(3001, () => {
   console.log("listening on *:3001");

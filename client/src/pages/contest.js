@@ -11,12 +11,6 @@ const Contest = () => {
       <SHeading variant="h2">Contest Information</SHeading>
 
       <SContent>
-        <Typography variant="body1">
-          Please join our Discord to receive contest announcements:{" "}
-          <a href="https://tinyurl.com/emcc22">https://tinyurl.com/emcc22</a>.
-        </Typography>
-        <br />
-
         <ContestSchedule />
         <RoundFormats />
         <br />
@@ -36,43 +30,7 @@ const Contest = () => {
           Similarly, laptops, PDAs, cell phones, or any other electronic
           communication devices are also not allowed. Any individual or team
           which breaks these rules will be disqualified.
-          <br />
-          <br />
-          <span style={{ color: "green" }}>
-            New for the remote format: Electronic devices are ONLY permitted for
-            viewing the test, submitting answers, and communicating with
-            teammates during the Team and Guts rounds. Using electronic devices
-            to do anything else will result in disqualification.
-          </span>
         </Typography>
-        <br />
-        <Typography variant="h4" align="center">
-          Accepted Forms of Answers
-        </Typography>
-        <br />
-        <ul>
-          {/* <li>
-            Answers need to be simplified and exact unless otherwise specified.
-            (So 3.14 will not work for pi, nor will 4/12 instead of 1/3.)
-          </li>
-          <li>No partial credit will be given unless specified otherwise.</li>
-          <li>
-            Fractions should be simplified and improper. (For example, use 13/4
-            as opposed to 26/8 or 3 1/4.)
-          </li>
-          <li>
-            Radicals should be simplified so that the radicand does not contain
-            any fractions nor be divisible by the square of any integer greater
-            than one. Denominators should be rationalized.
-          </li>
-          <li>Correct mathematical notation should be used.</li> */}
-        </ul>
-        <Typography variant="body1">
-          <span style={{ color: "green" }}>
-            New for the remote format: All answers will be integers.
-          </span>
-        </Typography>
-        <br />
         <br />
 
         <Typography variant="body1">

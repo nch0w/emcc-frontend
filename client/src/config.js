@@ -30,11 +30,11 @@ import { SHeading, SContentHeading } from "./styled_components";
 // it's the one that changes from year to year
 
 // contest year and date
-export const contestYear = 2022;
-export const contestDate = "January 29, 2022";
+export const contestYear = 2023;
+export const contestDate = "January 28, 2023";
 
 // the status of the contest in question
-export const contestStatus = `Registration has now closed.`;
+export const contestStatus = `Registration is now open.`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -63,9 +63,9 @@ export const teamLateCost = "$75.00";
 
 // deadlines for registration (used for display, NOT calculation)
 // all price calculation happens server-side
-export const registrationStarts = "November 14, 2020";
-export const earlyRegistrationDeadline = "December 19, 2020";
-export const lateRegistrationDeadline = "January 16, 2021";
+export const registrationStarts = "December 17, 2022";
+export const earlyRegistrationDeadline = "January 1, 2023";
+export const lateRegistrationDeadline = "January 15, 2023";
 
 // limits on teams and individuals per coach (used for display, NOT calculation)
 // all limit calculation happens server-side
@@ -76,7 +76,8 @@ export const maxTeamMembersPerTeam = 4;
 
 // the EMCC server URL
 export const emccServerUrl =
-  process.env.REACT_APP_SERVER_URL || "https://exetermathclub.com/api";
+  //process.env.REACT_APP_SERVER_URL || "https://exetermathclub.com/api";
+  process.env.REACT_APP_SERVER_URL || "http://localhost:3000/api";
 
 const contactInfoStyles = makeStyles({
   media: {
@@ -86,35 +87,40 @@ const contactInfoStyles = makeStyles({
 
 const members = [
   {
-    name: "Kevin Cong",
-    email: "kcong@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Lucy Xiao",
-    email: "axiao@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Neil Chowdhury",
-    email: "nchowdhury@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Jacob David",
-    email: "jdavid@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Eric Yang",
-    email: "eyang@exeter.edu",
+    name: "Max Xu",
+    email: "mmxu@exeter.edu",
     role: "Tournament Director"
   },
   {
     name: "Anish Mudide",
     email: "amudide@exeter.edu",
-    role: "Registrations"
+    role: "Tournament Director"
+  },
+  {
+    name: "Minseo Kim",
+    email: "mkim14@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Alan Bu",
+    email: "abu@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Daria Ivanova",
+    email: "divanova@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Jack Kugler",
+    email: "jkugler@exeter.edu",
+    role: "Tournament Director"
   }
+  /*{
+    name: "Anish Mudide",
+    email: "amudide@exeter.edu",
+    role: "Registrations"
+  }*/
 ];
 
 // names, emails, and picture locations of the current EMCC directors and web/registration guy
@@ -198,119 +204,69 @@ export const ContestSchedule = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Time (EST)</TableCell>
+              <TableCell style={{ width: 1000 }}>Time (EST)</TableCell>
               <TableCell>Event</TableCell>
-              <TableCell>Zoom Link</TableCell>
+              <TableCell>Location</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <NoBorderTableCell>10:00 am - 11:00 am</NoBorderTableCell>
+              <NoBorderTableCell>
+                <nobr>9:00 am - 10:00 am</nobr>
+              </NoBorderTableCell>
+              <NoBorderTableCell>
+                <nobr>Opening Ceremony</nobr>
+              </NoBorderTableCell>
+              <NoBorderTableCell>Phillips Hall</NoBorderTableCell>
+            </TableRow>
+            <TableRow>
+              <NoBorderTableCell>
+                <nobr>10:00 am - 10:30 am</nobr>
+              </NoBorderTableCell>
               <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
-              <NoBorderTableCell>
-                <a href="https://exeter.zoom.us/j/96428245038">
-                  https://exeter.zoom.us/j/96428245038
-                </a>
-              </NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>11:00 am - 12:30 pm</NoBorderTableCell>
-              <NoBorderTableCell>Individual Rounds</NoBorderTableCell>
               <NoBorderTableCell>
-                See{" "}
-                <a href="https://tinyurl.com/emccproctor">
-                  https://tinyurl.com/emccproctor
-                </a>{" "}
-                <br></br>
-                Teams in China: go to{" "}
-                <a href="https://meeting.tencent.com/dm/EaQSMemo8oHs">
-                  https://meeting.tencent.com/dm/EaQSMemo8oHs
-                </a>
-                .
+                <nobr>10:30 am - 1:00 pm</nobr>
               </NoBorderTableCell>
+              <NoBorderTableCell>Individual and Team rounds</NoBorderTableCell>
+              <NoBorderTableCell>Classrooms</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>12:30 pm - 1:30 pm</NoBorderTableCell>
               <NoBorderTableCell>
-                Break / Lunch for EST students
+                <nobr>1:00 pm - 1:30 pm</nobr>
               </NoBorderTableCell>
+              <NoBorderTableCell>Lunch</NoBorderTableCell>
+              <NoBorderTableCell>Classrooms</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>1:30 pm - 2:45 pm</NoBorderTableCell>
-              <NoBorderTableCell>Team Round</NoBorderTableCell>
               <NoBorderTableCell>
-                See{" "}
-                <a href="https://tinyurl.com/emccproctor">
-                  https://tinyurl.com/emccproctor
-                </a>{" "}
-                <br></br>
-                Teams in China: go to{" "}
-                <a href="https://meeting.tencent.com/dm/EaQSMemo8oHs">
-                  https://meeting.tencent.com/dm/EaQSMemo8oHs
-                </a>
-                .
+                <nobr>1:45 pm - 3:15 pm</nobr>
               </NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <NoBorderTableCell>2:45 pm - 3:30 pm</NoBorderTableCell>
-              <NoBorderTableCell>
-                Break / Lunch for PST students
-              </NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <NoBorderTableCell>3:30 pm - 5:00 pm</NoBorderTableCell>
               <NoBorderTableCell>Guts Round</NoBorderTableCell>
-              <NoBorderTableCell>
-                See{" "}
-                <a href="https://tinyurl.com/emccproctor">
-                  https://tinyurl.com/emccproctor
-                </a>{" "}
-                <br></br>
-                Teams in China: go to{" "}
-                <a href="https://meeting.tencent.com/dm/EaQSMemo8oHs">
-                  https://meeting.tencent.com/dm/EaQSMemo8oHs
-                </a>
-                .
-              </NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>5:00 pm - 5:30 pm</NoBorderTableCell>
-              <NoBorderTableCell>Break</NoBorderTableCell>
+              <NoBorderTableCell>
+                <nobr>3:30 pm - 4:15 pm</nobr>
+              </NoBorderTableCell>
+              <NoBorderTableCell>Panel</NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>5:30 pm - 6:30 pm</NoBorderTableCell>
               <NoBorderTableCell>
-                Student Panel: Life at Exeter
+                <nobr>4:15 pm - 5:00 pm</nobr>
               </NoBorderTableCell>
-              <NoBorderTableCell>
-                <a href="https://exeter.zoom.us/j/99669323986">
-                  https://exeter.zoom.us/j/99669323986
-                </a>
-              </NoBorderTableCell>
+              <NoBorderTableCell>Panel</NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
-              <NoBorderTableCell>6:30 pm - 7:00 pm</NoBorderTableCell>
               <NoBorderTableCell>
-                Girls/Non-Binary People in Math Panel
+                <nobr>5:00 pm - 6:00 pm</nobr>
               </NoBorderTableCell>
-              <NoBorderTableCell>
-                <a href="https://exeter.zoom.us/j/92956108748">
-                  https://exeter.zoom.us/j/92956108748
-                </a>
-              </NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <NoBorderTableCell>7:00 pm - 8:30 pm</NoBorderTableCell>
-              <NoBorderTableCell>Break/Dinner</NoBorderTableCell>
-            </TableRow>
-            <TableRow>
-              <NoBorderTableCell>8:30 pm - 9:30 pm</NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
-              <NoBorderTableCell>
-                <a href="https://exeter.zoom.us/j/92050381007">
-                  https://exeter.zoom.us/j/92050381007
-                </a>
-              </NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -397,12 +353,6 @@ export const RoundFormats = () => {
         tally of each team's points and progress will be displayed on a
         projector screen at the front of the hall. The point value for each
         problem increases between each set of three.
-        <br /> <br />
-        <span style={{ color: "green" }}>
-          New for the remote format: Each round will be revealed once the team
-          submits answers to the previous round. Answers cannot be changed after
-          submission.
-        </span>
       </Typography>
       <br />
       <Typography variant="body1">

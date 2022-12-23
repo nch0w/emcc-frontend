@@ -6,9 +6,9 @@ module.exports = {
   teamLateCost: "$75.00",
 
   // deadlines for registration
-  registrationStarts: "November 14, 2020",
-  earlyRegistrationDeadline: "December 19, 2020",
-  lateRegistrationDeadline: "January 16, 2021",
+  registrationStarts: "December 18, 2022",
+  earlyRegistrationDeadline: "January 11, 2023",
+  lateRegistrationDeadline: "January 18, 2023",
 
   // limits on teams and individuals per coach
   maxIndivsPerCoach: -1,
@@ -16,5 +16,5 @@ module.exports = {
   minTeamMembersPerTeam: 2,
   maxTeamMembersPerTeam: 4,
 
-  registrationClosed: true
+  registrationClosed: false
 };

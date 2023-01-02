@@ -30,7 +30,7 @@ const Home = () => {
         <SHeroSubheading variant="h3">
           The Exeter Math Club Competition
         </SHeroSubheading>
-        <SHeroSubheading variant="h5">{contestDate}, Online</SHeroSubheading>
+        <SHeroSubheading variant="h5">{contestDate}, at Exeter</SHeroSubheading>
         <SHeroSubheading variant="h6">
           {/* <Link
             to={authStatus === userStatus.UserLoaded ? "/dashboard" : "/signup"}
@@ -93,8 +93,7 @@ const Home = () => {
           students from the same school or different schools, or individuals.
           Teams consist of up to four people, so we will combine individuals
           into teams of four unless we are requested not to. Competitors come
-          from all around the world, and we hope to reach even more students
-          this year due to the online format.
+          from all around the world.
         </Typography>
       </SContent>
     </Box>

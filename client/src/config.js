@@ -252,21 +252,21 @@ export const ContestSchedule = () => {
                 <nobr>3:30 pm - 4:15 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Panel</NoBorderTableCell>
-              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+              <NoBorderTableCell>Forum</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
                 <nobr>4:15 pm - 5:00 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Panel</NoBorderTableCell>
-              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+              <NoBorderTableCell>Forum</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
                 <nobr>5:00 pm - 6:00 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
-              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+              <NoBorderTableCell>Forum</NoBorderTableCell>
             </TableRow>
           </TableBody>
         </Table>

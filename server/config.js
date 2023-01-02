@@ -7,8 +7,8 @@ module.exports = {
 
   // deadlines for registration
   registrationStarts: "December 18, 2022",
-  earlyRegistrationDeadline: "January 11, 2023",
-  lateRegistrationDeadline: "January 18, 2023",
+  earlyRegistrationDeadline: "December 18, 2022",
+  lateRegistrationDeadline: "January 21, 2023",
 
   // limits on teams and individuals per coach
   maxIndivsPerCoach: -1,

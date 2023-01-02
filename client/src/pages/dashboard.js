@@ -587,9 +587,11 @@ const Dashboard = () => {
     <Container>
       <SHeading variant="h2">
         Dashboard <br />
-        {/* <SHeading variant="h6">
-          (View only - online registration is closed)
-        </SHeading> */}
+        <SHeading variant="h6">
+          An individual registration costs $22.50, registering a team of between
+          two to four students costs $75.00. Payments will be emailed by invoice
+          soon January 21st.
+        </SHeading>
       </SHeading>
       <Paper elevation={3}>
         <Tabs

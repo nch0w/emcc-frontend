@@ -215,7 +215,7 @@ export const ContestSchedule = () => {
                 <nobr>9:00 am - 10:00 am</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>
-                <nobr>Opening Ceremony</nobr>
+                <nobr>Registration</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Phillips Hall</NoBorderTableCell>
             </TableRow>

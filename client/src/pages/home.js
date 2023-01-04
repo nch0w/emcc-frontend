@@ -30,7 +30,9 @@ const Home = () => {
         <SHeroSubheading variant="h3">
           The Exeter Math Club Competition
         </SHeroSubheading>
-        <SHeroSubheading variant="h5">{contestDate}, at Exeter</SHeroSubheading>
+        <SHeroSubheading variant="h5">
+          {contestDate}, in person at Exeter
+        </SHeroSubheading>
         <SHeroSubheading variant="h6">
           {/* <Link
             to={authStatus === userStatus.UserLoaded ? "/dashboard" : "/signup"}

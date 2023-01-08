@@ -97,6 +97,16 @@ const Home = () => {
           into teams of four unless we are requested not to. Competitors come
           from all around the world.
         </Typography>
+        <br />
+        <Typography variant="h3" align="center">
+          What are the costs for registration?
+        </Typography>
+        <br />
+        <Typography variant="body1">
+          An individual registration costs $22.50, registering a team of between
+          two to four students costs $75.00. Payments will be emailed by invoice
+          soon after January 21st. Registration will end on January 21st.
+        </Typography>
       </SContent>
     </Box>
   );

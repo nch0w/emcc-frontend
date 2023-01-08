@@ -590,7 +590,7 @@ const Dashboard = () => {
         <SHeading variant="h6">
           An individual registration costs $22.50, registering a team of between
           two to four students costs $75.00. Payments will be emailed by invoice
-          soon January 21st.
+          soon after January 21st. Registration will end on January 21st.
         </SHeading>
       </SHeading>
       <Paper elevation={3}>

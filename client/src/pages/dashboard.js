@@ -592,6 +592,11 @@ const Dashboard = () => {
           two to four students costs $75.00. Payments will be emailed by invoice
           soon after January 21st. Registration will end on January 21st.
         </SHeading>
+        <SHeading variant="h6">
+          We will be ordering pizza for all teams on contest day. If any of your
+          students requires dietary accommodations, please email us at
+          exetermathclub@gmail.com to let us know and we will plan accordingly.
+        </SHeading>
       </SHeading>
       <Paper elevation={3}>
         <Tabs

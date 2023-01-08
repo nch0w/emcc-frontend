@@ -11,6 +11,11 @@ const Contest = () => {
       <SHeading variant="h2">Contest Information</SHeading>
 
       <SContent>
+        <Typography variant="body1">
+          The Exeter Math Club Competition will be being hosted in person in
+          2023. This means all testing and grading will be taking place on site
+          on the Phillips Exeter Academy campus.
+        </Typography>
         <ContestSchedule />
         <RoundFormats />
         <br />

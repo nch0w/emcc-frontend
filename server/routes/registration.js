@@ -4,7 +4,8 @@ const updateUser = require("../middleware/updateUser");
 const {
   minTeamMembersPerTeam,
   maxTeamsPerCoach,
-  registrationClosed
+  registrationClosed,
+  signupClosed
 } = require("../config");
 
 router.post(
@@ -39,12 +40,11 @@ router.post(
 router.post(
   "/update-team",
   async (req, res, next) => {
-    console.log("lol");
     if (registrationClosed)
       return res
         .status(400)
         .send(
-          "Registration is now closd. To make updates, contact exetermathclub@gmail.com."
+          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
         );
 
     // same endpoint for both adding and updating a team
@@ -144,6 +144,12 @@ router.post(
         return res.status(400).send("Error updating team.");
       }
     } else {
+      if (signupClosed)
+        return res
+          .status(400)
+          .send(
+            "Team creation is now closed. To make updates, contact exetermathclub@gmail.com."
+          );
       try {
         await base("Competitors").create([
           {
@@ -203,12 +209,11 @@ router.post(
 router.post(
   "/update-indiv",
   async (req, res, next) => {
-    console.log("gug");
     if (registrationClosed)
       return res
         .status(400)
         .send(
-          "Registration is now closd. To make updates, contact exetermathclub@gmail.com."
+          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
         );
 
     const { student, id } = req.body;
@@ -265,6 +270,12 @@ router.post(
           }
         ]);
       } else {
+        if (signupClosed)
+          return res
+            .status(400)
+            .send(
+              "Individual signups are now closed. To make updates, contact exetermathclub@gmail.com."
+            );
         await base("Competitors").create([
           {
             fields: {

@@ -34,7 +34,7 @@ export const contestYear = 2023;
 export const contestDate = "January 28, 2023";
 
 // the status of the contest in question
-export const contestStatus = `Registration is now open.`;
+export const contestStatus = `Registration is now closed.`;
 // export const contestStatus = () => (
 //   <div>
 //     {

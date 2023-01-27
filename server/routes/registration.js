@@ -181,7 +181,7 @@ router.post(
       return res
         .status(400)
         .send(
-          "Registration is now closd. To make updates, contact exetermathclub@gmail.com."
+          "Registration is now closed. To make updates, contact exetermathclub@gmail.com."
         );
 
     const { id } = req.body;

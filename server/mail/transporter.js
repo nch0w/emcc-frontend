@@ -7,7 +7,8 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: "exetermathclub@gmail.com",
     pass: env.GMAIL_PASSWORD
-  }
+  },
+  sendingRate: 1
 });
 
 // process.env.AWS_ACCESS_KEY_ID = env.AWS_ACCESS_KEY_ID;

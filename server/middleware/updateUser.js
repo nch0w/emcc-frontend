@@ -1,4 +1,4 @@
-const base = require("airtable").base("app8fo0Ay00ig5yCi");
+const base = require("airtable").base("app0GDs2DUsKTI1S9");
 const { maxIndivsPerCoach, maxTeamsPerCoach } = require("../config");
 
 async function updateUser(req, res, next) {

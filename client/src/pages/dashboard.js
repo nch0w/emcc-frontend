@@ -590,9 +590,9 @@ const Dashboard = () => {
         <SHeading variant="h6">
           An individual registration costs $22.50, registering a team of between
           two to four students costs $75.00. Payments will be emailed by invoice
-          soon after January 21st. Registration will end on January 21st.
-        </SHeading>
-        <SHeading variant="h6">
+          soon after January 20st. Early and late registration will end on
+          January 7th and 20th.
+          <br /> <br />
           We will be ordering pizza for all teams on contest day. If any of your
           students requires dietary accommodations, please email us at
           exetermathclub@gmail.com to let us know and we will plan accordingly.
@@ -605,15 +605,17 @@ const Dashboard = () => {
           textColor="primary"
           onChange={(_event, value) => handleTabClicked(value)}
         >
-          <Tab
-            value="view-competitors"
-            label="Edit Competitors (Teams and Individuals)"
-          />
+          <Tab value="view-competitors" label="Edit Competitors" />
           <Tab value="view-coach-info" label="Edit Coach Info" />
         </Tabs>
       </Paper>
       <br />
       {renderTab()}
+
+      <SHeading variant="h6">
+        Notice: Only register a student as an individual if they are not on a
+        team. They will be placed in an individual team automatically.
+      </SHeading>
     </Container>
   );
 };

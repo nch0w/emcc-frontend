@@ -158,11 +158,13 @@ router.post("/signup", async (req, res) => {
   }
 
   const newUser = records[0];
-  await signUpMail(email, token, newUser.id);
+  console.log(email, token, newUser.id);
   res.status(200).json({
     name: newUser.fields["Name"],
     email: newUser.fields["Email"]
   });
+  //Order swapped because timeout is 5s can't be 30s. (slower email)
+  await signUpMail(email, token, newUser.id);
 });
 
 router.post("/change-password", async (req, res) => {

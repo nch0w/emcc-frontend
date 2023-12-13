@@ -46,7 +46,7 @@ const SignUp = () => {
           phone,
           mail
         },
-        { timeout: 5000 }
+        { timeout: 3000 }
       )
       .then((_response) => {
         Swal.fire(

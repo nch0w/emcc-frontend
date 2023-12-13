@@ -130,17 +130,6 @@ export const ContactInfo = () => {
             </Typography>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent>
-            <Typography variant="body1">
-              <b>Please send all questions to</b>{" "}
-              <a href="mailto:exetermathclub@gmail.com">
-                exetermathclub@gmail.com
-              </a>
-              . Do not contact the people below unless there is an emergency.
-            </Typography>
-          </CardContent>
-        </Card>
       </Grid>
       {members.map((member) => (
         <Grid item xs={4}>

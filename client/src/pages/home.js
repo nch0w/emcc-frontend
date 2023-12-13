@@ -105,7 +105,7 @@ const Home = () => {
         <Typography variant="body1">
           An individual registration costs $22.50, registering a team of between
           two to four students costs $75.00. Payments will be emailed by invoice
-          soon after January 21st. Registration will end on January 21st.
+          soon after January 20st. Registration will end on January 20st.
         </Typography>
       </SContent>
     </Box>

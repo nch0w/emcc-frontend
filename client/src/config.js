@@ -30,11 +30,11 @@ import { SHeading, SContentHeading } from "./styled_components";
 // it's the one that changes from year to year
 
 // contest year and date
-export const contestYear = 2023;
-export const contestDate = "January 28, 2023";
+export const contestYear = 2024;
+export const contestDate = "January 27, 2024";
 
 // the status of the contest in question
-export const contestStatus = `Registration is now closed.`;
+export const contestStatus = `Registration is now open.`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -63,9 +63,9 @@ export const teamLateCost = "$75.00";
 
 // deadlines for registration (used for display, NOT calculation)
 // all price calculation happens server-side
-export const registrationStarts = "December 17, 2022";
-export const earlyRegistrationDeadline = "January 1, 2023";
-export const lateRegistrationDeadline = "January 15, 2023";
+export const registrationStarts = "December 13, 2023";
+export const earlyRegistrationDeadline = "January 7, 2024";
+export const lateRegistrationDeadline = "January 20, 2024";
 
 // limits on teams and individuals per coach (used for display, NOT calculation)
 // all limit calculation happens server-side
@@ -87,21 +87,6 @@ const contactInfoStyles = makeStyles({
 
 const members = [
   {
-    name: "Max Xu",
-    email: "mmxu@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Anish Mudide",
-    email: "amudide@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Minseo Kim",
-    email: "mkim14@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
     name: "Alan Bu",
     email: "abu@exeter.edu",
     role: "Tournament Director"
@@ -112,15 +97,20 @@ const members = [
     role: "Tournament Director"
   },
   {
-    name: "Jack Kugler",
-    email: "jkugler@exeter.edu",
+    name: "Bryan Chen",
+    email: "bjchen@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Michael Lu",
+    email: "mzlu1@exeter.edu",
+    role: "Tournament Director"
+  },
+  {
+    name: "Ava Zhao",
+    email: "yzhao4@exeter.edu",
     role: "Tournament Director"
   }
-  /*{
-    name: "Anish Mudide",
-    email: "amudide@exeter.edu",
-    role: "Registrations"
-  }*/
 ];
 
 // names, emails, and picture locations of the current EMCC directors and web/registration guy

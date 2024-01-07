@@ -211,49 +211,49 @@ export const ContestSchedule = () => {
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>9:00 am - 9:30 am</nobr>
+                <nobr>9:15 am - 9:45 am</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
               <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>9:30 am - 12:00 pm</nobr>
+                <nobr>10:00 am - 12:30 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Individual and Team rounds</NoBorderTableCell>
               <NoBorderTableCell>Classrooms</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>12:00 pm - 12:30 pm</nobr>
+                <nobr>12:45 pm - 1:30 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Lunch</NoBorderTableCell>
               <NoBorderTableCell>Classrooms</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>12:45 pm - 2:15 pm</nobr>
+                <nobr>1:45 pm - 3:15 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Guts Round</NoBorderTableCell>
               <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>2:30 pm - 3:15 pm</nobr>
+                <nobr>3:30 pm - 4:15 pm</nobr>
               </NoBorderTableCell>
-              <NoBorderTableCell>Panel</NoBorderTableCell>
+              <NoBorderTableCell>Admissions Panel</NoBorderTableCell>
               <NoBorderTableCell>Forum</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>3:15 pm - 4:00 pm</nobr>
+                <nobr>4:15 pm - 5:00 pm</nobr>
               </NoBorderTableCell>
-              <NoBorderTableCell>Panel</NoBorderTableCell>
+              <NoBorderTableCell>Math at Exeter Panel</NoBorderTableCell>
               <NoBorderTableCell>Forum</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
-                <nobr>4:00 pm - 5:00 pm</nobr>
+                <nobr>5:00 pm - 6:00 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
               <NoBorderTableCell>Forum</NoBorderTableCell>

@@ -209,5 +209,6 @@ async function run(genTeam, genIndiv) {
   // console.log(indiv_id[0]);
 }
 
+
 // DONT RUN AGAIN!
 //run(false, false);

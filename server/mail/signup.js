@@ -18,6 +18,6 @@ async function signupMail(emailAddress, token, userId) {
   });
 }
 
-signupMail("alan.bu2016@gmail.com", "a", "a");
+//signupMail("alan.bu2016@gmail.com", "a", "a");
 
 module.exports = signupMail;

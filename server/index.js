@@ -38,6 +38,7 @@ io.on("connection", (socket) => {
   });
   visitors.push(socket);
 });
+
 /*setTimeout(async function () {
   let data = await gutsgrading();
   cachedData = data;

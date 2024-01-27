@@ -9,9 +9,8 @@ doc.useServiceAccountAuth(GOOGLE_API_CREDENTIALS);
 async function run() {
   await doc.loadInfo();
 
-  const indivIDSheet = doc.sheetsByTitle["Individual_IDs"];
-  const teamIDSheet = doc.sheetsByTitle["Team_IDs"];
-  const indivTeamIDSheet = doc.sheetsByTitle["Indiv_Team_IDs"];
+  const indivIDSheet = doc.sheetsByTitle["Individual_(reg)"];
+  const teamIDSheet = doc.sheetsByTitle["Teams_(reg)"];
 
   const indivs = await indivIDSheet.getRows();
   const coaches = {};
@@ -26,8 +25,8 @@ async function run() {
       };
     }
     coaches[email].individuals.push({
-      name: indiv["Student"],
-      id: indiv["ID"]
+      name: indiv["Student Name"],
+      id: indiv["Indiv ID"]
     });
   });
 
@@ -35,10 +34,43 @@ async function run() {
   teams.forEach((team) => {
     const email = team["Coach Email"];
     let students = [];
-    for (let n of ["Student 1", "Student 2", "Student 3", "Student 4"]) {
+    for (let n of [
+      "Competitor 01",
+      "Competitor 02",
+      "Competitor 03",
+      "Competitor 04"
+    ]) {
       if (team[n] && team[n].length) {
         students.push(team[n]);
       }
+    }
+    if (!email || email.length == 0) {
+      let students = [];
+      let emails = new Set([]);
+      for (let n of [
+        ["Competitor 01", "S1 ID"],
+        ["Competitor 02", "S2 ID"],
+        ["Competitor 03", "S3 ID"],
+        ["Competitor 04", "S4 ID"]
+      ]) {
+        if (team[n[0]] && team[n[0]].length) {
+          students.push(team[n[0]]);
+          let coach_id = searchID(team[n[1]]);
+          if (!emails.has(coach_id)) {
+            emails.add(coach_id);
+          }
+        }
+      }
+      for (let n of Array.from(emails)) {
+        //console.log(JSON.stringify(Array.from(emails)));
+        coaches[n].indiv_teams.push({
+          name: team["Name"],
+          id: team["ID"],
+          coaches: Array.from(emails),
+          students
+        });
+      }
+      return true;
     }
 
     if (!(email in coaches)) {
@@ -50,7 +82,7 @@ async function run() {
       };
     }
     coaches[email].teams.push({
-      name: team["Name"],
+      name: team["Team Name"],
       id: team["ID"],
       students
     });
@@ -66,35 +98,6 @@ async function run() {
     });
     return ret;
   };
-  const indiv_teams = await indivTeamIDSheet.getRows();
-  indiv_teams.forEach((team) => {
-    let students = [];
-    let emails = new Set([]);
-    for (let n of [
-      ["Student 1", "S1 ID"],
-      ["Student 2", "S2 ID"],
-      ["Student 3", "S3 ID"],
-      ["Student 4", "S4 ID"]
-    ]) {
-      if (team[n[0]] && team[n[0]].length) {
-        students.push(team[n[0]]);
-        let coach_id = searchID(team[n[1]]);
-        if (!emails.has(coach_id)) {
-          emails.add(coach_id);
-        }
-      }
-    }
-    for (let n of Array.from(emails)) {
-      //console.log(JSON.stringify(Array.from(emails)));
-      coaches[n].indiv_teams.push({
-        name: team["Name"],
-        id: team["ID"],
-        coaches: Array.from(emails),
-        students
-      });
-    }
-  });
-
   //   console.log(coaches["monaksehgal@gmail.com"].teams);
   Object.keys(coaches).forEach(async (coachID, i) => {
     if (!coachID || !coachID.length) return;

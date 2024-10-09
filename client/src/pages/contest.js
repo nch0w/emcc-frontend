@@ -13,7 +13,7 @@ const Contest = () => {
       <SContent>
         <Typography variant="body1">
           The Exeter Math Club Competition will be being hosted in person in
-          2024. This means all testing and grading will be taking place on site
+          2025. This means all testing and grading will be taking place on site
           on the Phillips Exeter Academy campus.
         </Typography>
         //

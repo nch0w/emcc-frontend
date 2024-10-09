@@ -85,17 +85,15 @@ const contactInfoStyles = makeStyles({
   }
 });
 
-
-
 const members = [
   {
-    name: "Benny Wang",
-    email: "bbwang@exeter.edu",
+    name: "Alan Bu",
+    email: "abu@exeter.edu",
     role: "Tournament Director"
   },
   {
-    name: "Harini Venkatesh",
-    email: "venkatesh@exeter.edu",
+    name: "Daria Ivanova",
+    email: "divanova@exeter.edu",
     role: "Tournament Director"
   },
   {
@@ -109,13 +107,8 @@ const members = [
     role: "Tournament Director"
   },
   {
-    name: "Shiqiao Zhang",
-    email: "szhang6@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Yash Shah",
-    email: "ysshah@exeter.edu",
+    name: "Ava Zhao",
+    email: "yzhao4@exeter.edu",
     role: "Tournament Director"
   }
 ];

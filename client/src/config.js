@@ -30,11 +30,11 @@ import { SHeading, SContentHeading } from "./styled_components";
 // it's the one that changes from year to year
 
 // contest year and date
-export const contestYear = 2024;
-export const contestDate = "January 27, 2024";
+export const contestYear = 2025;
+export const contestDate = "January 25, 2024";
 
 // the status of the contest in question
-export const contestStatus = `Registration is now closed.`;
+export const contestStatus = `Registration opening soon!`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -84,8 +84,6 @@ const contactInfoStyles = makeStyles({
     height: 200
   }
 });
-
-
 
 const members = [
   {

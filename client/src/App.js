@@ -110,6 +110,7 @@ const EMCCNav = ({ authStatus }) => {
   const handleButtonClicked = (_, newUrl) => {
     navigate(newUrl);
     setUrl(newUrl);
+    window.scrollTo(0, 0);
   };
 
   return (

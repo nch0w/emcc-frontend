@@ -131,7 +131,8 @@ export const ContactInfo = () => {
               <a href="mailto:exetermathclub@gmail.com">
                 exetermathclub@gmail.com
               </a>
-              . Do not contact the people below unless there is an emergency.
+              . In case of an emergency, feel free to contact any of the
+              following emails:
             </Typography>
           </CardContent>
         </Card>
@@ -152,6 +153,114 @@ export const ContactInfo = () => {
                 <br />
                 Email: <a href={`mailto:${member.email}`}>{member.email}</a>
               </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
+  );
+};
+
+const archiveListStyles = makeStyles({
+  media: {
+    height: 200
+  }
+});
+const archiveURLs = [
+  {
+    year: "2024",
+    links: ["/archives/emcc24all.pdf", "/archives/results-2024.pdf"],
+    labels: ["Full document", "Results"]
+  },
+  {
+    year: "2023",
+    links: ["/archives/emcc23all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2022",
+    links: ["/archives/emcc22all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2020",
+    links: ["/archives/emcc20all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2019",
+    links: ["/archives/emcc19all.pdf", "/archives/emcc19results.pdf"],
+    labels: ["Full document", "Results"]
+  },
+  {
+    year: "2018",
+    links: ["/archives/emcc18all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2017",
+    links: ["/archives/emcc17all.pdf", "/archives/emcc17results.pdf"],
+    labels: ["Full document", "Results"]
+  },
+  {
+    year: "2016",
+    links: ["/archives/emcc16all.pdf", "/archives/emcc16results.pdf"],
+    labels: ["Full document", "Results"]
+  },
+  {
+    year: "2015",
+    links: ["/archives/emcc15all.pdf", "/archives/emcc15results.pdf"],
+    labels: ["Full document", "Results"]
+  },
+  {
+    year: "2014",
+    links: ["/archives/emcc14all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2013",
+    links: ["/archives/emcc13all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2012",
+    links: ["/archives/emcc12all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2011",
+    links: ["/archives/emcc11all.pdf"],
+    labels: ["Full document"]
+  },
+  {
+    year: "2010",
+    links: ["/archives/emcc10all.pdf"],
+    labels: ["Full document"]
+  }
+];
+export const ArchiveList = () => {
+  const classes = archiveListStyles();
+  return (
+    <Grid container spacing={3}>
+      {archiveURLs.map((entry) => (
+        <Grid item xs={4}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5">
+                <b>{entry.year}</b>
+                <br />
+              </Typography>
+              {entry.links.length > 0 && (
+                <Typography variant="body1">
+                  {entry.links.map((link, idx) => (
+                    <div key={idx}>
+                      <a href={link} target="_blank" rel="noopener noreferrer">
+                        {entry.labels[idx]}
+                      </a>
+                    </div>
+                  ))}
+                </Typography>
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -352,11 +461,7 @@ export const RoundFormats = () => {
       <br />
       <Typography variant="body1">
         <b>
-          Past rounds can be found{" "}
-          <a href="https://drive.google.com/open?id=1Yf7LzHUvCPIqZ4IKm-DtWVxO5S7nugDW">
-            here
-          </a>
-          .
+          Past rounds can be found <a href="/archives">here</a>.
         </b>
       </Typography>
       <SContentHeading variant="h4">Scoring and Tie-Breaking</SContentHeading>

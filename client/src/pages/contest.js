@@ -16,7 +16,7 @@ const Contest = () => {
           2025. This means all testing and grading will be taking place on site
           on the Phillips Exeter Academy campus.
         </Typography>
-        //
+
         <ContestSchedule />
         <RoundFormats />
         <br />

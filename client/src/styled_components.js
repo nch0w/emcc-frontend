@@ -7,9 +7,9 @@ import {
 import { styled } from "@material-ui/core/styles";
 
 // NAVIGATION BAR
-
 export const SNav = styled(BottomNavigation)({
-  background: "rgb(150,0,0)"
+  background: "rgb(230, 230, 230)",
+  boxShadow: "#9B1D31 0px 1px 0px"
 });
 
 export const SNavButton = styled(BottomNavigationAction)({
@@ -47,8 +47,8 @@ export const SContentHeading = styled(Typography)({
 // HOME PAGE
 
 export const SHero = styled(Container)({
-  background: "rgb(140,0,0)",
-  height: "70vh",
+  background: "#9B1D31",
+  height: "0vh",
   minHeight: "fit-content",
   color: "#EEEEEE",
   textAlign: "center",

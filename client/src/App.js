@@ -17,7 +17,8 @@ import {
   PersonAdd as SignUpIcon,
   LockOpen as LoginIcon,
   Dashboard as DashboardIcon,
-  AttachMoney as PaymentIcon
+  AttachMoney as PaymentIcon,
+  BlurLinear as ArchivesIcon
 } from "@material-ui/icons";
 
 import { SNav, SNavButton } from "./styled_components";
@@ -26,6 +27,7 @@ import Home from "./pages/home";
 import Contest from "./pages/contest";
 import Travel from "./pages/travel";
 import Contact from "./pages/contact";
+import Archives from "./pages/archives";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Guts from "./pages/guts";
@@ -39,7 +41,7 @@ import Verify from "./pages/verify";
 /*
 TODO: is EMCC 2021 even happening? Is it remote?
 TODO: make styles for each component using material-ui styles
-background for hero and nav should be rgb(140,0,0)
+background for hero and nav should be #9B1D31
 see http://exeter-math.appspot.com/ for more details
 TODO: confirm all config values with Mr. Feng
 TODO: invoices
@@ -60,7 +62,7 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: "#aaaaaa"
+      main: "#9B1D31"
     }
   }
 });
@@ -108,9 +110,8 @@ const EMCCNav = ({ authStatus }) => {
   const currentPage = parseCurrentPageFromUrl();
   const [currentUrl, setUrl] = useState("/" + currentPage);
   const handleButtonClicked = (_, newUrl) => {
-    navigate(newUrl);
-    setUrl(newUrl);
-    window.scrollTo(0, 0);
+    navigate(newUrl); // React Router's navigation
+    setUrl(newUrl); // If you're also updating a state variable (optional)
   };
 
   return (
@@ -118,6 +119,7 @@ const EMCCNav = ({ authStatus }) => {
       <SNavButton label="Home" value="/" icon={<HomeIcon />} />
       <SNavButton label="Contest" value="/contest" icon={<ContestIcon />} />
       {/* <SNavButton label="Travel" value="/travel" icon={<TravelIcon />} /> */}
+      <SNavButton label="Archives" value="/archives" icon={<ArchivesIcon />} />
       <SNavButton label="Contact" value="/contact" icon={<ContactIcon />} />
 
       {authStatus === userStatus.NoUser ? (
@@ -177,6 +179,7 @@ const App = () => {
             <Contest path="/contest" />
             <Travel path="/travel" />
             <Contact path="/contact" />
+            <Archives path="/archives" />
             <Login path="/login" />
             <Guts path="/guts" />
             <SignUp path="/signup" />
@@ -190,9 +193,9 @@ const App = () => {
               position: window.screen.availWidth > 600 ? "fixed" : "relative",
               bottom: "0",
               width: "100%",
-              backgroundColor: "rgb(140,0,0)",
+              backgroundColor: "rgb(230,230,230)",
               padding: "20px",
-              color: "#EEEEEE",
+              color: "#222222",
               boxShadow: "rgba(0,0,0,0.8) 0px 1px 6px",
               zIndex: 999999,
               height: window.screen.availWidth > 600 ? "auto" : 80
@@ -217,7 +220,7 @@ const App = () => {
                     verticalAlign: "middle",
                     height: 20
                   }}
-                  src={require("./assets/janestreet_new.jpg")}
+                  src={require("./assets/jane_street_fr.png")}
                 />
               </a>
             </Box>

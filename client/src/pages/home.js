@@ -11,6 +11,7 @@ import {
 } from "../styled_components";
 import { Link } from "@reach/router";
 import { userStatus, UserContext } from "../App";
+import { SpecialHeader } from "../homepageLogo";
 
 const Home = () => {
   const {
@@ -25,8 +26,8 @@ const Home = () => {
   } = useContext(UserContext);
   return (
     <Box>
+      <SpecialHeader />
       <SHero>
-        <SHeroHeading variant="h1">EMCC</SHeroHeading>
         <SHeroSubheading variant="h3">
           The Exeter Math Club Competition
         </SHeroSubheading>
@@ -63,7 +64,7 @@ const Home = () => {
                 maxHeight: 90,
                 marginBottom: 20
               }}
-              src={require("../assets/janestreet_homepage.jpg")}
+              src={require("../assets/jane_street_fr.png")}
             />
           </a>
         </Typography>

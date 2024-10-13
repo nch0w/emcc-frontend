@@ -13,10 +13,13 @@ body {
 
 .scene {
   width: 400px;
-  height: 380px;
+  height: auto;
   border: 1px solid #0000;
-  margin: 70px auto 0px auto;
+  margin: 0px auto 0px auto;
   perspective: 800px;
+  padding-top: 100px;
+  z-index: -999;
+  position: relative;
 }
 
 .cube {

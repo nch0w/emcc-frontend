@@ -1,0 +1,4 @@
+/* bandaid fix */
+div.App > div > .MuiBox-root {
+  padding-top: 50px;
+}

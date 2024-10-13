@@ -169,72 +169,72 @@ const archiveListStyles = makeStyles({
 const archiveURLs = [
   {
     year: "2024",
-    links: ["/archives/emcc24all.pdf", "/archives/results-2024.pdf"],
+    links: ["/papers/emcc24all.pdf", "/papers/results-2024.pdf"],
     labels: ["Full document", "Results"]
   },
   {
     year: "2023",
-    links: ["/archives/emcc23all.pdf"],
+    links: ["/papers/emcc23all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2022",
-    links: ["/archives/emcc22all.pdf"],
+    links: ["/papers/emcc22all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2020",
-    links: ["/archives/emcc20all.pdf"],
+    links: ["/papers/emcc20all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2019",
-    links: ["/archives/emcc19all.pdf", "/archives/emcc19results.pdf"],
+    links: ["/papers/emcc19all.pdf", "/papers/emcc19results.pdf"],
     labels: ["Full document", "Results"]
   },
   {
     year: "2018",
-    links: ["/archives/emcc18all.pdf"],
+    links: ["/papers/emcc18all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2017",
-    links: ["/archives/emcc17all.pdf", "/archives/emcc17results.pdf"],
+    links: ["/papers/emcc17all.pdf", "/papers/emcc17results.pdf"],
     labels: ["Full document", "Results"]
   },
   {
     year: "2016",
-    links: ["/archives/emcc16all.pdf", "/archives/emcc16results.pdf"],
+    links: ["/papers/emcc16all.pdf", "/papers/emcc16results.pdf"],
     labels: ["Full document", "Results"]
   },
   {
     year: "2015",
-    links: ["/archives/emcc15all.pdf", "/archives/emcc15results.pdf"],
+    links: ["/papers/emcc15all.pdf", "/papers/emcc15results.pdf"],
     labels: ["Full document", "Results"]
   },
   {
     year: "2014",
-    links: ["/archives/emcc14all.pdf"],
+    links: ["/papers/emcc14all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2013",
-    links: ["/archives/emcc13all.pdf"],
+    links: ["/papers/emcc13all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2012",
-    links: ["/archives/emcc12all.pdf"],
+    links: ["/papers/emcc12all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2011",
-    links: ["/archives/emcc11all.pdf"],
+    links: ["/papers/emcc11all.pdf"],
     labels: ["Full document"]
   },
   {
     year: "2010",
-    links: ["/archives/emcc10all.pdf"],
+    links: ["/papers/emcc10all.pdf"],
     labels: ["Full document"]
   }
 ];

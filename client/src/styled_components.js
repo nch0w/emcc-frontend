@@ -9,7 +9,11 @@ import { styled } from "@material-ui/core/styles";
 // NAVIGATION BAR
 export const SNav = styled(BottomNavigation)({
   background: "rgb(230, 230, 230)",
-  boxShadow: "#9B1D31 0px 1px 0px"
+  boxShadow: "#9B1D31 0px 1px 0px",
+  position: "absolute",
+  width: "100vw",
+  zIndex: "100",
+  top: "0"
 });
 
 export const SNavButton = styled(BottomNavigationAction)({

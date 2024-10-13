@@ -45,7 +45,6 @@ const Home = () => {
       </SHero>
       <br />
       <br />
-      <br />
       <SContent>
         <Typography variant="h4" align="center">
           Sponsored by

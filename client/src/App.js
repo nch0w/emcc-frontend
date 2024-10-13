@@ -174,6 +174,7 @@ const App = () => {
           }}
         >
           <EMCCNav authStatus={authStatus} />
+
           <Router>
             <Home path="/" />
             <Contest path="/contest" />

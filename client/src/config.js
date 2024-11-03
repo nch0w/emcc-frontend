@@ -16,7 +16,7 @@ import { withStyles } from "@material-ui/core";
 import MuiTableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "@reach/router";
-
+import ClubImage from "./assets/clubPhoto.png";
 import { SHeading, SContentHeading } from "./styled_components";
 
 // a set of app-wide constants in 1 place
@@ -31,7 +31,7 @@ import { SHeading, SContentHeading } from "./styled_components";
 
 // contest year and date
 export const contestYear = 2025;
-export const contestDate = "January 25, 2024";
+export const contestDate = "January 27, 2024";
 
 // the status of the contest in question
 export const contestStatus = `Registration opening soon!`;
@@ -79,6 +79,39 @@ export const emccServerUrl =
   //process.env.REACT_APP_SERVER_URL || "https://exetermathclub.com/api";
   process.env.REACT_APP_SERVER_URL || "http://localhost:3000/api";
 
+// about us
+export const AboutUsInfo = () => {
+  return (
+    <Box style={{ maxWidth: 800, margin: "auto" }}>
+      <Typography variant="body1">
+        The EMCC is the annual math competition for middle schoolers, written
+        and hosted by the students of the Exeter math club. We are composed of
+        high schoolers from across the world who come together to share their
+        passion for math. In addition to organizing the EMCC, we participate in
+        many competitions ourselves. At the 2024 HMMT February competition, team
+        PEA Red placed 3rd out of 91 of the strongest teams in the nation.
+        <br />
+        Phillips Exeter Academy is a boarding high school in Exeter, New
+        Hampshire. Despite the quiet nature of the Exeter town, the school is
+        just a stone's throw from Boston.
+        <br />
+        <br />
+        <center>
+          <img
+            id="jane_street_logo"
+            alt="Jane Street logo"
+            style={{
+              verticalAlign: "middle",
+              width: "60%"
+            }}
+            src={require("./assets/clubPhoto.png")}
+          />
+        </center>
+      </Typography>
+    </Box>
+  );
+};
+
 const contactInfoStyles = makeStyles({
   media: {
     height: 200
@@ -93,7 +126,7 @@ const members = [
   },
   {
     name: "Harini Venkatesh",
-    email: "venkatesh@exeter.edu",
+    email: "hvenkatesh@exeter.edu",
     role: "Tournament Director"
   },
   {

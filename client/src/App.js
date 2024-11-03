@@ -26,7 +26,7 @@ import { SNav, SNavButton } from "./styled_components";
 import Home from "./pages/home";
 import Contest from "./pages/contest";
 import Travel from "./pages/travel";
-import Contact from "./pages/contact";
+import AboutUs from "./pages/aboutus";
 import Archives from "./pages/archives";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
@@ -120,7 +120,7 @@ const EMCCNav = ({ authStatus }) => {
       <SNavButton label="Contest" value="/contest" icon={<ContestIcon />} />
       {/* <SNavButton label="Travel" value="/travel" icon={<TravelIcon />} /> */}
       <SNavButton label="Archives" value="/archives" icon={<ArchivesIcon />} />
-      <SNavButton label="Contact" value="/contact" icon={<ContactIcon />} />
+      <SNavButton label="About Us" value="/aboutus" icon={<ContactIcon />} />
 
       {authStatus === userStatus.NoUser ? (
         <SNavButton label="Register" value="/signup" icon={<SignUpIcon />} />
@@ -179,7 +179,7 @@ const App = () => {
             <Home path="/" />
             <Contest path="/contest" />
             <Travel path="/travel" />
-            <Contact path="/contact" />
+            <AboutUs path="/aboutus" />
             <Archives path="/archives" />
             <Login path="/login" />
             <Guts path="/guts" />

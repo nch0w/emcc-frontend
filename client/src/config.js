@@ -98,8 +98,8 @@ export const AboutUsInfo = () => {
         <br />
         <center>
           <img
-            id="jane_street_logo"
-            alt="Jane Street logo"
+            id="club_photo"
+            alt="Club Photo"
             style={{
               verticalAlign: "middle",
               width: "60%"

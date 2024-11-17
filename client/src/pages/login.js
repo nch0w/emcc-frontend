@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Box style={{ maxWidth: 800, margin: "auto" }}>
       <SHeading variant="h2">Log In</SHeading>
       <Box align="left">
         <Typography variant="body1">
@@ -91,7 +91,7 @@ const Login = () => {
         <br />
         <br />
       </Box>
-    </Container>
+    </Box>
   );
 };
 

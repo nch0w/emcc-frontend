@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const base = require("airtable").base("app0GDs2DUsKTI1S9");
+const base = require("airtable").base("appE6gKCmdpqhsPa8");
 const updateUser = require("../middleware/updateUser");
 const {
   minTeamMembersPerTeam,

@@ -1,5 +1,5 @@
 require("dotenv").config();
-const base = require("airtable").base("app8fo0Ay00ig5yCi");
+const base = require("airtable").base("appE6gKCmdpqhsPa8");
 const competitorsMail = require("../mail/competitors");
 
 const readline = require("readline").createInterface({

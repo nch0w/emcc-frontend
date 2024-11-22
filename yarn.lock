@@ -3185,18 +3185,7 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-airtable@^0.10.0:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.10.1.tgz#0b311002bb44b39f19bf7c4bd2d47d75c733bf87"
-  integrity sha512-obFW+R3ly2mKtCj0D/xto0ggUvYwdM0RJT3VJ9wvgqoxDkzqg2mNtkuTNfYjF6wWQA0GvoHG9guqzgBBqFjItw==
-  dependencies:
-    "@types/node" ">=8.0.0 <15"
-    abort-controller "^3.0.0"
-    abortcontroller-polyfill "^1.4.0"
-    lodash "^4.17.19"
-    node-fetch "^2.6.1"
-
-airtable@^0.11.6:
+airtable@0.11.6, airtable@^0.11.6:
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.11.6.tgz#3b90f9c671ee93c4ad647eb131d630dea9f1f84a"
   integrity sha512-Na67L2TO1DflIJ1yOGhQG5ilMfL2beHpsR+NW/jhaYOa4QcoxZOtDFs08cpSd1tBMsLpz5/rrz/VMX/pGL/now==
@@ -9301,7 +9290,7 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-node-fetch@^2.6.1, node-fetch@^2.6.7:
+node-fetch@^2.6.7:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==

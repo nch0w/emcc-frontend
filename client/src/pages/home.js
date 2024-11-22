@@ -80,7 +80,7 @@ const Home = () => {
           <br />
           Registration is now open! Coaches may{" "}
           <a href="/signup">sign up here</a>, or{" "}
-          <a href="/signup">log in here</a>. Coaches should create a new account
+          <a href="/login">log in here</a>. Coaches should create a new account
           even if they have participated in the EMCC in a past year. An
           individual registration costs $20.00 while registering a team of
           between two to four students costs $60.00. Payments will be emailed by
@@ -119,7 +119,7 @@ const Home = () => {
           the <a href="/contest">contest section</a> of our website for a
           detailed breakdown of the rules of the EMCC competition. Past
           competitions can be found in the{" "}
-          <a href="/contest">archives section</a>.
+          <a href="/archives">archives section</a>.
           <br />
           <br />
         </Typography>

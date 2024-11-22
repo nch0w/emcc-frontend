@@ -25,7 +25,7 @@ import Swal from "sweetalert2";
 
 import { UserContext, userStatus } from "../App";
 import { emccServerUrl } from "../config";
-import { SHeading } from "../styled_components";
+import { SHeading, SContent } from "../styled_components";
 
 const tableIcons = {
   Add: (props) => (
@@ -591,20 +591,28 @@ const Dashboard = () => {
   };
 
   return (
-    <Container>
-      <SHeading variant="h2">
-        Dashboard <br />
-        <SHeading variant="h6">
-          An individual registration costs $22.50, registering a team of between
-          two to four students costs $75.00. Payments will be emailed by invoice
-          soon after January 20st. Registration for teams will close on January
-          20th and individual information should be finalized by January 25th.
+    <Box
+      style={{
+        maxWidth: 1200,
+        margin: "auto",
+        paddingLeft: 30,
+        paddingRight: 30
+      }}
+    >
+      <SHeading variant="h2">Dashboard</SHeading>
+      <SContent>
+        <Typography variant="body1">
+          An individual registration costs $20.00, registering a team of between
+          two to four students costs $60.00. Payments will be emailed by invoice
+          soon after January 15th. Registration for teams will close on January
+          20th and individual information should be finalized by January 23rd.
           <br /> <br />
           We will be ordering pizza for all teams on contest day. If any of your
           students requires dietary accommodations, please email us at
           exetermathclub@gmail.com to let us know and we will plan accordingly.
-        </SHeading>
-      </SHeading>
+        </Typography>
+      </SContent>
+
       <Paper elevation={3}>
         <Tabs
           value={activeTab}
@@ -619,7 +627,7 @@ const Dashboard = () => {
       </Paper>
       <br />
       {renderTab()}
-    </Container>
+    </Box>
   );
 };
 

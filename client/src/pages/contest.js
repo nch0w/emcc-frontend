@@ -14,7 +14,10 @@ const Contest = () => {
         <Typography variant="body1">
           The Exeter Math Club Competition will be being hosted in person in
           2025. This means all testing and grading will be taking place on site
-          on the Phillips Exeter Academy campus.
+          on the Phillips Exeter Academy campus. Below is{" "}
+          <b>the schedule that the 2024 EMCC ran on.</b> Though the schedule for
+          2025 EMCC will be slightly different, it will mostly remain the same
+          (in particular, the start and end times).
         </Typography>
 
         <ContestSchedule />

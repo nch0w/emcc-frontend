@@ -31,10 +31,10 @@ import { SHeading, SContentHeading } from "./styled_components";
 
 // contest year and date
 export const contestYear = 2025;
-export const contestDate = "January 27, 2024";
+export const contestDate = "January 25, 2025";
 
 // the status of the contest in question
-export const contestStatus = `Registration opening soon!`;
+export const contestStatus = `Registration for EMCC 2025 is open! Signups are due by January 20th, 2025.`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -63,9 +63,9 @@ export const teamLateCost = "$75.00";
 
 // deadlines for registration (used for display, NOT calculation)
 // all price calculation happens server-side
-export const registrationStarts = "December 13, 2023";
-export const earlyRegistrationDeadline = "January 7, 2024";
-export const lateRegistrationDeadline = "January 20, 2024";
+export const registrationStarts = "November 22, 2024";
+export const earlyRegistrationDeadline = "January 5, 2025";
+export const lateRegistrationDeadline = "January 20, 2025";
 
 // limits on teams and individuals per coach (used for display, NOT calculation)
 // all limit calculation happens server-side
@@ -84,12 +84,12 @@ export const AboutUsInfo = () => {
   return (
     <Box style={{ maxWidth: 800, margin: "auto" }}>
       <Typography variant="body1">
-        The EMCC is the annual math competition for middle schoolers, written
-        and hosted by the students of the Exeter math club. We are composed of
-        high schoolers from across the world who come together to share their
-        passion for math. In addition to organizing the EMCC, we participate in
-        many competitions ourselves. At the 2024 HMMT February competition, team
-        PEA Red placed 3rd out of 91 of the strongest teams in the nation.
+        The EMCC is an annual math competition for middle schoolers, written and
+        hosted by the students of the Exeter math club. We are composed of high
+        schoolers from across the world who come together to share their passion
+        for math. In addition to organizing the EMCC, we participate in many
+        competitions ourselves. At the 2024 HMMT February competition, team PEA
+        Red placed 3rd out of 91 of the strongest teams in the nation.
         <br />
         Phillips Exeter Academy is a boarding high school in Exeter, New
         Hampshire. Despite the quiet nature of the Exeter town, the school is

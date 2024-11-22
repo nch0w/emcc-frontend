@@ -68,22 +68,24 @@ const Home = () => {
           </a>
         </Typography>
 
-        <Typography variant="h3" align="center">
-          What is EMCC?
-        </Typography>
+        <br />
         <br />
         <Typography variant="body1">
-          The Exeter Math Club Competition is a middle-school mathematics
-          competition held annually at Phillips Exeter Academy in Exeter, New
-          Hampshire. EMCC provides middle schoolers a event where they can join
-          like-minded peers from a mathematical community spanning the globe.
-        </Typography>
-        <br />
-        <Typography variant="body1">
-          While designing EMCC, we've taken inspiration from the contests that
-          we ourselves attend and formatted our contest similarly. This means
-          that attending EMCC will not only be an enjoyable experience but will
-          also prepare you for future contests.
+          The Exeter Math Club Competition is an annual math competition for
+          middle schoolers, written and run by students at Phillips Exeter
+          Academy in New Hampshire. Every year since 2010, in January, teams of
+          four come from around the world to compete in-person at Exeter.{" "}
+          <b>The 2025 EMCC will take place on Saturday, January 25th, 2025.</b>
+          <br />
+          <br />
+          Registration is now open! Coaches may{" "}
+          <a href="/signup">sign up here</a>, or{" "}
+          <a href="/signup">log in here</a>. Coaches should create a new account
+          even if they have participated in the EMCC in a past year. An
+          individual registration costs $20.00 while registering a team of
+          between two to four students costs $60.00. Payments will be emailed by
+          invoice soon after January 15th. Registration will end on January
+          20th.
         </Typography>
         <br />
         <Typography variant="h3" align="center">
@@ -91,21 +93,45 @@ const Home = () => {
         </Typography>
         <br />
         <Typography variant="body1">
-          Anyone in 8th grade or below. We accept registration as teams of
-          students from the same school or different schools, or individuals.
-          Teams consist of up to four people, so we will combine individuals
-          into teams of four unless we are requested not to. Competitors come
-          from all around the world.
+          We welcome anybody in 8th grade or below to attend the EMCC!
+          Competitors come from all around the world.
+          <br />
+          <br />
+          Coaches may register as many teams as they would like. All students
+          who participate will be on a team, even if they register as an
+          individual without a team. Individuals who were not registered with a
+          team will be put into teams with each other at random. However, before
+          creating teams of individuals, individuals will be placed into
+          registered teams with less than four students. (If you are the coach
+          of a team with less than 4 people and you would not like additional
+          individuals on your team, please reach out to us. We would be happy to
+          accomodate you!)
+          <br />
+          <br />
         </Typography>
-        <br />
+
         <Typography variant="h3" align="center">
-          What are the costs for registration?
+          How is the competition formatted?
         </Typography>
         <br />
         <Typography variant="body1">
-          An individual registration costs $22.50, registering a team of between
-          two to four students costs $75.00. Payments will be emailed by invoice
-          soon after January 20st. Registration will end on January 20st.
+          The EMCC consists of two individual rounds and two team rounds. See
+          the <a href="/contest">contest section</a> of our website for a
+          detailed breakdown of the rules of the EMCC competition. Past
+          competitions can be found in the{" "}
+          <a href="/contest">archives section</a>.
+          <br />
+          <br />
+        </Typography>
+
+        <Typography variant="h3" align="center">
+          More questions?
+        </Typography>
+        <br />
+        <Typography variant="body1">
+          Please reach out to us at{" "}
+          <a href="mailto:exetermathclub@gmail.com">exetermathclub@gmail.com</a>
+          ! We would be happy to assist you.
         </Typography>
       </SContent>
     </Box>

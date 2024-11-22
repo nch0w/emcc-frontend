@@ -2,7 +2,8 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Container,
-  Typography
+  Typography,
+  Box
 } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
 

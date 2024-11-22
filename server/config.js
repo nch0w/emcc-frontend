@@ -6,9 +6,9 @@ module.exports = {
   teamLateCost: "$75.00",
 
   // deadlines for registration
-  registrationStarts: "December 13, 2023",
-  earlyRegistrationDeadline: "January 7th, 2023",
-  lateRegistrationDeadline: "January 20th, 2024",
+  registrationStarts: "November 22nd, 2024",
+  earlyRegistrationDeadline: "January 5th, 2025",
+  lateRegistrationDeadline: "January 20th, 2025",
 
   // limits on teams and individuals per coach
   maxIndivsPerCoach: -1,

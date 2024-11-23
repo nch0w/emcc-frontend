@@ -83,9 +83,10 @@ const Home = () => {
           <a href="/login">log in here</a>. Coaches should create a new account
           even if they have participated in the EMCC in a past year. An
           individual registration costs $20.00 while registering a team of
-          between two to four students costs $60.00. Payments will be emailed by
-          invoice soon after January 15th. Registration will end on January
-          20th.
+          between two to four students costs $60.00. The payment will not be
+          collected when coaches make an account; rather, invoices will be sent
+          shortly after January 20th, in which a link will be included for the
+          online payment. Registration will end on January 20th.
         </Typography>
         <br />
         <Typography variant="h3" align="center">

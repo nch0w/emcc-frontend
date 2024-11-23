@@ -603,9 +603,9 @@ const Dashboard = () => {
       <SContent>
         <Typography variant="body1">
           An individual registration costs $20.00; registering a team of between
-          two to four students costs $60.00. Payments will be emailed by invoice
-          soon after January 15th. Registration for teams will close on January
-          20th and individual information should be finalized by January 23rd.
+          two to four students costs $60.00. Invoices will be sent shortly after
+          January 20th. Registration for teams will close on January 20th and
+          individual information should be finalized by January 23rd.
           <br /> <br />
           We will be ordering pizza for all teams on contest day. If any of your
           students requires dietary accommodations, please email us at

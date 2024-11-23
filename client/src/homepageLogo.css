@@ -50,7 +50,7 @@ body {
   transform: translateZ(-100px) rotateX(90deg);
 }
 .cube.show-emcc {
-  transform: translateZ(-100px) rotateX(20deg) rotateY(0deg) rotateZ(10deg);
+  transform: translateZ(-100px) rotateX(24deg) rotateY(0deg) rotateZ(10deg);
   animation-name: slidein;
   animation-duration: 2s;
 }
@@ -60,7 +60,7 @@ body {
   }
 
   to {
-    transform: translateZ(-100px) rotateX(20deg) rotateY(0deg) rotateZ(10deg);
+    transform: translateZ(-100px) rotateX(24deg) rotateY(0deg) rotateZ(10deg);
   }
 }
 

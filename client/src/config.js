@@ -34,7 +34,7 @@ export const contestYear = 2025;
 export const contestDate = "January 25, 2025";
 
 // the status of the contest in question
-export const contestStatus = `Registration for EMCC 2025 is open! Signups are due by January 20th, 2025.`;
+export const contestStatus = `Signups are now closed. Coaches with registered individuals/teams should have received an email. Get excited for the 2025 EMCC!`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -389,21 +389,21 @@ export const ContestSchedule = () => {
                 <nobr>3:30 pm - 4:15 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Exeter Snapshot Panel</NoBorderTableCell>
-              <NoBorderTableCell>Forum</NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
                 <nobr>4:15 pm - 5:00 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Math at Exeter Panel</NoBorderTableCell>
-              <NoBorderTableCell>Forum</NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
                 <nobr>5:00 pm - 6:00 pm</nobr>
               </NoBorderTableCell>
               <NoBorderTableCell>Closing Ceremony (Awards)</NoBorderTableCell>
-              <NoBorderTableCell>Forum</NoBorderTableCell>
+              <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -427,8 +427,8 @@ export const RoundFormats = () => {
   let teamProblemWeight = 20;
   let teamTimeLimit = 60;
 
-  let gutsProblemCount = 24;
-  let gutsProblemWeights = [6, 7, 9, 11, 13, 15, 18, 21];
+  let gutsProblemCount = 27;
+  let gutsProblemWeights = [6, 7, 9, 11, 13, 15, 18, 21, 10];
   let gutsTimeLimit = 75;
 
   let gutsProblemWeightsStr = gutsProblemWeights[0].toString();
@@ -439,10 +439,11 @@ export const RoundFormats = () => {
   let speedMaximumPoints = speedProblemCount * speedProblemWeight;
   let accuracyMaximumPoints = accuracyProblemCount * accuracyProblemWeight;
   let teamMaximumPoints = teamProblemCount * teamProblemWeight;
-  let gutsMaximumPoints = 0;
-  for (const weight of gutsProblemWeights) {
-    gutsMaximumPoints += weight * 3;
-  }
+  // let gutsMaximumPoints = 0;
+  // for (const weight of gutsProblemWeights) {
+  //   gutsMaximumPoints += weight * 3;
+  // }
+  let gutsMaximumPoints = 300;
   let indivRoundsMaximumPoints = speedMaximumPoints + accuracyMaximumPoints;
   let teamRoundsMaximumPoints = teamMaximumPoints + gutsMaximumPoints;
   let sweepstakesMaximumPoints =
@@ -478,7 +479,8 @@ export const RoundFormats = () => {
       <Typography variant="body1">
         The Guts Round is a live round consisting of {gutsProblemCount}{" "}
         questions in {gutsTimeLimit} minutes. The questions are given to the
-        teams in sets of three. At the beginning of the round, each team will
+        teams in eight sets of three, plus an extra estimation round at the end
+        with three more problems. At the beginning of the round, each team will
         send a runner down to one of the scoring tables (spaced evenly
         throughout the contest hall to minimize differences in distance) to get
         the first set of three problems and bring it back to their team. The
@@ -510,11 +512,13 @@ export const RoundFormats = () => {
         {teamProblemWeight} points, for a total of {teamMaximumPoints} points.
         Each of the {gutsProblemCount} questions in the guts round is weighted
         by set (in order, the weights are {gutsProblemWeightsStr}), for a total
-        of {gutsMaximumPoints} points. Each team's sweepstakes score is
-        calculated as the sum of the four individual scores (up to{" "}
-        {4 * indivRoundsMaximumPoints} points) and the sum of the two team
-        scores (up to {teamRoundsMaximumPoints} points), for a grand total of up
-        to {sweepstakesMaximumPoints} points.
+        of {gutsMaximumPoints} points. In particular, the estimation round,
+        worth 10 points per question, is scored as extra credit; it is possible
+        for a team to score up to a 330/300 on the Guts round. Each team's
+        sweepstakes score is calculated as the sum of the four individual scores
+        (out of {4 * indivRoundsMaximumPoints} points) and the sum of the two
+        team scores (out of {teamRoundsMaximumPoints} points), for a grand total
+        of up to {sweepstakesMaximumPoints} points.
         <br />
         <br />
         In the case of a tie in any round, the tie will be broken as follows.

@@ -1,9 +1,9 @@
 module.exports = {
   // registration costs
-  indivEarlyCost: "$15.00",
-  indivLateCost: "$22.50",
-  teamEarlyCost: "$50.00",
-  teamLateCost: "$75.00",
+  indivEarlyCost: "$20.00",
+  indivLateCost: "$20.00",
+  teamEarlyCost: "$60.00",
+  teamLateCost: "$60.00",
 
   // deadlines for registration
   registrationStarts: "November 22nd, 2024",
@@ -17,5 +17,5 @@ module.exports = {
   maxTeamMembersPerTeam: 4,
 
   registrationClosed: false,
-  signupClosed: false
+  signupClosed: true
 };

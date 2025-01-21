@@ -75,8 +75,9 @@ const Home = () => {
           middle schoolers, written and run by students at Phillips Exeter
           Academy in New Hampshire. Every year since 2010, in January, teams of
           four come from around the world to compete in-person at Exeter.{" "}
-          <b>The 2025 EMCC will take place on Saturday, January 25th, 2025.</b>
-          <br />
+          <b>The 2025 EMCC will take place on Saturday, January 25th, 2025.</b>{" "}
+          Registration is now closed!
+          {/* <br />
           <br />
           Registration is now open! Coaches may{" "}
           <a href="/signup">sign up here</a>, or{" "}
@@ -86,7 +87,7 @@ const Home = () => {
           between two to four students costs $60.00. The payment will not be
           collected when coaches make an account; rather, invoices will be sent
           shortly after January 20th, in which a link will be included for the
-          online payment. Registration will end on January 20th.
+          online payment. Registration will end on January 20th. */}
         </Typography>
         <br />
         <Typography variant="h3" align="center">

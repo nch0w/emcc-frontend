@@ -102,7 +102,7 @@ async function run() {
     console.log(coachID);
     try {
       //await compDayMail(coachID, coaches[coachID]);
-      await compDayMail("abu@exeter.edu", coaches[coachID]);
+      await compDayMail("bbwang@exeter.edu", coaches[coachID]);
     } catch (err) {
       console.log(err);
     }

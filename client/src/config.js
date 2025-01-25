@@ -34,7 +34,7 @@ export const contestYear = 2025;
 export const contestDate = "January 25, 2025";
 
 // the status of the contest in question
-export const contestStatus = `Signups are now closed. Coaches with registered individuals/teams should have received an email. Get excited for the 2025 EMCC!`;
+export const contestStatus = `We hope you enjoyed the morning! The individual rounds and the Team Round have been uploaded to the Archives section. If you would like to protest a question, the place to do so is room 101 of the Academy Building. Enjoy the pizza, and get excited for the Guts Round!`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -200,6 +200,23 @@ const archiveListStyles = makeStyles({
   }
 });
 const archiveURLs = [
+  {
+    year: "2025",
+    links: [
+      "/papers/emcc25speed.pdf",
+      "/papers/emcc25accuracy.pdf",
+      "/papers/emcc25team.pdf",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "/papers/emcc25speedaccteamsol.pdf"
+    ],
+    labels: [
+      "Speed Round",
+      "Accuracy Round",
+      "Team Round",
+      "Totally the Guts Round",
+      "Solutions"
+    ]
+  },
   {
     year: "2024",
     links: ["/papers/emcc24all.pdf", "/papers/results-2024.pdf"],

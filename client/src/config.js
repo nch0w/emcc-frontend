@@ -388,14 +388,14 @@ export const ContestSchedule = () => {
               <NoBorderTableCell>
                 <nobr>3:30 pm - 4:15 pm</nobr>
               </NoBorderTableCell>
-              <NoBorderTableCell>Exeter Snapshot Panel</NoBorderTableCell>
+              <NoBorderTableCell>Math at Exeter Panel</NoBorderTableCell>
               <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>
               <NoBorderTableCell>
                 <nobr>4:15 pm - 5:00 pm</nobr>
               </NoBorderTableCell>
-              <NoBorderTableCell>Math at Exeter Panel</NoBorderTableCell>
+              <NoBorderTableCell>Exeter Snapshot Panel</NoBorderTableCell>
               <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
             </TableRow>
             <TableRow>

@@ -38,7 +38,7 @@ async function updateUser(req, res, next) {
       })
       .firstPage();
     for (let competitorResult of competitorsWithResults) {
-      competitorsWithResults.push({
+      indivResults.push({
         speedRank: competitorResult.fields["Speed Rank"],
         accuracyRank: competitorResult.fields["Accuracy Rank"],
         speedScore: competitorResult.fields["Speed Score"],

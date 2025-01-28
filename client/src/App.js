@@ -143,6 +143,7 @@ const App = () => {
   const [individuals, setIndividuals] = useState([]);
   const [authStatus, setAuthStatus] = useState(userStatus.NoUser);
   const [indivResults, setIndivResults] = useState([]);
+  const [teamResults, setTeamResults] = useState([]);
 
   useEffect(() => {
     axios
@@ -153,6 +154,7 @@ const App = () => {
         setTeams(response.data.teams);
         setIndividuals(response.data.individuals);
         setIndivResults(response.data.indivResults);
+        setTeamResults(response.data.teamResults);
       })
       .catch((error) => {
         console.log(error);
@@ -171,10 +173,12 @@ const App = () => {
             teams,
             individuals,
             indivResults,
+            teamResults,
             setCoachInfo,
             setTeams,
             setIndividuals,
-            setIndivResults
+            setIndivResults,
+            setTeamResults
           }}
         >
           <EMCCNav authStatus={authStatus} />

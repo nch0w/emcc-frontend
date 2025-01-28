@@ -34,7 +34,7 @@ export const contestYear = 2025;
 export const contestDate = "January 25, 2025";
 
 // the status of the contest in question
-export const contestStatus = `A big thank you to everybody who attended the EMCC! Results are available to coaches in the portal.`;
+export const contestStatus = `Thank you to everybody who attended the EMCC. Congratulations to the overall winner, Brandon Ni, and the first place team, Clarke A! The results document can be found in the archives. Individual and team results are available to coaches in the portal.`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -203,17 +203,19 @@ const archiveURLs = [
   {
     year: "2025",
     links: [
+      "/papers/emcc25results.pdf",
       "/papers/emcc25speed.pdf",
       "/papers/emcc25accuracy.pdf",
       "/papers/emcc25team.pdf",
-      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "/papers/emcc25guts.pdf",
       "/papers/emcc25speedaccteamsol.pdf"
     ],
     labels: [
+      "Results",
       "Speed Round",
       "Accuracy Round",
       "Team Round",
-      "Totally the Guts Round",
+      "Guts Round",
       "Solutions"
     ]
   },

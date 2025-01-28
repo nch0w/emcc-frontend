@@ -63,10 +63,12 @@ const Dashboard = () => {
     teams,
     individuals,
     indivResults,
+    teamResults,
     setCoachInfo,
     setTeams,
     setIndividuals,
     setIndivResults,
+    setTeamResults,
     authStatus,
     setAuthStatus
   } = useContext(UserContext);
@@ -84,6 +86,7 @@ const Dashboard = () => {
         setTeams(response.data.teams);
         setIndividuals(response.data.individuals);
         setIndivResults(response.data.indivResults);
+        setTeamResults(response.data.teamResults);
         setLoading(false);
       })
       .catch((error) => {
@@ -209,6 +212,7 @@ const Dashboard = () => {
         setTeams([]);
         setIndividuals([]);
         setIndivResults([]);
+        setTeamResults([]);
         Swal.fire("Successfully logged out.", "", "success");
         navigate("/");
       })
@@ -595,7 +599,133 @@ const Dashboard = () => {
       case "view-results":
         return (
           <Box>
-            <SHeading variant="h6">I admit orz</SHeading>
+            <Typography variant="body1">
+              We hope you enjoyed the EMCC! Results for your students and teams
+              are shown below. Please note that the ranks shown below are those
+              calculated prior to ties being broken.
+            </Typography>
+            <br />
+            <br />
+            <Typography variant="h3" align="center">
+              Individual Results
+            </Typography>
+            <br />
+            <MaterialTable
+              title="Speed Round"
+              options={{ search: false, sorting: false, draggable: false }}
+              icons={tableIcons}
+              columns={[
+                { title: "Name", field: "name" },
+                { title: "#/20", field: "speedScore" },
+                { title: "Rank", field: "speedRank" },
+                { title: "Distribution", field: "speedDistribution" }
+              ]}
+              isLoading={loading}
+              data={indivResults}
+              localization={{
+                body: { emptyDataSourceMessage: "No results to see here!" }
+              }}
+            />
+            <br />
+            <br />
+            <MaterialTable
+              title="Accuracy Round"
+              options={{ search: false, sorting: false, draggable: false }}
+              icons={tableIcons}
+              columns={[
+                { title: "Name", field: "name" },
+                { title: "#/10", field: "accuracyScore" },
+                { title: "Rank", field: "accuracyRank" },
+                { title: "Distribution", field: "accuracyDistribution" }
+              ]}
+              isLoading={loading}
+              data={indivResults}
+              localization={{
+                body: { emptyDataSourceMessage: "No results to see here!" }
+              }}
+            />
+            <br />
+            <br />
+            <MaterialTable
+              title="Overall"
+              options={{ search: false, sorting: false, draggable: false }}
+              icons={tableIcons}
+              columns={[
+                { title: "Name", field: "name" },
+                { title: "#/150", field: "overallScore" },
+                { title: "Rank", field: "overallRank" }
+              ]}
+              isLoading={loading}
+              data={indivResults}
+              localization={{
+                body: { emptyDataSourceMessage: "No results to see here!" }
+              }}
+            />
+            <br />
+            <br />
+            <Typography variant="h3" align="center">
+              Team Results
+            </Typography>
+            <br />
+            <MaterialTable
+              title="Team Round"
+              options={{ search: false, sorting: false, draggable: false }}
+              icons={tableIcons}
+              columns={[
+                { title: "Team", field: "name" },
+                { title: "#/15", field: "teamScore" },
+                { title: "Rank", field: "teamRank" },
+                { title: "Distribution", field: "teamDistribution" }
+              ]}
+              isLoading={loading}
+              data={teamResults}
+              localization={{
+                body: { emptyDataSourceMessage: "No results to see here!" }
+              }}
+            />
+            <br />
+            <br />
+            <MaterialTable
+              title="Guts Round"
+              options={{ search: false, sorting: false, draggable: false }}
+              icons={tableIcons}
+              columns={[
+                { title: "Team", field: "name" },
+                { title: "#/300", field: "gutsScore" },
+                { title: "Rank", field: "gutsRank" },
+                { title: "Distribution", field: "gutsDistribution" },
+                {
+                  title: "Estimation Scores (out of 10)",
+                  field: "gutsEstimation"
+                }
+              ]}
+              isLoading={loading}
+              data={teamResults}
+              localization={{
+                body: { emptyDataSourceMessage: "No results to see here!" }
+              }}
+            />
+            <br />
+            <br />
+            <MaterialTable
+              title="Overall"
+              options={{ search: false, sorting: false, draggable: false }}
+              icons={tableIcons}
+              columns={[
+                { title: "Team", field: "name" },
+                {
+                  title: "Cumulative Individual (out of 600)",
+                  field: "individualsCumulative"
+                },
+                { title: "Sweepstakes (out of 1200)", field: "sweepsScore" },
+                { title: "Rank", field: "sweepsRank" }
+              ]}
+              isLoading={loading}
+              data={teamResults}
+              localization={{
+                body: { emptyDataSourceMessage: "No results to see here!" }
+              }}
+            />
           </Box>
         );
       default:

@@ -34,7 +34,7 @@ export const contestYear = 2025;
 export const contestDate = "January 25, 2025";
 
 // the status of the contest in question
-export const contestStatus = `We hope you enjoyed the morning! The individual rounds and the Team Round have been uploaded to the Archives section. If you would like to protest a question, the place to do so is room 101 of the Academy Building. Enjoy the pizza, and get excited for the Guts Round!`;
+export const contestStatus = `A big thank you to everybody who attended the EMCC! Results are available to coaches in the portal.`;
 // export const contestStatus = () => (
 //   <div>
 //     {

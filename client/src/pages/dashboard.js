@@ -62,9 +62,11 @@ const Dashboard = () => {
     coachInfo,
     teams,
     individuals,
+    indivResults,
     setCoachInfo,
     setTeams,
     setIndividuals,
+    setIndivResults,
     authStatus,
     setAuthStatus
   } = useContext(UserContext);
@@ -81,6 +83,7 @@ const Dashboard = () => {
         setCoachInfo(response.data.coachInfo);
         setTeams(response.data.teams);
         setIndividuals(response.data.individuals);
+        setIndivResults(response.data.indivResults);
         setLoading(false);
       })
       .catch((error) => {
@@ -108,6 +111,9 @@ const Dashboard = () => {
         break;
       case "view-coach-info":
         setActiveTab("view-coach-info");
+        break;
+      case "view-results":
+        setActiveTab("view-results");
         break;
       default:
         break;
@@ -202,6 +208,7 @@ const Dashboard = () => {
         setCoachInfo({});
         setTeams([]);
         setIndividuals([]);
+        setIndivResults([]);
         Swal.fire("Successfully logged out.", "", "success");
         navigate("/");
       })
@@ -585,6 +592,12 @@ const Dashboard = () => {
             </Button>
           </Box>
         );
+      case "view-results":
+        return (
+          <Box>
+            <SHeading variant="h6">I admit orz</SHeading>
+          </Box>
+        );
       default:
         return;
     }
@@ -623,6 +636,8 @@ const Dashboard = () => {
           <Tab value="view-competitors" label="Edit Competitors" />
 
           <Tab value="view-coach-info" label="Edit Coach Info" />
+
+          <Tab value="view-results" label="View Results" />
         </Tabs>
       </Paper>
       <br />

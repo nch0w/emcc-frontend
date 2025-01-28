@@ -31,6 +31,22 @@ async function updateUser(req, res, next) {
         });
       }
     }
+    const indivResults = [];
+    const competitorsWithResults = await base("Individual Results")
+      .select({
+        filterByFormula: `{Coach Email} = '${req.user.fields["Email"]}'`
+      })
+      .firstPage();
+    for (let competitorResult of competitorsWithResults) {
+      competitorsWithResults.push({
+        speedRank: competitorResult.fields["Speed Rank"],
+        accuracyRank: competitorResult.fields["Accuracy Rank"],
+        speedScore: competitorResult.fields["Speed Score"],
+        accuracyScore: competitorResult.fields["Accuracy Score"],
+        speedDistribution: competitorResult.fields["Speed Distribution"],
+        accuracyDistribution: competitorResult.fields["Accuracy Distribution"]
+      });
+    }
 
     return res.status(200).json({
       coachInfo: {
@@ -42,7 +58,8 @@ async function updateUser(req, res, next) {
         indivLimit: user.indivLimit === -1 ? maxIndivsPerCoach : user.indivLimit
       },
       teams,
-      individuals
+      individuals,
+      indivResults
     });
   } else {
     return res.status(400).send("Not logged in.");

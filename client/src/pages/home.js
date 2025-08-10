@@ -75,8 +75,6 @@ const Home = () => {
           middle schoolers, written and run by students at Phillips Exeter
           Academy in New Hampshire. Every year since 2010, in January, teams of
           four come from around the world to compete in-person at Exeter.{" "}
-          <b>The 2025 EMCC will take place on Saturday, January 25th, 2025.</b>{" "}
-          Registration is now closed!
           {/* <br />
           <br />
           Registration is now open! Coaches may{" "}

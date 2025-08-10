@@ -31,10 +31,10 @@ import { SHeading, SContentHeading } from "./styled_components";
 
 // contest year and date
 export const contestYear = 2025;
-export const contestDate = "January 25, 2025";
+export const contestDate = "January TBD, 2026";
 
 // the status of the contest in question
-export const contestStatus = `Thank you to everybody who attended the EMCC. Congratulations to the overall winner, Brandon Ni, and the first place team, Clarke A! The results document can be found in the archives. Individual and team results are available to coaches in the portal.`;
+export const contestStatus = `Stay on the lookout for news about 2026 EMCC!`;
 // export const contestStatus = () => (
 //   <div>
 //     {
@@ -208,7 +208,8 @@ const archiveURLs = [
       "/papers/emcc25accuracy.pdf",
       "/papers/emcc25team.pdf",
       "/papers/emcc25guts.pdf",
-      "/papers/emcc25speedaccteamsol.pdf"
+      "/papers/emcc25answers.pdf",
+      "/papers/emcc25solutions.pdf"
     ],
     labels: [
       "Results",
@@ -216,7 +217,8 @@ const archiveURLs = [
       "Accuracy Round",
       "Team Round",
       "Guts Round",
-      "Solutions"
+      "Answers",
+      "Solutions & Acknowledgements"
     ]
   },
   {
@@ -233,6 +235,31 @@ const archiveURLs = [
     year: "2022",
     links: ["/papers/emcc22all.pdf"],
     labels: ["Full document"]
+  },
+  {
+    year: "2021",
+    links: [
+      "/papers/emcc21speed.pdf",
+      "/papers/emcc21accuracy.pdf",
+      "/papers/emcc21team.pdf",
+      "/papers/emcc21guts.pdf",
+      "/papers/emcc21speedsol.pdf",
+      "/papers/emcc21accuracysol.pdf",
+      "/papers/emcc21teamsol.pdf",
+      "/papers/emcc21gutsans.pdf",
+      "/papers/emcc21results.pdf"
+    ],
+    labels: [
+      "Speed Round",
+      "Accuracy Round",
+      "Team Round",
+      "Guts Round",
+      "Speed Solutions",
+      "Accuracy Solutions",
+      "Team Solutions",
+      "Guts Answers",
+      "Statistics"
+    ]
   },
   {
     year: "2020",

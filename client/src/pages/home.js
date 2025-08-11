@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <Box>
       <SpecialHeader />
-      <SHero>
+      <SHero style={{ maxWidth: 1200 }}>
         <SHeroSubheading variant="h3">
           The Exeter Math Club Competition
         </SHeroSubheading>
@@ -45,7 +45,7 @@ const Home = () => {
       </SHero>
       <br />
       <br />
-      <SContent>
+      <SContent style={{ maxWidth: 1200 }}>
         <Typography variant="h4" align="center">
           Sponsored by
           <br />

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Location } from "@reach/router";
 import "./App.css";
 
-import { Router, navigate } from "@reach/router";
+import { Router, navigate, globalHistory } from "@reach/router";
 import {
   CssBaseline,
   Box,
@@ -22,6 +23,7 @@ import {
 } from "@material-ui/icons";
 
 import { SNav, SNavButton } from "./styled_components";
+import styled from "styled-components";
 
 import Home from "./pages/home";
 import Contest from "./pages/contest";
@@ -37,6 +39,7 @@ import axios from "axios";
 
 import { contestYear, emccServerUrl } from "./config";
 import Verify from "./pages/verify";
+import logo from "./assets/logo.png";
 
 /*
 TODO: is EMCC 2021 even happening? Is it remote?
@@ -103,39 +106,211 @@ const parseCurrentPageFromUrl = () => {
   return currentPage;
 };
 
+const Bar = styled.nav`
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgb(230, 230, 230);
+  box-shadow: #9b1d31 0px 1px 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  transition: height 0.2s;
+  height: ${({ shrink }) => (shrink ? "40px" : "80px")};
+`;
+
+const Row = styled.div`
+  max-width: 1200px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 0px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  transition: height 0.2s;
+  gap: 0px;
+  align-items: center;
+  height: ${({ shrink }) => (shrink ? "40px" : "80px")};
+`;
+
+const Item = styled.button`
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 0px;
+  margin-top: auto;
+  background: ${({ $active }) =>
+    $active
+      ? "linear-gradient(0deg, #9B1D3116 0%, #9B1D3100 40%) !important"
+      : "transparent"};
+  color: ${({ $active }) => ($active ? "#9B1D31 !important" : "#888")};
+  border: none;
+  cursor: pointer;
+  font: 500 14px/1.1 Lato, system-ui, -apple-system, sans-serif;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background-color: #9b1d31;
+    transition: 0.1s;
+    width: 100%;
+    height: 0px;
+  }
+  &:hover::after {
+    height: 1px;
+  }
+  ${({ $active }) =>
+    $active &&
+    `
+      &::after {
+        height: 4px !important;
+      }
+    `}
+`;
+const HomePageItem = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: ${({ shrink }) => (shrink ? "40px" : "80px")};
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
+  width: 120px;
+  border: none;
+  cursor: pointer;
+  transition: 5s;
+  margin-top: 0px;
+  padding-top: 0px;
+  font: 500 14px/1.1 Lato, system-ui, -apple-system, sans-serif;
+  transition: border-bottom 0.2s, height 0.2s;
+  background: #0000;
+`;
+
 const EMCCNav = ({ authStatus }) => {
   // EMCCNav state must be equal to the "value" prop of
   // the BottomNavigationAction that we want to highlight
   // aka the current page
   const currentPage = parseCurrentPageFromUrl();
   const [currentUrl, setUrl] = useState("/" + currentPage);
-  const handleButtonClicked = (_, newUrl) => {
-    navigate(newUrl); // React Router's navigation
-    setUrl(newUrl); // If you're also updating a state variable (optional)
+  const [shrink, setShrink] = useState(false);
+  useEffect(() => {
+    let ticking = false;
+    const SHRINK_AT = 80; // scroll down past this -> shrink
+    const EXPAND_AT = 20; // scroll back above this -> expand
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        setShrink((prev) => (prev ? y > EXPAND_AT : y > SHRINK_AT));
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const go = (path) => {
+    navigate(path);
+    setUrl(path); // keep your controlled state pattern
   };
 
   return (
-    <SNav value={currentUrl} showLabels onChange={handleButtonClicked}>
-      <SNavButton label="Home" value="/" icon={<HomeIcon />} />
-      <SNavButton label="Contest" value="/contest" icon={<ContestIcon />} />
-      {/* <SNavButton label="Travel" value="/travel" icon={<TravelIcon />} /> */}
-      <SNavButton label="Archives" value="/archives" icon={<ArchivesIcon />} />
-      <SNavButton label="About Us" value="/aboutus" icon={<ContactIcon />} />
+    <Bar shrink={shrink}>
+      <Row shrink={shrink}>
+        <HomePageItem
+          shrink={shrink}
+          onClick={() => go("/")}
+          $active={currentUrl === "/"}
+        >
+          <img
+            src={logo}
+            alt="EMCC Logo"
+            style={{ height: "80%", width: "auto", display: "block" }}
+          />
+        </HomePageItem>
+        <Item
+          onClick={() => go("/contest")}
+          $active={currentUrl === "/contest"}
+        >
+          Contest
+        </Item>
+        <Item
+          onClick={() => go("/archives")}
+          $active={currentUrl === "/archives"}
+        >
+          Archives
+        </Item>
+        <Item
+          onClick={() => go("/aboutus")}
+          $active={currentUrl === "/aboutus"}
+        >
+          About Us
+        </Item>
 
-      {authStatus === userStatus.NoUser ? (
-        <SNavButton label="Register" value="/signup" icon={<SignUpIcon />} />
-      ) : (
-        <SNavButton
-          label="Dashboard"
-          value="/dashboard"
-          icon={<DashboardIcon />}
-        />
-      )}
-
-      {/* <SNavButton label="Payment" value="/payment" icon={<PaymentIcon />} /> */}
-    </SNav>
+        {authStatus === userStatus.NoUser ? (
+          <Item
+            onClick={() => go("/signup")}
+            $active={currentUrl === "/signup"}
+          >
+            Register
+          </Item>
+        ) : (
+          <Item
+            onClick={() => go("/dashboard")}
+            $active={currentUrl === "/dashboard"}
+          >
+            Dashboard
+          </Item>
+        )}
+      </Row>
+    </Bar>
   );
 };
+
+function ScrollToTop() {
+  useEffect(() => {
+    const pinToTop = () => {
+      // if something grabbed focus, that can scroll the page; release it
+      if (
+        document.activeElement &&
+        typeof document.activeElement.blur === "function"
+      ) {
+        document.activeElement.blur();
+      }
+      // hit it more than once to beat layout shifts
+      const scroll = () =>
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      scroll(); // now
+      requestAnimationFrame(scroll); // next paint
+      setTimeout(scroll, 0); // next macrotask
+    };
+
+    // run on initial mount
+    pinToTop();
+
+    // run on route changes
+    const unlisten = globalHistory.listen(() => {
+      pinToTop();
+    });
+
+    return unlisten;
+  }, []);
+
+  return null;
+}
 
 const App = () => {
   const [coachInfo, setCoachInfo] = useState({});
@@ -183,6 +358,10 @@ const App = () => {
         >
           <EMCCNav authStatus={authStatus} />
 
+          <Location>
+            {({ location }) => <ScrollToTop location={location} />}
+          </Location>
+
           <Router>
             <Home path="/" />
             <Contest path="/contest" />
@@ -196,6 +375,8 @@ const App = () => {
             <Payment path="/payment" />
             <Verify path="/verify/:tokenId" />
           </Router>
+          <ScrollToTop />
+
           <div style={{ marginBottom: 100 }} />
           <footer
             style={{

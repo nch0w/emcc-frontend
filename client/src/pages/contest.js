@@ -2,12 +2,17 @@ import React from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
-import { contestYear, ContestSchedule, RoundFormats } from "../config";
+import {
+  contestYear,
+  ContestSchedule,
+  RoundFormats,
+  pageWidth
+} from "../config";
 import { SHeading, SContent } from "../styled_components";
 
 const Contest = () => {
   return (
-    <Box style={{ maxWidth: 800, margin: "auto" }}>
+    <Box style={{ maxWidth: pageWidth, margin: "auto" }}>
       <SHeading variant="h2">Contest Information</SHeading>
 
       <SContent>

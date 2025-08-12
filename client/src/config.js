@@ -79,10 +79,12 @@ export const emccServerUrl =
   //process.env.REACT_APP_SERVER_URL || "https://exetermathclub.com/api";
   process.env.REACT_APP_SERVER_URL || "http://localhost:3000/api";
 
+export const pageWidth = 1100;
+
 // about us
 export const AboutUsInfo = () => {
   return (
-    <Box style={{ maxWidth: 800, margin: "auto" }}>
+    <Box style={{ maxWidth: pageWidth, margin: "auto" }}>
       <Typography variant="body1">
         The EMCC is an annual math competition for middle schoolers, written and
         hosted by the students of the Exeter math club. We are composed of high

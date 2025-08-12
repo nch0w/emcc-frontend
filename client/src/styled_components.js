@@ -6,6 +6,7 @@ import {
   Box
 } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
+import { BlockRounded } from "@material-ui/icons";
 
 // NAVIGATION BAR
 export const SNav = styled(BottomNavigation)({
@@ -34,7 +35,8 @@ export const SNavButton = styled(BottomNavigationAction)({
 export const SHeading = styled(Typography)({
   textAlign: "center",
   paddingTop: "20px",
-  paddingBottom: "40px"
+  paddingBottom: "40px",
+  fontWeight: "bold"
 });
 
 export const SContent = styled(Container)({
@@ -46,7 +48,8 @@ export const SContent = styled(Container)({
 export const SContentHeading = styled(Typography)({
   textAlign: "center",
   paddingTop: "10px",
-  paddingBottom: "10px"
+  paddingBottom: "10px",
+  fontWeight: "bold"
 });
 
 // HOME PAGE

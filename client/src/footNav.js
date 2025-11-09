@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Location } from "@reach/router";
 import "./App.css";
 
 import { navigate } from "@reach/router";
-import { Box, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { pageWidth } from "./config";
 
 import styled from "styled-components";
 import EmailIcon from "@material-ui/icons/Email";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import AllInboxIcon from "@material-ui/icons/AllInbox"; // placeholder for your cubes icon
-import ChatIcon from "@material-ui/icons/Chat"; // placeholder for Discord
 
-import { contestYear, emccServerUrl } from "./config";
+import { contestYear } from "./config";
 import logo from "./assets/logo.png";
 
 const userStatus = {

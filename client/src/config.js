@@ -15,8 +15,6 @@ import {
 import { withStyles } from "@material-ui/core";
 import MuiTableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "@reach/router";
-import ClubImage from "./assets/clubPhoto.png";
 import { SHeading, SContentHeading } from "./styled_components";
 
 // a set of app-wide constants in 1 place
@@ -79,7 +77,7 @@ export const emccServerUrl =
   //process.env.REACT_APP_SERVER_URL || "https://exetermathclub.com/api";
   process.env.REACT_APP_SERVER_URL || "http://localhost:3000/api";
 
-export const pageWidth = 1100;
+export const pageWidth = 900;
 
 // about us
 export const AboutUsInfo = () => {
@@ -87,21 +85,20 @@ export const AboutUsInfo = () => {
     <Box style={{ maxWidth: pageWidth, margin: "auto" }}>
       <Typography variant="body1">
         The EMCC is an annual math competition for middle schoolers, written and
-        hosted by the students of the Exeter math club. We are composed of high
-        schoolers from across the world who come together to share their passion
-        for math. In addition to organizing the EMCC, we participate in many
-        competitions ourselves. At the 2024 HMMT February competition, team PEA
-        Red placed 3rd out of 91 of the strongest teams in the nation.
+        hosted by the students of the math club at Phillips Exeter Academy. In
+        addition to organizing the EMCC, we participate in many competitions
+        ourselves. At the 2024 HMMT February competition, team PEA Red placed
+        3rd out of 91 of the strongest teams in the nation.
+        <br />
         <br />
         Phillips Exeter Academy is a boarding high school in Exeter, New
-        Hampshire. Despite the quiet nature of the Exeter town, the school is
-        just a stone's throw from Boston.
+        Hampshire—just a stone's throw from Boston.
         <br />
         <br />
         <center>
           <img
             id="club_photo"
-            alt="Club Photo"
+            alt="Math Club"
             style={{
               verticalAlign: "middle",
               width: "60%"
@@ -127,29 +124,29 @@ const members = [
     role: "Tournament Director"
   },
   {
+    name: "Grant Blitz",
+    email: "gblitz@exeter.edu",
+    role: "Problem Selection Head"
+  },
+  {
+    name: "Albert Lu",
+    email: "aklu@exeter.edu",
+    role: "Problem Selection Head"
+  },
+  {
+    name: "Evan Fan",
+    email: "etfan@exeter.edu",
+    role: "Problem Selection Head"
+  },
+  {
     name: "Harini Venkatesh",
     email: "hvenkatesh@exeter.edu",
-    role: "Tournament Director"
+    role: "Problem Selection Head"
   },
   {
-    name: "Bryan Chen",
-    email: "bjchen@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Michael Lu",
-    email: "mzlu1@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Shiqiao Zhang",
-    email: "szhang6@exeter.edu",
-    role: "Tournament Director"
-  },
-  {
-    name: "Yash Shah",
-    email: "ysshah@exeter.edu",
-    role: "Tournament Director"
+    name: "Michael Yang",
+    email: "mmyang@exeter.edu",
+    role: "Problem Selection Head"
   }
 ];
 
@@ -196,11 +193,6 @@ export const ContactInfo = () => {
   );
 };
 
-const archiveListStyles = makeStyles({
-  media: {
-    height: 200
-  }
-});
 const archiveURLs = [
   {
     year: "2025",
@@ -320,7 +312,6 @@ const archiveURLs = [
   }
 ];
 export const ArchiveList = () => {
-  const classes = archiveListStyles();
   return (
     <Grid container spacing={3}>
       {archiveURLs.map((entry) => (
@@ -589,12 +580,12 @@ export const RoundFormats = () => {
         round will be ranked higher. If a tie persists, the team who ranked
         higher in guts round will be ranked higher. If a tie still persists, the
         team who ranked higher in team round will be ranked higher.
-        <br />
+        {/* <br />
         <br />
         No individual or team will be tie-broken out of the top 10. For example,
         in the case of a three-way tie for the 9th place individual, after
         tie-breaking there will be one person receiving 9th place and two
-        receiving 10th place.
+        receiving 10th place. */}
       </Typography>
     </Box>
   );

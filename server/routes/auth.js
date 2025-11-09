@@ -45,6 +45,7 @@ router.post(
     }
 
     const user = sameEmail[0];
+    // console.log(user)
     const match = await bcrypt.compare(password, user.fields.Password);
     if (!match) {
       return res

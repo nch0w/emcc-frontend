@@ -1,10 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 
-import { Container, Box, Paper, Typography } from "@material-ui/core";
+import { Box, Paper, Typography } from "@material-ui/core";
 import { Tabs, Tab } from "@material-ui/core";
 import { TextField, Button } from "@material-ui/core";
-import MaterialTable, { MTableActions } from "material-table";
-import AddBox from "@material-ui/icons/AddBox";
+import MaterialTable from "material-table";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import Check from "@material-ui/icons/Check";
 import ChevronLeft from "@material-ui/icons/ChevronLeft";
@@ -19,12 +18,12 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { Link, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 import { UserContext, userStatus } from "../App";
-import { emccServerUrl } from "../config";
+import { emccServerUrl, pageWidth } from "../config";
 import { SHeading, SContent } from "../styled_components";
 
 const tableIcons = {
@@ -58,6 +57,8 @@ const tableIcons = {
 };
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const {
     coachInfo,
     teams,
@@ -74,8 +75,13 @@ const Dashboard = () => {
   } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
+  const skipUserFetch = useRef(false);
 
   useEffect(() => {
+    if (skipUserFetch.current) {
+      skipUserFetch.current = false;
+      return;
+    }
     if (authStatus === userStatus.UserLoaded) return;
     setLoading(true);
     axios
@@ -94,18 +100,28 @@ const Dashboard = () => {
           "Error",
           "There was an error fetching your data. Please try again later.",
           "error"
-        );
+        ).then(() => {
+          navigate("/"); // change this to your target route
+        });
         setLoading(false);
         console.log(error);
       });
-  }, []);
+  }, [
+    navigate,
+    authStatus,
+    setAuthStatus,
+    setCoachInfo,
+    setTeams,
+    setIndividuals,
+    setIndivResults,
+    setTeamResults
+  ]);
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
 
   const [activeTab, setActiveTab] = useState("view-competitors");
-  const navigate = useNavigate();
 
   const handleTabClicked = (newValue) => {
     switch (newValue) {
@@ -204,6 +220,8 @@ const Dashboard = () => {
   };
 
   const logout = () => {
+    skipUserFetch.current = true;
+
     axios
       .post(emccServerUrl + "/auth/logout", {}, { timeout: 5000 })
       .then((response) => {
@@ -736,7 +754,7 @@ const Dashboard = () => {
   return (
     <Box
       style={{
-        maxWidth: 1200,
+        maxWidth: pageWidth,
         margin: "auto",
         paddingLeft: 30,
         paddingRight: 30

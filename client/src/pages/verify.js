@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Typography } from "@material-ui/core";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -18,7 +18,7 @@ function Verify({ tokenId }) {
       .catch((error) => {
         setError(error.response.data);
       });
-  }, []);
+  });
   return (
     <Container>
       {errorMessage ? (

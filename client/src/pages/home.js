@@ -1,29 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
 import { contestDate, contestStatus, pageWidth } from "../config";
-import {
-  SHero,
-  SHeroHeading,
-  SHeroSubheading,
-  SContent
-} from "../styled_components";
-import { Link } from "@reach/router";
-import { userStatus, UserContext } from "../App";
+import { SHero, SHeroSubheading, SContent } from "../styled_components";
 import { SpecialHeader } from "../homepageLogo";
 
 const Home = () => {
-  const {
-    coachInfo,
-    teams,
-    individuals,
-    setCoachInfo,
-    setTeams,
-    setIndividuals,
-    authStatus,
-    setAuthStatus
-  } = useContext(UserContext);
   return (
     <Box>
       <SpecialHeader />
@@ -106,6 +89,18 @@ const Home = () => {
           of a team with less than 4 people and you would not like additional
           individuals on your team, please reach out to us. We would be happy to
           accomodate you!)
+          <br />
+          <br />
+        </Typography>
+
+        <Typography variant="h3" align="center">
+          How do I register?
+        </Typography>
+        <br />
+        <Typography variant="body1">
+          Registration for the 2026 EMCC will open mid-November. Stay on the
+          lookout! When registration opens, coaches may sign up teams by
+          creating an account <a href="/signup">here</a>.
           <br />
           <br />
         </Typography>

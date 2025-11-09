@@ -2,12 +2,7 @@ import React from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
-import {
-  contestYear,
-  ContestSchedule,
-  RoundFormats,
-  pageWidth
-} from "../config";
+import { ContestSchedule, RoundFormats, pageWidth } from "../config";
 import { SHeading, SContent } from "../styled_components";
 
 const Contest = () => {

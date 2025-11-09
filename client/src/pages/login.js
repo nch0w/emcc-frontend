@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { Container, Box, Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import { TextField, Button } from "@material-ui/core";
 import { Link, useNavigate } from "@reach/router";
 import axios from "axios";
@@ -11,16 +11,8 @@ import { SHeading } from "../styled_components";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const {
-    coachInfo,
-    teams,
-    individuals,
-    setCoachInfo,
-    setTeams,
-    setIndividuals,
-    authStatus,
-    setAuthStatus
-  } = useContext(UserContext);
+  const { setCoachInfo, setTeams, setIndividuals, setAuthStatus } =
+    useContext(UserContext);
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const navigate = useNavigate();

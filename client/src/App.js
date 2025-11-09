@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Location } from "@reach/router";
 import "./App.css";
 
-import { Router, navigate, globalHistory } from "@reach/router";
+import { Router, globalHistory } from "@reach/router";
 import {
   CssBaseline,
   Box,

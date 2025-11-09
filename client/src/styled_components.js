@@ -2,11 +2,9 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Container,
-  Typography,
-  Box
+  Typography
 } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
-import { BlockRounded } from "@material-ui/icons";
 
 // NAVIGATION BAR
 export const SNav = styled(BottomNavigation)({

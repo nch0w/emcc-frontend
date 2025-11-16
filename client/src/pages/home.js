@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
-import { contestDate, contestStatus, pageWidth } from "../config";
+import { contestDate, contestStatus } from "../config";
 import { SHero, SHeroSubheading, SContent } from "../styled_components";
 import { SpecialHeader } from "../homepageLogo";
 
@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <Box>
       <SpecialHeader />
-      <SHero style={{ maxWidth: pageWidth }}>
+      <SHero>
         <SHeroSubheading variant="h3">
           The Exeter Math Club Competition
         </SHeroSubheading>
@@ -28,7 +28,7 @@ const Home = () => {
       </SHero>
       <br />
       <br />
-      <SContent style={{ maxWidth: pageWidth }}>
+      <SContent>
         <Typography variant="h4" align="center">
           Sponsored by
           <br />

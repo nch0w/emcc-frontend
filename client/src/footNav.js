@@ -35,7 +35,8 @@ const parseCurrentPageFromUrl = () => {
 };
 
 const Bar = styled.nav`
-  position: sticky;
+  position: fixed;
+  width: 100vw;
   top: 0;
   z-index: 1000;
   background: rgb(230, 230, 230);
@@ -153,7 +154,15 @@ export const EMCCNav = ({ authStatus }) => {
   }, []);
 
   const go = (path) => {
-    navigate(path);
+    navigate(path).then(() => {
+      // route change + render has finished
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 10);
+    });
     setUrl(path); // keep your controlled state pattern
   };
 

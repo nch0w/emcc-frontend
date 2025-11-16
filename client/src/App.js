@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Location } from "@reach/router";
 import "./App.css";
 
-import { Router, globalHistory } from "@reach/router";
+import { Router } from "@reach/router";
 import {
   CssBaseline,
   Box,
@@ -10,6 +9,7 @@ import {
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core";
+import styled from "styled-components";
 
 import Home from "./pages/home";
 import Contest from "./pages/contest";
@@ -23,7 +23,7 @@ import Dashboard from "./pages/dashboard";
 import Payment from "./pages/payment";
 import axios from "axios";
 
-import { emccServerUrl } from "./config";
+import { emccServerUrl, pageWidth } from "./config";
 import Verify from "./pages/verify";
 import { EMCCFoot, EMCCNav } from "./footNav.js";
 
@@ -64,39 +64,14 @@ class PrivateRoute extends React.Component {
     );
   }
 }
-// end authentication plumbing code
 
-function ScrollToTop() {
-  useEffect(() => {
-    const pinToTop = () => {
-      // if something grabbed focus, that can scroll the page; release it
-      if (
-        document.activeElement &&
-        typeof document.activeElement.blur === "function"
-      ) {
-        document.activeElement.blur();
-      }
-      // hit it more than once to beat layout shifts
-      const scroll = () =>
-        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      scroll(); // now
-      requestAnimationFrame(scroll); // next paint
-      setTimeout(scroll, 0); // next macrotask
-    };
-
-    // run on initial mount
-    pinToTop();
-
-    // run on route changes
-    const unlisten = globalHistory.listen(() => {
-      pinToTop();
-    });
-
-    return unlisten;
-  }, []);
-
-  return null;
-}
+const PageBox = styled.div`
+  position: relative;
+  max-width: ${pageWidth}px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+`;
 
 const App = () => {
   const [coachInfo, setCoachInfo] = useState({});
@@ -144,24 +119,21 @@ const App = () => {
         >
           <EMCCNav authStatus={authStatus} />
 
-          <Location>
-            {({ location }) => <ScrollToTop location={location} />}
-          </Location>
-
-          <Router>
-            <Home path="/" />
-            <Contest path="/contest" />
-            <Travel path="/travel" />
-            <AboutUs path="/aboutus" />
-            <Archives path="/archives" />
-            <Login path="/login" />
-            <Guts path="/guts" />
-            <SignUp path="/signup" />
-            <PrivateRoute as={Dashboard} path="/dashboard" />
-            <Payment path="/payment" />
-            <Verify path="/verify/:tokenId" />
-          </Router>
-          <ScrollToTop />
+          <PageBox>
+            <Router>
+              <Home path="/" />
+              <Contest path="/contest" />
+              <Travel path="/travel" />
+              <AboutUs path="/aboutus" />
+              <Archives path="/archives" />
+              <Login path="/login" />
+              <Guts path="/guts" />
+              <SignUp path="/signup" />
+              <PrivateRoute as={Dashboard} path="/dashboard" />
+              <Payment path="/payment" />
+              <Verify path="/verify/:tokenId" />
+            </Router>
+          </PageBox>
 
           <div style={{ marginBottom: 20 }} />
 

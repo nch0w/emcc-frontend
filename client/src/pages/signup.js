@@ -5,7 +5,7 @@ import { TextField, Button } from "@material-ui/core";
 import { Link } from "@reach/router";
 import axios from "axios";
 
-import { emccServerUrl, pageWidth } from "../config";
+import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
 import Swal from "sweetalert2";
 
@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   return (
-    <Box style={{ maxWidth: pageWidth, margin: "auto" }}>
+    <Box>
       <SHeading variant="h2">Sign Up</SHeading>
       <Typography variant="body1">
         Each coach should sign up for exactly one account. Teams, students, and

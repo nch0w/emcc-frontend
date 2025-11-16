@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 
 import { Box, Paper, Typography } from "@material-ui/core";
 import { Tabs, Tab } from "@material-ui/core";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, CircularProgress } from "@material-ui/core";
 import MaterialTable from "material-table";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import Check from "@material-ui/icons/Check";
@@ -23,7 +23,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 import { UserContext, userStatus } from "../App";
-import { emccServerUrl, pageWidth } from "../config";
+import { emccServerUrl } from "../config";
 import { SHeading, SContent } from "../styled_components";
 
 const tableIcons = {
@@ -75,6 +75,7 @@ const Dashboard = () => {
   } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
+  const [logoutLoading, setLogoutLoading] = useState(false);
   const skipUserFetch = useRef(false);
 
   useEffect(() => {
@@ -222,6 +223,8 @@ const Dashboard = () => {
   const logout = () => {
     skipUserFetch.current = true;
 
+    setLogoutLoading(true);
+
     axios
       .post(emccServerUrl + "/auth/logout", {}, { timeout: 5000 })
       .then((response) => {
@@ -236,6 +239,9 @@ const Dashboard = () => {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setLogoutLoading(false); // stop spinner no matter what
       });
   };
 
@@ -609,8 +615,8 @@ const Dashboard = () => {
             </Button>
             <br />
             <br />
-            <Button variant="outlined" onClick={logout}>
-              Log out
+            <Button onClick={logout} variant="outlined" disabled={loading}>
+              {logoutLoading ? <CircularProgress size={20} /> : "Log Out"}
             </Button>
           </Box>
         );
@@ -754,8 +760,6 @@ const Dashboard = () => {
   return (
     <Box
       style={{
-        maxWidth: pageWidth,
-        margin: "auto",
         paddingLeft: 30,
         paddingRight: 30
       }}

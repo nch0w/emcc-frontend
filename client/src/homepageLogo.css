@@ -16,9 +16,8 @@ body {
   height: auto;
   border: 1px solid #0000;
   margin: 0px auto 0px auto;
-  perspective: 800px;
+  perspective: 1500px;
   padding-top: 100px;
-  z-index: -999;
   position: relative;
 }
 
@@ -50,7 +49,7 @@ body {
   transform: translateZ(-100px) rotateX(90deg);
 }
 .cube.show-emcc {
-  transform: translateZ(-100px) rotateX(24deg) rotateY(0deg) rotateZ(10deg);
+  transform: translateZ(-100px) rotateX(30deg) rotateY(0deg) rotateZ(10deg);
   animation-name: slidein;
   animation-duration: 2s;
 }
@@ -60,7 +59,7 @@ body {
   }
 
   to {
-    transform: translateZ(-100px) rotateX(24deg) rotateY(0deg) rotateZ(10deg);
+    transform: translateZ(-100px) rotateX(30deg) rotateY(0deg) rotateZ(10deg);
   }
 }
 
@@ -83,14 +82,14 @@ body {
   clip-path: polygon(
     0% 0%,
     100% 0%,
-    100% 16.7%,
-    25% 16.7%,
-    25% 41.7%,
-    100% 41.7%,
-    100% 58.3%,
-    25% 58.3%,
-    25% 83.3%,
-    100% 83.3%,
+    100% 20%,
+    25% 20%,
+    25% 40%,
+    100% 40%,
+    100% 60%,
+    25% 60%,
+    25% 80%,
+    100% 80%,
     100% 100%,
     0% 100%
   );
@@ -105,18 +104,18 @@ body {
   left: 0px;
   background-color: #880015;
   clip-path: polygon(
-    1.5% 1.5%,
-    98.5% 1.5%,
-    98.5% 15.2%,
-    23.5% 15.2%,
-    23.5% 43.2%,
-    98.5% 43.2%,
-    98.5% 56.7%,
-    23.5% 56.7%,
-    23.5% 84.8%,
-    98.5% 84.8%,
-    98.5% 98.5%,
-    1.5% 98.5%
+    2% 2%,
+    98% 2%,
+    98% 18%,
+    23% 18%,
+    23% 42%,
+    98% 42%,
+    98% 58%,
+    23% 58%,
+    23% 82%,
+    98% 82%,
+    98% 98%,
+    2% 98%
   );
 }
 .cube__face--M {
@@ -124,18 +123,18 @@ body {
   border: none;
   clip-path: polygon(
     0% 0%,
-    0% 100%,
-    25% 100%,
-    50% 25%,
-    75% 100%,
-    100% 100%,
+    20% 0%,
+    20% 55%,
+    40% 0%,
+    60% 0%,
+    80% 55%,
+    80% 0%,
     100% 0%,
-    83.3% 0%,
-    83.3% 75%,
-    58.3% 0%,
-    41.7% 0%,
-    16.7% 75%,
-    16.7% 0%
+    100% 100%,
+    74% 100%,
+    50% 35%,
+    26% 100%,
+    0% 100%
   );
   color: #000;
 }
@@ -148,19 +147,19 @@ body {
   left: 0px;
   background-color: #fac421;
   clip-path: polygon(
-    1.5% 1.5%,
-    1.5% 98.5%,
-    23.9% 98.5%,
-    50% 21%,
-    76.1% 98.5%,
-    98.5% 98.5%,
-    98.5% 1.5%,
-    84.8% 1.5%,
-    84.8% 84%,
-    57.3% 1.5%,
-    42.7% 1.5%,
-    15.2% 84%,
-    15.2% 1.5%
+    2% 2%,
+    18% 2%,
+    18% 65%,
+    41% 2%,
+    59% 2%,
+    82% 65%,
+    82% 2%,
+    98% 2%,
+    98% 98%,
+    75.5% 98%,
+    50% 29%,
+    24.5% 98%,
+    2% 98%
   );
 }
 .cube__face--C {
@@ -169,10 +168,10 @@ body {
   clip-path: polygon(
     0% 0%,
     100% 0%,
-    100% 25%,
-    25% 25%,
-    25% 75%,
-    100% 75%,
+    100% 26%,
+    27% 26%,
+    27% 74%,
+    100% 74%,
     100% 100%,
     0% 100%
   );
@@ -188,14 +187,14 @@ body {
   left: 0px;
   background-color: #b5e61d;
   clip-path: polygon(
-    1.5% 1.5%,
-    98.5% 1.5%,
-    98.5% 23.5%,
-    23.5% 23.5%,
-    23.5% 76.5%,
-    98.5% 76.5%,
-    98.5% 98.5%,
-    1.5% 98.5%
+    2% 2%,
+    98% 2%,
+    98% 24%,
+    25% 24%,
+    24% 76%,
+    98% 76%,
+    98% 98%,
+    2% 98%
   );
 }
 
@@ -228,10 +227,10 @@ body {
   transform: RotateY(300deg) rotateZ(0deg) rotateX(0deg) translateX(-70px)
     translateY(210px) translateZ(60px);
   display: block;
-  font-size: 60px !important;
+  font-size: 70px !important;
   padding-left: 80px;
   padding-right: 80px;
-  line-height: 50px;
+  line-height: 60px;
   text-align: left;
   word-break: break-all;
 }

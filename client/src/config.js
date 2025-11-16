@@ -82,7 +82,7 @@ export const pageWidth = 900;
 // about us
 export const AboutUsInfo = () => {
   return (
-    <Box style={{ maxWidth: pageWidth, margin: "auto" }}>
+    <Box>
       <Typography variant="body1">
         The EMCC is an annual math competition for middle schoolers, written and
         hosted by the students of the math club at Phillips Exeter Academy. In
@@ -155,20 +155,6 @@ export const ContactInfo = () => {
   const classes = contactInfoStyles();
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12}>
-        <Card>
-          <CardContent>
-            <Typography variant="body1">
-              <b>Please send all questions to</b>{" "}
-              <a href="mailto:exetermathclub@gmail.com">
-                exetermathclub@gmail.com
-              </a>
-              . In case of an emergency, feel free to contact any of the
-              following emails:
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
       {members.map((member) => (
         <Grid item xs={4}>
           <Card>

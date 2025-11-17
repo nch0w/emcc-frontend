@@ -125,28 +125,23 @@ const members = [
   },
   {
     name: "Grant Blitz",
-    email: "gblitz@exeter.edu",
-    role: "Problem Selection Head"
+    email: "gblitz@exeter.edu"
   },
   {
     name: "Albert Lu",
-    email: "aklu@exeter.edu",
-    role: "Problem Selection Head"
+    email: "aklu@exeter.edu"
   },
   {
     name: "Evan Fan",
-    email: "etfan@exeter.edu",
-    role: "Problem Selection Head"
+    email: "etfan@exeter.edu"
   },
   {
     name: "Harini Venkatesh",
-    email: "hvenkatesh@exeter.edu",
-    role: "Problem Selection Head"
+    email: "hvenkatesh@exeter.edu"
   },
   {
     name: "Michael Yang",
-    email: "mmyang@exeter.edu",
-    role: "Problem Selection Head"
+    email: "mmyang@exeter.edu"
   }
 ];
 
@@ -167,7 +162,8 @@ export const ContactInfo = () => {
             )}
             <CardContent>
               <Typography variant="body1">
-                <b>{member.name}</b>, {member.role}
+                <b>{member.name}</b>
+                {member.role ? `, ${member.role}` : ""}
                 <br />
                 Email: <a href={`mailto:${member.email}`}>{member.email}</a>
               </Typography>

@@ -216,12 +216,14 @@ body {
   width: auto;
   line-height: 20px;
   font-size: 60px !important;
+  user-select: none;
 }
 .cube__face--ath {
   transform: RotateY(180deg) rotateZ(270deg) rotateX(120deg) translateX(165px)
     translateY(76px) translateZ(60px);
   display: block;
   font-size: 60px !important;
+  user-select: none;
 }
 .cube__face--lub {
   transform: RotateY(300deg) rotateZ(0deg) rotateX(0deg) translateX(-70px)
@@ -233,6 +235,7 @@ body {
   line-height: 60px;
   text-align: left;
   word-break: break-all;
+  user-select: none;
 }
 .cube__face--M {
   transform: rotateY(60deg) translateZ(57.7px) rotate(90deg);

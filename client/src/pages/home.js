@@ -32,27 +32,26 @@ const Home = () => {
         <Typography variant="h4" align="center">
           Sponsored by
           <br />
-          <br />
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.janestreet.com/join-jane-street/info-booth/"
+            href="https://www.hudsonrivertrading.com/"
           >
             <img
-              id="jane_street_logo"
-              alt="Jane Street logo"
+              id="hrt_logo"
+              alt="HRT Logo"
               style={{
                 verticalAlign: "middle",
-                maxHeight: 90,
+                maxHeight: 290,
                 marginBottom: 20
               }}
-              src={require("../assets/jane_street_fr.png")}
+              src={require("../assets/hudsonRiverTrading.png")}
             />
           </a>
         </Typography>
 
         <br />
-        <br />
+
         <Typography variant="body1">
           The Exeter Math Club Competition is an annual math competition for
           middle schoolers, written and run by students at Phillips Exeter

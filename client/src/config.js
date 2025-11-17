@@ -79,38 +79,6 @@ export const emccServerUrl =
 
 export const pageWidth = 900;
 
-// about us
-export const AboutUsInfo = () => {
-  return (
-    <Box>
-      <Typography variant="body1">
-        The EMCC is an annual math competition for middle schoolers, written and
-        hosted by the students of the math club at Phillips Exeter Academy. In
-        addition to organizing the EMCC, we participate in many competitions
-        ourselves. At the 2024 HMMT February competition, team PEA Red placed
-        3rd out of 91 of the strongest teams in the nation.
-        <br />
-        <br />
-        Phillips Exeter Academy is a boarding high school in Exeter, New
-        Hampshire—just a stone's throw from Boston.
-        <br />
-        <br />
-        <center>
-          <img
-            id="club_photo"
-            alt="Math Club"
-            style={{
-              verticalAlign: "middle",
-              width: "60%"
-            }}
-            src={require("./assets/clubPhoto.png")}
-          />
-        </center>
-      </Typography>
-    </Box>
-  );
-};
-
 const contactInfoStyles = makeStyles({
   media: {
     height: 200
@@ -199,8 +167,8 @@ const archiveURLs = [
   },
   {
     year: "2024",
-    links: ["/papers/emcc24all.pdf", "/papers/results-2024.pdf"],
-    labels: ["Full document", "Results"]
+    links: ["/papers/results-2024.pdf", "/papers/emcc24all.pdf"],
+    labels: ["Results", "Full document"]
   },
   {
     year: "2023",
@@ -363,7 +331,6 @@ const NoBorderTableCell = withStyles({
 export const ContestSchedule = () => {
   return (
     <Container align="center" maxWidth="sm">
-      <SHeading variant="h3">Schedule</SHeading>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

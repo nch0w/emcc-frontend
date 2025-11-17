@@ -2,32 +2,17 @@ import React from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
-import { ContestSchedule, RoundFormats } from "../config";
+import { RoundFormats } from "../config";
 import { SHeading, SContent } from "../styled_components";
 
 const Contest = () => {
   return (
     <Box>
       <SHeading variant="h2">Contest Information</SHeading>
-
       <SContent>
-        <Typography variant="body1">
-          The Exeter Math Club Competition will be being hosted in person in
-          2025. This means all testing and grading will be taking place on site
-          on the Phillips Exeter Academy campus. Below is the schedule that the
-          2025 EMCC will run on:
-        </Typography>
-
-        <ContestSchedule />
         <RoundFormats />
         <br />
-        <Typography variant="h3" align="center">
-          Rules
-        </Typography>
-        <br />
-        <Typography variant="h4" align="center">
-          Prohibited Items
-        </Typography>
+        <SHeading variant="h2">Rules</SHeading>
         <br />
         <Typography variant="body1">
           Books, notes, calculators, pocket organizers, slide-rules, abaci,

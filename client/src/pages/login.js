@@ -69,8 +69,8 @@ const Login = () => {
     <Box style={{ maxWidth: 800, margin: "auto" }}>
       <SHeading variant="h2">Log In</SHeading>
       <Box align="left">
-        <Typography variant="body1">
-          Don't already have an account? You can{" "}
+        <Typography variant="body1" style={{ color: "green" }}>
+          Don't have an account yet? You can{" "}
           <Link to="/signup">sign up here</Link>.
         </Typography>
         <br />

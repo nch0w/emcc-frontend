@@ -16,6 +16,7 @@ import Contest from "./pages/contest";
 import Travel from "./pages/travel";
 import AboutUs from "./pages/aboutus";
 import Archives from "./pages/archives";
+import Schedule from "./pages/schedule";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Guts from "./pages/guts";
@@ -122,6 +123,7 @@ const App = () => {
           <PageBox>
             <Router>
               <Home path="/" />
+              <Schedule path="/schedule" />
               <Contest path="/contest" />
               <Travel path="/travel" />
               <AboutUs path="/aboutus" />

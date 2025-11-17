@@ -55,77 +55,22 @@ const Home = () => {
         <Typography variant="body1">
           The Exeter Math Club Competition is an annual math competition for
           middle schoolers, written and run by students at Phillips Exeter
-          Academy in New Hampshire. Every year since 2010, in January, teams of
-          four come from around the world to compete in-person at Exeter.{" "}
-          {/* <br />
-          <br />
-          Registration is now open! Coaches may{" "}
-          <a href="/signup">sign up here</a>, or{" "}
-          <a href="/login">log in here</a>. Coaches should create a new account
-          even if they have participated in the EMCC in a past year. An
-          individual registration costs $20.00 while registering a team of
-          between two to four students costs $60.00. The payment will not be
-          collected when coaches make an account; rather, invoices will be sent
-          shortly after January 20th, in which a link will be included for the
-          online payment. Registration will end on January 20th. */}
-        </Typography>
-        <br />
-        <Typography variant="h3" align="center">
-          Who can attend?
-        </Typography>
-        <br />
-        <Typography variant="body1">
-          We welcome anybody in 8th grade or below to attend the EMCC!
-          Competitors come from all around the world.
+          Academy in New Hampshire. Every January since 2010, teams of four have
+          come from around the world to compete in person at Exeter.
           <br />
           <br />
-          Coaches may register as many teams as they would like. All students
-          who participate will be on a team, even if they register as an
-          individual without a team. Individuals who were not registered with a
-          team will be put into teams with each other at random. However, before
-          creating teams of individuals, individuals will be placed into
-          registered teams with less than four students. (If you are the coach
-          of a team with less than 4 people and you would not like additional
-          individuals on your team, please reach out to us. We would be happy to
-          accomodate you!)
+          You can read more about the competition <a href="/contest">here</a>,
+          try some of our past problems <a href="/archives">here</a> or learn
+          more about us <a href="/aboutus">here</a>.
           <br />
           <br />
-        </Typography>
-
-        <Typography variant="h3" align="center">
-          How do I register?
-        </Typography>
-        <br />
-        <Typography variant="body1">
-          Registration for the 2026 EMCC will open mid-November. Stay on the
-          lookout! When registration opens, coaches may sign up teams by
-          creating an account <a href="/signup">here</a>.
+          Registration for the 2026 EMCC will open on November 19th. The
+          competition date will be announced alongside this announcement.
           <br />
           <br />
-        </Typography>
-
-        <Typography variant="h3" align="center">
-          How is the competition formatted?
-        </Typography>
-        <br />
-        <Typography variant="body1">
-          The EMCC consists of two individual rounds and two team rounds. See
-          the <a href="/contest">contest section</a> of our website for a
-          detailed breakdown of the rules of the EMCC competition. Past
-          competitions can be found in the{" "}
-          <a href="/archives">archives section</a>.
-          <br />
-          <br />
-        </Typography>
-
-        <Typography variant="h3" align="center">
-          More questions?
-        </Typography>
-        <br />
-        <Typography variant="body1">
-          Please reach out to us at{" "}
+          If you have any questions, please reach out to us at{" "}
           <a href="mailto:exetermathclub@gmail.com">exetermathclub@gmail.com</a>
-          ! We would be happy to assist you.
+          ! We would be happy to help you.
         </Typography>
       </SContent>
     </Box>

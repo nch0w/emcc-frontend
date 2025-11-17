@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a {
+  color: #1a73e8; /* pick the color you want */
+  text-decoration: none; /* removes the underline */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.archive-list a {
+  color: #000000de;
+  text-decoration: none;
+  border-bottom: dotted 1px #0000;
+  height: 25px;
+  line-height: 25px;
+}
+
+.archive-list a:hover {
+  color: #000;
+  border-bottom: dotted 1px #000;
+}
+
+.archive-list .archive-entry {
+  height: 25px;
+}

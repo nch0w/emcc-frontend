@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Box, Typography } from "@material-ui/core";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, CircularProgress } from "@material-ui/core";
 import { Link } from "@reach/router";
 import axios from "axios";
 
@@ -16,8 +16,10 @@ const SignUp = () => {
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const handleSignup = () => {
+  const [loading, setLoading] = useState(false);
+  const handleSignup = (event) => {
     // validate form
+    event.preventDefault();
     if (
       un.length === 0 ||
       pw.length === 0 ||
@@ -35,6 +37,8 @@ const SignUp = () => {
       );
       return;
     }
+
+    setLoading(true);
     // submit form
     axios
       .post(
@@ -58,6 +62,9 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error);
         Swal.fire("Error", error?.response?.data, "error");
+      })
+      .finally(() => {
+        setLoading(false); // stop spinner no matter what
       });
   };
 
@@ -77,81 +84,87 @@ const SignUp = () => {
       </Typography>
       <br />
       <br />
-      <TextField
-        required
-        id="signup-email"
-        label="Email"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-        variant="outlined"
-      />
-      <br />
-      <br />
-      <TextField
-        required
-        id="signup-un"
-        label="Name"
-        value={un}
-        onChange={(event) => setUn(event.target.value)}
-        variant="outlined"
-      />
-      <br />
-      <br />
-      <TextField
-        required
-        id="coach-phone"
-        label="Phone Number"
-        value={phone}
-        onChange={(event) => setPhone(event.target.value)}
-        type="tel"
-        variant="outlined"
-      />
-      <br />
-      <br />
-      <TextField
-        required
-        id="coach-mail"
-        label="Mailing Address"
-        value={mail}
-        onChange={(event) => setMail(event.target.value)}
-        variant="outlined"
-      />
-      <br />
-      <br />
-      <TextField
-        required
-        id="signup-pw"
-        label="Password"
-        value={pw}
-        onChange={(event) => setPw(event.target.value)}
-        type="password"
-        variant="outlined"
-      />
-      <br />
-      <br />
-      <TextField
-        required
-        id="signup-cpw"
-        label="Confirm Password"
-        value={cpw}
-        onChange={(event) => setCpw(event.target.value)}
-        type="password"
-        variant="outlined"
-      />
+      <form onSubmit={handleSignup} autoComplete="on">
+        <TextField
+          required
+          id="signup-email"
+          label="Email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          variant="outlined"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="signup-un"
+          label="Name"
+          value={un}
+          onChange={(event) => setUn(event.target.value)}
+          variant="outlined"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="coach-phone"
+          label="Phone Number"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+          type="tel"
+          variant="outlined"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="coach-mail"
+          label="Mailing Address"
+          value={mail}
+          onChange={(event) => setMail(event.target.value)}
+          variant="outlined"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="signup-pw"
+          label="Password"
+          name="password"
+          value={pw}
+          onChange={(event) => setPw(event.target.value)}
+          type="password"
+          variant="outlined"
+          autoComplete="new-password"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          id="signup-cpw"
+          name="confirm-password"
+          label="Confirm Password"
+          value={cpw}
+          onChange={(event) => setCpw(event.target.value)}
+          type="password"
+          variant="outlined"
+          autoComplete="new-password"
+        />
 
-      <br />
-      <br />
-      <Button variant="outlined" onClick={() => handleSignup()}>
-        Sign Up
-      </Button>
-      <br />
-      <br />
-      <Typography variant="body1">
-        You should receive a confirmation email once you have signed up
-        successfully.
-      </Typography>
-      <br />
-      <br />
+        <br />
+        <br />
+        <Button type="submit" variant="outlined" disabled={loading}>
+          {loading ? <CircularProgress size={20} /> : "Sign Up"}
+        </Button>
+        <br />
+        <br />
+        <Typography variant="body1">
+          You should receive a confirmation email once you have signed up
+          successfully.
+        </Typography>
+        <br />
+        <br />
+      </form>
     </Box>
   );
 };

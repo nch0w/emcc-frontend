@@ -299,31 +299,37 @@ const archiveURLs = [
 ];
 export const ArchiveList = () => {
   return (
-    <Grid container spacing={3}>
-      {archiveURLs.map((entry) => (
-        <Grid item xs={4}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">
-                <b>{entry.year}</b>
-                <br />
-              </Typography>
-              {entry.links.length > 0 && (
-                <Typography variant="body1">
-                  {entry.links.map((link, idx) => (
-                    <div key={idx}>
-                      <a href={link} target="_blank" rel="noopener noreferrer">
-                        {entry.labels[idx]}
-                      </a>
-                    </div>
-                  ))}
+    <div className="archive-list">
+      <Grid container spacing={3}>
+        {archiveURLs.map((entry) => (
+          <Grid item xs={4}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">
+                  <b>{entry.year}</b>
+                  <br />
                 </Typography>
-              )}
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
+                {entry.links.length > 0 && (
+                  <div>
+                    {entry.links.map((link, idx) => (
+                      <div key={idx} className="archive-entry">
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {entry.labels[idx]}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 };
 

@@ -793,6 +793,14 @@ const Dashboard = () => {
     }
   };
 
+  function firstNamify(name) {
+    if (!name) return "";
+    return (
+      name.trim().split(/\s+/)[0][0].toUpperCase() +
+      name.trim().split(/\s+/)[0].slice(1)
+    );
+  }
+
   return (
     <Box
       style={{
@@ -801,18 +809,14 @@ const Dashboard = () => {
       }}
     >
       <SHeading variant="h2">Dashboard</SHeading>
-      <SContent>
-        <Typography variant="body1">
-          {coachInfo.name
-            ? `Welcome to the dashboard, ${
-                coachInfo.name.trim().split(/\s+/)[0]
-              }! `
-            : "Welcome to the dashboard! "}
-          Here, you can register teams and individuals. See the contest page for
-          information about the distinction between teams and individuals.
-        </Typography>
-      </SContent>
-
+      <Typography variant="body1">
+        {coachInfo.name
+          ? `Welcome to the dashboard, ${firstNamify(coachInfo.name)}! `
+          : "Welcome to the dashboard! "}
+        Here, you can register teams and individuals. See the contest page for
+        information about the distinction between teams and individuals.
+      </Typography>{" "}
+      <br /> <br />
       <Paper elevation={3}>
         <Tabs
           value={activeTab}

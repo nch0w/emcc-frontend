@@ -32,7 +32,7 @@ export const SNavButton = styled(BottomNavigationAction)({
 
 export const SHeading = styled(Typography)({
   textAlign: "center",
-  paddingTop: "20px",
+  paddingTop: "40px",
   paddingBottom: "40px",
   fontWeight: "bold"
 });
@@ -69,4 +69,16 @@ export const SHeroHeading = styled(Typography)({
 
 export const SHeroSubheading = styled(Typography)({
   paddingBottom: "15px"
+});
+
+export const SCaption = styled(Typography)({
+  textAlign: "center",
+  fontStyle: "italic",
+  color: "#444",
+  paddingTop: "10px",
+  paddingBottom: "10px"
+});
+
+export const SLowkey = styled(Typography)({
+  fontWeight: "bold"
 });

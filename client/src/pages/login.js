@@ -74,7 +74,6 @@ const Login = () => {
           <Link to="/signup">sign up here</Link>.
         </Typography>
         <br />
-        <br />
         <form onSubmit={handleLogin} autoComplete="on">
           <TextField
             required

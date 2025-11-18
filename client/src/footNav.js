@@ -181,20 +181,20 @@ export const EMCCNav = ({ authStatus }) => {
           />
         </HomePageItem>
         <Item
-          onClick={() => go("/schedule")}
-          $active={currentUrl === "/schedule"}
-          $onHome={currentUrl === "/"}
-          $shrink={shrink}
-        >
-          Schedule
-        </Item>
-        <Item
           onClick={() => go("/contest")}
           $active={currentUrl === "/contest"}
           $onHome={currentUrl === "/"}
           $shrink={shrink}
         >
           Contest
+        </Item>
+        <Item
+          onClick={() => go("/schedule")}
+          $active={currentUrl === "/schedule"}
+          $onHome={currentUrl === "/"}
+          $shrink={shrink}
+        >
+          Schedule
         </Item>
         <Item
           onClick={() => go("/archives")}

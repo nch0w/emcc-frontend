@@ -1,32 +1,20 @@
 const nodemailer = require("nodemailer");
-let aws = require("@aws-sdk/client-ses");
+const AWS = require("aws-sdk");
 const env = require("../env");
 
-/*const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "exetermathclub@gmail.com",
-    pass: env.GMAIL_PASSWORD
-  },
-  sendingRate: 1
-});*/
-
-process.env.AWS_ACCESS_KEY_ID = env.AWS_ACCESS_KEY_ID;
-process.env.AWS_SECRET_ACCESS_KEY = env.AWS_SECRET_ACCESS_KEY;
-const transporter = nodemailer.createTransport({
-  SES: new aws.SES({
-    apiVersion: "2010-12-01",
-    region: env.AWS_REGION
-  })
+// Configure AWS credentials and region
+AWS.config.update({
+  accessKeyId: env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+  region: env.AWS_REGION
 });
 
-// process.env.AWS_ACCESS_KEY_ID = env.AWS_ACCESS_KEY_ID;
-// process.env.AWS_SECRET_ACCESS_KEY = env.AWS_SECRET_ACCESS_KEY;
-//const transporter = nodemailer.createTransport({
-//  SES: new aws.SES({
-//    apiVersion: "2010-12-01"
-//    // region: env.AWS_REGION
-//  })
-//});
+const ses = new AWS.SES({ apiVersion: "2010-12-01" });
+
+const transporter = nodemailer.createTransport({
+  SES: ses
+  // or SES: { ses, aws: AWS } if your Nodemailer version wants that,
+  // but SES: ses is usually enough
+});
 
 module.exports = transporter;

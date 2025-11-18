@@ -24,7 +24,7 @@ import Swal from "sweetalert2";
 
 import { UserContext, userStatus } from "../App";
 import { emccServerUrl } from "../config";
-import { SHeading, SContent } from "../styled_components";
+import { SHeading } from "../styled_components";
 
 const tableIcons = {
   Add: (props) => (

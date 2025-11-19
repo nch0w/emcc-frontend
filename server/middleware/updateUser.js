@@ -57,10 +57,13 @@ async function updateUser(req, res, next) {
     }
     var ownedTeams = new Set(teamsToCheck); // delete duplicates
     var teamResult;
+    var safeTeamName;
     for (let ownedTeamName of ownedTeams) {
+      safeTeamName = ownedTeamName.replace(/'/g, "''");
+
       teamResult = await base("Team Results")
         .select({
-          filterByFormula: `{Team Name} = '${ownedTeamName}'`
+          filterByFormula: `{Team Name} = '${safeTeamName}'`
         })
         .firstPage();
       if (teamResult.length !== 0) {

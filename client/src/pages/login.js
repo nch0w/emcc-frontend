@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import {
   Box,
@@ -22,6 +22,20 @@ const Login = () => {
   const [pw, setPw] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { authStatus } = useContext(UserContext);
+  useEffect(() => {
+    console.log(authStatus);
+    console.log(userStatus.UserLoaded);
+    if (authStatus === userStatus.UserLoaded) {
+      navigate("/dashboard");
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 10);
+    }
+  }, [authStatus, navigate]);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -61,6 +75,7 @@ const Login = () => {
         console.log(error);
       })
       .finally(() => {
+        setPw("");
         setLoading(false); // stop spinner no matter what
       });
   };

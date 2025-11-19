@@ -64,7 +64,7 @@ const Home = () => {
           more about the Math Club <a href="/aboutus">here</a>.
           <br />
           <br />
-          Registration for the 2026 EMCC will open on November 19th. The
+          Registration for the 2026 EMCC will open on November 21st. The
           competition date will be announced alongside this announcement.
           <br />
           <br />

@@ -84,9 +84,10 @@ router.post(
     }
 
     try {
+      const escapedName = name.replace(/"/g, '\\"');
       const sameName = await base("Competitors")
         .select({
-          filterByFormula: `{Name} = '${name}'`
+          filterByFormula: `{Name} = "${escapedName}"`
         })
         .firstPage();
 
@@ -114,7 +115,7 @@ router.post(
       // }
     } catch (err) {
       console.error(err);
-      return res.status(400).send("Internal server error.");
+      return res.status(400).send("Internal sever error.");
     }
 
     if (id) {

@@ -40,7 +40,7 @@ const Bar = styled.nav`
   top: 0;
   z-index: 1000;
   background: rgb(230, 230, 230);
-  box-shadow: #9b1d31 0px 1px 0px;
+  box-shadow: #9b1d31 0px 1.5px 0px, #000 0px -7px 15px;
   padding-left: 0px;
   padding-right: 0px;
   padding-bottom: 0px;
@@ -76,7 +76,7 @@ const Item = styled.button`
   margin-top: auto;
   background: ${({ $active }) =>
     $active
-      ? "linear-gradient(0deg, #9B1D3116 0%, #9B1D3100 60%) !important"
+      ? "linear-gradient(0deg, #9B1D311C 0%, #9B1D3100 60%) !important"
       : "transparent"};
   color: ${({ $active }) => ($active ? "#9B1D31 !important" : "#888")};
   color: ${({ $onHome, $shrink }) =>
@@ -89,7 +89,7 @@ const Item = styled.button`
     content: "";
     position: absolute;
     left: 0px;
-    bottom: 0px;
+    bottom: -1px;
     width: 100%;
     background-color: #9b1d31;
     transition: 0.1s;
@@ -97,13 +97,13 @@ const Item = styled.button`
     height: 0px;
   }
   &:hover::after {
-    height: 1px;
+    height: 3px;
   }
   ${({ $active }) =>
     $active &&
     `
       &::after {
-        height: 4px !important;
+        height: 5px !important;
       }
     `}
 `;

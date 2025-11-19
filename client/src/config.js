@@ -19,7 +19,7 @@ export const contestYear = 2025;
 export const contestDate = "January TBD, 2026";
 
 // the status of the contest in question
-export const contestStatus = `Stay on the lookout for news about 2026 EMCC!`;
+export const contestStatus = `Registration opening soon!`;
 // export const contestStatus = () => (
 //   <div>
 //     {

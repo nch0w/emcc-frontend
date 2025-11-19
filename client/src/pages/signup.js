@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { Box, Typography } from "@material-ui/core";
 import { TextField, Button, CircularProgress } from "@material-ui/core";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import axios from "axios";
+import { UserContext, userStatus } from "../App";
 
 import { emccServerUrl } from "../config";
 import { SHeading } from "../styled_components";
@@ -17,6 +18,22 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { authStatus } = useContext(UserContext);
+  useEffect(() => {
+    console.log(authStatus);
+    console.log(userStatus.UserLoaded);
+    if (authStatus === userStatus.UserLoaded) {
+      navigate("/dashboard");
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 10);
+    }
+  }, [authStatus, navigate]);
+
   const handleSignup = (event) => {
     // validate form
     event.preventDefault();

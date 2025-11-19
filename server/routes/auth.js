@@ -229,7 +229,6 @@ router.post(
       }
 
       const sessionToken = genToken();
-
       await base("Coaches").update([
         {
           id: user.id,

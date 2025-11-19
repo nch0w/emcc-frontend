@@ -61,7 +61,7 @@ const Home = () => {
           <br />
           You can read more about the competition <a href="/contest">here</a>,
           try some of our past problems <a href="/archives">here</a> or learn
-          more about us <a href="/aboutus">here</a>.
+          more about the Math Club <a href="/aboutus">here</a>.
           <br />
           <br />
           Registration for the 2026 EMCC will open on November 19th. The
@@ -70,7 +70,7 @@ const Home = () => {
           <br />
           If you have any questions, please reach out to us at{" "}
           <a href="mailto:exetermathclub@gmail.com">exetermathclub@gmail.com</a>
-          ! We would be happy to help you.
+          !
         </Typography>
       </SContent>
     </Box>

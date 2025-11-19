@@ -13,6 +13,12 @@ function Verify({ tokenId }) {
       .post(emccServerUrl + "/auth/verify", { tokenId })
       .then((response) => {
         navigate("/dashboard");
+        window.scrollTo(0, 0);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }, 10);
         Swal.fire("Email verified!", "", "success");
       })
       .catch((error) => {

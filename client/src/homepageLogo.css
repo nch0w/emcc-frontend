@@ -49,17 +49,17 @@ body {
   transform: translateZ(-100px) rotateX(90deg);
 }
 .cube.show-emcc {
-  transform: translateZ(-100px) rotateX(30deg) rotateY(0deg) rotateZ(10deg);
+  transform: translateZ(-100px) rotateX(31.5deg) rotateY(0deg) rotateZ(10deg);
   animation-name: slidein;
   animation-duration: 2s;
 }
 @keyframes slidein {
   from {
-    transform: translateZ(-100px) rotateX(90deg);
+    transform: translateZ(-100px) rotateX(90deg) rotateZ(0deg);
   }
 
   to {
-    transform: translateZ(-100px) rotateX(30deg) rotateY(0deg) rotateZ(10deg);
+    transform: translateZ(-100px) rotateX(31.5deg) rotateY(0deg) rotateZ(10deg);
   }
 }
 

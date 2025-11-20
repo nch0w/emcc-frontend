@@ -22,6 +22,8 @@ import Login from "./pages/login";
 import Guts from "./pages/guts";
 import Dashboard from "./pages/dashboard";
 import Payment from "./pages/payment";
+import ForgotPassword from "./pages/passwordResetPages/forgotpassword.js";
+import NewPassword from "./pages/passwordResetPages/newpassword.js";
 import axios from "axios";
 
 import { emccServerUrl, pageWidth } from "./config";
@@ -135,6 +137,8 @@ const App = () => {
               <PrivateRoute as={Dashboard} path="/dashboard" />
               <Payment path="/payment" />
               <Verify path="/verify/:tokenId" />
+              <ForgotPassword path="/forgotpassword" />
+              <NewPassword path="/newpassword/:tokenId" />
             </Router>
           </PageBox>
 

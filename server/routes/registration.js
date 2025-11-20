@@ -69,6 +69,9 @@ router.post(
     if (!name) {
       return res.status(400).send("Missing team name.");
     }
+    if (name.length > 100) {
+      return res.status(400).send("Team names are limited to 100 characters.");
+    }
     let i = 0;
     for (const student of [student1, student2, student3, student4]) {
       if (i >= minTeamMembersPerTeam) break;

@@ -117,6 +117,10 @@ const Login = () => {
           />
           <br />
           <br />
+          <Typography variant="body1">
+            <a href="/forgotpassword">Reset password</a>
+          </Typography>
+          <br />
           <Button type="submit" variant="outlined" disabled={loading}>
             {loading ? <CircularProgress size={20} /> : "Log In"}
           </Button>

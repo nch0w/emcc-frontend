@@ -79,7 +79,8 @@ const CoachInfoTab = ({
       });
   };
 
-  const handleChangePassword = () => {
+  const handleChangePassword = (event) => {
+    event.preventDefault();
     if (!oldPassword) {
       Swal.fire("Error", "Old password is missing", "error");
       return;
@@ -178,49 +179,51 @@ const CoachInfoTab = ({
       </Button>
       <br />
       <br />
-      <TextField
-        required
-        label="Old Password"
-        value={oldPassword}
-        onChange={(event) => setOldPassword(event.target.value)}
-        variant="outlined"
-        type="password"
-      />
-      <br />
-      <br />
+      <form onSubmit={handleChangePassword} autoComplete="on">
+        <TextField
+          required
+          label="Old Password"
+          value={oldPassword}
+          onChange={(event) => setOldPassword(event.target.value)}
+          variant="outlined"
+          type="password"
+        />
+        <br />
+        <br />
 
-      <TextField
-        required
-        label="New Password"
-        value={newPassword}
-        onChange={(event) => setNewPassword(event.target.value)}
-        variant="outlined"
-        type="password"
-      />
-      <br />
-      <br />
-      <TextField
-        required
-        label="New Password (confirm)"
-        value={newPasswordConfirm}
-        onChange={(event) => setNewPasswordConfirm(event.target.value)}
-        variant="outlined"
-        type="password"
-      />
-      <br />
-      <br />
+        <TextField
+          required
+          label="New Password"
+          value={newPassword}
+          onChange={(event) => setNewPassword(event.target.value)}
+          variant="outlined"
+          type="password"
+        />
+        <br />
+        <br />
+        <TextField
+          required
+          label="New Password (confirm)"
+          value={newPasswordConfirm}
+          onChange={(event) => setNewPasswordConfirm(event.target.value)}
+          variant="outlined"
+          type="password"
+        />
+        <br />
+        <br />
 
-      <Button
-        variant="outlined"
-        onClick={handleChangePassword}
-        disabled={changePasswordLoading}
-      >
-        {changePasswordLoading ? (
-          <CircularProgress size={20} />
-        ) : (
-          "Change Password"
-        )}
-      </Button>
+        <Button
+          variant="outlined"
+          type="submit"
+          disabled={changePasswordLoading}
+        >
+          {changePasswordLoading ? (
+            <CircularProgress size={20} />
+          ) : (
+            "Change Password"
+          )}
+        </Button>
+      </form>
       <br />
       <br />
       <Button

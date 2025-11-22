@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
-import { contestDate, contestStatus } from "../config";
+import { contestDate } from "../config";
 import { SHero, SHeroSubheading, SContent } from "../styled_components";
 import { SpecialHeader } from "../homepageLogo";
 
@@ -18,12 +18,11 @@ const Home = () => {
           {contestDate}, in person at Exeter
         </SHeroSubheading>
         <SHeroSubheading variant="h6">
-          {/* <Link
-            to={authStatus === userStatus.UserLoaded ? "/dashboard" : "/signup"}
-            style={{ color: "white" }}
-          > */}
-          {contestStatus}
-          {/* </Link> */}
+          Registration for EMCC 2026 is open! Sign up{" "}
+          <a href="/signup" style={{ color: "#fff", fontWeight: "bold" }}>
+            here
+          </a>
+          .
         </SHeroSubheading>
       </SHero>
       <br />
@@ -55,17 +54,32 @@ const Home = () => {
         <Typography variant="body1">
           The Exeter Math Club Competition is an annual math competition for
           middle schoolers, written and run by students at Phillips Exeter
-          Academy in New Hampshire. Every January since 2010, teams of four have
-          come from around the world to compete in person at Exeter.
+          Academy in New Hampshire. Every January since 2010, students have come
+          from around the world to compete in person at Exeter.
+          <br />
+          <br />
+          Registration for EMCC 2026 is open! The 2026 EMCC will take place on{" "}
+          <b>Sunday, January 18th, 2026</b> (MLK weekend). Registration remains
+          open until January 9th, 2026. Registering for the EMCC takes two
+          steps:
+          <ol>
+            <li>
+              Create a coach account <a href="/signup">here</a>. (Returning
+              parents and coaches should create a new account, as server data is
+              reset each year.)
+            </li>
+            <li>Add teams and individuals in the coach portal.</li>
+          </ol>
+          Coaches may register as many teams and individuals as they would like.
+          Students do not need to create an account. In December, the payment
+          portal will be opened. The registration fee is $60.00 per team and/or
+          $20.00 per individual. When the portal opens, we will notify coaches
+          who have already registered.
           <br />
           <br />
           You can read more about the competition <a href="/contest">here</a>,
           try some of our past problems <a href="/archives">here</a> or learn
           more about the Math Club <a href="/aboutus">here</a>.
-          <br />
-          <br />
-          Registration for the 2026 EMCC will open on November 21st. The
-          competition date will be announced alongside this announcement.
           <br />
           <br />
           If you have any questions, please reach out to us at{" "}

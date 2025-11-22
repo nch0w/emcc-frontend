@@ -21,7 +21,7 @@ import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Guts from "./pages/guts";
 import Dashboard from "./pages/dashboard";
-import Payment from "./pages/payment";
+// import Payment from "./pages/payment";
 import ForgotPassword from "./pages/passwordResetPages/forgotpassword.js";
 import NewPassword from "./pages/passwordResetPages/newpassword.js";
 import axios from "axios";
@@ -135,7 +135,7 @@ const App = () => {
               <Guts path="/guts" />
               <SignUp path="/signup" />
               <PrivateRoute as={Dashboard} path="/dashboard" />
-              <Payment path="/payment" />
+              {/* <Payment path="/payment" /> */}
               <Verify path="/verify/:tokenId" />
               <ForgotPassword path="/forgotpassword" />
               <NewPassword path="/newpassword/:tokenId" />

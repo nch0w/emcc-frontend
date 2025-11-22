@@ -15,42 +15,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // it's the one that changes from year to year
 
 // contest year and date
-export const contestYear = 2025;
-export const contestDate = "January TBD, 2026";
-
-// the status of the contest in question
-export const contestStatus = `Registration opening soon!`;
-// export const contestStatus = () => (
-//   <div>
-//     {
-//       "Registration for EMCC 2021 is closed. If you need to update your registration, contact "
-//     }{" "}
-//     <a href="mailto:exetermathclub@gmail.com" style={{ color: "white" }}>
-//       exetermathclub@gmail.com
-//     </a>
-//     .
-//     {
-//       " We will be sending the Coaches' Packet and more information about the contest soon."
-//     }
-//   </div>
-// );
-// export const contestStatus = `EMCC ${contestYear} is not yet accepting registrations. Please stay tuned for details.`;
-// export const contestStatus = 'Registration for EMCC 2021 is now open! Early registration ends ' + earlyRegistrationDeadline + '.'
-// export const contestStatus = 'Registration for EMCC 2021 is now open! Late registration ends ' + lateRegistrationDeadline + '.'
-// export const contestStatus = 'Registration for EMCC 2021 is closed! We look forward to seeing you at the contest.'
-
-// registration costs (used for display, NOT calculation)
-// all price calculation happens server-side
-export const indivEarlyCost = "$15.00";
-export const indivLateCost = "$22.50";
-export const teamEarlyCost = "$50.00";
-export const teamLateCost = "$75.00";
-
-// deadlines for registration (used for display, NOT calculation)
-// all price calculation happens server-side
-export const registrationStarts = "November 22, 2024";
-export const earlyRegistrationDeadline = "January 5, 2025";
-export const lateRegistrationDeadline = "January 20, 2025";
+export const contestYear = 2026;
+export const contestDate = "January 18th, 2026";
 
 // limits on teams and individuals per coach (used for display, NOT calculation)
 // all limit calculation happens server-side

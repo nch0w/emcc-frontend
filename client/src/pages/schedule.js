@@ -28,9 +28,9 @@ const Schedule = () => {
 
       <SContent>
         <Typography variant="body1">
-          The date for EMCC 2026 will be announced on November 21st. For now,
-          the schedule for EMCC 2025 is shown below. The EMCC 2026 schedule will
-          be similar.
+          The schedule for EMCC 2025 is shown below. This acts as a tentative
+          schedule for EMCC 2026. The competition will be held on January 18th,
+          2026.
         </Typography>
         <br />
         <br />

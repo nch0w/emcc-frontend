@@ -41,7 +41,9 @@ const Contest = () => {
             <SContentHeading variant="h3">General Information</SContentHeading>
             The Exeter Math Club Competition is an annual math competition for
             middle schoolers. The competition is a day-long event that takes
-            place in-person at the Phillips Exeter Academy. <br />
+            place in-person at the Phillips Exeter Academy. The 2026 EMCC is on
+            Sunday, January 18, 2026 (MLK weekend).
+            <br />
             <br />
             <center>
               <img
@@ -77,20 +79,20 @@ const Contest = () => {
             <br />
             <br />
             <SLowkey variant="h5">Registration</SLowkey>
-            Registering for the EMCC takes three steps:
+            Registering for the EMCC takes two steps:
             <ol>
               <li>
-                Create a coach account <a href="/signup">here</a>.
+                Create a coach account <a href="/signup">here</a>. (Returning
+                coaches should create a new account, as server data is reset
+                each year.)
               </li>
               <li>Add teams and individuals in the coach portal.</li>
-              <li>
-                Pay the registration fee through the payment portal. There is a
-                $60.00 entry fee per team and a $20.00 entry fee per individual.
-                The payment portal will open in December.
-              </li>
             </ol>
             Coaches may register as many teams and individuals as they would
-            like. Students do not need to make an account. <br />
+            like. Students do not need to create an account. In December, the
+            payment portal will be opened. There is a $60.00 entry fee per team
+            and a $20.00 entry fee per individual. When the portal opens, we
+            will notify coaches who have already registered a team.
             <br />
             <br />
             <SLowkey variant="h5">Travel</SLowkey>
@@ -184,8 +186,8 @@ const Contest = () => {
             An individual's overall score is the sum of the points earned on the
             Speed Round and Accuracy Round, for a total of up to 40 points. A
             team's overall score (their <i>sweepstakes score</i>) is the sum of
-            the four individual scores and the points earned on the Team Round,
-            the Guts Round, for a total of up to 500 points.
+            the four individual scores and the points earned on the Team Round
+            and the Guts Round, for a total of up to 500 points.
             <br />
             <br />
             In the case of a tie in any round, the tie will be broken as

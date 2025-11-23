@@ -21,6 +21,14 @@ body {
   position: relative;
 }
 
+@media (max-width: 600px) {
+  .scene {
+    transform: scale(0.6);
+    margin-top: -80px;
+    margin-bottom: -80px;
+  }
+}
+
 .cube {
   width: 400px;
   height: 400px;
@@ -70,7 +78,7 @@ body {
   border: none;
   line-height: 200px;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 700;
   color: #000;
   text-align: center;
   font-family: Lato;

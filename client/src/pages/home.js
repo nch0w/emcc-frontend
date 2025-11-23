@@ -19,7 +19,7 @@ const Home = () => {
         </SHeroSubheading>
         <SHeroSubheading variant="h6">
           Registration for EMCC 2026 is open! Sign up{" "}
-          <a href="/signup" style={{ color: "#fff", fontWeight: "bold" }}>
+          <a href="/signup" style={{ color: "#fff", fontWeight: 700 }}>
             here
           </a>
           .
@@ -41,7 +41,8 @@ const Home = () => {
               alt="HRT Logo"
               style={{
                 verticalAlign: "middle",
-                maxHeight: 290,
+                maxWidth: "90%",
+                width: 550,
                 marginBottom: 20
               }}
               src={require("../assets/hudsonRiverTrading.png")}
@@ -72,7 +73,7 @@ const Home = () => {
           </ol>
           Coaches may register as many teams and individuals as they would like.
           Students do not need to create an account. In December, the payment
-          portal will be opened. The registration fee is $60.00 per team and/or
+          portal will be opened. The registration fee is $60.00 per team and
           $20.00 per individual. When the portal opens, we will notify coaches
           who have already registered.
           <br />

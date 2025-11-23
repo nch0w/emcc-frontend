@@ -75,6 +75,8 @@ const PageBox = styled.div`
   margin-right: auto;
   padding-top: 80px;
   min-height: calc(100vh - 120px);
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 const App = () => {

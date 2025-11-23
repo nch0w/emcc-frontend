@@ -7,7 +7,7 @@ import {
   Button,
   CircularProgress
 } from "@material-ui/core";
-import { Link, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import axios from "axios";
 
 import { UserContext, userStatus } from "../App";
@@ -85,8 +85,7 @@ const Login = () => {
       <SHeading variant="h2">Log In</SHeading>
       <Box align="left">
         <Typography variant="body1" style={{ color: "green" }}>
-          Don't have an account yet? You can{" "}
-          <Link to="/signup">sign up here</Link>.
+          Don't have an account yet? You can <a href="/signup">sign up here</a>.
         </Typography>
         <br />
         <form onSubmit={handleLogin} autoComplete="on">

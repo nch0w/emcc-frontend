@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { Box, Typography } from "@material-ui/core";
 import { TextField, Button, CircularProgress } from "@material-ui/core";
-import { Link, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import axios from "axios";
 import { UserContext, userStatus } from "../App";
 
@@ -97,7 +97,7 @@ const SignUp = () => {
       </Typography>
       <br />
       <Typography variant="body1" style={{ color: "green" }}>
-        Already have an account? You can <Link to="/login">log in here</Link>.
+        Already have an account? You can <a href="/login">log in here</a>.
       </Typography>
       <br />
       <br />

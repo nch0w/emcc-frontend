@@ -46,6 +46,9 @@ const Bar = styled.nav`
   padding-bottom: 0px;
   transition: height 0.2s;
   height: ${({ shrink }) => (shrink ? "40px" : "80px")};
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 `;
 
 const Row = styled.div`
@@ -124,6 +127,9 @@ const HomePageItem = styled.button`
   font: 500 14px/1.1 Lato, system-ui, -apple-system, sans-serif;
   transition: border-bottom 0.2s, height 0.2s;
   background: #0000;
+  @media (max-width: 600px) {
+    width: 90px;
+  }
 `;
 
 export const EMCCNav = ({ authStatus }) => {

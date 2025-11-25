@@ -34,7 +34,7 @@ export const SHeading = styled(Typography)({
   textAlign: "center",
   paddingTop: "40px",
   paddingBottom: "40px",
-  fontWeight: "bold"
+  fontWeight: 700
 });
 
 export const SContent = styled(Container)({
@@ -47,14 +47,13 @@ export const SContentHeading = styled(Typography)({
   textAlign: "center",
   paddingTop: "10px",
   paddingBottom: "10px",
-  fontWeight: "bold"
+  fontWeight: 700
 });
 
 // HOME PAGE
 
 export const SHero = styled(Container)({
   background: "#9B1D31",
-  height: "0vh",
   minHeight: "fit-content",
   color: "#EEEEEE",
   textAlign: "center",
@@ -80,5 +79,5 @@ export const SCaption = styled(Typography)({
 });
 
 export const SLowkey = styled(Typography)({
-  fontWeight: "bold"
+  fontWeight: 700
 });

@@ -102,8 +102,8 @@ const Contest = () => {
             <a href="https://www.hudsonrivertrading.com/">
               Hudson River Trading
             </a>
-            , we are able to subsidize lodging costs for groups of four or more.
-            Please reach out to{" "}
+            , we are able to subsidize lodging costs for groups of four students
+            or more. Please reach out to{" "}
             <a href="exetermathclub@gmail.com">exetermathclub@gmail.com</a> if
             you are interested in this. The subsidization will be offered on a
             first-come, first-serve basis. <br />

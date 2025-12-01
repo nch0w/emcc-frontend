@@ -44,10 +44,10 @@ const members = [
     email: "bbwang@exeter.edu",
     role: "Tournament Director"
   },
-  // {
-  //   name: "Grant Blitz",
-  //   email: "gblitz@exeter.edu"
-  // },
+  {
+    name: "Grant Blitz",
+    email: "gblitz@exeter.edu"
+  },
   {
     name: "Albert Lu",
     email: "aklu@exeter.edu"

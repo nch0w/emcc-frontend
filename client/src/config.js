@@ -84,7 +84,14 @@ export const ContactInfo = () => {
             <CardContent>
               <Typography variant="body1">
                 <b>{member.name}</b>
-                {member.role ? `, ${member.role}` : ""}
+                {member.role ? (
+                  <>
+                    <br />
+                    {member.role}
+                  </>
+                ) : (
+                  ""
+                )}
                 <br />
                 Email: <a href={`mailto:${member.email}`}>{member.email}</a>
               </Typography>

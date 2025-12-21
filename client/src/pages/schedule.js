@@ -28,9 +28,8 @@ const Schedule = () => {
 
       <SContent>
         <Typography variant="body1">
-          The schedule for EMCC 2025 is shown below. This acts as a tentative
-          schedule for EMCC 2026. The competition will be held on January 18th,
-          2026.
+          The tentative schedule for EMCC 2026 is shown below, subject to
+          change.
         </Typography>
         <br />
         <br />
@@ -59,44 +58,37 @@ const Schedule = () => {
                     <nobr>9:15 am - 9:45 am</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
-                  <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+                  <NoBorderTableCell>The Forum</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>10:00 am - 12:30 pm</nobr>
+                    <nobr>10:00 am - 12:45 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>
                     Individual and Team rounds
                   </NoBorderTableCell>
-                  <NoBorderTableCell>Classrooms</NoBorderTableCell>
+                  <NoBorderTableCell>Hahn Center</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>12:45 pm - 1:30 pm</nobr>
+                    <nobr>1:00 pm - 1:45 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Lunch</NoBorderTableCell>
-                  <NoBorderTableCell>Classrooms</NoBorderTableCell>
+                  <NoBorderTableCell>Hahn Center</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>1:45 pm - 3:15 pm</nobr>
+                    <nobr>2:00 pm - 3:30 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Guts Round</NoBorderTableCell>
-                  <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+                  <NoBorderTableCell>Hahn Center</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>3:30 pm - 4:15 pm</nobr>
+                    <nobr>3:45 pm - 4:45 pm</nobr>
                   </NoBorderTableCell>
-                  <NoBorderTableCell>Math at Exeter Panel</NoBorderTableCell>
-                  <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
-                </TableRow>
-                <TableRow>
-                  <NoBorderTableCell>
-                    <nobr>4:15 pm - 5:00 pm</nobr>
-                  </NoBorderTableCell>
-                  <NoBorderTableCell>Exeter Snapshot Panel</NoBorderTableCell>
-                  <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+                  <NoBorderTableCell>Guest Speaker</NoBorderTableCell>
+                  <NoBorderTableCell>The Forum</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
@@ -105,7 +97,7 @@ const Schedule = () => {
                   <NoBorderTableCell>
                     Closing Ceremony (Awards)
                   </NoBorderTableCell>
-                  <NoBorderTableCell>Assembly Hall</NoBorderTableCell>
+                  <NoBorderTableCell>The Forum</NoBorderTableCell>
                 </TableRow>
               </TableBody>
             </Table>

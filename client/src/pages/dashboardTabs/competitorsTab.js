@@ -76,11 +76,6 @@ const CompetitorsTab = ({
       <Typography variant="body1">
         Add teams and individuals entries below. Up until the competition date,
         entries can be freely modified.
-        <br />
-        <br />
-        The registration fee is collected through a separate payment portal.
-        This portal will be released in December. An email will be sent to
-        coaches when this happens.
       </Typography>{" "}
       <br />
       <MaterialTable

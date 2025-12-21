@@ -83,16 +83,18 @@ const Contest = () => {
             <ol>
               <li>
                 Create a coach account <a href="/signup">here</a>. (Returning
-                coaches should create a new account, as server data is reset
-                each year.)
+                parents and coaches should create a new account, as server data
+                is reset each year.)
               </li>
               <li>Add teams and individuals in the coach portal.</li>
+              <li>
+                Complete the payment through the link in the coach portal. The
+                registration fee is $60.00 per team and $20.00 per additional
+                individual.
+              </li>
             </ol>
             Coaches may register as many teams and individuals as they would
-            like. Students do not need to create an account. In December, the
-            payment portal will be opened. There is a $60.00 entry fee per team
-            and a $20.00 entry fee per individual. When the portal opens, we
-            will notify coaches who have already registered a team.
+            like. Students do not need to create an account.
             <br />
             <br />
             <SLowkey variant="h5">Travel</SLowkey>

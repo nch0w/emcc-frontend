@@ -13,6 +13,7 @@ import { SHeading, SContentHeading } from "../styled_components";
 import CompetitorsTab from "./dashboardTabs/competitorsTab";
 import CoachInfoTab from "./dashboardTabs/coachInfoTab";
 import ResultsTab from "./dashboardTabs/resultsTab";
+import PaymentTab from "./dashboardTabs/paymentTab";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -82,6 +83,9 @@ const Dashboard = () => {
       case "view-competitors":
         setActiveTab("view-competitors");
         break;
+      case "view-payment":
+        setActiveTab("view-payment");
+        break;
       case "view-coach-info":
         setActiveTab("view-coach-info");
         break;
@@ -105,6 +109,8 @@ const Dashboard = () => {
             loading={loading}
           />
         );
+      case "view-payment":
+        return <PaymentTab />;
       case "view-coach-info":
         return (
           <CoachInfoTab
@@ -163,6 +169,8 @@ const Dashboard = () => {
           onChange={(_event, value) => handleTabClicked(value)}
         >
           <Tab value="view-competitors" label="Edit Competitors" />
+
+          <Tab value="view-payment" label="Payment Portal" />
 
           <Tab value="view-coach-info" label="Edit Coach Info" />
 

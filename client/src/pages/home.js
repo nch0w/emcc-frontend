@@ -61,7 +61,7 @@ const Home = () => {
           <br />
           Registration for EMCC 2026 is open! The 2026 EMCC will take place on{" "}
           <b>Sunday, January 18th, 2026</b> (MLK weekend). Registration remains
-          open until January 9th, 2026. Registering for the EMCC takes two
+          open until January 9th, 2026. Registering for the EMCC takes three
           steps:
           <ol>
             <li>
@@ -70,12 +70,14 @@ const Home = () => {
               reset each year.)
             </li>
             <li>Add teams and individuals in the coach portal.</li>
+            <li>
+              Complete the payment through the link in the coach portal. The
+              registration fee is $60.00 per team and $20.00 per additional
+              individual.
+            </li>
           </ol>
           Coaches may register as many teams and individuals as they would like.
-          Students do not need to create an account. In December, the payment
-          portal will be opened. The registration fee is $60.00 per team and
-          $20.00 per individual. When the portal opens, we will notify coaches
-          who have already registered.
+          Students do not need to create an account.
           <br />
           <br />
           You can read more about the competition <a href="/contest">here</a>,

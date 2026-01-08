@@ -29,7 +29,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         isLoading={loading}
         data={indivResults}
         localization={{
-          body: { emptyDataSourceMessage: "No results to see here!" }
+          body: { emptyDataSourceMessage: "No results." }
         }}
       />
       <br />
@@ -47,7 +47,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         isLoading={loading}
         data={indivResults}
         localization={{
-          body: { emptyDataSourceMessage: "No results to see here!" }
+          body: { emptyDataSourceMessage: "No results." }
         }}
       />
       <br />
@@ -64,7 +64,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         isLoading={loading}
         data={indivResults}
         localization={{
-          body: { emptyDataSourceMessage: "No results to see here!" }
+          body: { emptyDataSourceMessage: "No results." }
         }}
       />
       <br />
@@ -86,7 +86,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         isLoading={loading}
         data={teamResults}
         localization={{
-          body: { emptyDataSourceMessage: "No results to see here!" }
+          body: { emptyDataSourceMessage: "No results." }
         }}
       />
       <br />
@@ -108,7 +108,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         isLoading={loading}
         data={teamResults}
         localization={{
-          body: { emptyDataSourceMessage: "No results to see here!" }
+          body: { emptyDataSourceMessage: "No results." }
         }}
       />
       <br />
@@ -129,7 +129,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         isLoading={loading}
         data={teamResults}
         localization={{
-          body: { emptyDataSourceMessage: "No results to see here!" }
+          body: { emptyDataSourceMessage: "No results." }
         }}
       />
     </Box>

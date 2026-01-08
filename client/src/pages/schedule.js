@@ -55,14 +55,14 @@ const Schedule = () => {
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>9:15 am - 9:45 am</nobr>
+                    <nobr>9:00 am - 9:30 am</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
                   <NoBorderTableCell>The Forum</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>10:00 am - 12:45 pm</nobr>
+                    <nobr>10:00 am - 1:00 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>
                     Individual and Team rounds
@@ -78,21 +78,21 @@ const Schedule = () => {
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>2:00 pm - 3:30 pm</nobr>
+                    <nobr>2:00 pm - 3:45 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Guts Round</NoBorderTableCell>
                   <NoBorderTableCell>Hahn Center</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>3:45 pm - 4:45 pm</nobr>
+                    <nobr>4:00 pm - 5:00 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Guest Speaker</NoBorderTableCell>
                   <NoBorderTableCell>The Forum</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>5:00 pm - 6:00 pm</nobr>
+                    <nobr>5:15 pm - 6:00 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>
                     Closing Ceremony (Awards)

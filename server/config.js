@@ -17,5 +17,5 @@ module.exports = {
   maxTeamMembersPerTeam: 4,
 
   registrationClosed: false,
-  signupClosed: false
+  signupClosed: true
 };

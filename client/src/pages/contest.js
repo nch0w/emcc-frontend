@@ -78,7 +78,7 @@ const Contest = () => {
             would be happy to accomodate you!
             <br />
             <br />
-            <SLowkey variant="h5">Registration</SLowkey>
+            {/* <SLowkey variant="h5">Registration</SLowkey>
             Registering for the EMCC takes two steps:
             <ol>
               <li>
@@ -96,7 +96,7 @@ const Contest = () => {
             Coaches may register as many teams and individuals as they would
             like. Students do not need to create an account.
             <br />
-            <br />
+            <br /> */}
             <SLowkey variant="h5">Travel</SLowkey>
             Phillips Exeter Academy is located in Exeter, New Hampshire. We are
             an hour's drive from the Boston Logan airport. This year, thanks to

@@ -17,12 +17,16 @@ const Home = () => {
         <SHeroSubheading variant="h5">
           {contestDate}, in person at Exeter
         </SHeroSubheading>
-        <SHeroSubheading variant="h6">
+        {/* <SHeroSubheading variant="h6">
           Registration for EMCC 2026 is open! Sign up{" "}
           <a href="/signup" style={{ color: "#fff", fontWeight: 700 }}>
             here
           </a>
           .
+        </SHeroSubheading> */}
+        <SHeroSubheading variant="h6">
+          The EMCC has reached full capacity, and signups are now closed.
+          Registered coaches may still modify teams and individuals.
         </SHeroSubheading>
       </SHero>
       <br />
@@ -59,8 +63,11 @@ const Home = () => {
           from around the world to compete in person at Exeter.
           <br />
           <br />
-          Registration for EMCC 2026 is open! The 2026 EMCC will take place on{" "}
-          <b>Sunday, January 18th, 2026</b> (MLK weekend). Registration remains
+          The 2026 EMCC will take place on <b>
+            Sunday, January 18th, 2026
+          </b>{" "}
+          (MLK weekend). Registration is now closed.
+          {/* Registration remains
           open until January 9th, 2026. Registering for the EMCC takes three
           steps:
           <ol>
@@ -77,7 +84,7 @@ const Home = () => {
             </li>
           </ol>
           Coaches may register as many teams and individuals as they would like.
-          Students do not need to create an account.
+          Students do not need to create an account. */}
           <br />
           <br />
           You can read more about the competition <a href="/contest">here</a>,

@@ -51,18 +51,27 @@ const Schedule = () => {
                   <NoBorderTableCell>
                     <nobr>Registration</nobr>
                   </NoBorderTableCell>
-                  <NoBorderTableCell>Phillips Hall</NoBorderTableCell>
+                  <NoBorderTableCell>EPAC Lobby</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
                     <nobr>9:00 am - 9:30 am</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>Opening Ceremony</NoBorderTableCell>
-                  <NoBorderTableCell>The Forum</NoBorderTableCell>
+                  <NoBorderTableCell>EPAC Forum</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
-                    <nobr>10:00 am - 1:00 pm</nobr>
+                    <nobr>9:45 am - 11:15 am</nobr>
+                  </NoBorderTableCell>
+                  <NoBorderTableCell>
+                    Guest Talk by Zuming Feng
+                  </NoBorderTableCell>
+                  <NoBorderTableCell>EPAC Forum</NoBorderTableCell>
+                </TableRow>
+                <TableRow>
+                  <NoBorderTableCell>
+                    <nobr>9:45 am - 1:00 pm</nobr>
                   </NoBorderTableCell>
                   <NoBorderTableCell>
                     Individual and Team rounds
@@ -87,17 +96,15 @@ const Schedule = () => {
                   <NoBorderTableCell>
                     <nobr>4:00 pm - 5:00 pm</nobr>
                   </NoBorderTableCell>
-                  <NoBorderTableCell>Guest Speaker</NoBorderTableCell>
-                  <NoBorderTableCell>The Forum</NoBorderTableCell>
+                  <NoBorderTableCell>Exeter Panel</NoBorderTableCell>
+                  <NoBorderTableCell>EPAC Forum</NoBorderTableCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderTableCell>
                     <nobr>5:15 pm - 6:00 pm</nobr>
                   </NoBorderTableCell>
-                  <NoBorderTableCell>
-                    Closing Ceremony (Awards)
-                  </NoBorderTableCell>
-                  <NoBorderTableCell>The Forum</NoBorderTableCell>
+                  <NoBorderTableCell>Awards Ceremony</NoBorderTableCell>
+                  <NoBorderTableCell>EPAC Forum</NoBorderTableCell>
                 </TableRow>
               </TableBody>
             </Table>

@@ -58,15 +58,13 @@ body {
 }
 .cube.show-emcc {
   transform: translateZ(-100px) rotateX(31.5deg) rotateY(0deg) rotateZ(10deg);
-  animation-name: slidein;
-  animation-duration: 2s;
+  animation: slidein 2s ease-in-out;
 }
 @keyframes slidein {
-  from {
+  0% {
     transform: translateZ(-100px) rotateX(90deg) rotateZ(0deg);
   }
-
-  to {
+  100% {
     transform: translateZ(-100px) rotateX(31.5deg) rotateY(0deg) rotateZ(10deg);
   }
 }
@@ -217,30 +215,31 @@ body {
 }
 
 .cube__face--xeter {
-  transform: translateZ(-57.7px);
+  transform: translateZ(-60px) translateY(-5px) translateX(4px);
   margin-left: 205px;
-  padding-top: 166px;
+  padding-top: 180px;
   display: block;
   width: auto;
-  line-height: 20px;
+  line-height: 0px;
   font-size: 60px !important;
   user-select: none;
 }
+
 .cube__face--ath {
-  transform: RotateY(180deg) rotateZ(270deg) rotateX(120deg) translateX(165px)
-    translateY(76px) translateZ(60px);
+  transform: RotateY(180deg) rotateZ(270deg) rotateX(120deg) translateX(167px)
+    translateY(76px) translateZ(57px);
   display: block;
   font-size: 60px !important;
   user-select: none;
 }
 .cube__face--lub {
-  transform: RotateY(300deg) rotateZ(0deg) rotateX(0deg) translateX(-70px)
-    translateY(210px) translateZ(60px);
+  transform: RotateY(300deg) rotateZ(0deg) rotateX(0deg) translateX(-83px)
+    translateY(200px) translateZ(55px) scaleX(1.35);
   display: block;
   font-size: 70px !important;
   padding-left: 80px;
   padding-right: 80px;
-  line-height: 60px;
+  line-height: 62px;
   text-align: left;
   word-break: break-all;
   user-select: none;

@@ -73,11 +73,11 @@ const CompetitorsTab = ({
 }) => {
   return (
     <Box>
-      <Typography variant="body1">
+      {/* <Typography variant="body1">
         Add teams and individuals entries below. Up until the competition date,
         entries can be freely modified.
       </Typography>{" "}
-      <br />
+      <br /> */}
       <MaterialTable
         title="Teams"
         options={{

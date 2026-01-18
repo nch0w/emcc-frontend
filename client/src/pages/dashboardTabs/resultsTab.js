@@ -7,11 +7,11 @@ import { tableIcons } from "./tableIcons";
 const ResultsTab = ({ indivResults, teamResults, loading }) => {
   return (
     <Box>
-      <Typography variant="body1">
+      {/* <Typography variant="body1">
         After the competition, results can be viewed here.
       </Typography>
       <br />
-      <br />
+      <br /> */}
       <Typography variant="h3" align="center">
         Individual Results
       </Typography>

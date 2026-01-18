@@ -41,8 +41,7 @@ const contactInfoStyles = makeStyles({
 const members = [
   {
     name: "Benny Wang",
-    email: "bbwang@exeter.edu",
-    role: "Tournament Director"
+    email: "bbwang@exeter.edu"
   },
   {
     name: "Grant Blitz",

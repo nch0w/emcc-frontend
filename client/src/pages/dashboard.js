@@ -167,6 +167,9 @@ const Dashboard = () => {
           indicatorColor="primary"
           textColor="primary"
           onChange={(_event, value) => handleTabClicked(value)}
+          variant="scrollable"
+          scrollButtons="auto"
+          allowScrollButtonsMobile
         >
           <Tab value="view-competitors" label="Edit Competitors" />
 

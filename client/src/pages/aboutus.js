@@ -34,7 +34,7 @@ const AboutUs = () => {
       </center>
       <SCaption>Figure 2: 2024-2025 Math Club</SCaption>
       <br />
-      <SContentHeading variant="h4">EMCC Team</SContentHeading>
+      <SContentHeading variant="h4">Tournament Directors</SContentHeading>
       <br />
       <SContent>
         {" "}

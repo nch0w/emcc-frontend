@@ -25,8 +25,10 @@ const Home = () => {
           .
         </SHeroSubheading> */}
         <SHeroSubheading variant="h6">
-          The EMCC has reached full capacity, and signups are now closed.
-          Registered coaches may still modify teams and individuals.
+          Thank you to everybody who attended the EMCC. Congratulations to the
+          overall winner, Brandon Ni, and the first place team, Foci - 1!
+          Results, problems and solutions can be found in the archives.
+          Individual and team results will be released shortly.
         </SHeroSubheading>
       </SHero>
       <br />
@@ -61,12 +63,11 @@ const Home = () => {
           middle schoolers, written and run by students at Phillips Exeter
           Academy in New Hampshire. Every January since 2010, students have come
           from around the world to compete in person at Exeter.
+          {/* <br />
           <br />
-          <br />
-          The 2026 EMCC will take place on <b>
+          The 2026 EMCC took place on <b>
             Sunday, January 18th, 2026
-          </b>{" "}
-          (MLK weekend). Registration is now closed.
+          </b>. */}
           {/* Registration remains
           open until January 9th, 2026. Registering for the EMCC takes three
           steps:

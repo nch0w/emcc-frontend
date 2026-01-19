@@ -104,6 +104,27 @@ export const ContactInfo = () => {
 
 const archiveURLs = [
   {
+    year: "2026",
+    links: [
+      "/papers/emcc26results.pdf",
+      "/papers/emcc26speed.pdf",
+      "/papers/emcc26accuracy.pdf",
+      "/papers/emcc26team.pdf",
+      "/papers/emcc26guts.pdf",
+      "/papers/emcc26answers.pdf",
+      "/papers/emcc26speedaccteamsol.pdf"
+    ],
+    labels: [
+      "Results",
+      "Speed Round",
+      "Accuracy Round",
+      "Team Round",
+      "Guts Round",
+      "Answers",
+      "Morning Solutions"
+    ]
+  },
+  {
     year: "2025",
     links: [
       "/papers/emcc25results.pdf",
@@ -126,7 +147,7 @@ const archiveURLs = [
   },
   {
     year: "2024",
-    links: ["/papers/results-2024.pdf", "/papers/emcc24all.pdf"],
+    links: ["/papers/emcc24results.pdf", "/papers/emcc24all.pdf"],
     labels: ["Results", "Full document"]
   },
   {

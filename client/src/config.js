@@ -112,7 +112,7 @@ const archiveURLs = [
       "/papers/emcc26team.pdf",
       "/papers/emcc26guts.pdf",
       "/papers/emcc26answers.pdf",
-      "/papers/emcc26speedaccteamsol.pdf"
+      "/papers/emcc26solutions.pdf"
     ],
     labels: [
       "Results",
@@ -121,7 +121,7 @@ const archiveURLs = [
       "Team Round",
       "Guts Round",
       "Answers",
-      "Morning Solutions"
+      "Solutions"
     ]
   },
   {
@@ -142,7 +142,7 @@ const archiveURLs = [
       "Team Round",
       "Guts Round",
       "Answers",
-      "Solutions & Acknowledgements"
+      "Solutions"
     ]
   },
   {

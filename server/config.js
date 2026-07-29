@@ -1,7 +1,7 @@
 module.exports = {
   // airtable key in .env also needs to
   // be updated
-  airtableLink: "appLfWD5To0qamuRu",
+  airtableLink: "appr0JOnxsbozw7xl",
 
   // registration costs
   indivEarlyCost: "$20.00",

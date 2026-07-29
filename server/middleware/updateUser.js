@@ -1,5 +1,9 @@
-const base = require("airtable").base("appLfWD5To0qamuRu");
-const { maxIndivsPerCoach, maxTeamsPerCoach } = require("../config");
+const {
+  maxTeamsPerCoach,
+  maxIndivsPerCoach,
+  airtableLink
+} = require("../config");
+const base = require("airtable").base(airtableLink);
 
 async function updateUser(req, res, next) {
   // get user info with an already valid session token.

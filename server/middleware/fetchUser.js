@@ -1,4 +1,5 @@
-const base = require("airtable").base("appLfWD5To0qamuRu");
+const { airtableLink } = require("../config");
+const base = require("airtable").base(airtableLink);
 
 async function user(req, res, next) {
   if (req.cookies) {

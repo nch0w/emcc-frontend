@@ -1,5 +1,6 @@
 require("dotenv").config();
-const base = require("airtable").base("appLfWD5To0qamuRu");
+const { airtableLink } = require("../config");
+const base = require("airtable").base(airtableLink);
 // base("Coaches").create(
 //   [
 //     {

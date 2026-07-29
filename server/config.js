@@ -1,4 +1,8 @@
 module.exports = {
+  // airtable key in .env also needs to
+  // be updated
+  airtableLink: "appLfWD5To0qamuRu",
+
   // registration costs
   indivEarlyCost: "$20.00",
   indivLateCost: "$20.00",
@@ -16,6 +20,12 @@ module.exports = {
   minTeamMembersPerTeam: 2,
   maxTeamMembersPerTeam: 4,
 
+  // booleans registrationClosed and signupClosed
+  // affect the behavior of updating, creating and deleting
+  // teams when coaches are logged into the portal.
+  // (check registration.js to understand how)
+  // by default, both are false and only need to be
+  // changed in the days leading up to competition day
   registrationClosed: false,
-  signupClosed: true
+  signupClosed: false
 };

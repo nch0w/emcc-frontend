@@ -1,12 +1,13 @@
-const router = require("express").Router();
-const base = require("airtable").base("appLfWD5To0qamuRu");
-const updateUser = require("../middleware/updateUser");
 const {
   minTeamMembersPerTeam,
   maxTeamsPerCoach,
   registrationClosed,
-  signupClosed
+  signupClosed,
+  airtableLink
 } = require("../config");
+const router = require("express").Router();
+const base = require("airtable").base(airtableLink);
+const updateUser = require("../middleware/updateUser");
 
 router.post(
   "/update-coach-info",

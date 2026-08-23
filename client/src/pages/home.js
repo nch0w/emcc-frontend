@@ -15,7 +15,7 @@ const Home = () => {
           The Exeter Math Club Competition
         </SHeroSubheading>
         <SHeroSubheading variant="h5">
-          {contestDate}, in person at Exeter
+          {contestDate}, in person at Phillips Exeter Academy
         </SHeroSubheading>
         {/* <SHeroSubheading variant="h6">
           Registration for EMCC 2026 is open! Sign up{" "}
@@ -27,8 +27,9 @@ const Home = () => {
         <SHeroSubheading variant="h6">
           Thank you to everybody who attended the EMCC. Congratulations to the
           overall winner, Brandon Ni, and the first place team, Foci - 1!
-          Results, problems and solutions can be found in the archives.
-          Individual and team results will be released shortly.
+          Results, problems and solutions can be found in the archives. <br/><br/>
+
+          Information about the 2027 EMCC will be posted during the fall.
         </SHeroSubheading>
       </SHero>
       <br />

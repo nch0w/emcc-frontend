@@ -10,7 +10,7 @@ async function signupMail(emailAddress, token, userId) {
     Thanks for creating an account for the Exeter Math Club Competition!
     <br />
     <br />
-    Please verify your email address at <a href="${process.env.SITE_URL}/verify/${token}${userId}">${process.env.SITE_URL}/verify/${token}${userId}</a>.
+    Please verify your email address at <a href="${process.env.SITE_URL}/verify/${token}${userId}">${process.env.SITE_URL}/verify/${token}${userId}</a>
     <br />
     <br />
     If you need help, please message <a href="exetermathclub@gmail.com">exetermathclub@gmail.com</a>.

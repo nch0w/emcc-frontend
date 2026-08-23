@@ -22,7 +22,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         icons={tableIcons}
         columns={[
           { title: "Name", field: "name" },
-          { title: "#/20", field: "speedScore" },
+          { title: "Score (out of 20)", field: "speedScore" },
           { title: "Rank", field: "speedRank" },
           { title: "Distribution", field: "speedDistribution" }
         ]}
@@ -40,7 +40,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         icons={tableIcons}
         columns={[
           { title: "Name", field: "name" },
-          { title: "#/10", field: "accuracyScore" },
+          { title: "Score (out of 10)", field: "accuracyScore" },
           { title: "Rank", field: "accuracyRank" },
           { title: "Distribution", field: "accuracyDistribution" }
         ]}
@@ -58,7 +58,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         icons={tableIcons}
         columns={[
           { title: "Name", field: "name" },
-          { title: "#/40", field: "overallScore" },
+          { title: "Score (out of 40)", field: "overallScore" },
           { title: "Rank", field: "overallRank" }
         ]}
         isLoading={loading}
@@ -79,7 +79,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         icons={tableIcons}
         columns={[
           { title: "Team", field: "name" },
-          { title: "#/15", field: "teamScore" },
+          { title: "Score (out of 15)", field: "teamScore" },
           { title: "Rank", field: "teamRank" },
           { title: "Distribution", field: "teamDistribution" }
         ]}
@@ -97,7 +97,7 @@ const ResultsTab = ({ indivResults, teamResults, loading }) => {
         icons={tableIcons}
         columns={[
           { title: "Team", field: "name" },
-          { title: "#/160", field: "gutsScore" },
+          { title: "Score (out of 160)", field: "gutsScore" },
           { title: "Rank", field: "gutsRank" },
           { title: "Distribution", field: "gutsDistribution" },
           {

@@ -268,6 +268,7 @@ router.post(
           {
             id,
             fields: {
+              Name: `Individual - ${student}`,
               "Student 1": student,
               Coach: [req.user.id],
               Individual: true
@@ -284,6 +285,7 @@ router.post(
         await base("Competitors").create([
           {
             fields: {
+              Name: `Individual - ${student}`,
               "Student 1": student,
               Coach: [req.user.id],
               Individual: true

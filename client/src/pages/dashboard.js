@@ -175,7 +175,7 @@ const Dashboard = () => {
 
           <Tab value="view-payment" label="Payment Portal" />
 
-          <Tab value="view-coach-info" label="Edit Coach Info" />
+          <Tab value="view-coach-info" label="Account and Coach Info" />
 
           <Tab value="view-results" label="View Results" />
         </Tabs>

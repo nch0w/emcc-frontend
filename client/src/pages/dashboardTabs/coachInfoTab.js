@@ -119,6 +119,7 @@ const CoachInfoTab = ({
 
   return (
     <Box>
+      <h2>Coach Info</h2>
       <TextField
         id="coach-email"
         label="Email Address"
@@ -179,6 +180,7 @@ const CoachInfoTab = ({
       </Button>
       <br />
       <br />
+      <h2>Change Password</h2>
       <form onSubmit={handleChangePassword} autoComplete="on">
         <TextField
           required
@@ -211,7 +213,6 @@ const CoachInfoTab = ({
         />
         <br />
         <br />
-
         <Button
           variant="outlined"
           type="submit"
@@ -225,7 +226,7 @@ const CoachInfoTab = ({
         </Button>
       </form>
       <br />
-      <br />
+      <h2>Account</h2>
       <Button
         onClick={handleLogout}
         variant="outlined"

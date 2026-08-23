@@ -186,6 +186,13 @@ export const EMCCNav = ({ authStatus }) => {
             style={{ height: "80%", width: "auto", display: "block" }}
           />
         </HomePageItem>
+        <Item onClick={() => go("/")}
+          $active={currentUrl === "/"}
+          $onHome={currentUrl === "/"}
+          $shrink={shrink}
+        >
+          Home
+        </Item>
         <Item
           onClick={() => go("/contest")}
           $active={currentUrl === "/contest"}
@@ -256,7 +263,7 @@ const FootContainer = styled.div`
 const IconRow = styled.div`
   width: 100%;
   display: block;
-  padding: 10px 0px 20px 0px;
+  padding: 10px 0px 10px 0px;
   margin: 0px 0px 0px 0px;
 `;
 
@@ -296,6 +303,11 @@ export const EMCCFoot = () => {
           <LinkIcon href="https://www.instagram.com/exetermathclub/">
             <InstagramIcon fontSize="small" />
           </LinkIcon>
+          <br/>
+          <Typography variant="body" style={{ color: "#555", fontStyle: "italic" }}>
+            <b>Have a question?</b> Don't hesitate to reach out through our <a style={{ color: "#555", textDecoration: "underline" }} href="mailto:exetermathclub@gmail.com">email</a>.
+          </Typography>
+          <br/>
         </IconRow>
 
         <Typography variant="body" style={{ color: "#aaa" }}>

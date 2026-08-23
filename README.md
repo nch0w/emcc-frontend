@@ -111,8 +111,8 @@ Q. How to fix an error like this:
 [CLIENT]   opensslErrorStack: [
 ```
 
-A. run `export NODE_OPTIONS=--openssl-legacy-provider` in the terminal, then run the command again.
+A. run `export NODE_OPTIONS=--openssl-legacy-provider` in the terminal, then run the command again. If on Windows (Powershell), the equivalent command is `$env:NODE_OPTIONS = "--openssl-legacy-provider"`
 
 Q. how to fix node heap out of memory error on the server, when running `yarn build`?
 
-A. run `export NODE_OPTIONS='--max-old-space-size=4096 --openssl-legacy-provider'` in the terminal, then run the command again.
+A. run `export NODE_OPTIONS='--max-old-space-size=4096 --openssl-legacy-provider'` in the terminal, then run the command again. If on Windows (Powershell), the equivalent command is `$env:NODE_OPTIONS = "--max-old-space-size=4096 --openssl-legacy-provider"`.

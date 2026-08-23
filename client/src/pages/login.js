@@ -84,6 +84,12 @@ const Login = () => {
     <Box style={{ maxWidth: 800, margin: "auto" }}>
       <SHeading variant="h2">Log In</SHeading>
       <Box align="left">
+        <Typography variant="body1">
+          As we archive and clear our account database every year, 
+          please be advised that your account information from previous years 
+          will no longer be valid. You will need to register for a new account.
+        </Typography>
+        <br />
         <Typography variant="body1" style={{ color: "green" }}>
           Don't have an account yet? You can <a href="/signup">sign up here</a>.
         </Typography>

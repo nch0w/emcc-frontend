@@ -94,6 +94,11 @@ const SignUp = () => {
         participate in EMCC, please contact your school's coach. If you would
         like to participate as an individual and your school is not
         participating, your parent or guardian can sign up as your coach.
+        <br/><br/>
+        As we archive and clear our account database every year, 
+          please be advised that your account information from previous years 
+          will no longer be valid. You will need to register for a new account.
+        
       </Typography>
       <br />
       <Typography variant="body1" style={{ color: "green" }}>

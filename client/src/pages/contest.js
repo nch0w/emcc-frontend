@@ -38,6 +38,10 @@ const Contest = () => {
         <section id="general">
           <Typography variant="body1">
             <TableOfContents />
+            <div style={{ color: "#9B1D31", textAlign: "center", marginBottom: "20px", fontWeight: 700}}>
+              Information about the 2027 competition will be posted later in
+              the fall.
+            </div>
             <SContentHeading variant="h3">General Information</SContentHeading>
             The Exeter Math Club Competition is an annual math competition for
             middle schoolers. The competition is a day-long event that takes

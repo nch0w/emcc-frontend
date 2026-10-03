@@ -25,9 +25,12 @@ const Schedule = () => {
   return (
     <Box>
       <SHeading variant="h2">Schedule</SHeading>
-
       <SContent>
         <Typography variant="body1">
+        <div style={{ color: "#9B1D31", textAlign: "left",  marginBottom: "10px", fontWeight: 700}}>
+              Information about the 2027 competition will be posted later in
+              the fall.
+        </div>
           The tentative schedule for EMCC 2026 is shown below, subject to
           change.
         </Typography>

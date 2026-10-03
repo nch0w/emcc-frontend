@@ -25,11 +25,8 @@ const Home = () => {
           .
         </SHeroSubheading> */}
         <SHeroSubheading variant="h6">
-          Thank you to everybody who attended the EMCC. Congratulations to the
-          overall winner, Brandon Ni, and the first place team, Foci - 1!
-          Results, problems and solutions can be found in the archives. <br/><br/>
-
-          Information about the 2027 EMCC will be posted during the fall.
+          Further details about the 2027 EMCC will be posted later in the fall. In the meantime, you can 
+          view the results, problems and solutions from past years' contests in the archives.
         </SHeroSubheading>
       </SHero>
       <br />

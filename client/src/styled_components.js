@@ -60,7 +60,8 @@ export const SHero = styled(Container)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  paddingTop: "20px"
+  paddingTop: "25px",
+  paddingBottom: "20px"
 });
 
 export const SHeroHeading = styled(Typography)({

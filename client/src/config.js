@@ -15,8 +15,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // it's the one that changes from year to year
 
 // contest year and date
-export const contestYear = 2026;
-export const contestDate = "January 18th, 2026";
+export const contestYear = 2027;
+export const contestDate = "January 23rd, 2027";
 
 // limits on teams and individuals per coach (used for display, NOT calculation)
 // all limit calculation happens server-side
@@ -40,28 +40,28 @@ const contactInfoStyles = makeStyles({
 
 const members = [
   {
-    name: "Benny Wang",
-    email: "bbwang@exeter.edu"
-  },
-  {
     name: "Grant Blitz",
     email: "gblitz@exeter.edu"
   },
   {
-    name: "Albert Lu",
-    email: "aklu@exeter.edu"
+    name: "Brianna Hou",
+    email: "blhou@exeter.edu"
   },
   {
-    name: "Evan Fan",
-    email: "etfan@exeter.edu"
+    name: "Oron Wang",
+    email: "owang@exeter.edu"
   },
   {
-    name: "Harini Venkatesh",
-    email: "hvenkatesh@exeter.edu"
+    name: "Leon Xie",
+    email: "lxie2@exeter.edu"
   },
   {
     name: "Michael Yang",
     email: "mmyang@exeter.edu"
+  },
+  {
+    name: "Gavin Zhao",
+    email: "gzhao3@exeter.edu"
   }
 ];
 
@@ -77,7 +77,7 @@ export const ContactInfo = () => {
               <CardMedia
                 className={classes.media}
                 image={require(`./assets/${member.image}`)}
-                title="Sanath Govindarajan"
+                title={member.name}
               />
             )}
             <CardContent>
